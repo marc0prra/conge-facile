@@ -65,6 +65,12 @@ input {
   /* input == color : #212B36 */
 }
 
+input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "inter", sans-serif;
+}
+
 /*************************************** TOP *******************************/
 .borderTop {
   background-color: #b4c4cf;
@@ -138,6 +144,7 @@ input {
 .border {
   border-bottom: #dfe4ea solid 1px;
 }
+
 /*
 .active {
   background-color: #5c73a012;
@@ -172,6 +179,15 @@ input {
 .left a {
   font-weight: 600;
   font-size: 20px;
+}
+
+/************************************* MDP OUBLIER *******************************/
+.renit {
+  border-radius: 9px;
+  width: 70%;
+  padding: 2%;
+  margin-top: 5%;
+  border: #004c6c 2px solid;
 }
 
 /************************************* RESPONSIVE *******************************/
