@@ -1,0 +1,72 @@
+/************************* CONVENTION ************************/
+body {
+  margin: 0;
+  font-family: "Epinoc", sans-serif;
+}
+
+a {
+  font-size: 16px;
+  font-weight: 500;
+  color: #637381;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 28.85px;
+  font-weight: 600;
+  color: #1b3168;
+  line-height: 24.5px;
+}
+
+h3 {
+  font-size: 28.85px;
+  font-weight: 600;
+  color: #1b3168;
+  line-height: 24.5px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.5px;
+  color: #637381;
+}
+
+button {
+  background-color: #004c6c;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+input {
+  background-color: #dfe4ea;
+  border-radius: 6px;
+  border: #dfe4ea solid 1px;
+  width: 350px;
+  /* input == color : #212B36 */
+}
+
+/*************************************** TOP *******************************/
+.top {
+  background-color: #004c6c;
+  width: 90%;
+  margin: 0 auto;
+  /* #B4C4CF == couleur au dessus de la barre bleue*/
+}
+
+.top img {
+  width: 5%;
+}
+
+.active {
+  background-color: #5c73a012;
+  border-right: #004c6c solid 2px;
+  color: #004c6c;
+  padding: 0.8%;
+}
+
+.border {
+  border-bottom: #dfe4ea solid 1px;
+}
