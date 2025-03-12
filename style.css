@@ -1,7 +1,7 @@
 /************************* CONVENTION ************************/
 body {
   margin: 0;
-  font-family: "Epinoc", sans-serif;
+  font-family: "Epilogue", sans-serif;
 }
 
 a {
@@ -10,6 +10,15 @@ a {
   color: #637381;
   line-height: 24px;
   text-decoration: none;
+  font-family: "inter", sans-serif;
+}
+
+h1 {
+  font-size: 30.85px;
+  font-weight: 600;
+  color: #1b3168;
+  line-height: 28.5px;
+  font-family: "Epilogue", sans-serif;
 }
 
 h2 {
@@ -17,6 +26,7 @@ h2 {
   font-weight: 600;
   color: #1b3168;
   line-height: 24.5px;
+  font-family: "Epilogue", sans-serif;
 }
 
 h3 {
@@ -24,6 +34,7 @@ h3 {
   font-weight: 600;
   color: #1b3168;
   line-height: 24.5px;
+  font-family: "Epilogue", sans-serif;
 }
 
 p {
@@ -31,6 +42,7 @@ p {
   font-weight: 400;
   line-height: 24.5px;
   color: #637381;
+  font-family: "Epilogue", sans-serif;
 }
 
 button {
@@ -38,13 +50,18 @@ button {
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+  font-family: "Epilogue", sans-serif;
+  color: white;
+  cursor: pointer;
 }
 
 input {
-  background-color: #dfe4ea;
+  background-color: white;
   border-radius: 6px;
   border: #dfe4ea solid 1px;
-  width: 350px;
+  width: 50%;
+  padding: 3%;
+  font-family: "inter", sans-serif;
   /* input == color : #212B36 */
 }
 
@@ -53,8 +70,8 @@ input {
   background-color: #b4c4cf;
   height: 10px;
   width: 97%;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
   margin: 0 auto;
   margin-top: 1%;
 }
@@ -71,13 +88,88 @@ input {
   width: 9%;
 }
 
-.active {
-  background-color: #5c73a012;
-  border-right: #004c6c solid 2px;
-  color: #004c6c;
-  padding: 0.8%;
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  max-width: 60%;
 }
 
+.middle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 51%;
+  margin-top: 1%;
+}
+
+.middle p {
+  font-size: 18px;
+}
+
+.details {
+  width: 168%;
+}
+
+.details p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.ps {
+  width: 104%;
+}
+
+.ps a {
+  font-size: 18px;
+  color: #004c6c;
+  font-weight: 700;
+}
+
+.portal {
+  border-radius: 9px;
+  width: 40%;
+  padding: 2%;
+  margin-top: 5%;
+  border: #004c6c 2px solid;
+}
+
+/************************* MENU GAUCHE *************************/
 .border {
   border-bottom: #dfe4ea solid 1px;
+}
+/*
+.active {
+  background-color: #5c73a012;
+  border-right: #004c6c solid 4px;
+  color: #004c6c;
+  padding: 1.8%;
+  text-align: left;
+  width: 14%;
+  padding-left: 6%;
+  padding-right: 13%;
+}
+*/
+
+.active {
+  background-color: #5c73a012;
+  border-right: #004c6c solid 4px;
+  color: #004c6c;
+  padding: 3.8%;
+  text-align: left;
+  width: 30%;
+  padding-left: 9%;
+  padding-right: 28%;
+}
+
+.left {
+  display: flex;
+  margin: 1% 0% 0% 0%;
+  flex: 1;
+  width: 62%;
+}
+
+.left a {
+  font-weight: 600;
+  font-size: 20px;
 }
