@@ -173,3 +173,43 @@ input {
   font-weight: 600;
   font-size: 20px;
 }
+
+/************************************* RESPONSIVE *******************************/
+@media screen and (max-width: 1340px) {
+  .portal {
+    width: 248px;
+  }
+  .id {
+    width: 226px;
+  }
+  .details {
+    width: 100%;
+  }
+  .middle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .active {
+    width: 49px;
+  }
+  .left a {
+    font-size: 17px;
+  }
+  .right h1 {
+    font-size: 26px;
+  }
+  .right h2 {
+    font-size: 22px;
+  }
+  .right input {
+    width: 195px;
+  }
+  .right button {
+    width: 210px;
+  }
+  .ps {
+    width: 90%;
+  }
+}
