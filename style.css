@@ -190,6 +190,22 @@ input {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .left {
+    display: none;
+  }
+  .middle {
+    justify-content: center;
+  }
+  .top img {
+    width: 32%;
+  }
+  .borderTop {
+    width: 95%;
+    height: 7px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .active {
     width: 49px;
@@ -211,5 +227,9 @@ input {
   }
   .ps {
     width: 90%;
+  }
+  .borderTop {
+    width: 92%;
+    height: 6px;
   }
 }
