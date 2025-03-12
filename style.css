@@ -49,15 +49,26 @@ input {
 }
 
 /*************************************** TOP *******************************/
+.borderTop {
+  background-color: #b4c4cf;
+  height: 10px;
+  width: 97%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin: 0 auto;
+  margin-top: 1%;
+}
+
 .top {
   background-color: #004c6c;
-  width: 90%;
+  width: 97%;
   margin: 0 auto;
-  /* #B4C4CF == couleur au dessus de la barre bleue*/
+  padding: 1%;
+  border-radius: 16px;
 }
 
 .top img {
-  width: 5%;
+  width: 9%;
 }
 
 .active {
