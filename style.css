@@ -99,6 +99,7 @@ input::placeholder {
   flex-direction: column;
   flex: 2;
   max-width: 60%;
+  margin-left: 9%;
 }
 
 .middle {
@@ -114,7 +115,7 @@ input::placeholder {
 }
 
 .details {
-  width: 168%;
+  width: 199%;
 }
 
 .details p {
@@ -123,7 +124,7 @@ input::placeholder {
 }
 
 .ps {
-  width: 104%;
+  width: 128%;
 }
 
 .ps a {
@@ -170,15 +171,18 @@ input::placeholder {
 }
 
 .left {
-  display: flex;
-  margin: 1% 0% 0% 0%;
-  flex: 1;
-  width: 62%;
+  width: 42%;
+  height: 808px;
+  box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
 }
 
 .left a {
   font-weight: 600;
   font-size: 20px;
+  display: flex;
+  margin: 1% 0% 0% 0%;
+  flex: 1;
+  width: 62%;
 }
 
 /************************************* MDP OUBLIER *******************************/
