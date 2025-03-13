@@ -195,6 +195,90 @@ input::placeholder {
   border-radius: 16px;
 }
 
+/******************************** ACCUEIL ************************************/
+.diff {
+  width: 162%;
+  margin-top: 17%;
+}
+
+.blue {
+  color: #004c6c;
+  text-decoration: underline;
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 127%;
+  margin: 11% 0% 6% 25%;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.circle {
+  width: 111%;
+  height: 57px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #004b6b;
+  background-color: white;
+  color: #004b6b;
+  position: relative;
+  z-index: 1;
+}
+
+.step.current-step .circle {
+  background-color: #004b6b;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.line {
+  flex-grow: 1;
+  height: 3px;
+  background-color: #004b6b;
+  margin: -59px 5px 0px;
+  width: 52%;
+}
+
+.step p {
+  width: 143%;
+  font-weight: 600;
+  color: #111928;
+}
+
+.blocks {
+  display: flex;
+  justify-content: space-between;
+  width: 194%;
+  gap: 63px;
+}
+
+.block {
+  background-color: #004c6c0d;
+  border-radius: 8px;
+  padding: 3%;
+  width: 25%;
+  text-align: center;
+}
+
+.block p {
+  line-height: 24px;
+  color: #000000;
+}
+
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
