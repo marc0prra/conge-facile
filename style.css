@@ -100,6 +100,7 @@ input::placeholder {
   flex: 2;
   max-width: 60%;
   margin-left: 9%;
+  margin-top: 5%;
 }
 
 .middle {
@@ -180,16 +181,25 @@ input::placeholder {
   font-weight: 600;
   font-size: 20px;
   display: flex;
-  margin: 1% 0% 0% 0%;
+  margin: 11% 0% 0% 0%;
   flex: 1;
   width: 62%;
+  padding-left: 9%;
+  padding-right: 28%;
+}
+
+.rod {
+  border: #5c73a012 1px solid;
+  width: 78%;
+  margin: 7% auto -5% auto;
+  border-radius: 16px;
 }
 
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 70%;
-  padding: 2%;
+  width: 83%;
+  padding: 3%;
   margin-top: 5%;
   border: #004c6c 2px solid;
 }
