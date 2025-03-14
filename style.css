@@ -173,7 +173,7 @@ input::placeholder {
 
 .left {
   width: 42%;
-  height: 808px;
+  height: 821px;
   box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -181,7 +181,7 @@ input::placeholder {
   font-weight: 600;
   font-size: 20px;
   display: flex;
-  margin: 11% 0% 0% 0%;
+  margin: 9% 0% 0% 0%;
   flex: 1;
   width: 62%;
   padding-left: 9%;
