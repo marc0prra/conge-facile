@@ -29,7 +29,7 @@
   </div>
   <div class="middle">
     <div class="left">
-      <a href="connexion.html" class="active">Connexion</a>
+      <a href="connexion.php" class="active">Connexion</a>
     </div>
     <div class="right">
       <h1>Mot de passe oublié</h1>
@@ -52,7 +52,7 @@
         Demander a réinitialiser votre mot de passe.
       </button>
       <p class="ps">
-        <a href="connexion.html">Cliquez ici</a> pour retourner à la page de
+        <a href="connexion.php">Cliquez ici</a> pour retourner à la page de
         connexion.
       </p>
     </div>
