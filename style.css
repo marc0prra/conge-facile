@@ -71,6 +71,17 @@ input::placeholder {
   font-family: "inter", sans-serif;
 }
 
+select {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ea;
+}
+
+select::placeholder {
+  color: #9ca3af;
+  size: 18px;
+  font-weight: 400;
+}
+
 /*************************************** TOP *******************************/
 .borderTop {
   background-color: #b4c4cf;
@@ -286,6 +297,23 @@ input::placeholder {
   padding: 3%;
   margin-top: 5%;
   border: #004c6c 2px solid;
+}
+/************************************ NOUVELLE DEMANDE ***************************/
+.dates {
+  display: flex;
+}
+
+.begin input {
+  width: 70%;
+  padding: 8%;
+  padding-left: 26%;
+}
+
+.end input {
+  width: 70%;
+  padding: 8%;
+  padding-left: 26%;
+  margin-left: 19%;
 }
 
 /************************************* RESPONSIVE *******************************/
