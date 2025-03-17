@@ -1,3 +1,54 @@
+<?php
+require 'config.php'; // Inclusion du fichier de connexion
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérifier que les champs ne sont pas vides
+    if (empty($_POST["request_type_id"]) || empty($_POST["start_date"]) || empty($_POST["end_date"])) {
+        die($error_message = "Tous les champs obligatoires doivent être remplis.");
+    }
+
+    $request_type_id = $_POST["request_type_id"];
+    $start_at = $_POST["start_date"];
+    $end_at = $_POST["end_date"];
+    $comment = $_POST["comment"] ?? null;
+    $collaborator_id = 2; // Remplace par l'ID réel du collaborateur connecté
+    $created_at = date("Y-m-d H:i:s");
+
+    // Gestion du fichier justificatif
+    $receipt_file = null;
+    if (!empty($_FILES["receipt"]["name"])) {
+        $target_dir = "uploads/";
+        $receipt_file = $target_dir . basename($_FILES["receipt"]["name"]);
+        move_uploaded_file($_FILES["receipt"]["tmp_name"], $receipt_file);
+    }
+
+    // Requête SQL avec `?` pour éviter les injections SQL
+    $sql = "INSERT INTO request (request_type_id, collaborator_id, created_at, start_at, end_at, receipt_file, comment, answer) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        $stmt->bind_param("iisssss", $request_type_id, $collaborator_id, $created_at, $start_at, $end_at, $receipt_file, $comment);
+
+        if ($stmt->execute()) {
+            echo "Demande enregistrée avec succès !";
+        } else {
+            echo "Erreur lors de l'insertion : " . $stmt->error;
+        }
+
+        $stmt->close();
+    } else {
+        echo "Erreur de préparation de la requête : " . $conn->error;
+    }
+}
+
+$conn->close();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -25,6 +76,7 @@
     <div class="top">
         <img src="img/mentalworks.png" alt="" />
     </div>
+
     <div class="middle">
         <div class="left">
             <a href="accueil.php">Accueil</a>
@@ -38,51 +90,60 @@
         <div class="right">
             <h1 class="new">Effectuer une nouvelle demande</h1>
             <p class="color">Type de demande - champ obligatoire</p>
-            <select name="Selectionner un type">
-                <option value="">Sélectionner un type</option>
-            </select>
-            <div class="dates">
-                <div class="begin">
-                    <p class="date" class="color">Date début - champ obligatoire</p>
-                    <input type="number" name="date" id="" placeholder="" style="
+            <form action="nouvelle.php" method="POST" enctype="multipart/form-data">
+
+                <select name="request_type_id">
+                    <option value="1">Congé payé</option>
+                    <option value="2">Congé sans solde</option>
+                </select>
+                <div class="dates">
+                    <div class="begin">
+                        <p class="date" class="color">Date début - champ obligatoire</p>
+                        <input type="date" name="start_date" id="" placeholder="" style="
               background-image: url('img/calendar.png');
               background-size: 20px;
               background-position: 10px center;
               background-repeat: no-repeat;
             " />
-                </div>
-                <div class="end">
-                    <p class="date" class="color">Date de fin - champ obligatoire</p>
-                    <input type="number" name="date" style="
+                    </div>
+                    <div class="end">
+                        <p class="date" class="color">Date de fin - champ obligatoire</p>
+                        <input type="date" name="end_date" style="
               background-image: url('img/calendar.png');
               background-size: 20px;
               background-position: 10px center;
               background-repeat: no-repeat;
             " />
+                    </div>
                 </div>
-            </div>
-            <div class="grey">
-                <p class="greyP">Nombres de jours demandés</p>
-                <input type="number" name="date" placeholder="0" />
-            </div>
-            <div class="files">
-                <p class="color">Justificatif si applicable</p>
-                <input type="file" name="Justificative" id="" placeholder="Sélectionner un fichier" style="
+                <div class="grey">
+                    <p class="greyP">Nombres de jours demandés</p>
+                    <input type="number" name="date" placeholder="0" />
+                </div>
+                <div class="files">
+                    <p class="color">Justificatif si applicable</p>
+                    <input type="file" name="receipt" id="" placeholder="Sélectionner un fichier" style="
             background-image: url('img/document.png');
             background-size: 20px;
             background-position: 10px center;
             background-repeat: no-repeat;
           " />
-            </div>
-            <div class="justificative">
-                <p class="color">Justificatif si applicable</p>
-                <input type="text" name="text" id=""
-                    placeholder="Si congés exceptionnel ou sans solde, vous pouvez précisez votre demande." />
-            </div>
-            <div class="end">
-                <button type="submit">Soumettre ma demande*</button>
-                <p class="error">*En cas d'erreur de saisie ou de changements, vous pourrez modifier votre demande tant
-                    que celle-ci n'a pas été validée par le manager.</p>
-            </div>
+                </div>
+                <div class="justificative">
+                    <p class="color">Commentaire supplémentaire</p>
+                    <input type="text" name="comment" id=""
+                        placeholder="Si congés exceptionnel ou sans solde, vous pouvez précisez votre demande." />
+                </div>
+                <div style="color:red; margin-top: 10px;">
+                    <?php if (!empty($error_message)) { echo $error_message; } ?>
+                </div>
+                <div class="end">
+                    <button type="submit">Soumettre ma demande*</button>
+                    <p class="error">*En cas d'erreur de saisie ou de changements, vous pourrez modifier votre demande
+                        tant
+                        que celle-ci n'a pas été validée par le manager.</p>
+                </div>
+            </form>
         </div>
+
 </body>
