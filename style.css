@@ -71,11 +71,16 @@ input::placeholder {
   font-family: "inter", sans-serif;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+select {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ea;
 }
 
+select::placeholder {
+  color: #9ca3af;
+  size: 18px;
+  font-weight: 400;
+}
 
 /*************************************** TOP *******************************/
 .borderTop {
@@ -106,6 +111,7 @@ form {
   flex: 2;
   max-width: 60%;
   margin-left: 9%;
+  margin-top: 5%;
 }
 
 .middle {
@@ -178,7 +184,7 @@ form {
 
 .left {
   width: 42%;
-  height: 808px;
+  height: 821px;
   box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -186,34 +192,196 @@ form {
   font-weight: 600;
   font-size: 20px;
   display: flex;
-  margin: 1% 0% 0% 0%;
+  margin: 9% 0% 0% 0%;
   flex: 1;
   width: 62%;
+  padding-left: 9%;
+  padding-right: 28%;
+}
+
+.rod {
+  border: #5c73a012 1px solid;
+  width: 78%;
+  margin: 7% auto -5% auto;
+  border-radius: 16px;
+}
+
+/******************************** ACCUEIL ************************************/
+.diff {
+  width: 162%;
+  margin-top: 17%;
+}
+
+.blue {
+  color: #004c6c;
+  text-decoration: underline;
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 127%;
+  margin: 11% 0% 6% 25%;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.circle {
+  width: 111%;
+  height: 57px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #004b6b;
+  background-color: white;
+  color: #004b6b;
+  position: relative;
+  z-index: 1;
+}
+
+.step.current-step .circle {
+  background-color: #004b6b;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.line {
+  flex-grow: 1;
+  height: 3px;
+  background-color: #004b6b;
+  margin: -59px 5px 0px;
+  width: 52%;
+}
+
+.step p {
+  width: 143%;
+  font-weight: 600;
+  color: #111928;
+}
+
+.blocks {
+  display: flex;
+  justify-content: space-between;
+  width: 194%;
+  gap: 63px;
+}
+
+.block {
+  background-color: #004c6c0d;
+  border-radius: 8px;
+  padding: 3%;
+  width: 25%;
+  text-align: center;
+}
+
+.block p {
+  line-height: 24px;
+  color: #000000;
 }
 
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 70%;
-  padding: 2%;
+  width: 83%;
+  padding: 3%;
   margin-top: 5%;
   border: #004c6c 2px solid;
 }
+/************************************ NOUVELLE DEMANDE ***************************/
+.dates {
+  display: flex;
+}
+
+.begin {
+  width: 275%;
+}
+
+.begin input {
+  width: 29%;
+  padding: 5%;
+  padding-left: 63%;
+}
+
+.end {
+  width: 100%;
+}
+
+.date {
+  width: 276%;
+}
+
+.dates p {
+  color: #212b36;
+}
+
+.end input {
+  width: 136%;
+  padding: 13%;
+  padding-right: 125%;
+}
+
+.right select {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ea;
+  width: 71%;
+  border-radius: 5px;
+  padding: 3%;
+  color: #9ca3af;
+  size: 18px;
+  font-weight: 400;
+}
+
+.new {
+  width: 115%;
+}
+
+.color {
+  color: #212b36;
+}
+
+.greyP {
+  color: #6b7280;
+}
+
+.grey input {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  width: 29%;
+  padding: 4%;
+  padding-right: 37%;
+}
+
+.files input {
+  width: 67%;
+  padding: 4%;
+  padding-right: 0%;
+  text-align: center;
+}
+
+/************************************ HISTORY ************************************/
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {
     width: 248px;
   }
-
   .id {
     width: 226px;
   }
-
   .details {
     width: 100%;
   }
-
   .middle {
     width: 100%;
   }
@@ -223,15 +391,12 @@ form {
   .left {
     display: none;
   }
-
   .middle {
     justify-content: center;
   }
-
   .top img {
     width: 32%;
   }
-
   .borderTop {
     width: 95%;
     height: 7px;
@@ -242,31 +407,24 @@ form {
   .active {
     width: 49px;
   }
-
   .left a {
     font-size: 17px;
   }
-
   .right h1 {
     font-size: 26px;
   }
-
   .right h2 {
     font-size: 22px;
   }
-
   .right input {
     width: 195px;
   }
-
   .right button {
     width: 210px;
   }
-
   .ps {
     width: 90%;
   }
-
   .borderTop {
     width: 92%;
     height: 6px;
