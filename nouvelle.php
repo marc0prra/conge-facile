@@ -100,5 +100,9 @@
         placeholder="Si congés exceptionnel ou sans solde, vous pouvez précisez votre demande."
       />
   </div>
+  <div class="end">
+    <button>Soumettre ma demande*</button>
+    <p class="error">*En cas d'erreur de saisie ou de changements, vous pourrez modifier votre demande tant que celle-ci n'a pas été validée par le manager.</p>
+  </div>
   </div>
 </body>

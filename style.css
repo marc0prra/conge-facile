@@ -1,6 +1,5 @@
 /************************* CONVENTION ************************/
-#test
-body {
+#test body {
   margin: 0;
   font-family: "Epilogue", sans-serif;
 }
@@ -54,6 +53,7 @@ button {
   font-family: "Epilogue", sans-serif;
   color: white;
   cursor: pointer;
+  border: #004c6c 2px solid;
 }
 
 input {
@@ -316,6 +316,7 @@ form {
   width: 87%;
   padding: 5%;
   text-align: center;
+  outline: none;
 }
 
 .end {
@@ -335,6 +336,7 @@ form {
   padding: 13%;
   padding-right: 9%;
   text-align: center;
+  outline: none;
 }
 
 .right select {
@@ -367,6 +369,7 @@ form {
   padding: 4%;
   padding-right: 6%;
   text-align: left;
+  outline: none;
 }
 
 .files input {
@@ -374,12 +377,26 @@ form {
   padding: 4%;
   padding-right: 0%;
   text-align: center;
+  outline: none;
 }
 
 .justificative input {
   width: 200%;
   /* padding: 10%; */
   padding: 5% 3% 33%;
+  outline: none;
+}
+
+.error {
+  width: 267%;
+  color: #212b36;
+}
+
+.end button {
+  border-radius: 7px;
+  border: #004c6c 2px solid;
+  padding: 3% 5%;
+  margin-top: 4%;
 }
 
 /************************************ HISTORY ************************************/
