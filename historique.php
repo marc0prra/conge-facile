@@ -41,6 +41,7 @@
             <h1>Historique de mes demandes</h1>
             <button><a href="#"> Ajouter un type de demande </a></button>
         </div>
+        <div></div>
   </div>
 
     
