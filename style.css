@@ -303,17 +303,44 @@ select::placeholder {
   display: flex;
 }
 
+.begin {
+  width: 275%;
+}
+
 .begin input {
-  width: 70%;
-  padding: 8%;
-  padding-left: 26%;
+  width: 29%;
+  padding: 4%;
+  padding-left: 63%;
+}
+
+.end {
+  width: 100%;
+}
+
+.date {
+  width: 276%;
 }
 
 .end input {
-  width: 70%;
-  padding: 8%;
-  padding-left: 26%;
-  margin-left: 19%;
+  width: 136%;
+  width: 136%;
+  padding: 11%;
+  padding-left: 88%;
+}
+
+.right select {
+  background-color: #ffffff;
+  border: 1px solid #dfe4ea;
+  width: 71%;
+  border-radius: 5px;
+  padding: 2%;
+  color: #9ca3af;
+  size: 18px;
+  font-weight: 400;
+}
+
+.new {
+  width: 115%;
 }
 
 /************************************* RESPONSIVE *******************************/
