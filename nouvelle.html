@@ -37,14 +37,14 @@
       <a href="">Déconnexion</a>
     </div>
     <div class="right">
-      <h1>Effectuer une nouvelle demande</h1>
+      <h1 class="new">Effectuer une nouvelle demande</h1>
       <p>Type de demande - champ obligatoire</p>
       <select name="Selectionner un type">
-        Selectionner un type
+        <option value="">Sélectionner un type</option>
       </select>
       <div class="dates">
         <div class="begin">
-          <p></p>
+          <p class="date">Date début - champ obligatoire</p>
           <input
             type="number"
             name="date"
@@ -59,7 +59,7 @@
           />
         </div>
         <div class="end">
-          <p></p>
+          <p class="date">Date de fin - champ obligatoire</p>
           <input
             type="number"
             name="date"
