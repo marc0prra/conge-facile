@@ -377,7 +377,8 @@ form {
 
 .justificative input {
   width: 200%;
-  padding: 10%;
+  /* padding: 10%; */
+  padding: 5% 3% 33%;
 }
 
 /************************************ HISTORY ************************************/
