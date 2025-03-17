@@ -28,8 +28,8 @@
   </div>
   <div class="middle">
     <div class="left">
-      <a href="accueil.html" class="active">Accueil</a>
-      <a href="nouvelle.html">Nouvelle demande</a>
+      <a href="accueil.php" class="active">Accueil</a>
+      <a href="nouvelle.php">Nouvelle demande</a>
       <a href="">Historique des demandes</a>
       <div class="rod"></div>
       <a href="">Mes informations</a>
@@ -79,7 +79,7 @@
       </div>
       <p class="diff">
         En cas de difficulté avec l'application, veuillez envoyer un email à
-        <a href="mdp.html" class="blue">contact@mentalworks.fr</a>.
+        <a href="mdp.php" class="blue">contact@mentalworks.fr</a>.
       </p>
     </div>
   </div>
