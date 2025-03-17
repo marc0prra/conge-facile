@@ -82,6 +82,10 @@ select::placeholder {
   font-weight: 400;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
 /*************************************** TOP *******************************/
 .borderTop {
   background-color: #b4c4cf;
