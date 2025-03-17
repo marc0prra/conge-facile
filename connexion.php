@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Vérification du mot de passe
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['user_id'] = $id;
-                    header("Location: mdp.php");
+                    header("Location: accueil.php");
                     exit();
                 } else {
                     $error_message = "Adresse email ou mot de passe incorrect.";
