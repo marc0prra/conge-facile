@@ -308,9 +308,9 @@ select::placeholder {
 }
 
 .begin input {
-  width: 29%;
+  width: 87%;
   padding: 5%;
-  padding-left: 63%;
+  text-align: center;
 }
 
 .end {
@@ -326,9 +326,10 @@ select::placeholder {
 }
 
 .end input {
-  width: 136%;
+  width: 229%;
   padding: 13%;
-  padding-right: 125%;
+  padding-right: 9%;
+  text-align: center;
 }
 
 .right select {
@@ -357,9 +358,10 @@ select::placeholder {
 .grey input {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
-  width: 29%;
+  width: 60%;
   padding: 4%;
-  padding-right: 37%;
+  padding-right: 6%;
+  text-align: left;
 }
 
 .files input {
@@ -367,6 +369,11 @@ select::placeholder {
   padding: 4%;
   padding-right: 0%;
   text-align: center;
+}
+
+.justificative input {
+  width: 200%;
+  padding: 10%;
 }
 
 /************************************ HISTORY ************************************/
