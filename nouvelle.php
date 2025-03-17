@@ -78,17 +78,12 @@
       </div>
       <div class="files">
         <p class="color">Justificatif si applicable</p>
+        <label for="justificative" class="file-label">Sélectionner un fichier</label>
         <input
           type="file"
           name="Justificative"
-          id=""
-          placeholder="Sélectionner un fichier"
-          style="
-            background-image: url('img/document.png');
-            background-size: 20px;
-            background-position: 10px center;
-            background-repeat: no-repeat;
-          "
+          id="justificative"
+          class="file-input"
         />
     </div>
     <div class="justificative">
