@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 12 mars 2025 à 10:21
+-- Généré le : lun. 17 mars 2025 à 15:18
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -32,6 +32,14 @@ CREATE TABLE `department` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `department`
+--
+
+INSERT INTO `department` (`id`, `name`) VALUES
+(1, 'Informatique'),
+(2, 'Ressources Humaines');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,14 @@ CREATE TABLE `person` (
   `alert_before_vacation` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `person`
+--
+
+INSERT INTO `person` (`id`, `last_name`, `first_name`, `manager_id`, `department_id`, `position_id`, `alert_new_request`, `alert_on_answer`, `alert_before_vacation`) VALUES
+(1, 'Martin', 'Sophie', NULL, 2, 2, 1, 1, 1),
+(2, 'Dupont', 'Jean', 1, 1, 1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +76,14 @@ CREATE TABLE `position` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `position`
+--
+
+INSERT INTO `position` (`id`, `name`) VALUES
+(1, 'Développeur'),
+(2, 'Manager RH');
 
 -- --------------------------------------------------------
 
@@ -82,6 +106,13 @@ CREATE TABLE `request` (
   `answer_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `request`
+--
+
+INSERT INTO `request` (`id`, `request_type_id`, `collaborator_id`, `department_id`, `created_at`, `start_at`, `end_at`, `receipt_file`, `comment`, `answer_comment`, `answer`, `answer_at`) VALUES
+(1, 1, 2, 1, '2025-03-14 15:25:14', '2025-07-01 00:00:00', '2025-07-15 00:00:00', NULL, 'Besoin de vacances', NULL, 0, '2025-03-14 15:25:14');
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +123,14 @@ CREATE TABLE `request_type` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `request_type`
+--
+
+INSERT INTO `request_type` (`id`, `name`) VALUES
+(1, 'Congé payé'),
+(2, 'Congé sans solde');
 
 -- --------------------------------------------------------
 
@@ -108,6 +147,14 @@ CREATE TABLE `user` (
   `role` varchar(50) NOT NULL,
   `person_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `enabled`, `created_at`, `role`, `person_id`) VALUES
+(1, 'sophie.martin@email.com', 'password456', 1, '2025-03-14 15:25:14', 'manager', 1),
+(2, 'jean.dupont@email.com', '$2y$10$tnDIxPCR07ne2JZQALqzneEeAwwkGnXk0sBgve1OmNt7/i9sgwrMq', 1, '2025-03-14 15:25:14', 'employee', 2);
 
 --
 -- Index pour les tables déchargées
@@ -164,37 +211,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `position`
 --
 ALTER TABLE `position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `request_type`
 --
 ALTER TABLE `request_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
