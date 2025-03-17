@@ -71,6 +71,12 @@ input::placeholder {
   font-family: "inter", sans-serif;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+
 /*************************************** TOP *******************************/
 .borderTop {
   background-color: #b4c4cf;
@@ -199,12 +205,15 @@ input::placeholder {
   .portal {
     width: 248px;
   }
+
   .id {
     width: 226px;
   }
+
   .details {
     width: 100%;
   }
+
   .middle {
     width: 100%;
   }
@@ -214,12 +223,15 @@ input::placeholder {
   .left {
     display: none;
   }
+
   .middle {
     justify-content: center;
   }
+
   .top img {
     width: 32%;
   }
+
   .borderTop {
     width: 95%;
     height: 7px;
@@ -230,24 +242,31 @@ input::placeholder {
   .active {
     width: 49px;
   }
+
   .left a {
     font-size: 17px;
   }
+
   .right h1 {
     font-size: 26px;
   }
+
   .right h2 {
     font-size: 22px;
   }
+
   .right input {
     width: 195px;
   }
+
   .right button {
     width: 210px;
   }
+
   .ps {
     width: 90%;
   }
+
   .borderTop {
     width: 92%;
     height: 6px;

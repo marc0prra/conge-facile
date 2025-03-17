@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -104,7 +103,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
                 <p>Mot de passe</p>
                 <input type="password" name="mdp" required class="id" />
-                <?php if (!empty($error_message)) { echo "<p style='color:red;'>$error_message</p>"; } ?>
+                <div style="color:red; margin-top: 10px;">
+                    <?php if (!empty($error_message)) { echo $error_message; } ?>
+                </div>
                 <button type="submit" class="portal">Connexion au portail</button>
             </form>
 
