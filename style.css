@@ -309,7 +309,7 @@ select::placeholder {
 
 .begin input {
   width: 29%;
-  padding: 4%;
+  padding: 5%;
   padding-left: 63%;
 }
 
@@ -321,11 +321,14 @@ select::placeholder {
   width: 276%;
 }
 
+.dates p {
+  color: #212b36;
+}
+
 .end input {
   width: 136%;
-  width: 136%;
-  padding: 11%;
-  padding-left: 88%;
+  padding: 13%;
+  padding-right: 125%;
 }
 
 .right select {
@@ -333,7 +336,7 @@ select::placeholder {
   border: 1px solid #dfe4ea;
   width: 71%;
   border-radius: 5px;
-  padding: 2%;
+  padding: 3%;
   color: #9ca3af;
   size: 18px;
   font-weight: 400;
@@ -346,6 +349,26 @@ select::placeholder {
 .color {
   color: #212b36;
 }
+
+.greyP {
+  color: #6b7280;
+}
+
+.grey input {
+  background-color: #f3f4f6;
+  border: 1px solid #f3f4f6;
+  width: 29%;
+  padding: 4%;
+  padding-right: 37%;
+}
+
+.files input {
+  width: 67%;
+  padding: 4%;
+  padding-right: 0%;
+  text-align: center;
+}
+
 /************************************ HISTORY ************************************/
 
 /************************************* RESPONSIVE *******************************/
