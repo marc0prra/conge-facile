@@ -61,10 +61,9 @@ input {
   background-color: white;
   border-radius: 6px;
   border: #dfe4ea solid 1px;
-  width: 50%;
-  padding: 3%;
+  width: 32%;
+  padding: 1.5%;
   font-family: "inter", sans-serif;
-  /* input == color : #212B36 */
 }
 
 input::placeholder {
@@ -115,9 +114,9 @@ form {
   display: flex;
   flex-direction: column;
   flex: 2;
-  max-width: 25.8%;
-  margin-left: 9%;
-  margin-top: 5%;
+  max-width: 70%;
+  margin-left: 3%;
+  margin-top: 1%;
 }
 
 .middle {
@@ -133,7 +132,7 @@ form {
 }
 
 .details {
-  width: 199%;
+  width: 100%;
 }
 
 .details p {
@@ -142,7 +141,7 @@ form {
 }
 
 .ps {
-  width: 128%;
+  width: 100%;
 }
 
 .ps a {
@@ -153,9 +152,9 @@ form {
 
 .portal {
   border-radius: 9px;
-  width: 40%;
-  padding: 2%;
-  margin-top: 5%;
+  width: 19%;
+  padding: 1%;
+  margin-top: 3%;
   border: #004c6c 2px solid;
 }
 
@@ -214,8 +213,7 @@ form {
 
 /******************************** ACCUEIL ************************************/
 .diff {
-  width: 162%;
-  margin-top: 17%;
+  margin-top: 6%;
 }
 
 .blue {
@@ -227,8 +225,8 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 127%;
-  margin: 11% 0% 6% 25%;
+  width: 58%;
+  margin: 8% 0% 4% 19%;
 }
 
 .step {
@@ -279,15 +277,15 @@ form {
 .blocks {
   display: flex;
   justify-content: space-between;
-  width: 194%;
-  gap: 63px;
+  width: 100%;
+  gap: 37px;
 }
 
 .block {
   background-color: #004c6c0d;
   border-radius: 8px;
   padding: 3%;
-  width: 25%;
+  width: 32%;
   text-align: center;
 }
 
@@ -299,33 +297,22 @@ form {
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 83%;
-  padding: 3%;
+  width: 35%;
+  padding: 1%;
   margin-top: 5%;
   border: #004c6c 2px solid;
 }
 /************************************ NOUVELLE DEMANDE ***************************/
 .dates {
   display: flex;
-}
-
-.begin {
-  width: 275%;
+  gap: 154px;
 }
 
 .begin input {
-  width: 87%;
+  width: 124%;
   padding: 5%;
   text-align: center;
   outline: none;
-}
-
-.end {
-  width: 100%;
-}
-
-.date {
-  width: 276%;
 }
 
 .dates p {
@@ -333,26 +320,21 @@ form {
 }
 
 .end input {
-  width: 229%;
-  padding: 13%;
-  padding-right: 9%;
   text-align: center;
   outline: none;
+  width: 124%;
+  padding: 5%;
 }
 
 .right select {
   background-color: #ffffff;
   border: 1px solid #dfe4ea;
-  width: 71%;
+  width: 28%;
   border-radius: 5px;
-  padding: 3%;
+  padding: 1%;
   color: #9ca3af;
   size: 18px;
   font-weight: 400;
-}
-
-.new {
-  width: 115%;
 }
 
 .color {
@@ -366,37 +348,34 @@ form {
 .grey input {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
-  width: 60%;
-  padding: 4%;
-  padding-right: 6%;
+  width: 26%;
+  padding: 1.3%;
+  /* padding-right: 6%; */
   text-align: left;
   outline: none;
 }
 
 .files input {
-  width: 67%;
-  padding: 4%;
+  width: 28%;
+  padding: 1%;
   padding-right: 0%;
   text-align: center;
   outline: none;
 }
 
 .justificative input {
-  width: 200%;
-  /* padding: 10%; */
-  padding: 5% 3% 33%;
+  padding: 5% 3% 23%;
   outline: none;
 }
 
 .error {
-  width: 267%;
   color: #212b36;
 }
 
 .end button {
   border-radius: 7px;
   border: #004c6c 2px solid;
-  padding: 3% 5%;
+  padding: 1% 2%;
   margin-top: 4%;
 }
 
