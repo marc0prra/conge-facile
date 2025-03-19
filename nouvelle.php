@@ -1,50 +1,81 @@
 <?php
-require 'config.php'; // Inclusion du fichier de connexion
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
+}
+
+include 'config.php';
+
+$user_id = $_SESSION['user_id'];
+$department_id = $_SESSION['department_id']; // S'assurer qu'il est bien défini
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION["user_id"])) {
+    die("Erreur : utilisateur non connecté.");
+}
+
+// Récupérer l'ID du collaborateur depuis la session
+$collaborator_id = $_SESSION["user_id"];
+
+// Récupérer le department_id de l'utilisateur
+$query = "SELECT department_id FROM person WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $collaborator_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$userData = $result->fetch_assoc();
+
+if (!$userData) {
+    die("Erreur : impossible de récupérer le département.");
+}
+
+$department_id = $userData["department_id"];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier que les champs ne sont pas vides
     if (empty($_POST["request_type_id"]) || empty($_POST["start_date"]) || empty($_POST["end_date"])) {
-        die($error_message = "Tous les champs obligatoires doivent être remplis.");
-    }
+        $error_message = "Tous les champs obligatoires doivent être remplis.";
+    } else {
+        $request_type_id = $_POST["request_type_id"];
+        $start_at = $_POST["start_date"];
+        $end_at = $_POST["end_date"];
+        $comment = $_POST["comment"] ?? null;
+        $created_at = date("Y-m-d H:i:s");
 
-    $request_type_id = $_POST["request_type_id"];
-    $start_at = $_POST["start_date"];
-    $end_at = $_POST["end_date"];
-    $comment = $_POST["comment"] ?? null;
-    $collaborator_id = 2; // Remplace par l'ID réel du collaborateur connecté
-    $created_at = date("Y-m-d H:i:s");
-
-    // Gestion du fichier justificatif
-    $receipt_file = null;
-    if (!empty($_FILES["receipt"]["name"])) {
-        $target_dir = "uploads/";
-        $receipt_file = $target_dir . basename($_FILES["receipt"]["name"]);
-        move_uploaded_file($_FILES["receipt"]["tmp_name"], $receipt_file);
-    }
-
-    // Requête SQL avec `?` pour éviter les injections SQL
-    $sql = "INSERT INTO request (request_type_id, collaborator_id, created_at, start_at, end_at, receipt_file, comment, answer) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
-
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        $stmt->bind_param("iisssss", $request_type_id, $collaborator_id, $created_at, $start_at, $end_at, $receipt_file, $comment);
-
-        if ($stmt->execute()) {
-            echo "Demande enregistrée avec succès !";
-        } else {
-            echo "Erreur lors de l'insertion : " . $stmt->error;
+        // Gestion du fichier justificatif
+        $receipt_file = null;
+        if (!empty($_FILES["receipt"]["name"])) {
+            $target_dir = "uploads/";
+            $receipt_file = $target_dir . basename($_FILES["receipt"]["name"]);
+            move_uploaded_file($_FILES["receipt"]["tmp_name"], $receipt_file);
         }
 
-        $stmt->close();
-    } else {
-        echo "Erreur de préparation de la requête : " . $conn->error;
+        // Requête SQL avec ajout de `department_id`
+        $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, receipt_file, comment, answer) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)";
+
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param("iiisssss", $request_type_id, $collaborator_id, $department_id, $created_at, $start_at, $end_at, $receipt_file, $comment);
+
+            if ($stmt->execute()) {
+                echo "Demande enregistrée avec succès !";
+            } else {
+                echo "Erreur lors de l'insertion : " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            echo "Erreur de préparation de la requête : " . $conn->error;
+        }
     }
 }
 
 $conn->close();
 ?>
+
 
 
 

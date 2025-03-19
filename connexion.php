@@ -1,38 +1,42 @@
 <?php
-session_start();
 
-// Activer l'affichage des erreurs
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 include 'config.php';
 
-$error_message = "";  // Initialisation de la variable d'erreur
+$error_message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail = trim($_POST['mail']);
     $password = trim($_POST['mdp']);
 
     if (!empty($mail) && !empty($password)) {
-        if (!$conn) { 
+        if (!$conn) {
             die("Erreur de connexion à la base de données.");
         }
 
-        // Préparer la requête SQL
-        $sql = "SELECT id, password FROM user WHERE email = ?";
+        // Requête pour récupérer les informations utilisateur + department_id
+        $sql = "SELECT u.id, u.password, p.department_id 
+                FROM user u 
+                JOIN person p ON u.id = p.id 
+                WHERE u.email = ?";
+        
         if ($stmt = $conn->prepare($sql)) { 
             $stmt->bind_param("s", $mail);
             $stmt->execute();
             $stmt->store_result();
 
-            // Si l'utilisateur existe dans la base
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($id, $hashed_password);
+                $stmt->bind_result($id, $hashed_password, $department_id);
                 $stmt->fetch();
 
-                // Vérification du mot de passe
                 if (password_verify($password, $hashed_password)) {
+                    // Stocker l'ID utilisateur et le department_id en session
                     $_SESSION['user_id'] = $id;
+                    $_SESSION['department_id'] = $department_id;
+
                     header("Location: accueil.php");
                     exit();
                 } else {
@@ -49,7 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Veuillez remplir tous les champs.";
     }
 }
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
