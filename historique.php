@@ -37,11 +37,7 @@
       <a href="">Déconnexion</a>
     </div>
     <div class="right">
-        <div class="sectionRight">
-            <h1>Historique de mes demandes</h1>
-            <button><a href="#"> Ajouter un type de demande </a></button>
-        </div>
-        <div></div>
+        <h1>Historique de mes demandes</h1>
   </div>
 
     

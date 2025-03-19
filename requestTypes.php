@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <title>Accueil</title>
+    <title>Types de demandes</title>
   </head>
 </html>
 <body>
@@ -37,6 +37,8 @@
       <a href="">Déconnexion</a>
     </div>
     <div class="right">
-      <h1>Types de demandes</h1>
-      <h2></h2>
+        <div class="sectionRight">
+            <h1>Types de demandes</h1>
+            <button class="button Link"><a href="#" class="linkButton"> Ajouter un type de demande </a></button>
+        </div>
       

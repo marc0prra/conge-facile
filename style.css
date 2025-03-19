@@ -379,7 +379,21 @@ form {
   margin-top: 4%;
 }
 
-/************************************ HISTORY ************************************/
+/************************************ RequestTypes ************************************/
+
+.button.Link {
+  border-radius: 7px;
+  border: #004c6c 2px solid;
+  margin-left: 2%;
+  padding: 0% 2%;
+  height: 41px;
+}
+
+.sectionRight {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
