@@ -21,13 +21,14 @@
             <div class="pref">
                 <h1>Mes préférences</h1>
                 <div class="button">
-                    <button> </button>
+                <input checked="true" type="checkbox" class="switch">
                     <p>Être alerté par email lorsqu'une demande de congé est acceptée ou refusée</p>
                 </div>
                 <div class="button2">
-                    <button> </button>
+                    <input checked="true" type="checkbox" class="switch">
                     <p>Recevoir un rappel par email lorsqu'un congé arrive la semaine prochaine</p>
                 </div>
+                <button class="save">Enregistrer mes préférences</button>
             </div>
         </div>
     </div>
