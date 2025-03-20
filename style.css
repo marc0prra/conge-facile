@@ -507,6 +507,19 @@ form {
   height: 20px;
 }
 
+.initial {
+  width: 20%;
+  color: white;
+  margin-top: 3%;
+  border-radius: 5px;
+  margin-bottom: 4%;
+  padding: 1%;
+}
+
+.right a {
+  color: white;
+}
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {

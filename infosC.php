@@ -125,6 +125,7 @@
           </div>
         </div>
       </form>
+      <button class="initial"><a href="">Réinitialiser le mot de passe</a></button>
     </div>
   </div>
   <script src="script.js"></script>
