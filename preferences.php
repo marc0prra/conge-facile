@@ -15,5 +15,20 @@
 </head>
 <body>
     <?php include 'top.php'; ?>
-    <?php include 'left.php'; ?>
+    <div class="middle">
+        <?php include 'left.php'; ?>
+        <div class="right">
+            <div class="pref">
+                <h1>Mes préférences</h1>
+                <div class="button">
+                    <button> </button>
+                    <p>Être alerté par email lorsqu'une demande de congé est acceptée ou refusée</p>
+                </div>
+                <div class="button2">
+                    <button> </button>
+                    <p>Recevoir un rappel par email lorsqu'un congé arrive la semaine prochaine</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
