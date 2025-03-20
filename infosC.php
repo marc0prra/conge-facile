@@ -38,15 +38,15 @@
     </div>
     <div class="right">
       <h1>Mes informations</h1>
-      <form action="">
+      <form action="infosC.php"  method="POST">
         <div class="infos">
           <div class="name">
             <p>Nom de famille</p>
-            <input type="text" placeholder="" />
+            <input type="text" placeholder="" required/>
           </div>
           <div class="nameF">
             <p>Prénom</p>
-            <input type="text" placeholder="" />
+            <input type="text" placeholder="" required/>
           </div>
         </div>
         <div class="email">
@@ -60,20 +60,21 @@
               background-position: 10px center;
               background-repeat: no-repeat;
             "
+            required
           />
         </div>
         <div class="service">
           <div class="services">
             <div class="direction">
               <p>Direction/Service</p>
-              <select name="direction">
+              <select name="direction" required>
                 <option value="1">BU Symfony</option>
                 <option value="2">Mentalworks</option>
               </select>
             </div>
             <div class="poste">
               <p>Poste</p>
-              <select name="poste">
+              <select name="poste" required>
                 <option value="1">Directeur technique</option>
                 <option value="2">Lead developper</option>
               </select>
@@ -81,7 +82,7 @@
           </div>
           <div class="manager">
             <p>Manager</p>
-            <select name="manager">
+            <select name="manager" required>
               <option value="1">Frédéric Salesses</option>
               <option value="2">test test</option>
             </select>
@@ -91,7 +92,7 @@
           <h2>Réinitialiser son mot de passe</h2>
           <div class="forgot">
               <p class="color">Mot de passe actuel</p>
-              <input type="password" id="password" />
+              <input type="password" id="password" required />
               <img
                 src="img/open-eye.png"
                 alt="Afficher"
@@ -102,7 +103,7 @@
           <div class="mdp">
             <div class="forgot">
               <p class="color">Nouveau mot de passe</p>
-              <input type="password" id="password" />
+              <input type="password" id="password" required/>
               <img
                 src="img/open-eye.png"
                 alt="Afficher"
@@ -113,7 +114,7 @@
 
             <div class="forgotF">
               <p class="color">Confirmation de mot de passe</p>
-              <input type="password" id="confirmPassword" />
+              <input type="password" id="confirmPassword" required/>
               <img
                 src="img/open-eye.png"
                 alt="Afficher"

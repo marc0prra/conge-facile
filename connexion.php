@@ -109,7 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Adresse email</p>
                 <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
                 <p>Mot de passe</p>
-                <input type="password" name="mdp" required class="id" />
+                <input type="password" name="mdp" required class="id" id="password" />
+                <img
+                src="img/open-eye.png"
+                alt="Afficher"
+                class="toggle"
+                onclick="togglePassword('password', this)"
+                />
                 <div style="color:red; margin-top: 10px;">
                     <?php if (!empty($error_message)) { echo $error_message; } ?>
                 </div>
@@ -123,4 +129,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>

@@ -497,6 +497,16 @@ form {
   margin-left: 5%;
 }
 
+.toggle {
+  position: absolute;
+  right: 52%;
+  top: 106%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {
