@@ -91,41 +91,41 @@
         <div class="">
           <h2>Réinitialiser son mot de passe</h2>
           <div class="forgot">
-              <p class="color">Mot de passe actuel</p>
-              <input type="password" id="password" required />
-              <img
-                src="img/open-eye.png"
-                alt="Afficher"
-                class="toggle-password"
-                onclick="togglePassword('password', this)"
-              />
-        </div>
-          <div class="mdp">
-            <div class="forgot">
-              <p class="color">Nouveau mot de passe</p>
-              <input type="password" id="password" required/>
-              <img
-                src="img/open-eye.png"
-                alt="Afficher"
-                class="toggle-password"
-                onclick="togglePassword('password', this)"
-              />
-            </div>
+                    <p class="color">Mot de passe actuel</p>
+                    <input type="password" id="password">
+                    <img
+                        src="img/open-eye.png"
+                        alt="Afficher"
+                        class="toggle-password"
+                        onclick="togglePassword('password', this)"
+                    >
+                </div>
+        <div class="mdp">
+                    <div class="forgotN">
+                        <p class="color">Nouveau mot de passe</p>
+                        <input type="password" id="newPassword">
+                        <img
+                            src="img/open-eye.png"
+                            alt="Afficher"
+                            class="toggle-password"
+                            onclick="togglePassword('newPassword', this)"
+                        >
+                    </div>
 
             <div class="forgotF">
-              <p class="color">Confirmation de mot de passe</p>
-              <input type="password" id="confirmPassword" required/>
-              <img
-                src="img/open-eye.png"
-                alt="Afficher"
-                class="toggle-password"
-                onclick="togglePassword('confirmPassword', this)"
-              />
-            </div>
+                        <p class="color">Confirmation du mot de passe</p>
+                        <input type="password" id="confirmPassword">
+                        <img
+                            src="img/open-eye.png"
+                            alt="Afficher"
+                            class="toggle-password"
+                            onclick="togglePassword('confirmPassword', this)"
+                        >
+                </div>
           </div>
         </div>
       </form>
-      <button class="initial"><a href="">Réinitialiser le mot de passe</a></button>
+      <button class="initial"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
     </div>
   </div>
   <script src="script.js"></script>
