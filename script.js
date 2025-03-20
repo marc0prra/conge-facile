@@ -1,3 +1,4 @@
+/******************************* AFFICHER LE MDP **********************************/
 function togglePassword(inputId, icon) {
     const passwordInput = document.getElementById(inputId);
     

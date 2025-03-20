@@ -334,7 +334,7 @@ form {
   border-radius: 5px;
   padding: 1%;
   color: #9ca3af;
-  size: 18px;
+  font-size: 17px;
   font-weight: 400;
 }
 
@@ -367,6 +367,7 @@ form {
 .justificative input {
   padding: 5% 3% 23%;
   outline: none;
+  width: 54%;
 }
 
 .error {
@@ -378,6 +379,36 @@ form {
   border: #004c6c 2px solid;
   padding: 1% 2%;
   margin-top: 4%;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #333;
+  width: 26.7%;
+  padding: 1.2%;
+}
+
+.custom-file-upload img {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 /************************************ REQUESTYPES ************************************/
@@ -396,7 +427,7 @@ form {
   width: 100%;
 }
 
-/************************************ REQUESTYPES ************************************/
+/************************************ MES INFOS ************************************/
 .infos {
   display: flex;
 }
