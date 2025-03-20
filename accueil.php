@@ -32,9 +32,9 @@
       <a href="nouvelle.php">Nouvelle demande</a>
       <a href="">Historique des demandes</a>
       <div class="rod"></div>
-      <a href="">Mes informations</a>
+      <a href="infosC.php">Mes informations</a>
       <a href="">Mes préférences</a>
-      <a href="">Déconnexion</a>
+      <a href="deconnexion.php">Déconnexion</a>
     </div>
     <div class="right">
       <h1>CongéFacile</h1>
