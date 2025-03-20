@@ -22,20 +22,8 @@
   </head>
 </html>
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="" />
-  </div>
-  <div class="middle">
-    <div class="left">
-      <a href="accueil.html">Accueil</a>
-      <a href="nouvelle.html">Nouvelle demande</a>
-      <a href="historique.html"> Historique des demandes</a>
-      <div class="rod"></div>
-      <a href="">Mes informations</a>
-      <a href="">Mes préférences</a>
-      <a href="">Déconnexion</a>
-    </div>
+<?php include 'top.php'; ?>
+<?php include 'left.php'; ?>
     <div class="right">
         <div class="sectionRight">
             <h1>Postes</h1>

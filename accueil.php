@@ -22,20 +22,9 @@
   </head>
 </html>
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="" />
-  </div>
+<?php include 'top.php'; ?>
   <div class="middle">
-    <div class="left">
-      <a href="accueil.php" class="active">Accueil</a>
-      <a href="nouvelle.php">Nouvelle demande</a>
-      <a href="">Historique des demandes</a>
-      <div class="rod"></div>
-      <a href="infosC.php">Mes informations</a>
-      <a href="">Mes préférences</a>
-      <a href="deconnexion.php">Déconnexion</a>
-    </div>
+  <?php include 'left.php'; ?>
     <div class="right">
       <h1>CongéFacile</h1>
       <div class="details">
