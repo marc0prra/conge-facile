@@ -34,7 +34,7 @@
       <div class="rod"></div>
       <a href="infosC.php" class="active">Mes informations</a>
       <a href="">Mes préférences</a>
-      <a href="">Déconnexion</a>
+      <a href="deconnexion.php">Déconnexion</a>
     </div>
     <div class="right">
       <h1>Mes informations</h1>
