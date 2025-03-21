@@ -738,6 +738,7 @@ input[type="file"] {
 .topTab{
   width: 96%;
   display: flex;
+  gap : 8px;
   border-radius: 12px;
   padding: 2%;
   background-color: #F9FAFB;
@@ -745,7 +746,6 @@ input[type="file"] {
 
 .title{
   display: flex;
-  
   gap:6px;
 }
 .bottomTab{
