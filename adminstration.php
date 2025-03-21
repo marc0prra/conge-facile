@@ -10,28 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/x-icon" href="img/icone.ico" />
+      rel="stylesheet"/>
 
-    <title>Accueil</title>
-  </head>
-</html>
-
-<body>
-  <div class="left">
-    <a href="accueil.php">Accueil</a>
-    <a href="nouvelle.php">Nouvelle demande</a>
-    <a href="historique.php">Historique des demandes</a>
-    <div class="rod"></div>
-    <a href="infosC.php">Mes informations</a>
-    <a href="preferences.php">Mes préférences</a>
-    <a href="deconnexion.php">Déconnexion</a>
-  </div>
-  <script src="script.js"></script>
-</body>
+    <title>Administration</title>
+    <?php include 'top.php'?>
+    <?php include 'left_admin.php'?>
