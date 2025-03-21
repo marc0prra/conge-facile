@@ -14,6 +14,10 @@ a {
   font-family: "inter", sans-serif;
 }
 
+a.linkButton {
+  color: white;
+}
+
 h1 {
   font-size: 30.85px;
   font-weight: 600;
