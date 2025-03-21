@@ -763,6 +763,7 @@ input.tab {
 .requestTicket{
   width: 100%;
   border-radius: 12px;
+  align-items: center;
   border-bottom: 1px solid #EAECF0;
   display: flex;
 }
