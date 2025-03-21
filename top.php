@@ -17,16 +17,15 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/x-icon" href="img/icone.ico" />
 
-    <title>Poste</title>
+    <title>Accueil</title>
   </head>
 </html>
+
 <body>
-<?php include 'top.php'; ?>
-<?php include 'left.php'; ?>
-    <div class="right">
-        <div class="sectionRight">
-            <h1>Postes</h1>
-            <button class="button Link"><a href="#" class="linkButton"> Ajouter un poste </a></button>
-        </div>
+  <div class="borderTop"></div>
+  <div class="top">
+    <img src="img/mentalworks.png" alt="" />
   </div>
+</body>

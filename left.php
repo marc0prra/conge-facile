@@ -17,16 +17,20 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/x-icon" href="img/icone.ico" />
 
-    <title>Poste</title>
+    <title>Accueil</title>
   </head>
 </html>
+
 <body>
-<?php include 'top.php'; ?>
-<?php include 'left.php'; ?>
-    <div class="right">
-        <div class="sectionRight">
-            <h1>Postes</h1>
-            <button class="button Link"><a href="#" class="linkButton"> Ajouter un poste </a></button>
-        </div>
+  <div class="left">
+    <a href="accueil.php">Accueil</a>
+    <a href="nouvelle.php" class="active">Nouvelle demande</a>
+    <a href="historique.php">Historique des demandes</a>
+    <div class="rod"></div>
+    <a href="infosC.php">Mes informations</a>
+    <a href="">Mes préférences</a>
+    <a href="deconnexion.php">Déconnexion</a>
   </div>
+</body>

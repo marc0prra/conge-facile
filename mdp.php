@@ -23,10 +23,7 @@
   </head>
 </html>
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="" />
-  </div>
+<?php include 'top.php'; ?>
   <div class="middle">
     <div class="left">
       <a href="connexion.php" class="active">Connexion</a>

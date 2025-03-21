@@ -334,7 +334,7 @@ form {
   border-radius: 5px;
   padding: 1%;
   color: #9ca3af;
-  size: 18px;
+  font-size: 17px;
   font-weight: 400;
 }
 
@@ -367,6 +367,7 @@ form {
 .justificative input {
   padding: 5% 3% 23%;
   outline: none;
+  width: 54%;
 }
 
 .error {
@@ -380,45 +381,34 @@ form {
   margin-top: 4%;
 }
 
-/************************************ Historique *************************************/
-
-.sectionTab{
-  background-color: #ffff;
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #EAECF0;
-  height: auto;
-}
-
-.topTab{
-  width: 96%;
+.files {
   display: flex;
-  border-radius: 12px;
-  padding: 2%;
-  background-color: #F9FAFB;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.categorie .title{
+.custom-file-upload {
   display: flex;
-  gap:6px;
-}
-.bottomTab{
-  width: 100%;
-}
-
-input.tab {
-  width: 90%;
-}
-
-.requestTicket{
-  width: 100%;
-  border-radius: 12px;
-  border-bottom: 1px solid #EAECF0;
-  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #333;
+  width: 26.7%;
+  padding: 1.2%;
 }
 
-.request{
-  padding: 4% 3.5%;
+.custom-file-upload img {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 /************************************ REQUESTYPES ************************************/
@@ -437,7 +427,7 @@ input.tab {
   width: 100%;
 }
 
-/************************************ REQUESTYPES ************************************/
+/************************************ MES INFOS ************************************/
 .infos {
   display: flex;
 }
@@ -562,6 +552,177 @@ input.tab {
 
 .white {
   color: white;
+}
+/************************************ MES INFOS ************************************/
+.button {
+  display: flex;
+}
+
+.button2 {
+  display: flex;
+}
+
+/************************************ SUCCESS ************************************/
+
+.containerNotif {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 0.5rem;
+}
+
+.notification--info {
+  --bg: #f0fbfe;
+  --primary: #0ea1e7;
+}
+
+.notification--finalised {
+  --bg: #f7f6fb;
+  --primary: #9077df;
+}
+
+.notification--failure {
+  --bg: #fff1f6;
+  --primary: #c43060;
+}
+
+.notification--warning {
+  --bg: #fff9eb;
+  --primary: #d6a024;
+}
+
+.notification--success {
+  --bg: #ecfbf2;
+  --primary: #335d48;
+}
+
+.notification {
+  min-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--bg);
+  color: var(--primary);
+  border-left: 0.25rem solid var(--primary);
+  transform: translate(1.875rem);
+  opacity: 0;
+  visibility: hidden;
+  animation: fade-in 3s linear;
+  border-radius: 6px;
+}
+
+.notification_icon {
+  height: 1.625rem;
+  width: 1.625rem;
+  margin-right: 0.45rem;
+}
+
+.notification__body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  width: 67%;
+}
+
+.notification__body img {
+  width: 4%;
+  margin-right: 2%;
+}
+
+.notification__progress {
+  position: absolute;
+  left: 0.25rem;
+  bottom: 0.25rem;
+  width: calc(100% - 0.5rem);
+  height: 0.2rem;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(to right, var(--bg), var(--primary));
+  border-radius: inherit;
+  animation: progress 2.5s 0.3s linear;
+}
+
+@keyframes fade-in {
+  5% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.containerNotif {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+/************************************* BUTTON *******************************/
+.switch {
+  position: relative;
+  height: 1.5rem;
+  width: 3rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 9999px;
+  background-color: rgba(100, 116, 139, 0.377);
+  transition: all 0.3s ease;
+  padding: 1%;
+  margin: 1%;
+}
+
+.switch:checked {
+  background-color: #004c6c;
+}
+
+.switch::before {
+  position: absolute;
+  content: "";
+  left: calc(1.5rem - 1.6rem);
+  top: calc(1.5rem - 1.6rem);
+  display: block;
+  height: 1.6rem;
+  width: 1.6rem;
+  cursor: pointer;
+  border: 1px solid #004c6c;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 3px 10px rgba(100, 116, 139, 0.327);
+  transition: all 0.3s ease;
+}
+
+.switch:hover::before {
+  box-shadow: 0 0 0px 8px rgba(0, 0, 0, 0.15);
+}
+
+.switch:checked:hover::before {
+  box-shadow: 0 0 0px 8px rgba(32, 151, 243, 0.15);
+}
+
+.switch:checked:before {
+  transform: translateX(100%);
+  border-color: #004c6c;
+}
+
+.save {
+  width: 20%;
+  color: white;
+  margin-top: 3%;
+  border-radius: 5px;
+  margin-bottom: 4%;
+  padding: 1%;
 }
 
 /************************************* RESPONSIVE *******************************/
