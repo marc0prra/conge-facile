@@ -1,3 +1,5 @@
+<?php include 'top.php'?>
+<?php include 'left_admin.php'?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -15,7 +17,13 @@
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"/>
+      <title>Administration</title>
 
-    <title>Administration</title>
-    <?php include 'top.php'?>
-    <?php include 'left_admin.php'?>
+<body>
+  <div class='middle'>
+    <div class="right">
+      <h1>Types de Demandes</h1>      
+      <button><a href="#" class="linkButton"> Ajouter un type de demande </a></button>
+    </div>
+  </div>
+  </body>

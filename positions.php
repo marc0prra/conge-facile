@@ -24,9 +24,9 @@
 <body>
 <?php include 'top.php'; ?>
 <?php include 'left.php'; ?>
-    <div class="right">
-        <div class="sectionRight">
-            <h1>Postes</h1>
-            <button class="button Link"><a href="#" class="linkButton"> Ajouter un poste </a></button>
-        </div>
+  <div class="right">   
+    <div class="sectionRight">
+      <h1>Postes</h1>      
+      <button class="button Link"><a href="#" class="linkButton"> Ajouter un poste </a></button>
+    </div>
   </div>
