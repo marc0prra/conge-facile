@@ -725,6 +725,47 @@ input[type="file"] {
   padding: 1%;
 }
 
+/************************************* Historique *******************************/
+
+.sectionTab{
+  background-color: #ffff;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #EAECF0;
+  height: auto;
+}
+
+.topTab{
+  width: 96%;
+  display: flex;
+  border-radius: 12px;
+  padding: 2%;
+  background-color: #F9FAFB;
+}
+
+.title{
+  display: flex;
+  
+  gap:6px;
+}
+.bottomTab{
+  width: 100%;
+}
+
+input.tab {
+  width: 90%;
+}
+
+.requestTicket{
+  width: 100%;
+  border-radius: 12px;
+  border-bottom: 1px solid #EAECF0;
+  display: flex;
+}
+
+.request{
+  padding: 4% 3.5%;
+}
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {
