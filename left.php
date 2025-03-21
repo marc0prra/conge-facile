@@ -26,11 +26,12 @@
 <body>
   <div class="left">
     <a href="accueil.php">Accueil</a>
-    <a href="nouvelle.php" class="active">Nouvelle demande</a>
+    <a href="nouvelle.php">Nouvelle demande</a>
     <a href="historique.php">Historique des demandes</a>
     <div class="rod"></div>
     <a href="infosC.php">Mes informations</a>
-    <a href="">Mes préférences</a>
+    <a href="preferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
   </div>
+  <script src="script.js"></script>
 </body>
