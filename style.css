@@ -771,6 +771,38 @@ input.tab {
 .request{
   padding: 4% 3.5%;
 }
+
+/**************************** Page demande de conge ********************************/
+
+a.moreDetails {
+  color: #475467;
+  background-color: #004C6C14;
+  padding: 1% 2%;
+  border-radius: 6px;
+}
+
+/******* Ma demande de conge **********/
+.sectionRequestDetails {
+  line-height: 31.6px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1%;
+}
+
+.sectionRequestDetails .statuts{
+  padding-top: 3%;
+}
+
+p.TypeRequest {
+  margin: 0;
+}
+
+input.mangerComment {
+  padding: 2% 2% 10%;
+  width: 60%;
+  margin-bottom: 3%;
+}
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {
