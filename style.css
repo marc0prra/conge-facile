@@ -803,6 +803,23 @@ input.mangerComment {
   margin-bottom: 3%;
 }
 
+/******************* Voir la demande ************/
+
+.managerResponse {
+  padding-top: 5%;
+}
+
+button.reject {
+  background-color: #E10E0E;
+  border: #E10E0E 2px solid;
+}
+
+button.accept {
+  background-color: #1A8245;
+  border: #1A8245 2px solid;
+}
+
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .portal {
