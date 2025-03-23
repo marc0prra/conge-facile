@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <title> Demande de conge </title>
+    <title> Consulter une demande </title>
   </head>
   <div class="borderTop"></div>
   <div class="top">
