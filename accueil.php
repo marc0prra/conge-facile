@@ -68,7 +68,7 @@
       </div>
       <p class="diff">
         En cas de difficulté avec l'application, veuillez envoyer un email à
-        <a href="mdp.php" class="blue">contact@mentalworks.fr</a>.
+        <a href="#.php" class="blue">contact@mentalworks.fr</a>.
       </p>
     </div>
   </div>

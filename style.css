@@ -216,6 +216,55 @@ form {
   border-radius: 16px;
 }
 
+#menuOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9;
+}
+
+.leftMobile {
+  position: fixed;
+  top: 0;
+  left: -500px; /* Caché hors de l'écran */
+  width: 250px;
+  height: 100%;
+  background-color: #004b6b; /* Bleu du site */
+  box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
+  transition: left 0.3s ease-in-out;
+  z-index: 10;
+  padding: 20px;
+}
+
+.leftMobile a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 15px 0;
+}
+
+#closeMenu {
+  font-size: 20px;
+  cursor: pointer;
+  display: block;
+  text-align: right;
+  color: white;
+}
+
+#openMenu {
+  background: none;
+  color: #004b6b;
+  border: none;
+  /* padding: 10px 20px; */
+  font-size: 31px;
+  cursor: pointer;
+  display: none;
+}
+
 /******************************** ACCUEIL ************************************/
 .diff {
   margin-top: 6%;
@@ -731,28 +780,28 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.sectionTab{
+.sectionTab {
   background-color: #ffff;
   width: 100%;
   border-radius: 12px;
-  border: 1px solid #EAECF0;
+  border: 1px solid #eaecf0;
   height: auto;
 }
 
-.topTab{
+.topTab {
   width: 96%;
   display: flex;
-  gap : 8px;
+  gap: 8px;
   border-radius: 12px;
   padding: 2%;
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
 }
 
-.title{
+.title {
   display: flex;
-  gap:6px;
+  gap: 6px;
 }
-.bottomTab{
+.bottomTab {
   width: 100%;
 }
 
@@ -760,19 +809,17 @@ input.tab {
   width: 90%;
 }
 
-.requestTicket{
+.requestTicket {
   width: 100%;
   border-radius: 12px;
-  border-bottom: 1px solid #EAECF0;
+  border-bottom: 1px solid #eaecf0;
   display: flex;
 }
 
-.request{
+.request {
   padding: 4% 3.5%;
 }
 /******************************** Administration - Type de demande ************************************/
-
-
 
 .container_admin {
   width: 90%;
@@ -802,11 +849,12 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-th, td {
+th,
+td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
@@ -853,13 +901,13 @@ thead th a:hover {
   background-color: #003b5c;
 }
 
-input[type="text"],
-input[type="number"] {
+input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 1.3%;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
   box-sizing: border-box;
+  padding-bottom: 22.3%;
 }
 
 /* Ligne vide */
@@ -868,9 +916,6 @@ input[type="number"] {
   color: #a0aec0;
   font-style: italic;
 }
-
-
-
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
@@ -885,6 +930,15 @@ input[type="number"] {
   }
   .middle {
     width: 100%;
+  }
+  .leftMobile {
+    display: block;
+  }
+  .left {
+    display: none;
+  }
+  #openMenu {
+    display: block;
   }
 }
 
@@ -902,6 +956,31 @@ input[type="number"] {
     width: 95%;
     height: 7px;
   }
+  .steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96%;
+    margin: 0;
+  }
+  .right {
+    margin-top: 1%;
+    max-width: 100%;
+    flex: none;
+    margin-left: 0;
+  }
+  .right input {
+    width: 91px;
+  }
+  .pref p {
+    font-size: 16px;
+  }
+  .button {
+    align-items: center;
+  }
+  .button2 {
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -917,9 +996,6 @@ input[type="number"] {
   .right h2 {
     font-size: 22px;
   }
-  .right input {
-    width: 195px;
-  }
   .right button {
     width: 210px;
   }
@@ -929,5 +1005,14 @@ input[type="number"] {
   .borderTop {
     width: 92%;
     height: 6px;
+  }
+  .block {
+    padding: 2%;
+  }
+  .blocks {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    gap: 21px;
   }
 }

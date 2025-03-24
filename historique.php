@@ -22,20 +22,11 @@
   </head>
 </html>
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="Logo MentalWorks" />
-  </div>
-  <div class="middle">
-    <div class="left">
-      <a href="accueil.html">Accueil</a>
-      <a href="nouvelle.html">Nouvelle demande</a>
-      <a href="historique.html" class="active"> Historique des demandes</a>
-      <div class="rod"></div>
-      <a href="">Mes informations</a>
-      <a href="">Mes préférences</a>
-      <a href="">Déconnexion</a>
-    </div>
+<?php include 'top.php'; ?>
+    <div class="middle">
+        <div class="left">
+            <a href="connexion.php" class="active">Connexion</a>
+        </div>
     <div class="right">
         <h1>Historique de mes demandes</h1>
         <div class="sectionTab">
