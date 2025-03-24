@@ -1,4 +1,40 @@
 
+<?php
+// Tableau de demandes 
+$typesDemandes = [
+    ["type" => "Congé sans solde", "nb" => 400],
+    ["type" => "Congé payé", "nb" => 1000],
+    ["type" => "Congé maladie", "nb" => 750],
+    ["type" => "Congé maternité/paternité", "nb" => 100],
+    ["type" => "Autre", "nb" => 200],
+];
+
+// Récupération GET (recherche et tri)
+$searchType = $_GET['searchType'] ?? '';
+$searchNb = $_GET['searchNb'] ?? '';
+$sortBy = $_GET['sortBy'] ?? 'type';
+$order = $_GET['order'] ?? 'asc';
+
+// Filtrage
+$filteredDemandes = array_filter($typesDemandes, function ($demande) use ($searchType, $searchNb) {
+    return 
+        (empty($searchType) || stripos($demande['type'], $searchType) !== false) &&
+        (empty($searchNb) || $demande['nb'] == $searchNb);
+});
+
+// Tri 
+usort($filteredDemandes, function ($a, $b) use ($sortBy, $order) {
+    if ($order === 'asc') {
+        return $a[$sortBy] <=> $b[$sortBy];
+    } else {
+        return $b[$sortBy] <=> $a[$sortBy];
+    }
+});
+
+// Inversion de l'ordre pour le prochain tri
+$nextOrder = ($order === 'asc') ? 'desc' : 'asc';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -23,8 +59,60 @@
   <div class='middle'>
   <?php include 'left_admin.php'?>
     <div class="right">
-      <h1>Types de Demandes</h1>      
-      <button><a href="#" class="linkButton"> Ajouter un type de demande </a></button>
+      
+<div class="container_admin">
+    <h1>Types de demandes</h1>
+    <button class="add-btn">Ajouter un type de demande</button>
+    
+    <form method="GET">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
+                            Nom du type de demande
+                            <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
+                            Nb demandes associées
+                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                        </a>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
+                    </td>
+                    <td>
+                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
+                    </td>
+                    <td>
+                        <button type="submit" class="search-btn">Rechercher</button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($filteredDemandes) > 0) : ?>
+                    <?php foreach ($filteredDemandes as $demande) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($demande['type']) ?></td>
+                            <td><?= htmlspecialchars($demande['nb']) ?></td>
+                            <td>
+                                <button class="details-btn">Détails</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="3" class="empty-row">Aucune demande trouvée</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </form>
     </div>
   </div>
   </body>
