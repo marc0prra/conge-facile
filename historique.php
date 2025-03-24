@@ -23,10 +23,8 @@
 </html>
 <body>
 <?php include 'top.php'; ?>
-    <div class="middle">
-        <div class="left">
-            <a href="connexion.php" class="active">Connexion</a>
-        </div>
+  <div class="middle">
+        <?php include 'left.php'; ?>
     <div class="right">
         <h1>Historique de mes demandes</h1>
         <div class="sectionTab">

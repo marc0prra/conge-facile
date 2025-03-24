@@ -22,10 +22,7 @@
   </head>
 </html>
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="" />
-  </div>
+<?php include 'top.php'; ?>
   <div class="middle">
         <?php include 'left.php'; ?>
     <div class="right">
