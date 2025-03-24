@@ -1,5 +1,4 @@
-<?php include 'top.php'?>
-<?php include 'left_admin.php'?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -20,7 +19,9 @@
       <title>Administration</title>
 
 <body>
+  <?php include 'top.php'?>
   <div class='middle'>
+  <?php include 'left_admin.php'?>
     <div class="right">
       <h1>Types de Demandes</h1>      
       <button><a href="#" class="linkButton"> Ajouter un type de demande </a></button>
