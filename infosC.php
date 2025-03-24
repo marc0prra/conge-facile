@@ -27,7 +27,7 @@
     <img src="img/mentalworks.png" alt="" />
   </div>
   <div class="middle">
-    <?php include 'left.php'; ?>
+        <?php include 'left.php'; ?>
     <div class="right">
       <h1>Mes informations</h1>
       <form action="infosC.php"  method="POST">

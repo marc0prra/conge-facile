@@ -33,5 +33,18 @@
     <a href="preferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
   </div>
+  <button id="openMenu">☰ </button>
+  <div id="menuOverlay"></div>
+  <div class="leftMobile" id="menu">
+   <span id="closeMenu">➜</span>
+   <a href="accueil.php">Accueil</a>
+    <a href="nouvelle.php">Nouvelle demande</a>
+    <a href="historique.php">Historique des demandes</a>
+    <div class="rod"></div>
+    <a href="infosC.php">Mes informations</a>
+    <a href="preferences.php">Mes préférences</a>
+    <a href="deconnexion.php">Déconnexion</a>
+  </div>
+
   <script src="script.js"></script>
 </body>
