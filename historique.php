@@ -74,7 +74,7 @@
               Statut
               </div>
               <div class="case">
-                <input class="tab"></input>
+                <input class="tab"> Détails</input>
               </div>
             </div>
           </div>
