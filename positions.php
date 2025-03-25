@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <title>Poste</title>
+    <title>Postes</title>
   </head>
 </html>
 <body>
