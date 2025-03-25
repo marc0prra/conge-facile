@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <title>Historique</title>
+    <title>Historique de mes demandes</title>
   </head>
 </html>
 <body>
