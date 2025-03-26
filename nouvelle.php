@@ -101,6 +101,9 @@ $conn->close();
                     <select name="request_type_id">
                         <option value="1">Congé payé</option>
                         <option value="2">Congé sans solde</option>
+                        <option value="3">Congé Maladie</option>
+                        <option value="4">Congé Maternité/Paternité</option>
+                        <option value="5">Autre</option>
                     </select>
 
                     <div class="dates">
