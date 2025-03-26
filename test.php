@@ -153,94 +153,59 @@ Ligne vide
 </style>
 <body>
 
-<div class="container">
-    <h1>Types de demandes</h1>
-    <button class="add-btn">Ajouter un type de demande</button>
+<div class="container_Poste">
+    <div class='top_Poste'>
+        <h1>Postes</h1>
+        <button class="add-btn">Ajouter un Poste</button>
+    </div>
     
     <form method="GET">
         <table>
             <thead>
-                <tr>
+                <tr class='grey_Poste'>
                     <th>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Type de demande
+                            Nom du Poste
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
+                            <input class='search_Poste' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
                     </th>
-                    <th>
+                    <th class='search_right_Poste'>
                         <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Demandée le 
+                            Nb personnes liées
                             <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
+                            <input class='searchNb_Poste'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
                     </th>
                     <th>
-                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Date de début 
-                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Date de fin 
-                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Nb de jours
-                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                    </th>
-                    <th>
-                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Statut
-                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                    </th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
-                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
-                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
-                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
-                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </td>
-                    
-                    <td>
                         <button type="submit" class="search-btn">Rechercher</button>
-                    </td>
+
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (count($filteredDemandes) > 0) : ?>
-                    <?php foreach ($filteredDemandes as $demande) : ?>
-                        <tr>
-                            <td><?= htmlspecialchars($demande['type']) ?></td>
-                            <td><?= htmlspecialchars($demande['nb']) ?></td>
-                            <td>
-                                <button class="details-btn">Détails</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <tr>
-                        <td colspan="3" class="empty-row">Aucune demande trouvée</td>
-                    </tr>
-                <?php endif; ?>
+                <div class='tab_Poste'>
+                    <?php if (count($filteredPoste) > 0) : ?>
+                        <?php foreach ($filteredPoste as $Poste) : ?>
+                            <tr>
+                                <td><?= htmlspecialchars($Poste['type']) ?></td>
+                                <td><?= htmlspecialchars($Poste['nb']) ?></td>
+                                <td>
+                                    <button class="det_button">Détails</button>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="3" class="empty-row">Aucun poste trouvé</td>
+                                </tr>
+                    <?php endif; ?>
+                </div>
             </tbody>
         </table>
     </form>
-</div>
+    </div>
+  </div>
 
 </body>
 </html>
