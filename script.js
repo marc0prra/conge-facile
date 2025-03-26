@@ -32,6 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/******************************* MENU DEROULANT **********************************/
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".dropbtn").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const dropdownContent = this.nextElementSibling; // Sélectionne le menu déroulant
+
+            if (dropdownContent.style.display === "flex") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "flex";
+            }
+        });
+    });
+});
+
+
 /******************************* BURGER MENU **********************************/
 
 document.getElementById("openMenu").addEventListener("click", function () {
@@ -48,19 +65,7 @@ document.getElementById("openMenu").addEventListener("click", function () {
     document.getElementById("menu").style.left = "-500px"; 
     this.style.display = "none";
 });
-/******************************* MENU DEROULANT **********************************/
-document.querySelectorAll(".dropbtn").forEach(a => {
-    a.addEventListener("click", () => {
-        let project = a.closest(".dropbtn"); 
-        project.classList.toggle("open"); 
-  
-        if (project.classList.contains("open")) {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-          }
-    });
-});
+
 
   
   

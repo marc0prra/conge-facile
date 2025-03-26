@@ -270,6 +270,22 @@ form {
   transform: rotate(180deg);
 }
 
+/* Cacher le menu par défaut */
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  background: white;
+  width: 100%;
+}
+
+.dropdown.active .dropdown-content {
+  display: flex;
+}
+
+.dropdown.active .dropbtn i {
+  transform: rotate(180deg);
+}
+
 #menuOverlay {
   display: none;
   position: fixed;
