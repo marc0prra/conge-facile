@@ -228,9 +228,15 @@ form {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  padding: 10px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #5c73a012;
+  border-right: #004c6c solid 4px;
+  color: #004c6c;
+  padding: 3.8%;
+  text-align: left;
+  padding-left: 9%;
+  padding-right: 28%;
 }
 
 /* Icône flèche */
@@ -975,6 +981,18 @@ thead th a {
 
 thead th a:hover {
   text-decoration: underline;
+}
+
+th:first-child,
+td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+th:last-child,
+td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .sort-arrow {

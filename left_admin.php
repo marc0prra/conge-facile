@@ -26,7 +26,7 @@
 <div class="left">
   <a href="accueil.php">Accueil</a>
   <a href="nouvelle.php">Demandes en attente</a>
-  <a href="#">Historique des demandes</a>
+  <a href="historique.php">Historique des demandes</a>
   <a href="#">Mon équipe</a>
   <a href="#">Statistiques</a>
   <div class="rod"></div>
