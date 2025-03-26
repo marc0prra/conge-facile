@@ -36,10 +36,10 @@
   <div class="dropdown">
     <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
     <div class="dropdown-content">
-      <a href="#">Types de demandes</a>
+      <a href="demande.php">Types de demandes</a>
       <a href="#">Directions/Services</a>
       <a href="#">Managers</a>
-      <a href="#">Postes</a>
+      <a href="poste.php">Postes</a>
     </div>
   </div>
   <a href="deconnexion.php">Déconnexion</a>

@@ -52,7 +52,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"/>
-      <title>Administration</title>
+      <title>Types de demandes</title>
 
 <body>
   <?php include 'top.php'?>
