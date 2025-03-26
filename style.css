@@ -216,6 +216,59 @@ form {
   border-radius: 16px;
 }
 
+/* Conteneur du menu */
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bouton Administration */
+.dropbtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Icône flèche */
+.dropbtn i {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Contenu du menu déroulant (caché par défaut) */
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  background: white;
+  width: 100%;
+}
+
+/* Style des liens du menu */
+.dropdown-content a {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+/* Affichage du menu lorsqu'il est actif */
+.dropdown.active .dropdown-content {
+  display: flex;
+}
+
+.dropdown.active .dropbtn i {
+  transform: rotate(180deg);
+}
+
 #menuOverlay {
   display: none;
   position: fixed;
@@ -298,13 +351,14 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: bold;
   border: 2px solid #004b6b;
   background-color: white;
   color: #004b6b;
   position: relative;
   z-index: 1;
+  font-weight: 1000;
 }
 
 .step.current-step .circle {
@@ -330,8 +384,8 @@ form {
 
 .blocks {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-around;
+  width: 90%;
   gap: 37px;
 }
 
@@ -339,7 +393,7 @@ form {
   background-color: #004c6c0d;
   border-radius: 8px;
   padding: 3%;
-  width: 32%;
+  width: 24%;
   text-align: center;
 }
 
@@ -653,7 +707,7 @@ input[type="file"] {
 }
 
 .notification {
-  min-width: 22rem;
+  max-width: 20rem;
   margin-left: auto;
   margin-right: auto;
   background: var(--bg);
@@ -664,6 +718,7 @@ input[type="file"] {
   visibility: hidden;
   animation: fade-in 3s linear;
   border-radius: 6px;
+  margin-top: 263%;
 }
 
 .notification_icon {
@@ -672,12 +727,20 @@ input[type="file"] {
   margin-right: 0.45rem;
 }
 
+.containerNotif {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  margin-top: 30%;
+}
+
 .notification__body {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 1rem 0.5rem;
-  width: 67%;
+  width: 81%;
 }
 
 .notification__body img {

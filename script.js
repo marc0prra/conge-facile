@@ -48,4 +48,19 @@ document.getElementById("openMenu").addEventListener("click", function () {
     document.getElementById("menu").style.left = "-500px"; 
     this.style.display = "none";
 });
+/******************************* MENU DEROULANT **********************************/
+document.querySelectorAll(".dropbtn").forEach(a => {
+    a.addEventListener("click", () => {
+        let project = a.closest(".dropbtn"); 
+        project.classList.toggle("open"); 
+  
+        if (project.classList.contains("open")) {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+          }
+    });
+});
+
+  
   
