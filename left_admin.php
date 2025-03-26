@@ -34,7 +34,7 @@
   <a href="preferencesManager.php">Mes préférences</a>
 
 <div class="dropdown">
-  <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
+  <a href="#" class="dropbtn" class="active">Administration <i class="bx bx-chevron-down"></i></a>
   <div class="dropdown-content">
     <a href="#">Types de demandes</a>
     <a href="#">Directions/Services</a>
