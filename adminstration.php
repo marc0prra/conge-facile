@@ -61,55 +61,53 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <div class="right">
       
 <div class="container_admin">
-    <h1>Types de demandes</h1>
-    <button class="add-btn">Ajouter un type de demande</button>
+    <div class='top_admin'>
+        <h1>Types de demandes</h1>
+        <button class="add-btn">Ajouter un type de demande</button>
+    </div>
     
     <form method="GET">
         <table>
             <thead>
-                <tr>
+                <tr class='grey_admin'>
                     <th>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
                             Nom du type de demande
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
+                            <input class='search_admin' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
                     </th>
-                    <th>
+                    <th class='search_right_admin'>
                         <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
                             Nb demandes associées
                             <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
+                            <input class='searchNb_admin'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
                     </th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
-                        <input type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </td>
-                    <td>
+                    <th>
                         <button type="submit" class="search-btn">Rechercher</button>
-                    </td>
+
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (count($filteredDemandes) > 0) : ?>
-                    <?php foreach ($filteredDemandes as $demande) : ?>
-                        <tr>
-                            <td><?= htmlspecialchars($demande['type']) ?></td>
-                            <td><?= htmlspecialchars($demande['nb']) ?></td>
-                            <td>
-                                <button class="details-btn">Détails</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <tr>
-                        <td colspan="3" class="empty-row">Aucune demande trouvée</td>
-                    </tr>
-                <?php endif; ?>
+                <div class='tab_admin'>
+                    <?php if (count($filteredDemandes) > 0) : ?>
+                        <?php foreach ($filteredDemandes as $demande) : ?>
+                            <tr>
+                                <td><?= htmlspecialchars($demande['type']) ?></td>
+                                <td><?= htmlspecialchars($demande['nb']) ?></td>
+                                <td>
+                                    <button class="det_button">Détails</button>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="3" class="empty-row">Aucune demande trouvée</td>
+                                </tr>
+                    <?php endif; ?>
+                </div>
             </tbody>
         </table>
     </form>

@@ -885,13 +885,14 @@ input.tab {
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
-  width: 90%;
-  max-width: 1000px;
+  width: 82%;
   margin-top: 20px;
+  border-radius: 12px;
 }
 
 .container_admin h1 {
   color: #1d2d50;
+  border: none;
 }
 
 .add-btn {
@@ -901,31 +902,59 @@ input.tab {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
 .add-btn:hover {
   background-color: #003b5c;
 }
 
+.top_admin{
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.search_admin{
+  width: 95%;
+  padding: 3%;
+}
+.searchNb_admin{
+  padding: 3%;
+}
+.grey_admin{
+  background-color: #F9FAFB;
+}
+.search_right_admin{
+  width: 26%;
+}
+
+.search_right_admin input{
+  width: 80%;
+  padding: 6%;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 12px;
+  border: 1px solid #eaecf0;
+  color: #475467;
+  border-radius: 12px;
 }
 
 th,
 td {
+  border-bottom: 1px solid #e5e7eb;
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
+
 }
 
 thead th a {
   text-decoration: none;
-  color: #1d2d50;
+  color: #475467;
 }
 
 thead th a:hover {
@@ -941,7 +970,7 @@ thead th a:hover {
 .det_button {
   background-color: #e2e8f0;
   color: #1d2d50;
-  padding: 8px 16px;
+  padding: 8px 22px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
