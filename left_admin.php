@@ -21,18 +21,34 @@
 
     <title>Accueil</title>
   </head>
-</html>
 
-<body>
-  <div class="left">
-    <a href="accueil.php">Accueil</a>
-    <a href="nouvelle.php">Nouvelle demande</a>
-    <a href="historique.php">Historique des demandes</a>
-    <div class="rod"></div>
-    <a href="infosC.php">Mes informations</a>
-    <a href="preferences.php">Mes préférences</a>
-    <a href="administration.php">Administration</a>
-    <a href="deconnexion.php">Déconnexion</a>
+  <body>
+<div class="left">
+  <a href="accueil.php">Accueil</a>
+  <a href="nouvelle.php">Demandes en attente</a>
+  <a href="#">Historique des demandes</a>
+  <a href="#">Mon équipe</a>
+  <a href="#">Statistiques</a>
+  <div class="rod"></div>
+  <a href="infosM.php">Mes informations</a>
+  <a href="preferencesManager.php">Mes préférences</a>
+
+<div class="dropdown">
+  <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
+  <div class="dropdown-content">
+    <a href="#">Types de demandes</a>
+    <a href="#">Directions/Services</a>
+    <a href="#">Managers</a>
+    <a href="#">Postes</a>
   </div>
-  <script src="script.js"></script>
-</body>
+</div>
+
+
+  <a href="deconnexion.php">Déconnexion</a>
+</div>
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>

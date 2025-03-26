@@ -74,7 +74,7 @@ if (isset($_SESSION['success_message'])) {
       </div>
       <div class="blocks">
         <div class="block">
-          <p>J'effectue ma demande de congé</p>
+          <p>J'effectue ma demande de congés</p>
         </div>
         <div class="block">
           <p>Mon manager valide ou refuse la demande</p>
