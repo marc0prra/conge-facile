@@ -23,7 +23,7 @@
   </head>
 
   <body>
-  <div class="left">
+<div class="left">
   <a href="accueil.php">Accueil</a>
   <a href="nouvelle.php">Demandes en attente</a>
   <a href="#">Historique des demandes</a>
@@ -42,17 +42,8 @@
       <a href="#">Postes</a>
     </div>
   </div>
-
   <a href="deconnexion.php">Déconnexion</a>
 </div>
-
-
-  <a href="deconnexion.php">Déconnexion</a>
-</div>
-
-
-
-
     <script src="script.js"></script>
   </body>
 </html>
