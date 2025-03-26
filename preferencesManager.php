@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="middle">
         <?php include 'left.php'; ?>
             <div class="right">
+                <h1>Mes préférences</h1>
             <form method="post">
                 <div class="button">
                     <input type="checkbox" name="alerte_conge" class="switch" 
