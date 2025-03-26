@@ -29,12 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="button">
                     <input type="checkbox" name="alerte_conge" class="switch" 
                      <?php if(isset($_COOKIE["alerte_conge"]) && $_COOKIE["alerte_conge"] == 1) echo "checked"; ?>>
-                    <p>Être alerté par email lorsqu'une demande de congé est acceptée ou refusée</p>
-                </div>
-                <div class="button2">
-                    <input type="checkbox" name="rappel_conge" class="switch" 
-                    <?php if(isset($_COOKIE["rappel_conge"]) && $_COOKIE["rappel_conge"] == 1) echo "checked"; ?>>
-                    <p>Recevoir un rappel par email lorsqu'un congé arrive la semaine prochaine</p>
+                    <p>Être alerté par email lorsqu'une demande arrive</p>
                 </div>
                 <button type="submit" class="save">Enregistrer</button>
             </form>

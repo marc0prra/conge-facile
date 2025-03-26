@@ -33,12 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->fetch();
 
                 if (password_verify($password, $hashed_password)) {
-                    // Stocker l'ID utilisateur et le department_id en session
                     $_SESSION['user_id'] = $id;
                     $_SESSION['department_id'] = $department_id;
-
+                    $_SESSION['success_message'] = "Compte bien créé en tant que collaborateur !"; 
                     header("Location: accueil.php");
                     exit();
+                }
+                
                 } else {
                     $error_message = "Adresse email ou mot de passe incorrect.";
                 }
@@ -52,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error_message = "Veuillez remplir tous les champs.";
     }
-}
 
 ?>
 

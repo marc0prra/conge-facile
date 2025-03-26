@@ -330,16 +330,16 @@ form {
 
 .blocks {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 37px;
+  justify-content: space-around;
+  width: 97%;
+  gap: 39px;
 }
 
 .block {
   background-color: #004c6c0d;
   border-radius: 8px;
   padding: 3%;
-  width: 32%;
+  width: 14%;
   text-align: center;
 }
 
@@ -653,7 +653,7 @@ input[type="file"] {
 }
 
 .notification {
-  min-width: 22rem;
+  max-width: 20rem;
   margin-left: auto;
   margin-right: auto;
   background: var(--bg);
@@ -664,6 +664,7 @@ input[type="file"] {
   visibility: hidden;
   animation: fade-in 3s linear;
   border-radius: 6px;
+  margin-top: 263%;
 }
 
 .notification_icon {
@@ -672,12 +673,20 @@ input[type="file"] {
   margin-right: 0.45rem;
 }
 
+.containerNotif {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  margin-top: 30%;
+}
+
 .notification__body {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 1rem 0.5rem;
-  width: 67%;
+  width: 81%;
 }
 
 .notification__body img {

@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['success_message'])) {
+    echo '<div class="containerNotif">
+            <div class="notification notification--success">
+                <div class="notification__body">
+                    <img src="img/check.png" alt="Success" class="notification__icon">
+                    ' . $_SESSION['success_message'] . '
+                </div>
+                <div class="notification__progress"></div>
+            </div>
+          </div>';
+    unset($_SESSION['success_message']); 
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
