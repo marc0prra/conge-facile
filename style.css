@@ -866,45 +866,30 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.sectionTab {
-  background-color: #ffff;
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #eaecf0;
-  height: auto;
-}
-
-.topTab {
-  width: 96%;
-  display: flex;
-  gap: 8px;
-  border-radius: 12px;
-  padding: 2%;
-  background-color: #f9fafb;
-}
-
-.title {
-  display: flex;
-  gap: 6px;
-}
-.bottomTab {
-  width: 100%;
-}
-
-input.tab {
+.container.Historique{
   width: 90%;
+  max-width: 1000px;
+  margin-top: 20px;
 }
 
-.requestTicket {
+th.historique {
+  text-align: left;
+}
+
+table .historique {
   width: 100%;
-  border-radius: 12px;
-  border-bottom: 1px solid #eaecf0;
-  display: flex;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
-.request {
-  padding: 4% 3.5%;
+td .historique{
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
 }
+
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
