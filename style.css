@@ -866,28 +866,17 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.container.Historique{
-  width: 90%;
-  max-width: 1000px;
-  margin-top: 20px;
+.searchHistorique{
+  width: 17%;
 }
 
-th.historique {
-  text-align: left;
+.searchHistorique input{
+  width: 80%;
+  padding: 6%;
 }
 
-table .historique {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-
-td .historique{
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+.searchListe{
+  padding: 3%;
 }
 
 /******************************** Administration - Type de demande ************************************/
@@ -1054,12 +1043,15 @@ td:last-child {
   width: 95%;
   padding: 3%;
 }
+
 .searchNb_Poste {
   padding: 3%;
 }
+
 .grey_Poste {
   background-color: #f9fafb;
 }
+
 .search_right_Poste {
   width: 26%;
 }
