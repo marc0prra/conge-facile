@@ -60,8 +60,8 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
   <?php include 'left_admin.php'?>
     <div class="right">
       
-<div class="container_admin">
-    <div class='top_admin'>
+<div class="container_Poste">
+    <div class='top_Poste'>
         <h1>Postes</h1>
         <button class="add-btn">Ajouter un Poste</button>
     </div>
@@ -69,20 +69,20 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <form method="GET">
         <table>
             <thead>
-                <tr class='grey_admin'>
+                <tr class='grey_Poste'>
                     <th>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
                             Nom du Poste
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
-                            <input class='search_admin' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
+                            <input class='search_Poste' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
                     </th>
-                    <th class='search_right_admin'>
+                    <th class='search_right_Poste'>
                         <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
                             Nb personnes liées
                             <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
-                            <input class='searchNb_admin'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
+                            <input class='searchNb_Poste'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
                     </th>
                     <th>
                         <button type="submit" class="search-btn">Rechercher</button>
@@ -91,7 +91,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                 </tr>
             </thead>
             <tbody>
-                <div class='tab_admin'>
+                <div class='tab_Poste'>
                     <?php if (count($filteredPoste) > 0) : ?>
                         <?php foreach ($filteredPoste as $Poste) : ?>
                             <tr>

@@ -1015,6 +1015,122 @@ thead th a:hover {
   color: #a0aec0;
   font-style: italic;
 }
+/************************************* POSTE ************************************/
+
+.container_Poste {
+  width: 82%;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+
+.container_Poste h1 {
+  color: #1d2d50;
+  border: none;
+}
+
+.add-btn {
+  background-color: #004b75;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #003b5c;
+}
+
+.top_Poste {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.search_Poste {
+  width: 95%;
+  padding: 3%;
+}
+.searchNb_Poste {
+  padding: 3%;
+}
+.grey_Poste {
+  background-color: #f9fafb;
+}
+.search_right_Poste {
+  width: 26%;
+}
+
+.search_right_Poste input {
+  width: 80%;
+  padding: 6%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #eaecf0;
+  color: #475467;
+  border-radius: 12px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+thead th a {
+  text-decoration: none;
+  color: #475467;
+}
+
+thead th a:hover {
+  text-decoration: underline;
+}
+
+.sort-arrow {
+  margin-left: 5px;
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.det_button {
+  background-color: #e2e8f0;
+  color: #1d2d50;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.det_button hover {
+  background-color: #cbd5e1;
+}
+
+.search-btn {
+  background-color: #004b75;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #003b5c;
+}
+
+/* Ligne vide */
+.empty-row {
+  text-align: center;
+  color: #a0aec0;
+  font-style: italic;
+}
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
