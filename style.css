@@ -228,7 +228,6 @@ form {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  color: #333;
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
@@ -248,16 +247,18 @@ form {
   width: 100%;
 }
 
-/* Style des liens du menu */
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
-  color: #333;
   transition: background 0.3s;
+  margin: 4% auto;
+  color: #637381;
+  transition: 0.3s;
 }
 
 .dropdown-content a:hover {
-  background: #f1f1f1;
+  color: #004c6c;
+  transition: 0.3s;
 }
 
 /* Affichage du menu lorsqu'il est actif */
@@ -908,27 +909,27 @@ input.tab {
   background-color: #003b5c;
 }
 
-.top_admin{
+.top_admin {
   display: flex;
   gap: 5%;
   align-items: center;
 }
 
-.search_admin{
+.search_admin {
   width: 95%;
   padding: 3%;
 }
-.searchNb_admin{
+.searchNb_admin {
   padding: 3%;
 }
-.grey_admin{
-  background-color: #F9FAFB;
+.grey_admin {
+  background-color: #f9fafb;
 }
-.search_right_admin{
+.search_right_admin {
   width: 26%;
 }
 
-.search_right_admin input{
+.search_right_admin input {
   width: 80%;
   padding: 6%;
 }
@@ -949,7 +950,6 @@ td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
-
 }
 
 thead th a {
