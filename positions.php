@@ -22,8 +22,8 @@
   </head>
 </html>
 <body>
-<?php include 'top.php'; ?>
-<?php include 'left.php'; ?>
+<?php include 'include/top.php'; ?>
+<?php include 'include/left.php'; ?>
   <div class="right">   
     <div class="sectionRight">
       <h1>Postes</h1>      

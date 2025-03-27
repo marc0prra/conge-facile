@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 
 <body>
-<?php include 'top.php'; ?>
+<?php include 'include/top.php'; ?>
     <div class="middle">
         <div class="left">
             <a href="connexion.php" class="active">Connexion</a>

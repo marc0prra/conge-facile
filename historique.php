@@ -57,10 +57,10 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
   </head>
 
 <body>
-<?php include 'top.php'; ?>
+<?php include 'include/top.php'; ?>
 
 <div class="middle">
-    <?php include 'left.php'; ?>
+    <?php include 'include/left.php'; ?>
     <div class="right">
         <h1>Historique de mes demandes</h1>
   <div class="container Historique">
