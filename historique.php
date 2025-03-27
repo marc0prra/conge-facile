@@ -48,7 +48,7 @@ $sortBy = $_GET['sortBy'] ?? 'type';
 $order = $_GET['order'] ?? 'asc';
 
 // Filtrage
-$filteredPoste = array_filter($typesPoste, function ($Poste) use ($searchType, $searchNb) {
+$filteredPoste = array_filter($demandes, function ($Poste) use ($searchType, $searchNb) {
     return 
         (empty($searchType) || stripos($Poste['type'], $searchType) !== false) &&
         (empty($searchNb) || $Poste['nb'] == $searchNb);
