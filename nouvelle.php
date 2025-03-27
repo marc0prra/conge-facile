@@ -89,10 +89,10 @@ $conn->close();
     </head>
 
     <body>
-        <?php include 'top.php'; ?>
+        <?php include 'include/top.php'; ?>
 
         <div class="middle">
-            <?php include 'left.php'; ?>
+            <?php include 'include/left.php'; ?>
             <div class="right">
                 <h1 class="new">Effectuer une nouvelle demande</h1>
                 <p class="color">Type de demande - champ obligatoire</p>

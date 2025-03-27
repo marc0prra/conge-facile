@@ -112,7 +112,7 @@ form {
 }
 
 .top img {
-  width: 9%;
+  width: 180px;
 }
 
 .right {
@@ -192,6 +192,12 @@ form {
   padding-right: 28%;
 }
 
+.activeAdmin {
+  background-color: #004c6c; /* Fond bleu */
+  color: white; /* Texte blanc */
+  font-weight: bold;
+}
+
 .left {
   width: 21%;
   height: 935px;
@@ -228,9 +234,15 @@ form {
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  padding: 10px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #5c73a012;
+  border-right: #004c6c solid 4px;
+  color: #004c6c;
+  padding: 3.8%;
+  text-align: left;
+  padding-left: 9%;
+  padding-right: 28%;
 }
 
 /* Icône flèche */
@@ -860,45 +872,19 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.sectionTab {
-  background-color: #ffff;
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #eaecf0;
-  height: auto;
+.searchHistorique{
+  width: 17%;
 }
 
-.topTab {
-  width: 96%;
-  display: flex;
-  gap: 8px;
-  border-radius: 12px;
-  padding: 2%;
-  background-color: #f9fafb;
+.searchHistorique input{
+  width: 80%;
+  padding: 6%;
 }
 
-.title {
-  display: flex;
-  gap: 6px;
-}
-.bottomTab {
-  width: 100%;
+.searchListe{
+  padding: 3%;
 }
 
-input.tab {
-  width: 90%;
-}
-
-.requestTicket {
-  width: 100%;
-  border-radius: 12px;
-  border-bottom: 1px solid #eaecf0;
-  display: flex;
-}
-
-.request {
-  padding: 4% 3.5%;
-}
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
@@ -976,6 +962,18 @@ thead th a {
 
 thead th a:hover {
   text-decoration: underline;
+}
+
+th:first-child,
+td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+th:last-child,
+td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .sort-arrow {
@@ -1070,12 +1068,15 @@ thead th a:hover {
   width: 95%;
   padding: 3%;
 }
+
 .searchNb_Poste {
   padding: 3%;
 }
+
 .grey_Poste {
   background-color: #f9fafb;
 }
+
 .search_right_Poste {
   width: 26%;
 }
@@ -1182,9 +1183,6 @@ thead th a:hover {
   }
   .middle {
     justify-content: center;
-  }
-  .top img {
-    width: 32%;
   }
   .borderTop {
     width: 95%;

@@ -50,10 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $error_message = "Erreur lors de la préparation de la requête.";
         }
-    } else {
-        $error_message = "Veuillez remplir tous les champs.";
     }
-
 ?>
 
 
@@ -82,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 
 <body>
-<?php include 'top.php'; ?>
+<?php include 'include/top.php'; ?>
     <div class="middle">
         <div class="left">
             <a href="connexion.php" class="active">Connexion</a>

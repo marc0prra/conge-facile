@@ -23,7 +23,7 @@
   </head>
 </html>
 <body>
-<?php include 'top.php'; ?>
+<?php include 'include/top.php'; ?>
   <div class="middle">
     <div class="left">
       <a href="connexion.php" class="active">Connexion</a>
@@ -43,7 +43,7 @@
         name="mail"
         placeholder=" ****@mentalworks.fr"
         required
-        class="id"
+        class="id" 
       />
       <button class="renit">
         Demander a réinitialiser votre mot de passe.
