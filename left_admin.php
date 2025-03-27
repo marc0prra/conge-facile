@@ -24,6 +24,7 @@
 
   <body>
 <div class="left">
+  <div class="collab"></div>
   <a href="accueil.php">Accueil</a>
   <a href="nouvelle.php">Demandes en attente</a>
   <a href="historique.php">Historique des demandes</a>

@@ -112,7 +112,7 @@ form {
 }
 
 .top img {
-  width: 9%;
+  width: 180px;
 }
 
 .right {
@@ -190,6 +190,12 @@ form {
   width: 30%;
   padding-left: 9%;
   padding-right: 28%;
+}
+
+.activeAdmin {
+  background-color: #004c6c; /* Fond bleu */
+  color: white; /* Texte blanc */
+  font-weight: bold;
 }
 
 .left {
@@ -1181,9 +1187,6 @@ thead th a:hover {
   }
   .middle {
     justify-content: center;
-  }
-  .top img {
-    width: 32%;
   }
   .borderTop {
     width: 95%;

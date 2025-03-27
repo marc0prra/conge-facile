@@ -50,10 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $error_message = "Erreur lors de la préparation de la requête.";
         }
-    } else {
-        $error_message = "Veuillez remplir tous les champs.";
     }
-
 ?>
 
 

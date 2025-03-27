@@ -43,7 +43,7 @@
         name="mail"
         placeholder=" ****@mentalworks.fr"
         required
-        class="id"
+        class="id" 
       />
       <button class="renit">
         Demander a réinitialiser votre mot de passe.

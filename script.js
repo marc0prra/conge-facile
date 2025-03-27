@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/******************************* AFFICHER LE TEXTE EN BLEU(LIENS) **********************************/
+
 
 /******************************* BURGER MENU **********************************/
 
