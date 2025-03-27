@@ -872,45 +872,19 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.sectionTab {
-  background-color: #ffff;
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid #eaecf0;
-  height: auto;
+.searchHistorique{
+  width: 17%;
 }
 
-.topTab {
-  width: 96%;
-  display: flex;
-  gap: 8px;
-  border-radius: 12px;
-  padding: 2%;
-  background-color: #f9fafb;
+.searchHistorique input{
+  width: 80%;
+  padding: 6%;
 }
 
-.title {
-  display: flex;
-  gap: 6px;
-}
-.bottomTab {
-  width: 100%;
+.searchListe{
+  padding: 3%;
 }
 
-input.tab {
-  width: 90%;
-}
-
-.requestTicket {
-  width: 100%;
-  border-radius: 12px;
-  border-bottom: 1px solid #eaecf0;
-  display: flex;
-}
-
-.request {
-  padding: 4% 3.5%;
-}
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
@@ -1075,12 +1049,15 @@ td:last-child {
   width: 95%;
   padding: 3%;
 }
+
 .searchNb_Poste {
   padding: 3%;
 }
+
 .grey_Poste {
   background-color: #f9fafb;
 }
+
 .search_right_Poste {
   width: 26%;
 }
