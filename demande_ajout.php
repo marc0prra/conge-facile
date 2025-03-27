@@ -24,7 +24,7 @@
     <div class="right">
         <div class='ajout_dmd'>
             <h1>Types de demande</h1>
-            <p>nom du type</p>
+            <p>Nom du type</p>
             <input type="text">
             <div class='button_supad'>
                 <button class='supp'>Supprimer</button>
@@ -32,5 +32,4 @@
             </div>
         </div>
     </div>
-
 </body>
