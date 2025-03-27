@@ -59,58 +59,57 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
   <div class='middle'>
   <?php include 'include/left_admin.php'?>
     <div class="right">
-      
-<div class="container_Poste">
-    <div class='top_Poste'>
-        <h1>Postes</h1>
-        <button class="add-btn">Ajouter un Poste</button>
-    </div>
-    
-    <form method="GET">
-        <table>
-            <thead>
-                <tr class='grey_Poste'>
-                    <th>
-                        <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Nom du Poste
-                            <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                            <input class='search_Poste' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
-                    </th>
-                    <th class='search_right_Poste'>
-                        <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Nb personnes liées
-                            <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                            <input class='searchNb_Poste'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
-                    </th>
-                    <th>
-                        <button type="submit" class="search-btn">Rechercher</button>
+                <div class="container_Poste">
+            <div class='top_Poste'>
+                <h1>Postes</h1>
+                <button class="add-btn">Ajouter un Poste</button>
+            </div>
+            
+            <form method="GET">
+                <table>
+                    <thead>
+                        <tr class='grey_Poste'>
+                            <th>
+                                <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
+                                    Nom du Poste
+                                    <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                                </a>
+                                    <input class='search_Poste' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" placeholder="Rechercher..." />
+                            </th>
+                            <th class='search_right_Poste'>
+                                <a href="?sortBy=nb&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
+                                    Nb personnes liées
+                                    <span class="sort-arrow"><?= $sortBy === 'nb' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                                </a>
+                                    <input class='searchNb_Poste'type="number" name="searchNb" value="<?= htmlspecialchars($searchNb) ?>" placeholder="Rechercher..." />
+                            </th>
+                            <th>
+                                <button type="submit" class="search-btn">Rechercher</button>
 
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <div class='tab_Poste'>
-                    <?php if (count($filteredPoste) > 0) : ?>
-                        <?php foreach ($filteredPoste as $Poste) : ?>
-                            <tr>
-                                <td><?= htmlspecialchars($Poste['type']) ?></td>
-                                <td><?= htmlspecialchars($Poste['nb']) ?></td>
-                                <td>
-                                    <button class="det_button">Détails</button>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                            <?php else : ?>
-                                <tr>
-                                    <td colspan="3" class="empty-row">Aucun poste trouvé</td>
-                                </tr>
-                    <?php endif; ?>
-                </div>
-            </tbody>
-        </table>
-    </form>
-    </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div class='tab_Poste'>
+                            <?php if (count($filteredPoste) > 0) : ?>
+                                <?php foreach ($filteredPoste as $Poste) : ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($Poste['type']) ?></td>
+                                        <td><?= htmlspecialchars($Poste['nb']) ?></td>
+                                        <td>
+                                            <button class="det_button">Détails</button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="3" class="empty-row">Aucun poste trouvé</td>
+                                        </tr>
+                            <?php endif; ?>
+                        </div>
+                    </tbody>
+                </table>
+            </form>
+            </div>      
   </div>
   </body>
