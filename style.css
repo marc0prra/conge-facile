@@ -1026,10 +1026,13 @@ td:last-child {
 }
 .supp{
   color: white;
-  background-color: red;
+  background-color: #E10E0E;
 }
 .maj{
   color: white;
+}
+.ajout_dmd p{
+  color: #000000;
 }
 
 /************************************* POSTE ************************************/
