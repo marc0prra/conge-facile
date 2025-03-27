@@ -65,10 +65,11 @@ input {
   background-color: white;
   border-radius: 6px;
   border: #dfe4ea solid 1px;
-  width: 32%;
-  padding: 1.5%;
+  width: 100%;
+  padding: 12px 16px 12px 20px;
   font-family: "inter", sans-serif;
   outline: none;
+  max-width: 350px;
 }
 
 input::placeholder {
@@ -80,6 +81,9 @@ input::placeholder {
 select {
   background-color: #ffffff;
   border: 1px solid #dfe4ea;
+  max-width: 350px;
+  width: 100%;
+  padding: 12px 16px 12px 20px;
 }
 
 select::placeholder {
@@ -119,7 +123,7 @@ form {
   display: flex;
   flex-direction: column;
   flex: 2;
-  max-width: 70%;
+  max-width: 800px;
   margin-left: 3%;
   margin-top: 1%;
 }
@@ -447,7 +451,7 @@ form {
 
 .begin input {
   width: 124%;
-  padding: 5%;
+  padding: 12px 16px 12px 20px;
   text-align: center;
   outline: none;
 }
@@ -460,18 +464,18 @@ form {
   text-align: center;
   outline: none;
   width: 124%;
-  padding: 5%;
+  padding: 12px 16px 12px 20px;
 }
 
 .right select {
   background-color: #ffffff;
   border: 1px solid #dfe4ea;
-  width: 28%;
+  width: 100%;
   border-radius: 5px;
-  padding: 1%;
   color: #9ca3af;
   font-size: 17px;
   font-weight: 400;
+  max-width: 370px;
 }
 
 .color {
@@ -485,8 +489,7 @@ form {
 .grey input {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
-  width: 26%;
-  padding: 1.3%;
+  padding: 12px 16px 12px 20px;
   /* padding-right: 6%; */
   text-align: left;
   outline: none;
@@ -503,7 +506,8 @@ form {
 .justificative input {
   padding: 5% 3% 23%;
   outline: none;
-  width: 54%;
+  max-width: 730px;
+  width: 100%;
 }
 
 .error {
@@ -534,8 +538,9 @@ form {
   background-color: #ffffff;
   font-size: 14px;
   color: #333;
-  width: 26.7%;
-  padding: 1.2%;
+  width: 100%;
+  padding: 12px 16px 12px 20px;
+  max-width: 350px;
 }
 
 .custom-file-upload img {
@@ -872,16 +877,16 @@ input[type="file"] {
 
 /************************************* Historique *******************************/
 
-.searchHistorique{
+.searchHistorique {
   width: 17%;
 }
 
-.searchHistorique input{
+.searchHistorique input {
   width: 80%;
   padding: 6%;
 }
 
-.searchListe{
+.searchListe {
   padding: 3%;
 }
 
@@ -1178,6 +1183,15 @@ thead th a:hover {
   #openMenu {
     display: block;
   }
+  .dates {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .end input,
+  .begin input {
+    padding: 1.5%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1198,15 +1212,6 @@ thead th a:hover {
     width: 96%;
     margin: 0;
   }
-  .right {
-    margin-top: 1%;
-    max-width: 100%;
-    flex: none;
-    margin-left: 0;
-  }
-  .right input {
-    width: 91px;
-  }
   .pref p {
     font-size: 16px;
   }
@@ -1224,6 +1229,11 @@ thead th a:hover {
   }
   .left a {
     font-size: 17px;
+  }
+  .right select,
+  .right input,
+  .custom-file-upload {
+    width: 90%;
   }
   .right h1 {
     font-size: 26px;
