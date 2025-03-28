@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Requête pour récupérer les informations utilisateur + department_id
-        $sql = "SELECT u.id, u.password, p.department_id 
+        $sql = "SELECT u.id, u.password, p.department_id, position_id 
                 FROM user u 
                 JOIN person p ON u.id = p.id 
                 WHERE u.email = ?";
@@ -29,13 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->store_result();
 
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($id, $hashed_password, $department_id);
+                $stmt->bind_result($id, $hashed_password, $department_id, $user_role);
                 $stmt->fetch();
 
                 if (password_verify($password, $hashed_password)) {
                     $_SESSION['user_id'] = $id;
                     $_SESSION['department_id'] = $department_id;
-                    $_SESSION['success_message'] = "Compte bien créé en tant que collaborateur !"; 
+                    $_SESSION['user_role'] = $user_role;
+                    if ($user_role == 1) {
+                        $_SESSION['success_message'] = "Connecté en tant que Collaborateur !";
+                     }
+                     elseif ($user_role == 2) {
+                        $_SESSION['success_message'] = "Connecté en tant que Manageur !";
+                     }
                     header("Location: accueil.php");
                     exit();
                 }
@@ -79,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 
 <body>
-<?php include 'include/top.php'; ?>
+    <?php include 'include/top.php'; ?>
     <div class="middle">
         <div class="left">
             <a href="connexion.php" class="active">Connexion</a>
@@ -104,12 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
                 <p>Mot de passe</p>
                 <input type="password" name="mdp" required class="id" id="password" />
-                <img
-                src="img/open-eye.png"
-                alt="Afficher"
-                class="toggle"
-                onclick="togglePassword('password', this)"
-                />
+                <img src="img/open-eye.png" alt="Afficher" class="toggle" onclick="togglePassword('password', this)" />
                 <div style="color:red; margin-top: 10px;">
                     <?php if (!empty($error_message)) { echo $error_message; } ?>
                 </div>
