@@ -29,11 +29,11 @@
       <h1>Mes informations</h1>
       <form action="infosC.php"  method="POST">
         <div class="infos">
-          <div class="name">
+          <div class="begin">
             <p>Nom de famille</p>
             <input type="text" placeholder="" required/>
           </div>
-          <div class="nameF">
+          <div class="end">
             <p>Prénom</p>
             <input type="text" placeholder="" required/>
           </div>

@@ -444,7 +444,8 @@ form {
   border: #004c6c 2px solid;
 }
 /************************************ NOUVELLE DEMANDE ***************************/
-.dates {
+.dates,
+.infos {
   display: flex;
   gap: 154px;
 }
@@ -506,7 +507,8 @@ form {
 .justificative input {
   padding: 5% 3% 23%;
   outline: none;
-  max-width: 730px;
+  max-width: 801px;
+
   width: 100%;
 }
 
@@ -579,23 +581,7 @@ input[type="file"] {
   color: #000000;
 }
 
-.name input {
-  width: 100%;
-  padding: 7% 88% 7% 6%;
-}
-
-.nameF {
-  margin-left: 17%;
-}
-
-.nameF input {
-  width: 100%;
-  padding: 7% 88% 7% 6%;
-}
-
 .email input {
-  width: 24%;
-  padding: 1%;
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
   color: #000000;
@@ -1021,22 +1007,22 @@ td:last-child {
 }
 /******************************* Ajout de demandes *******************************/
 
-.button_supad{
+.button_supad {
   display: flex;
 }
-.button_supad button{
+.button_supad button {
   border-radius: 15px;
   padding: 1.5%;
   border: none;
 }
-.supp{
+.supp {
   color: white;
-  background-color: #E10E0E;
+  background-color: #e10e0e;
 }
-.maj{
+.maj {
   color: white;
 }
-.ajout_dmd p{
+.ajout_dmd p {
   color: #000000;
 }
 
@@ -1183,7 +1169,8 @@ thead th a:hover {
   #openMenu {
     display: block;
   }
-  .dates {
+  .dates,
+  .infos {
     flex-direction: column;
     gap: 0px;
   }
