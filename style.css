@@ -141,12 +141,13 @@ form {
 }
 
 .details {
-  width: 100%;
+  width: 114%;
 }
 
 .details p {
   margin: 0;
-  font-size: 18px;
+  font-size: 19px;
+  color: #000000;
 }
 
 .ps {
@@ -365,8 +366,8 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 58%;
-  margin: 8% 0% 4% 19%;
+  width: 100%;
+  margin: 10% 0% 6% 11%;
 }
 
 .step {
@@ -418,15 +419,15 @@ form {
 .blocks {
   display: flex;
   justify-content: space-around;
-  width: 90%;
-  gap: 37px;
+  width: 126%;
+  gap: 63px;
 }
 
 .block {
   background-color: #004c6c0d;
   border-radius: 8px;
   padding: 3%;
-  width: 24%;
+  width: 25%;
   text-align: center;
 }
 
