@@ -23,28 +23,50 @@
   </head>
 </html>
 
+
+<?php
+$user_role = $_SESSION['user_role'] ?? '1';
+?>
+
 <body>
-  <div class="left">
-    <a href="accueil.php">Accueil</a>
-    <a href="nouvelle.php">Nouvelle demande</a>
-    <a href="historique.php">Historique des demandes</a>
-    <div class="rod"></div>
-    <a href="infosC.php">Mes informations</a>
-    <a href="preferences.php">Mes préférences</a>
-    <a href="deconnexion.php">Déconnexion</a>
-  </div>
-  <button id="openMenu">☰ </button>
-  <div id="menuOverlay"></div>
-  <div class="leftMobile" id="menu">
-   <span id="closeMenu">➜</span>
-   <a href="accueil.php">Accueil</a>
-    <a href="nouvelle.php">Nouvelle demande</a>
-    <a href="historique.php">Historique des demandes</a>
-    <div class="rod"></div>
-    <a href="infosC.php">Mes informations</a>
-    <a href="preferences.php">Mes préférences</a>
-    <a href="deconnexion.php">Déconnexion</a>
-  </div>
+
+  <?php if ($user_role == '1'): ?>
+    <!-- MENU COLLABORATEUR -->
+    <div class="left">
+      <a href="accueil.php">Accueil</a>
+      <a href="nouvelle.php">Nouvelle demande</a>
+      <a href="historique.php">Historique des demandes</a>
+      <div class="rod"></div>
+      <a href="infosC.php">Mes informations</a>
+      <a href="preferences.php">Mes préférences</a>
+      <a href="deconnexion.php">Déconnexion</a>
+    </div>
+
+  <?php elseif ($user_role == '2'): ?>
+    <!-- MENU MANAGER -->
+    <div class="left">
+      <div class="collab"></div>
+      <a href="accueil.php">Accueil</a>
+      <a href="nouvelle.php">Demandes en attente</a>
+      <a href="historique.php">Historique des demandes</a>
+      <a href="#">Mon équipe</a>
+      <a href="#">Statistiques</a>
+      <div class="rod"></div>
+      <a href="infosM.php">Mes informations</a>
+      <a href="preferencesManager.php">Mes préférences</a>
+
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="demande.php">Types de demandes</a>
+          <a href="#">Directions/Services</a>
+          <a href="#">Managers</a>
+          <a href="poste.php">Postes</a>
+        </div>
+      </div>
+      <a href="deconnexion.php">Déconnexion</a>
+    </div>
+  <?php endif; ?>
 
   <script src="script.js"></script>
 </body>

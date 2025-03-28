@@ -1006,7 +1006,7 @@ td:last-child {
   color: #a0aec0;
   font-style: italic;
 }
-/******************************* Ajout de demandes *******************************/
+/********************** Ajout de demandes et de poste ***************************/
 
 .button_supad {
   display: flex;
@@ -1014,8 +1014,8 @@ td:last-child {
   padding-top: 3%;
 }
 .button_supad button {
-  border-radius: 15px;
-  padding: 1.5%;
+  border-radius: 6px;
+  padding: 1.5% 3.7%;
   border: none;
 }
 .supp {
