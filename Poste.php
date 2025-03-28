@@ -62,7 +62,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                 <div class="container_Poste">
             <div class='top_Poste'>
                 <h1>Postes</h1>
-                <button class="add-btn">Ajouter un Poste</button>
+                <a class="add-btn" href='poste_ajout.php'>Ajouter un Poste</a>
             </div>
             
             <form method="GET">
