@@ -11,25 +11,45 @@ include 'config.php';
 $user_id = $_SESSION['user_id'];
 
 try {
-    // Connexion à la base de données
-    $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Préparation et exécution de la requête
+    // Préparation et exécution de la requête avec un filtre sur l'utilisateur connecté
     $query = "SELECT 
                 request_type.name AS type_demande, 
                 request.created_at AS date_demande, 
                 request.start_at AS date_debut, 
                 request.end_at AS date_fin
               FROM request
-              JOIN request_type ON request.request_type_id = request_type.id";
+              JOIN request_type ON request.request_type_id = request_type.id
+              WHERE request.user_id = :user_id";
 
     $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Récupération GET (recherche et tri)
+    $searchType = $_GET['searchType'] ?? '';
+    $searchDate = $_GET['searchDate'] ?? ''; // Correction du champ
+    $sortBy = $_GET['sortBy'] ?? 'date_demande'; // Correction pour correspondre aux clés valides
+    $order = $_GET['order'] ?? 'asc';
+
+    // Filtrage
+    $filteredDemandes = array_filter($demandes, function ($demande) use ($searchType, $searchDate) {
+        return 
+            (empty($searchType) || stripos($demande['type_demande'], $searchType) !== false) &&
+            (empty($searchDate) || strpos($demande['date_demande'], $searchDate) !== false);
+    });
+
+    // Tri 
+    usort($filteredDemandes, function ($a, $b) use ($sortBy, $order) {
+        if ($order === 'asc') {
+            return $a[$sortBy] <=> $b[$sortBy];
+        } else {
+            return $b[$sortBy] <=> $a[$sortBy];
+        }
+    });
+
     // Affichage des résultats
-    foreach ($demandes as $demande) {
+    foreach ($filteredDemandes as $demande) {
         echo "Type de demande : " . htmlspecialchars($demande['type_demande']) . "<br>";
         echo "Date de la demande : " . htmlspecialchars($demande['date_demande']) . "<br>";
         echo "Date de début : " . htmlspecialchars($demande['date_debut']) . "<br>";
@@ -41,27 +61,6 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
-// Récupération GET (recherche et tri)
-$searchType = $_GET['searchType'] ?? '';
-$searchNb = $_GET['searchNb'] ?? '';
-$sortBy = $_GET['sortBy'] ?? 'type';
-$order = $_GET['order'] ?? 'asc';
-
-// Filtrage
-$filteredPoste = array_filter($demandes, function ($Poste) use ($searchType, $searchNb) {
-    return 
-        (empty($searchType) || stripos($Poste['type'], $searchType) !== false) &&
-        (empty($searchNb) || $Poste['nb'] == $searchNb);
-});
-
-// Tri 
-usort($filteredPoste, function ($a, $b) use ($sortBy, $order) {
-    if ($order === 'asc') {
-        return $a[$sortBy] <=> $b[$sortBy];
-    } else {
-        return $b[$sortBy] <=> $a[$sortBy];
-    }
-});
 
 // Inversion de l'ordre pour le prochain tri
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
@@ -90,22 +89,13 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
   </head>
 
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="Logo MentalWorks" />
-  </div>
-  <div class="middle">
-    <div class="left">
-      <a href="accueil.html">Accueil</a>
-      <a href="nouvelle.html">Nouvelle demande</a>
-      <a href="historique.html" class="active"> Historique des demandes</a>
-      <div class="rod"></div>
-      <a href="">Mes informations</a>
-      <a href="">Mes préférences</a>
-      <a href="">Déconnexion</a>
-    </div>
+<?php include 'include/top.php'; ?>
+
+<div class="middle">
+    <?php include 'include/left.php'; ?>
     <div class="right">
         <h1>Historique de mes demandes</h1>
+    </div>
   <div class="container Historique">
     <?php
       $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');

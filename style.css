@@ -1009,6 +1009,8 @@ td:last-child {
 
 .button_supad {
   display: flex;
+  gap: 5%;
+  padding-top: 3%;
 }
 .button_supad button {
   border-radius: 15px;
