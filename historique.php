@@ -11,6 +11,10 @@ include 'config.php';
 $user_id = $_SESSION['user_id'];
 
 try {
+
+    $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     // Préparation et exécution de la requête avec un filtre sur l'utilisateur connecté
     $query = "SELECT 
                 request_type.name AS type_demande, 
