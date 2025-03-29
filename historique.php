@@ -6,12 +6,16 @@ if (!isset($_SESSION['user_id'])) {
     die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
 }
 
+$order = 'asc'; // Valeur par défaut pour éviter l'erreur
+$order = $_GET['order'] ?? $order;
+
 include 'config.php';
+
+$demandes=[];
 
 $user_id = $_SESSION['user_id'];
 
 try {
-
     $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -23,7 +27,7 @@ try {
                 request.end_at AS date_fin
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
-              WHERE request.user_id = :user_id";
+              WHERE request.collaborator_id = :user_id";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -32,42 +36,29 @@ try {
 
     // Récupération GET (recherche et tri)
     $searchType = $_GET['searchType'] ?? '';
-    $searchDate = $_GET['searchDate'] ?? ''; // Correction du champ
-    $sortBy = $_GET['sortBy'] ?? 'date_demande'; // Correction pour correspondre aux clés valides
+    $searchDate = $_GET['searchDate'] ?? '';
+    $sortBy = $_GET['sortBy'] ?? 'date_demande';
     $order = $_GET['order'] ?? 'asc';
+    $sortBy = $_GET['sortBy'] ?? 'date_demande'; // Champ de tri par défaut
 
-    // Filtrage
-    $filteredDemandes = array_filter($demandes, function ($demande) use ($searchType, $searchDate) {
-        return 
-            (empty($searchType) || stripos($demande['type_demande'], $searchType) !== false) &&
-            (empty($searchDate) || strpos($demande['date_demande'], $searchDate) !== false);
-    });
+    $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
+    $searchNb = $_GET['searchNb'] ?? '';
 
-    // Tri 
-    usort($filteredDemandes, function ($a, $b) use ($sortBy, $order) {
-        if ($order === 'asc') {
-            return $a[$sortBy] <=> $b[$sortBy];
-        } else {
-            return $b[$sortBy] <=> $a[$sortBy];
-        }
-    });
 
-    // Affichage des résultats
-    foreach ($filteredDemandes as $demande) {
-        echo "Type de demande : " . htmlspecialchars($demande['type_demande']) . "<br>";
-        echo "Date de la demande : " . htmlspecialchars($demande['date_demande']) . "<br>";
-        echo "Date de début : " . htmlspecialchars($demande['date_debut']) . "<br>";
-        echo "Date de fin : " . htmlspecialchars($demande['date_fin']) . "<br>";
-        echo "------------------------------<br>";
+    // Vérifier si les clés existent dans les données avant de les trier
+    if (!empty($demandes) && isset($demandes[0][$sortBy])) {
+        usort($demandes, function ($a, $b) use ($sortBy, $order) {
+            return ($order === 'asc') ? $a[$sortBy] <=> $b[$sortBy] : $b[$sortBy] <=> $a[$sortBy];
+        });
     }
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 
-
 // Inversion de l'ordre pour le prochain tri
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -99,25 +90,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <?php include 'include/left.php'; ?>
     <div class="right">
         <h1>Historique de mes demandes</h1>
-    </div>
-  <div class="container Historique">
-    <?php
-      $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      $query = "SELECT request.*, request_type.name AS type_name, person.first_name, person.last_name, department.name AS department_name, position.name AS position_name
-                FROM request
-                JOIN request_type ON request.request_type_id = request_type.id
-                JOIN person ON request.collaborator_id = person.id
-                JOIN department ON person.department_id = department.id
-                JOIN position ON person.position_id = position.id";
-
-      $stmt = $pdo->prepare($query);
-      $stmt->execute();
-      $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    ?>
-
-    <div class="container">    
+      <div class="container">    
         <table>
             <thead>
                 <tr class='grey_Poste'>
@@ -151,7 +124,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                     </th>
                     <th class='searchHistorique'>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Date de fin 
+                            Nb de jours
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
                             <input class='searchListe' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" />
@@ -168,8 +141,8 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
             </thead>
             <tbody>
                 <div class='tab_Poste'>
-                    <?php if (count($filteredPoste) > 0) : ?>
-                        <?php foreach ($filteredPoste as $Poste) : ?>
+                    <?php if (count($demandes) > 0) : ?>
+                        <?php foreach ($demandes as $demande) : ?>
                             <tr>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_demande']) ?></td>
@@ -190,7 +163,9 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                 </div>
             </tbody>
         </table>
+      </div>
     </div>
 
 </body>
 </html>
+
