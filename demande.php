@@ -64,11 +64,11 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <div class='top_admin'>
         <h1>Types de demandes</h1>
 
-        <a class="add-btn" href='demande_ajout.php'>Ajouter un type de demande</a>
+        <button class="initial"><a href="demande_ajout.php">Ajouter un type de demande</a></button>
     </div>
     
     <form method="GET">
-        <table>
+        <table class="table2">
             <thead>
                 <tr class='grey_admin'>
                     <th>

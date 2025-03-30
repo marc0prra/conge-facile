@@ -66,7 +66,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
             </div>
             
             <form method="GET">
-                <table>
+                <table class="table2">
                     <thead>
                         <tr class='grey_Poste'>
                             <th>

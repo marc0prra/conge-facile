@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
 }
 
-$order = 'asc'; // Valeur par défaut pour éviter l'erreur
+$order = 'asc'; 
 $order = $_GET['order'] ?? $order;
 
 include 'config.php';
@@ -19,7 +18,6 @@ try {
     $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Préparation et exécution de la requête avec un filtre sur l'utilisateur connecté
     $query = "SELECT 
                 request_type.name AS type_demande, 
                 request.created_at AS date_demande, 
@@ -34,18 +32,16 @@ try {
     $stmt->execute();
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Récupération GET (recherche et tri)
     $searchType = $_GET['searchType'] ?? '';
     $searchDate = $_GET['searchDate'] ?? '';
     $sortBy = $_GET['sortBy'] ?? 'date_demande';
     $order = $_GET['order'] ?? 'asc';
-    $sortBy = $_GET['sortBy'] ?? 'date_demande'; // Champ de tri par défaut
+    $sortBy = $_GET['sortBy'] ?? 'date_demande'; 
 
     $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     $searchNb = $_GET['searchNb'] ?? '';
 
 
-    // Vérifier si les clés existent dans les données avant de les trier
     if (!empty($demandes) && isset($demandes[0][$sortBy])) {
         usort($demandes, function ($a, $b) use ($sortBy, $order) {
             return ($order === 'asc') ? $a[$sortBy] <=> $b[$sortBy] : $b[$sortBy] <=> $a[$sortBy];
@@ -56,7 +52,6 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 
-// Inversion de l'ordre pour le prochain tri
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 
 ?>
@@ -91,7 +86,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     <div class="right">
         <h1>Historique de mes demandes</h1>
       <div class="container">    
-        <table>
+        <table class="table1">
             <thead>
                 <tr class='grey_Poste'>
                     <th class='searchHistorique'>

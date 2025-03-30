@@ -96,8 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>
                     CongéFacile est votre nouvel outil dédié à la gestion des congés au
                     sein de l’entreprise.
-                </p>
-                <p>
                     Plus besoin d’échanges interminables ou de formulaires papier : en
                     quelques clics, vous pouvez gérer vos absences en toute transparence
                     et simplicité. Connectez-vous ci-dessous pour accéder à votre espace.

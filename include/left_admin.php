@@ -27,7 +27,7 @@
   <div class="collab"></div>
   <a href="accueil.php">Accueil</a>
   <a href="nouvelle.php">Demandes en attente</a>
-  <a href="historique.php">Historique des demandes</a>
+  <a href="managerHistorique.php">Historique des demandes</a>
   <a href="#">Mon équipe</a>
   <a href="#">Statistiques</a>
   <div class="rod"></div>
@@ -44,6 +44,15 @@
     </div>
   </div>
   <a href="deconnexion.php">Déconnexion</a>
+</div>
+<div class="skin">
+  <div class="headSkin">
+    <img src="" alt="">
+  </div>
+  <div class="infoSkin">
+    <p class="nameSkin"></p>
+    <p class="typeSkin"></p>
+  </div>
 </div>
     <script src="script.js"></script>
   </body>

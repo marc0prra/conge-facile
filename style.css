@@ -145,8 +145,12 @@ form {
 
 .details p {
   margin: 0;
-  font-size: 19px;
+  font-size: 18px;
   color: #000000;
+  width: 947px;
+  height: 74px;
+  /* line-height: 26.5px; */
+  text-align: justify;
 }
 
 .ps {
@@ -161,8 +165,8 @@ form {
 
 .portal {
   border-radius: 9px;
-  width: 19%;
-  padding: 1%;
+  width: 226px;
+  padding: 13px 28px;
   margin-top: 3%;
   border: #004c6c 2px solid;
 }
@@ -204,7 +208,7 @@ form {
 
 .left {
   width: 21%;
-  height: 935px;
+  height: 1000px;
   box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -917,8 +921,12 @@ input[type="file"] {
 
 .top_admin {
   display: flex;
-  gap: 5%;
+  gap: 30px;
   align-items: center;
+}
+
+.top_admin a {
+  color: white;
 }
 
 .search_admin {
@@ -938,16 +946,6 @@ input[type="file"] {
 .search_right_admin input {
   width: 80%;
   padding: 6%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #eaecf0;
-  color: #475467;
-  border-radius: 12px;
 }
 
 th,
@@ -1105,6 +1103,14 @@ table {
   border-radius: 12px;
 }
 
+.table1 {
+  width: 1356px;
+}
+
+.table2 {
+  width: 937px;
+}
+
 th,
 td {
   border-bottom: 1px solid #e5e7eb;
@@ -1163,9 +1169,6 @@ thead th a:hover {
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
-  .portal {
-    width: 248px;
-  }
   .id {
     width: 226px;
   }
