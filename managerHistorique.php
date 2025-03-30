@@ -3,61 +3,49 @@ session_start();
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
+    header("Location: connexion.php");
+    exit();
 }
-
-$order = 'asc'; // Valeur par défaut pour éviter l'erreur
-$order = $_GET['order'] ?? $order;
-
-include 'config.php';
 
 $demandes=[];
 
+include 'config.php';
+
+$searchType = $_GET['searchType'] ?? ''; // Évite l'erreur Undefined variable
+$searchNb = $_GET['searchNb'] ?? ''; // Évite l'erreur Undefined variable
+
 $user_id = $_SESSION['user_id'];
+$sortBy = $_GET['sortBy'] ?? 'start_at'; // Valeur par défaut
+$order = $_GET['order'] ?? 'asc';
+
+// Liste des colonnes valides pour le tri
+$validSortColumns = ['type_demande', 'first_name', 'last_name', 'date_debut', 'date_fin'];
+if (!in_array($sortBy, $validSortColumns)) {
+    $sortBy = 'date_debut';
+}
+
+$nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 
 try {
     $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Préparation et exécution de la requête avec un filtre sur l'utilisateur connecté
+    // Requête SQL avec tri dynamique
     $query = "SELECT request.id, request_type.name AS type_demande, 
                      person.first_name, person.last_name,
                      request.start_at AS date_debut, request.end_at AS date_fin
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
-              JOIN person ON request.person_id = person.id";
+              JOIN person ON request.person_id = person.id
+              ORDER BY $sortBy $order";
 
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $stmt->execute();
+    $stmt = $pdo->query($query);
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Récupération GET (recherche et tri)
-    $searchType = $_GET['searchType'] ?? '';
-    $searchDate = $_GET['searchDate'] ?? '';
-    $sortBy = $_GET['sortBy'] ?? 'date_demande';
-    $order = $_GET['order'] ?? 'asc';
-    $sortBy = $_GET['sortBy'] ?? 'date_demande'; // Champ de tri par défaut
-
-    $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
-    $searchNb = $_GET['searchNb'] ?? '';
-
-
-    // Vérifier si les clés existent dans les données avant de les trier
-    if (!empty($demandes) && isset($demandes[0][$sortBy])) {
-        usort($demandes, function ($a, $b) use ($sortBy, $order) {
-            return ($order === 'asc') ? $a[$sortBy] <=> $b[$sortBy] : $b[$sortBy] <=> $a[$sortBy];
-        });
-    }
-
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
-
-// Inversion de l'ordre pour le prochain tri
-$nextOrder = ($order === 'asc') ? 'desc' : 'asc';
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
