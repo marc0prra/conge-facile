@@ -20,14 +20,12 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Préparation et exécution de la requête avec un filtre sur l'utilisateur connecté
-    $query = "SELECT 
-                request_type.name AS type_demande, 
-                request.created_at AS date_demande, 
-                request.start_at AS date_debut, 
-                request.end_at AS date_fin
+    $query = "SELECT request.id, request_type.name AS type_demande, 
+                     person.first_name, person.last_name,
+                     request.start_at AS date_debut, request.end_at AS date_fin
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
-              WHERE request.collaborator_id = :user_id";
+              JOIN person ON request.person_id = person.id";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -80,7 +78,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
       rel="stylesheet"
     />
 
-    <title>Historique</title>
+    <title>Historique de demandes</title>
   </head>
 
 <body>
@@ -89,7 +87,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 <div class="middle">
     <?php include 'include/left.php'; ?>
     <div class="right">
-        <h1>Historique de mes demandes</h1>
+        <h1>Historique des demandes</h1>
       <div class="container">    
         <table>
             <thead>
@@ -103,7 +101,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                     </th>
                     <th class='searchHistorique'>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Demandée le 
+                            Collaborateur 
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
                             <input class='searchListe' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>"  />
@@ -145,7 +143,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                         <?php foreach ($demandes as $demande) : ?>
                             <tr>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
-                                <td><?= htmlspecialchars($demande['date_demande']) ?></td>
+                                <td><?= htmlspecialchars($demande['first_name'] . ' ' . $demande['last_name']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_debut']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_fin']) ?></td>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
