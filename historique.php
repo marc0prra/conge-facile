@@ -2,7 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
+    header("Location: connexion.php");
+    exit();
 }
 
 $order = 'asc'; 
@@ -146,7 +147,9 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td>
-                                    <button class="det_button">Détails</button>
+                                    <a href="demande.php?id=<?= $demande['id'] ?>">
+                                        <button class="det_button">Détails</button>
+                                    </a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
