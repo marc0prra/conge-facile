@@ -2,7 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
+    header("Location: connexion.php");
+    exit();
 }
 
 $order = 'asc'; 
