@@ -81,7 +81,6 @@ input::placeholder {
 select {
   background-color: #ffffff;
   border: 1px solid #dfe4ea;
-  max-width: 350px;
   width: 100%;
   padding: 12px 16px 12px 20px;
 }
@@ -445,10 +444,11 @@ form {
   border: #004c6c 2px solid;
 }
 /************************************ NOUVELLE DEMANDE ***************************/
+
 .dates,
 .infos {
   display: flex;
-  gap: 154px;
+  gap: 45px;
 }
 
 .begin input {
@@ -472,12 +472,11 @@ form {
 .right select {
   background-color: #ffffff;
   border: 1px solid #dfe4ea;
-  width: 100%;
+  width: 390px;
   border-radius: 5px;
   color: #9ca3af;
   font-size: 17px;
   font-weight: 400;
-  max-width: 370px;
 }
 
 .color {
@@ -515,12 +514,13 @@ form {
 
 .error {
   color: #212b36;
+  width: 145%;
 }
 
 .end button {
   border-radius: 7px;
   border: #004c6c 2px solid;
-  padding: 1% 2%;
+  padding: 13px 28px;
   margin-top: 4%;
 }
 
@@ -589,11 +589,29 @@ input[type="file"] {
   text-align: center;
 }
 
-.mdp {
+.infos2 {
   display: flex;
+  width: 123%;
+  gap: 128px;
 }
 
-.forgot,
+.forgot {
+  position: relative;
+  width: 37%;
+}
+
+.forgot input {
+  width: 76%;
+  padding: 12px 16px 12px 20px;
+  padding-right: 40px;
+  font-size: 16px;
+}
+
+.forgot input,
+.infos2 input {
+  max-width: 330px;
+}
+
 .forgotF,
 .forgotN {
   position: relative;
@@ -604,24 +622,22 @@ input[type="file"] {
   margin-left: 2%;
 }
 
-.forgot input,
 .forgotF input,
 .forgotN input {
   width: 79%;
-  padding: 2.5%;
+  padding: 12px 16px 12px 20px;
   padding-right: 40px;
   font-size: 16px;
 }
 
-.forgot input,
-.forgotN input {
-  width: 77%;
+.right input {
+  width: 350px;
 }
 
 .toggle-password {
   position: absolute;
-  right: 52px;
-  top: 79%;
+  right: -75px;
+  top: 78%;
   transform: translateY(-50%);
   cursor: pointer;
   width: 20px;
@@ -631,9 +647,9 @@ input[type="file"] {
 .service select {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
-  width: 26.4%;
-  border-radius: 5px;
-  padding: 1%;
+  width: 386px;
+  border-radius: 6px;
+  padding: 12px 25px 12px 20px;
   color: #000000;
   font-size: 17px;
   font-weight: 400;
@@ -645,14 +661,9 @@ input[type="file"] {
 }
 
 .services select {
-  padding: 4%;
-  width: 100%;
+  width: 386px;
   border-radius: 6px;
-}
-
-.direction,
-.poste {
-  width: 26.4%;
+  padding: 12px 25px 12px 20px;
 }
 
 .poste {
@@ -670,12 +681,13 @@ input[type="file"] {
 }
 
 .initial {
-  width: 20%;
+  width: 282px;
   color: white;
   margin-top: 3%;
   border-radius: 5px;
   margin-bottom: 4%;
-  padding: 1%;
+  padding: 13px 28px;
+  margin-top: 8%;
 }
 
 .white {

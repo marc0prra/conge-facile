@@ -89,7 +89,7 @@
                         onclick="togglePassword('password', this)"
                     >
                 </div>
-        <div class="mdp">
+        <div class="infos2">
                     <div class="forgotN">
                         <p class="color">Nouveau mot de passe</p>
                         <input type="password" id="newPassword">
