@@ -44,15 +44,15 @@
     </div>
   </div>
   <a href="deconnexion.php">Déconnexion</a>
-</div>
-<div class="skin">
-  <div class="headSkin">
-    <img src="" alt="">
-  </div>
-  <div class="infoSkin">
-    <p class="nameSkin"></p>
-    <p class="typeSkin"></p>
-  </div>
+  <div class="skinManager">
+        <div class="headSkin">
+          <img src="img/téléchargement (1).png" alt="">
+        </div>
+        <div class="infoSkin">
+          <strong class="nameSkin">Frédéric Salesse</strong>
+          <p class="typeSkin">Manager</p>
+        </div>
+      </div>
 </div>
     <script src="script.js"></script>
   </body>

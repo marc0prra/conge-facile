@@ -40,14 +40,14 @@ $user_role = $_SESSION['user_role'] ?? '1';
       <a href="infosC.php">Mes informations</a>
       <a href="preferences.php">Mes préférences</a>
       <a href="deconnexion.php">Déconnexion</a>
-    </div>
-    <div class="skin">
-      <div class="headSkin">
-       <img src="img/téléchargement.png" alt="skin">
-      </div>
-      <div class="infoSkin">
-        <strong class="nameSkin">Jeff Martins</strong>
-        <p class="typeSkin">Collaborateur</p>
+      <div class="skin">
+        <div class="headSkin">
+          <img src="img/téléchargement.png" alt="skin">
+        </div>
+        <div class="infoSkin">
+          <strong class="nameSkin">Jeff Martins</strong>
+          <p class="typeSkin">Collaborateur</p>
+        </div>
       </div>
     </div>
 
@@ -74,16 +74,17 @@ $user_role = $_SESSION['user_role'] ?? '1';
         </div>
       </div>
       <a href="deconnexion.php">Déconnexion</a>
-    </div>
-    <div class="skin">
-      <div class="headSkin">
-        <img src="img/téléchargement (1).png" alt="">
+      <div class="skin">
+        <div class="headSkin">
+          <img src="img/téléchargement (1).png" alt="">
+        </div>
+        <div class="infoSkin">
+          <strong class="nameSkin">Frédéric Salesse</strong>
+          <p class="typeSkin">Manager</p>
+        </div>
       </div>
-      <div class="infoSkin">
-        <strong class="nameSkin">Frédéric Salesse</strong>
-        <p class="typeSkin">Manager</p>
-      </div>
     </div>
+
   <?php endif; ?>
 
   <script src="script.js"></script>
