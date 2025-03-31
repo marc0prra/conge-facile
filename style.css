@@ -888,7 +888,7 @@ input[type="file"] {
   width: 17%;
 }
 
-.right.historique{
+.right.historique {
   max-width: 95%;
 }
 
@@ -1180,7 +1180,7 @@ thead th a:hover {
   display: flex;
   padding: 22px;
   margin-top: 123%;
-  margin: 118% auto 0% auto;
+  margin: 71% auto 0% auto;
   gap: 15px;
 }
 
@@ -1216,6 +1216,32 @@ thead th a:hover {
 
 .skinManager p {
   color: #637381;
+}
+
+.btn_red {
+  background-color: #e10e0e;
+  padding: 13px 28px;
+  border: 1px #e10e0e solid;
+  border-radius: 6px;
+}
+
+.label_admin {
+  font-size: 17px;
+  color: #000000;
+  font-weight: 500;
+  margin: 40px 0 20px 0;
+}
+
+.btn_blue {
+  padding: 13px 28px;
+  border-radius: 6px;
+  border: 1px #004c6c solid;
+}
+
+.button_container {
+  gap: 25px;
+  margin-top: 3%;
+  display: flex;
 }
 
 /************************************* RESPONSIVE *******************************/
