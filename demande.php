@@ -54,7 +54,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 <body>
   <?php include 'include/top.php'?>
   <div class='middle'>
-  <?php include 'include/left_admin.php'?>
+  <?php include 'include/left.php'?>
     <div class="right">
       
 <div class="container_admin">
