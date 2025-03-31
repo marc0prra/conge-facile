@@ -1,5 +1,9 @@
 <?php  
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: connexion.php");
+    exit();
+}
 
 // Vérifier si la session contient déjà les demandes, sinon les initialiser
 if (!isset($_SESSION['demandes'])) {
