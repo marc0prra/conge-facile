@@ -700,10 +700,14 @@ input[type="file"] {
 /************************************ MES INFOS ************************************/
 .button {
   display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
 .button2 {
   display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
 /************************************ SUCCESS ************************************/
@@ -825,7 +829,7 @@ input[type="file"] {
 .switch {
   position: relative;
   height: 1.5rem;
-  width: 3rem;
+  max-width: 3rem;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
@@ -1165,6 +1169,49 @@ thead th a:hover {
   text-align: center;
   color: #a0aec0;
   font-style: italic;
+}
+
+/******************************** SKIN  ************************************/
+.skin {
+  display: flex;
+  padding: 22px;
+  margin-top: 123%;
+  margin: 118% auto 0% auto;
+  gap: 15px;
+}
+
+.headSkin img {
+  border-radius: 40px;
+  width: 67px;
+}
+
+.skin strong {
+  color: #111928;
+}
+
+.skin p {
+  color: #637381;
+}
+
+.skinManager {
+  display: flex;
+  padding: 22px;
+  margin-top: 123%;
+  margin: 72% auto 0% auto;
+  gap: 15px;
+}
+
+.headSkin img {
+  border-radius: 40px;
+  width: 67px;
+}
+
+.skinManager strong {
+  color: #111928;
+}
+
+.skinManager p {
+  color: #637381;
 }
 
 /************************************* RESPONSIVE *******************************/
