@@ -147,7 +147,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td>
-                                    <a href="demande.php?id=<?= $demande['id'] ?>">
+                                    <a href="leaveRequest.php?id=<?= $demande['id'] ?>">
                                         <button class="det_button">Détails</button>
                                     </a>
                                 </td>
