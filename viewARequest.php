@@ -81,11 +81,11 @@ $conn->close();
       <a href="">Déconnexion</a>
     </div>
     <div class="right">
-        <h1>Demande de <?php echo $collaborateur; ?></h1>
-        <p> Demande du <?php echo $date_debut; ?> au <?php echo $date_fin; ?> </p>
+        <h1>Demande de <?= htmlspecialchars($demande['first_name'] . ' ' . $demande['last_name']) ?></h1>
+        <p> Demande du <?= htmlspecialchars($demande['date_debut']) ?> au <?= htmlspecialchars($demande['date_fin']) ?> </p>
 
         <div class="sectionRequestDetails">
-            <p class="TypeRequest"> Type de congé : <?php echo $type_conge; ?></p>
+            <p class="TypeRequest"> Type de congé : <?= htmlspecialchars($demande['type_demande']) ?></p>
             <p class="TypeRequest"> Département : <?php echo $departement; ?></p>
             <p class="TypeRequest"> Nombre de jours : <?php echo $nb_jours; ?></p>
             <p class="TypeRequest statuts"> Statut de la demande  : <?php echo $statut; ?></p> 
