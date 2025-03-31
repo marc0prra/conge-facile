@@ -20,6 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Préférences de congé</title>
 </head>
+
+
+
 <body>
 <?php include 'include/top.php'; ?>
   <div class="middle">

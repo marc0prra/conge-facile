@@ -1,6 +1,5 @@
 
 <?php
-// Tableau de demandes 
 $typesDemandes = [
     ["type" => "Congé sans solde", "nb" => 400],
     ["type" => "Congé payé", "nb" => 1000],
@@ -9,20 +8,18 @@ $typesDemandes = [
     ["type" => "Autre", "nb" => 200],
 ];
 
-// Récupération GET (recherche et tri)
 $searchType = $_GET['searchType'] ?? '';
 $searchNb = $_GET['searchNb'] ?? '';
 $sortBy = $_GET['sortBy'] ?? 'type';
 $order = $_GET['order'] ?? 'asc';
 
-// Filtrage
+
 $filteredDemandes = array_filter($typesDemandes, function ($demande) use ($searchType, $searchNb) {
     return 
         (empty($searchType) || stripos($demande['type'], $searchType) !== false) &&
         (empty($searchNb) || $demande['nb'] == $searchNb);
 });
 
-// Tri 
 usort($filteredDemandes, function ($a, $b) use ($sortBy, $order) {
     if ($order === 'asc') {
         return $a[$sortBy] <=> $b[$sortBy];
@@ -31,7 +28,6 @@ usort($filteredDemandes, function ($a, $b) use ($sortBy, $order) {
     }
 });
 
-// Inversion de l'ordre pour le prochain tri
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 ?>
 
@@ -54,6 +50,8 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
       rel="stylesheet"/>
       <title>Types de demandes</title>
 
+
+      
 <body>
   <?php include 'include/top.php'?>
   <div class='middle'>

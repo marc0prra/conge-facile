@@ -22,6 +22,9 @@
     <title>Mot de passe oublié</title>
   </head>
 </html>
+
+
+
 <body>
 <?php include 'include/top.php'; ?>
   <div class="middle">

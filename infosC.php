@@ -21,6 +21,9 @@
     <title>Mes informations</title>
   </head>
 </html>
+
+
+
 <body>
 <?php include 'include/top.php'; ?>
   <div class="middle">

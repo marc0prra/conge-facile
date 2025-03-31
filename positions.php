@@ -21,6 +21,9 @@
     <title>Postes</title>
   </head>
 </html>
+
+
+
 <body>
 <?php include 'include/top.php'; ?>
 <?php include 'include/left.php'; ?>

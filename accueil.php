@@ -38,6 +38,9 @@ if (isset($_SESSION['success_message'])) {
     <title>Accueil</title>
   </head>
 </html>
+
+
+
 <body>
 <?php include 'include/top.php'; ?>
   <div class="middle">
@@ -87,4 +90,5 @@ if (isset($_SESSION['success_message'])) {
       </p>
     </div>
   </div>
+  
 </body>
