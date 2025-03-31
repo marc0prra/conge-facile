@@ -213,8 +213,8 @@ form {
 }
 
 .left a {
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 18px;
   display: flex;
   margin: 9% 0% 0% 0%;
   flex: 1;
@@ -886,6 +886,10 @@ input[type="file"] {
 
 .searchHistorique {
   width: 17%;
+}
+
+.right.historique{
+  max-width: 95%;
 }
 
 .searchHistorique input {
