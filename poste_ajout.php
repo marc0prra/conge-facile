@@ -21,7 +21,7 @@
 <body>
   <?php include 'include/top.php'?>
   <div class='middle'>
-  <?php include 'include/left_admin.php'?>
+  <?php include 'include/left.php'?>
     <div class="right">
         <div class='ajout_dmd'>
             <h1>*nom du poste*</h1>
