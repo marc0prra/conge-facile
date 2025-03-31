@@ -449,8 +449,8 @@ form {
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 35%;
-  padding: 1%;
+  width: 55%;
+  padding: 13px 28px;
   margin-top: 5%;
   border: #004c6c 2px solid;
 }
@@ -704,7 +704,6 @@ input[type="file"] {
 .white {
   color: white;
 }
-/************************************ MES INFOS ************************************/
 .button {
   display: flex;
   align-items: center;
@@ -889,7 +888,7 @@ input[type="file"] {
   padding: 1%;
 }
 
-/************************************* Historique *******************************/
+/************************************* HISTORIQUE *******************************/
 
 .searchHistorique {
   width: 17%;
