@@ -1,3 +1,38 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // Assure-toi que le chemin est correct
+
+$mail = new PHPMailer(true);
+
+try {
+    // Configurer SMTP
+    $mail->isSMTP();
+    $mail->Host = ''; // SMTP de Gmail (ou autre fournisseur)
+    $mail->SMTPAuth = true;
+    $mail->Username = 'lecomteantoine04@gmail.com'; // Ton email
+    $mail->Password = ''; // ⚠️ Si tu as la 2FA, utilise un mot de passe d'application
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+
+    // Destinataire et expéditeur
+    $mail->setFrom('lecomteantoine04@gmail.com', 'Mon Site');
+    $mail->addAddress('antoine.lecomte@lyceestvincent.net'); // Remplace par ton adresse pour tester
+
+    // Contenu du mail
+    $mail->isHTML(true);
+    $mail->Subject = 'Test PHPMailer';
+    $mail->Body = '<h1>Ceci est un test d\'envoi d\'email via PHPMailer</h1>';
+    $mail->AltBody = 'Ceci est un test d\'envoi d\'email via PHPMailer';
+
+    $mail->send();
+    echo 'Email envoyé avec succès ✅';
+} catch (Exception $e) {
+    echo "Erreur lors de l'envoi ❌ : {$mail->ErrorInfo}";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -40,17 +75,11 @@
           réinitialiser votre mot de passe.
         </p>
       </div>
-      <p>Adresse email</p>
-      <input
-        type="email"
-        name="mail"
-        placeholder=" ****@mentalworks.fr"
-        required
-        class="id" 
-      />
-      <button class="renit">
-        Demander a réinitialiser votre mot de passe.
-      </button>
+      <form action="mdp.php" method="POST">
+                <p>Adresse email</p>
+                <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
+                <button type="submit" class="renit">Demander à réinitialiser votre mot de passe</button>
+            </form>
       <p class="ps">
         <a href="connexion.php">Cliquez ici</a> pour retourner à la page de
         connexion.
