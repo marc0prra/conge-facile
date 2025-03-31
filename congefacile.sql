@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 17 mars 2025 à 15:18
+-- Généré le : lun. 31 mars 2025 à 11:58
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -111,7 +111,11 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id`, `request_type_id`, `collaborator_id`, `department_id`, `created_at`, `start_at`, `end_at`, `receipt_file`, `comment`, `answer_comment`, `answer`, `answer_at`) VALUES
-(1, 1, 2, 1, '2025-03-14 15:25:14', '2025-07-01 00:00:00', '2025-07-15 00:00:00', NULL, 'Besoin de vacances', NULL, 0, '2025-03-14 15:25:14');
+(8, 2, 2, 1, '2025-03-19 10:20:18', '2025-02-25 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL),
+(9, 2, 2, 1, '2025-03-19 10:21:08', '2025-02-25 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL),
+(10, 1, 1, 2, '2025-03-19 10:23:08', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
+(11, 1, 1, 2, '2025-03-19 11:21:14', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
+(12, 2, 1, 2, '2025-03-19 11:21:47', '2025-03-13 00:00:00', '2025-03-27 00:00:00', NULL, '', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -153,7 +157,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `enabled`, `created_at`, `role`, `person_id`) VALUES
-(1, 'sophie.martin@email.com', 'password456', 1, '2025-03-14 15:25:14', 'manager', 1),
+(1, 'sophie.martin@email.com', '$2y$10$CbRF0SfEXWO6breRgb4JD.XuZg1m4KQ6WNUtV/rxKpPzXufei2yRW', 1, '2025-03-14 15:25:14', 'manager', 1),
 (2, 'jean.dupont@email.com', '$2y$10$tnDIxPCR07ne2JZQALqzneEeAwwkGnXk0sBgve1OmNt7/i9sgwrMq', 1, '2025-03-14 15:25:14', 'employee', 2);
 
 --
@@ -229,7 +233,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT pour la table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `request_type`
