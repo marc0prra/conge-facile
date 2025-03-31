@@ -1,21 +1,25 @@
-<?php 
+<?php  
 session_start();
 
-// Simuler les types de demandes (à remplacer par une base de données)
-$typesDemandes = [
-    ["type" => "Congé sans solde", "nb" => 400],
-    ["type" => "Congé payé", "nb" => 1000],
-    ["type" => "Congé maladie", "nb" => 750],
-    ["type" => "Congé maternité/paternité", "nb" => 100],
-    ["type" => "Autre", "nb" => 200],
-];
+// Vérifier si la session contient déjà les demandes, sinon les initialiser
+if (!isset($_SESSION['demandes'])) {
+    $_SESSION['demandes'] = [
+        ["id" => 1, "titre" => "Demande de congé", "description" => "Demande de congé annuel."],
+        ["id" => 2, "titre" => "Demande de matériel", "description" => "Commande de nouveau matériel informatique."],
+        ["id" => 3, "titre" => "Demande de formation", "description" => "Inscription à une formation professionnelle."],
+        ["id" => 4, "titre" => "Demande de remboursement", "description" => "Remboursement des frais professionnels."],
+    ];
+}
 
-$typeSelectionne = $_GET['type'] ?? '';
-
+$demandes = &$_SESSION['demandes'];
+$idSelectionne = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $demandeSelectionnee = null;
-foreach ($typesDemandes as $demande) {
-    if ($demande['type'] === $typeSelectionne) {
+$indexSelectionne = null;
+
+foreach ($demandes as $index => $demande) {
+    if ($demande['id'] === $idSelectionne) {
         $demandeSelectionnee = $demande;
+        $indexSelectionne = $index;
         break;
     }
 }
@@ -25,15 +29,17 @@ if (!$demandeSelectionnee) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST["modifier"])) {
-        $nouveauNom = $_POST["nom"];
-        echo "Modification en cours pour : " . htmlspecialchars($nouveauNom);
-        // Code pour mettre à jour la base de données
-    }
-
     if (isset($_POST["supprimer"])) {
-        echo "Suppression de la demande : " . htmlspecialchars($typeSelectionne);
-        // Code pour supprimer la demande de la base de données
+        array_splice($demandes, $indexSelectionne, 1);
+        header("Location: demande.php");
+        exit();
+    }
+    
+    if (isset($_POST["modifier"])) {
+        $demandes[$indexSelectionne]['titre'] = htmlspecialchars($_POST['nom']);
+        $demandes[$indexSelectionne]['description'] = htmlspecialchars($_POST['description']);
+        header("Location: demande.php");
+        exit();
     }
 }
 ?>
@@ -43,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier la demande</title>
+    <title>Détails de la Demande</title>
     <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
@@ -52,12 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php include 'include/left.php'; ?>
         <div class="right">
             <div class="container_admin">
-                <h1 class="title_admin">Types de demandes</h1>
-
+                <h1 class="title_admin">Types de la Demande</h1>
                 <form method="POST" class="form_admin">
-                    <label for="nom" class="label_admin">Nom du type</label>
+                  <label for="nom" class="label_admin">Nom du type</label>
                     <input type="text" id="nom" name="nom" class="input_admin"
-                        value="<?= htmlspecialchars($demandeSelectionnee['type']) ?>" required>
+                        value="<?= htmlspecialchars($demandeSelectionnee['titre']) ?>" required>
+                  
+                  <label for="description" class="label_admin">Nombre de types de congés</label>
+                    <input type="text" id="description" name="description" class="input_admin"
+                        value="<?= htmlspecialchars($demandeSelectionnee['description']) ?>" required>
 
                     <div class="button_container">
                         <button type="submit" name="supprimer" class="btn_red"

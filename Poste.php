@@ -1,13 +1,17 @@
-<?php 
+<?php  
 session_start();
 
-// Simuler les postes (à remplacer par une base de données)
-$postes = [
-    ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],
-    ["id" => 2, "titre" => "Administrateur Réseau", "description" => "Gestion des infrastructures réseau."],
-    ["id" => 3, "titre" => "Analyste Sécurité", "description" => "Protection des systèmes informatiques."],
-    ["id" => 4, "titre" => "Chef de Projet IT", "description" => "Gestion de projets technologiques."],
-];
+// Vérifier si la session contient déjà les postes, sinon les initialiser
+if (!isset($_SESSION['postes'])) {
+    $_SESSION['postes'] = [
+        ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],
+        ["id" => 2, "titre" => "Administrateur Réseau", "description" => "Gestion des infrastructures réseau."],
+        ["id" => 3, "titre" => "Analyste Sécurité", "description" => "Protection des systèmes informatiques."],
+        ["id" => 4, "titre" => "Chef de Projet IT", "description" => "Gestion de projets technologiques."],
+    ];
+}
+
+$postes = &$_SESSION['postes'];
 
 $searchTitre = $_GET['searchTitre'] ?? '';
 $searchDescription = $_GET['searchDescription'] ?? '';
@@ -30,7 +34,6 @@ usort($filteredPostes, function ($a, $b) use ($sortBy, $order) {
 
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -63,7 +66,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 </th>
                                 <th class='search_right_admin'>
                                     <a href="?sortBy=description&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>&searchDescription=<?= htmlspecialchars($searchDescription) ?>">
-                                        Description
+                                        Nb postes liés
                                         <span class="sort-arrow"><?= $sortBy === 'description' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                                     </a>
                                     <input class='searchNb_admin' type="text" name="searchDescription"
