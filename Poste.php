@@ -1,6 +1,7 @@
-
 <?php
-// Tableau de Postes 
+
+session_start();
+
 $typesPoste = [
     ["type" => "Développeur", "nb" => 13],
     ["type" => "Développeur applications mobiles", "nb" => 4],
@@ -9,20 +10,20 @@ $typesPoste = [
     ["type" => "Community Manager", "nb" => 1],
 ];
 
-// Récupération GET (recherche et tri)
+
 $searchType = $_GET['searchType'] ?? '';
 $searchNb = $_GET['searchNb'] ?? '';
 $sortBy = $_GET['sortBy'] ?? 'type';
 $order = $_GET['order'] ?? 'asc';
 
-// Filtrage
+
 $filteredPoste = array_filter($typesPoste, function ($Poste) use ($searchType, $searchNb) {
     return 
         (empty($searchType) || stripos($Poste['type'], $searchType) !== false) &&
         (empty($searchNb) || $Poste['nb'] == $searchNb);
 });
 
-// Tri 
+
 usort($filteredPoste, function ($a, $b) use ($sortBy, $order) {
     if ($order === 'asc') {
         return $a[$sortBy] <=> $b[$sortBy];
@@ -31,7 +32,7 @@ usort($filteredPoste, function ($a, $b) use ($sortBy, $order) {
     }
 });
 
-// Inversion de l'ordre pour le prochain tri
+
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 ?>
 
