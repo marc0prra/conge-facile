@@ -20,6 +20,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT 
+                request.request_type_id,
                 request_type.name AS type_demande, 
                 request.created_at AS date_demande, 
                 request.start_at AS date_debut, 
