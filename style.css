@@ -888,6 +888,10 @@ input[type="file"] {
   width: 17%;
 }
 
+.right.historique{
+  max-width: 95%;
+}
+
 .searchHistorique input {
   width: 80%;
   padding: 6%;
