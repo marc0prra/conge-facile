@@ -449,7 +449,7 @@ form {
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 55%;
+  width: 72%;
   padding: 13px 28px;
   margin-top: 5%;
   border: #004c6c 2px solid;
@@ -520,7 +520,7 @@ form {
   outline: none;
   max-width: 801px;
   width: 100%;
-  min-width: 765px;
+  min-width: 790px;
 }
 
 .error {
@@ -916,7 +916,7 @@ input[type="file"] {
   letter-spacing: 1%;
 }
 
-.sectionRequestDetails .statuts{
+.sectionRequestDetails .statuts {
   padding-top: 3%;
 }
 
