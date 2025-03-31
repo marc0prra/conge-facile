@@ -999,12 +999,28 @@ td:last-child {
 }
 
 .det_button {
-  background-color: #e2e8f0;
   color: #1d2d50;
   padding: 8px 22px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #e2e8f0;
+}
+
+.det-button {
+  color: #1d2d50;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.det-button button {
+  background-color: #e2e8f0;
+}
+
+.det_button button {
+  background-color: #e2e8f0;
 }
 
 .det_button hover {
@@ -1150,7 +1166,6 @@ thead th a:hover {
 }
 
 .det_button {
-  background-color: #e2e8f0;
   color: #1d2d50;
   padding: 8px 22px;
   border: none;
