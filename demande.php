@@ -51,7 +51,6 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
       <title>Types de demandes</title>
 
 
-      
 <body>
   <?php include 'include/top.php'?>
   <div class='middle'>
