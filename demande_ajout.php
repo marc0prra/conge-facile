@@ -20,7 +20,7 @@
 <body>
   <?php include 'include/top.php'?>
   <div class='middle'>
-  <?php include 'include/left_admin.php'?>
+  <?php include 'include/let.php'?>
     <div class="right">
         <div class='ajout_dmd'>
             <h1>Types de demande</h1>
