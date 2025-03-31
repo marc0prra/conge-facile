@@ -67,8 +67,7 @@ try {
     <div class="right">
       <h1>Mot de passe oublié</h1>
       <div class="details">
-        <p>Renseignez votre adresse email dans le champ ci-dessous.</p>
-        <p>
+        <p>Renseignez votre adresse email dans le champ ci-dessous.
           Vous receverez par la suite un email avec un lien vous permettant de
           réinitialiser votre mot de passe.
         </p>
