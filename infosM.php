@@ -21,30 +21,22 @@
     <title>Mes informations</title>
   </head>
 </html>
+
+
+
 <body>
-  <div class="borderTop"></div>
-  <div class="top">
-    <img src="img/mentalworks.png" alt="" />
-  </div>
+<?php include 'include/top.php'; ?>
   <div class="middle">
-    <div class="left">
-      <a href="accueil.php">Accueil</a>
-      <a href="nouvelle.php">Nouvelle demande</a>
-      <a href="">Historique des demandes</a>
-      <div class="rod"></div>
-      <a href="infosC.php" class="active">Mes informations</a>
-      <a href="">Mes préférences</a>
-      <a href="deconnexion.php">Déconnexion</a>
-    </div>
+        <?php include 'include/left.php'; ?>
     <div class="right">
       <h1>Mes informations</h1>
       <form action="infosC.php"  method="POST">
         <div class="infos">
-          <div class="name">
+          <div class="begin">
             <p>Nom de famille</p>
             <input type="text" placeholder="" required/>
           </div>
-          <div class="nameF">
+          <div class="end">
             <p>Prénom</p>
             <input type="text" placeholder="" required/>
           </div>
@@ -100,7 +92,7 @@
                         onclick="togglePassword('password', this)"
                     >
                 </div>
-        <div class="mdp">
+        <div class="infos2">
                     <div class="forgotN">
                         <p class="color">Nouveau mot de passe</p>
                         <input type="password" id="newPassword">
