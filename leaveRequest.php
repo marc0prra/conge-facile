@@ -1,41 +1,46 @@
 <?php
 session_start();
+include 'config.php';
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     header("Location: connexion.php");
     exit();
 }
 
-include 'config.php';
+$pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$user_id = $_SESSION['user_id'];
-$demande = null;
+// Vérifier si l'ID est présent
+$request_id = $_GET['id'] ?? null;
 
-// Vérifier si un ID de demande est fourni
-if (isset($_GET['id'])) {
-    $demande_id = (int) $_GET['id'];
-    
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $query = "SELECT request.id, request_type.name AS type_demande, 
-                         request.start_at AS date_debut, request.end_at AS date_fin, 
-                         request.manager_comment AS commentaire
-                  FROM request
-                  JOIN request_type ON request.request_type_id = request_type.id
-                  WHERE request.id = :demande_id AND request.person_id = :user_id";
-
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':demande_id', $demande_id, PDO::PARAM_INT);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->execute();
-        $demande = $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
-    }
+if (!$request_id) {
+    echo "ID de demande manquant.";
+    exit();
 }
+
+// Récupérer les détails de la demande
+$query = "SELECT 
+            request.id,
+            request.request_type_id,
+            request_type.name AS type_demande, 
+            request.created_at AS date_demande, 
+            request.start_at AS date_debut, 
+            request.end_at AS date_fin,
+            request.comment AS commentaire
+          FROM request
+          JOIN request_type ON request.request_type_id = request_type.id
+          WHERE request.id = :request_id";
+
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':request_id', $request_id, PDO::PARAM_INT);
+$stmt->execute();
+$demande = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$demande) {
+    echo "Aucune demande trouvée.";
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

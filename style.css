@@ -59,6 +59,7 @@ button {
   color: white;
   cursor: pointer;
   border: #004c6c 2px solid;
+  cursor: pointer;
 }
 
 input {
@@ -221,6 +222,12 @@ form {
   width: 62%;
   padding-left: 9%;
   padding-right: 28%;
+}
+
+.left a:hover {
+  color: #004c6c;
+  transition: 0.3s;
+  font-weight: 500;
 }
 
 .rod {
@@ -442,8 +449,8 @@ form {
 /************************************* MDP OUBLIER *******************************/
 .renit {
   border-radius: 9px;
-  width: 35%;
-  padding: 1%;
+  width: 55%;
+  padding: 13px 28px;
   margin-top: 5%;
   border: #004c6c 2px solid;
 }
@@ -512,8 +519,8 @@ form {
   padding: 5% 3% 23%;
   outline: none;
   max-width: 801px;
-
   width: 100%;
+  min-width: 765px;
 }
 
 .error {
@@ -697,7 +704,6 @@ input[type="file"] {
 .white {
   color: white;
 }
-/************************************ MES INFOS ************************************/
 .button {
   display: flex;
   align-items: center;
@@ -882,7 +888,7 @@ input[type="file"] {
   padding: 1%;
 }
 
-/************************************* Historique *******************************/
+/************************************* HISTORIQUE *******************************/
 
 .searchHistorique {
   width: 17%;
@@ -899,6 +905,29 @@ input[type="file"] {
 
 .searchListe {
   padding: 3%;
+}
+
+/********************** Ma demande de conge **************************/
+
+.sectionRequestDetails {
+  line-height: 31.6px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1%;
+}
+
+.sectionRequestDetails .statuts{
+  padding-top: 3%;
+}
+
+p.TypeRequest {
+  margin: 0;
+}
+
+input.mangerComment {
+  padding: 2% 2% 10%;
+  width: 60%;
+  margin-bottom: 3%;
 }
 
 /******************************** Administration - Type de demande ************************************/
@@ -993,12 +1022,28 @@ td:last-child {
 }
 
 .det_button {
-  background-color: #e2e8f0;
   color: #1d2d50;
   padding: 8px 22px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #e2e8f0;
+}
+
+.det-button {
+  color: #1d2d50;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.det-button button {
+  background-color: #e2e8f0;
+}
+
+.det_button button {
+  background-color: #e2e8f0;
 }
 
 .det_button hover {
@@ -1012,6 +1057,7 @@ td:last-child {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  display: none;
 }
 
 .search-btn:hover {
@@ -1143,7 +1189,6 @@ thead th a:hover {
 }
 
 .det_button {
-  background-color: #e2e8f0;
   color: #1d2d50;
   padding: 8px 22px;
   border: none;
