@@ -76,7 +76,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
       rel="stylesheet"
     />
 
-    <title>Historique de mes demandes</title>
+    <title>Historique</title>
   </head>
 
   
@@ -148,7 +148,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td>
-                                    <a href="leaveRequest.php?id=<?= $demande['id'] ?>">
+                                    <a href="leaveRequest.php?id=<?= $demande['request_type_id'] ?>">
                                         <button class="det_button">Détails</button>
                                     </a>
                                 </td>
