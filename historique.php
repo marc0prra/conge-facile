@@ -76,7 +76,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
       rel="stylesheet"
     />
 
-    <title>Historique</title>
+    <title>Historique de mes demandes</title>
   </head>
 
   
