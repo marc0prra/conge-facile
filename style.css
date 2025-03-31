@@ -59,6 +59,7 @@ button {
   color: white;
   cursor: pointer;
   border: #004c6c 2px solid;
+  cursor: pointer;
 }
 
 input {
@@ -221,6 +222,12 @@ form {
   width: 62%;
   padding-left: 9%;
   padding-right: 28%;
+}
+
+.left a:hover {
+  color: #004c6c;
+  transition: 0.3s;
+  font-weight: 500;
 }
 
 .rod {
@@ -1012,6 +1019,7 @@ td:last-child {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  display: none;
 }
 
 .search-btn:hover {
