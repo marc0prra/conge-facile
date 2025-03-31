@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    die("Utilisateur non connecté. <a href='connexion.php'>Se connecter</a>");
+    header("Location: connexion.php");
+    exit();
 }
 
 include 'config.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Récupérer le department_id de l'utilisateur
+
 $query = "SELECT department_id FROM person WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
@@ -27,7 +27,6 @@ $department_id = $userData["department_id"];
 $error_message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier que les champs ne sont pas vides
     if (empty($_POST["request_type_id"]) || empty($_POST["start_date"]) || empty($_POST["end_date"])) {
         $error_message = "Tous les champs obligatoires doivent être remplis.";
     } else {
@@ -37,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $comment = $_POST["comment"] ?? null;
         $created_at = date("Y-m-d H:i:s");
 
-        // Gestion du fichier justificatif
+       
         $receipt_file = null;
         if (isset($_FILES["receipt"]) && $_FILES["receipt"]["error"] == 0) {
             $target_dir = "uploads/";

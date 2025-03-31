@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['user_id'])) {
+  header("Location: connexion.php");
+  exit();
+}
+
+
 if (isset($_SESSION['success_message'])) {
     echo '<div class="containerNotif">
             <div class="notification notification--success">
