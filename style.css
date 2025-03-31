@@ -519,8 +519,8 @@ form {
   padding: 5% 3% 23%;
   outline: none;
   max-width: 801px;
-
   width: 100%;
+  min-width: 765px;
 }
 
 .error {
