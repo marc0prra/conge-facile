@@ -1,13 +1,13 @@
 <?php
-session_start();
+session_start() ;
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
+    header("Location: connexion.php") ;
     exit();
 }
 
 $order = 'asc'; 
-$order = $_GET['order'] ?? $order;
+$order = $_GET['order'] ?? $order ;
 
 include 'config.php';
 
