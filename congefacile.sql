@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 11 avr. 2025 à 12:25
+-- Généré le : ven. 11 avr. 2025 à 12:38
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -38,7 +38,9 @@ CREATE TABLE `department` (
 
 INSERT INTO `department` (`id`, `name`) VALUES
 (1, 'Informatique'),
-(2, 'Ressources Humaines');
+(2, 'Ressources Humaines'),
+(3, 'Informatique'),
+(4, 'Ressources Humaines');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,13 @@ CREATE TABLE `person` (
 
 INSERT INTO `person` (`id`, `last_name`, `first_name`, `manager_id`, `department_id`, `position_id`, `alert_new_request`, `alert_on_answer`, `alert_before_vacation`) VALUES
 (1, 'Martin', 'Sophie', NULL, 1, 2, 1, 1, 1),
-(2, 'Dupont', 'Jean', 1, 1, 1, 1, 1, 1);
+(2, 'Dupont', 'Jean', 1, 1, 1, 1, 1, 1),
+(3, 'Durand', 'Claire', NULL, 1, 2, 1, 1, 1),
+(4, 'Martin', 'Alice', 1, 1, 1, 1, 1, 0),
+(5, 'Petit', 'Louis', 1, 1, 1, 1, 1, 1),
+(6, 'Bernard', 'Sophie', NULL, 2, 2, 1, 1, 1),
+(7, 'Lemoine', 'David', 6, 2, 1, 0, 1, 1),
+(8, 'Morel', 'Emma', 6, 2, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -116,7 +124,13 @@ INSERT INTO `request` (`id`, `request_type_id`, `collaborator_id`, `department_i
 (10, 1, 1, 2, '2025-03-19 10:23:08', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
 (11, 1, 1, 2, '2025-03-19 11:21:14', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
 (12, 2, 1, 2, '2025-03-19 11:21:47', '2025-03-13 00:00:00', '2025-03-27 00:00:00', NULL, '', NULL, 0, NULL),
-(13, 1, 2, 1, '2025-03-31 17:20:25', '2025-03-13 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL);
+(13, 1, 2, 1, '2025-03-31 17:20:25', '2025-03-13 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL),
+(14, 1, 2, 1, '2025-03-01 08:00:00', '2025-04-01 00:00:00', '2025-04-10 00:00:00', NULL, 'Vacances de printemps', 'Validée par Claire', 1, '2025-03-05 10:00:00'),
+(15, 2, 3, 1, '2025-03-10 08:00:00', '2025-04-15 00:00:00', '2025-04-15 00:00:00', NULL, 'RTT', NULL, 0, NULL),
+(16, 3, 5, 2, '2025-02-01 09:00:00', '2025-02-03 00:00:00', '2025-02-05 00:00:00', NULL, 'Maladie fièvre', 'Refus - pas de doc', 2, '2025-02-03 13:00:00'),
+(17, 1, 6, 2, '2025-05-01 08:00:00', '2025-06-15 00:00:00', '2025-06-25 00:00:00', NULL, 'Congés été', 'OK bon timing', 1, '2025-05-05 12:00:00'),
+(18, 1, 3, 1, '2025-05-20 08:00:00', '2025-07-01 00:00:00', '2025-07-03 00:00:00', NULL, 'Petit break', NULL, 0, NULL),
+(19, 2, 5, 2, '2025-03-20 08:00:00', '2025-03-25 00:00:00', '2025-03-25 00:00:00', NULL, 'RTT ponctuel', 'Accepté', 1, '2025-03-21 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -135,7 +149,10 @@ CREATE TABLE `request_type` (
 
 INSERT INTO `request_type` (`id`, `name`) VALUES
 (1, 'Congé payé'),
-(2, 'Congé sans solde');
+(2, 'Congé sans solde'),
+(3, 'Congés payés'),
+(4, 'RTT'),
+(5, 'Maladie');
 
 -- --------------------------------------------------------
 
@@ -216,31 +233,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `position`
 --
 ALTER TABLE `position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `request_type`
 --
 ALTER TABLE `request_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `user`
