@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 31 mars 2025 à 11:58
+-- Généré le : ven. 11 avr. 2025 à 12:25
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -63,7 +63,7 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`id`, `last_name`, `first_name`, `manager_id`, `department_id`, `position_id`, `alert_new_request`, `alert_on_answer`, `alert_before_vacation`) VALUES
-(1, 'Martin', 'Sophie', NULL, 2, 2, 1, 1, 1),
+(1, 'Martin', 'Sophie', NULL, 1, 2, 1, 1, 1),
 (2, 'Dupont', 'Jean', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -115,7 +115,8 @@ INSERT INTO `request` (`id`, `request_type_id`, `collaborator_id`, `department_i
 (9, 2, 2, 1, '2025-03-19 10:21:08', '2025-02-25 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL),
 (10, 1, 1, 2, '2025-03-19 10:23:08', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
 (11, 1, 1, 2, '2025-03-19 11:21:14', '2025-03-07 00:00:00', '2025-03-21 00:00:00', NULL, 'test', NULL, 0, NULL),
-(12, 2, 1, 2, '2025-03-19 11:21:47', '2025-03-13 00:00:00', '2025-03-27 00:00:00', NULL, '', NULL, 0, NULL);
+(12, 2, 1, 2, '2025-03-19 11:21:47', '2025-03-13 00:00:00', '2025-03-27 00:00:00', NULL, '', NULL, 0, NULL),
+(13, 1, 2, 1, '2025-03-31 17:20:25', '2025-03-13 00:00:00', '2025-03-20 00:00:00', NULL, '', NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +234,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT pour la table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `request_type`
