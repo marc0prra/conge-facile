@@ -137,6 +137,40 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                     <th></th>
                 </tr>
             </thead>
+            <?php 
+            $holidays = [
+                "2025-01-01",
+                "2025-04-21",
+                "2025-05-01",
+                "2025-05-08",
+                "2025-05-29",
+                "2025-06-09",
+                "2025-07-14",
+                "2025-08-15",
+                "2025-11-01",
+                "2025-11-11",
+                "2025-12-25"
+            ];
+
+            function getWorkingDays($start, $end, $holidays = []) {
+                $begin = new DateTime($start);
+                $end = new DateTime($end);
+                $end->modify('+1 day');
+
+                $interval = new DateInterval('P1D');
+                $dateRange = new DatePeriod($begin, $interval, $end);
+
+                $workingDays = 0;
+                foreach ($dateRange as $date) {
+                    $day = $date->format('N'); // 6 = samedi, 7 = dimanche
+                    $formatted = $date->format('Y-m-d');
+                        if ($day < 6 && !in_array($formatted, $holidays)) {
+                            $workingDays++;
+                        }
+                }
+                return $workingDays;
+            }
+            ?>
             <tbody>
                 <div class='tab_Poste'>
                     <?php if (count($demandes) > 0) : ?>
@@ -146,7 +180,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars($demande['date_demande']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_debut']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_fin']) ?></td>
-                                <td><?= htmlspecialchars($demande['type_demande']) ?></td>
+                                <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
                                 <td>
                                     <a class="det-button" href="leaveRequest.php?id=<?=$demande['request_type_id'];?>">
@@ -165,7 +199,6 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
         </table>
       </div>
     </div>
-
 </body>
 </html>
 
