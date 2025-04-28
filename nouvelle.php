@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             move_uploaded_file($_FILES["receipt"]["tmp_name"], $receipt_file);
         }
 
-        // Requête SQL avec ajout de `department_id`
+       
         $sql = "INSERT INTO request (request_type_id, collaborator_id, department_id, created_at, start_at, end_at, receipt_file, comment, answer) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)";
 

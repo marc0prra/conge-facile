@@ -4,31 +4,39 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-$mail = new PHPMailer(true);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
+    $userEmail = $_POST['mail'];
 
-try {
-    $mail->isSMTP();
-    $mail->Host = 'smtp.office365.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'antoine.lecomte@lyceestvincent.net';
-    $mail->Password = 'Bd126019*';
+    $mail = new PHPMailer(true);
 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'resetmotdepasse00@gmail.com';
+        $mail->Password = 'fonccymfcqtioqbv';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
-    $mail->setFrom('antoine.lecomte@lyceestvincent.net', 'Test');
-    $mail->addAddress('antoine.lecomte@lyceestvincent.net');
+        $mail->setFrom('resetmotdepasse00@gmail.com', 'Support Mot de passe');
+        $mail->addAddress($userEmail);
 
-    $mail->isHTML(true);
-    $mail->Subject = 'Test PHPMailer';
-    $mail->Body = '<h1>Test</h1>';
+        $mail->isHTML(true);
+        $mail->Subject = 'Réinitialisation de votre mot de passe';
+        $mail->Body = "
+            <h1>Réinitialisation de mot de passe</h1>
+            <p>Veuillez cliquer sur ce lien pour réinitialiser votre mot de passe.</p>
+        ";
 
-    $mail->send();
-    echo 'Email envoyé avec succès ✅';
-} catch (Exception $e) {
-    echo "Erreur lors de l\'envoi ❌ : {$mail->ErrorInfo}";
+        $mail->send();
+        echo '✅ Email envoyé avec succès !';
+    } catch (Exception $e) {
+        echo "❌ Erreur lors de l'envoi : {$mail->ErrorInfo}";
+    }
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
