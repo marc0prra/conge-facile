@@ -118,7 +118,6 @@ if (!$demande) {
                     <p class="TypeRequest"> Type de congé : <?= htmlspecialchars($demande['type_demande']) ?> </p>
                     <p class="TypeRequest"> Période : <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?> au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?> </p>
                     <p class="TypeRequest"> Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></p>
-                    <p class="TypeRequest"> Statut de la demande : <?= getStatus($demande['etat_demande']) ?></p>
                     <div class="justificative RequestDetails">
                         <p class="color">Commentaire du manager</p>
                         <input class="managerComment" type="text" name="comment"
