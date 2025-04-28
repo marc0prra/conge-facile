@@ -20,6 +20,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT 
+                request.id,
                 request.request_type_id,
                 request_type.name AS type_demande, 
                 request.created_at AS date_demande, 
@@ -201,7 +202,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
                                 <td><?= getStatus($demande['etat_demande']) ?></td>
                                 <td>
-                                    <a class="det-button" href="leaveRequest.php?id=<?=$demande['request_type_id'];?>">
+                                    <a class="det-button" href="leaveRequest.php?id=<?=$demande['id'];?>">
                                         <button class="det-button">Détails</button>
                                     </a>
                                 </td>
