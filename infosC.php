@@ -1,26 +1,69 @@
+<?php
+session_start();
+
+// Connexion à la base de données
+$host = "localhost";
+$dbname = "congefacile";
+$username = "root";
+$password = "";
+
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Vérification de connexion
+if ($conn->connect_error) {
+    die("Erreur de connexion: " . $conn->connect_error);
+}
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    echo "Aucun utilisateur connecté.";
+    exit;
+}
+
+// Récupération des informations de l'utilisateur
+$user_id = $_SESSION['user_id'];
+
+$sql = "
+    SELECT person.last_name, person.first_name, user.email
+    FROM user
+    INNER JOIN person ON user.person_id = person.id
+    WHERE user.id = ?
+";
+
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    die("Erreur lors de la préparation de la requête: " . $conn->error);
+}
+
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+    echo "Utilisateur non trouvé.";
+    exit;
+}
+
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="stylesheet" href="style.css?v=2" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet" />
-
-        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-
-        <title>Mes informations</title>
-    </head>
-
-</html>
-
-
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <title>Mes informations</title>
+</head>
 
 <body>
     <?php include 'include/top.php'; ?>
@@ -32,22 +75,23 @@
                 <div class="infos">
                     <div class="begin">
                         <p>Nom de famille</p>
-                        <input type="text" placeholder="" required />
+                        <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required />
                     </div>
                     <div class="end">
                         <p>Prénom</p>
-                        <input type="text" placeholder="" required />
+                        <input type="text" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required />
                     </div>
                 </div>
                 <div class="email">
                     <p>Adresse email</p>
-                    <input type="text" placeholder="" style="
-              background-image: url('img/email.png');
-              background-size: 20px;
-              background-position: 10px center;
-              background-repeat: no-repeat;
-            " required />
+                    <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" style="
+                        background-image: url('img/email.png');
+                        background-size: 20px;
+                        background-position: 10px center;
+                        background-repeat: no-repeat;
+                    " required />
                 </div>
+
                 <div class="service">
                     <div class="services">
                         <div class="direction">
@@ -73,33 +117,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="">
-                    <h2>Réinitialiser son mot de passe</h2>
-                    <div class="forgot">
-                        <p class="color">Mot de passe actuel</p>
-                        <input type="password" id="password">
-                        <img src="img/open-eye.png" alt="Afficher" class="toggle-password"
-                            onclick="togglePassword('password', this)">
-                    </div>
-                    <div class="infos2">
-                        <div class="forgotN">
-                            <p class="color">Nouveau mot de passe</p>
-                            <input type="password" id="newPassword">
-                            <img src="img/open-eye.png" alt="Afficher" class="toggle-password"
-                                onclick="togglePassword('newPassword', this)">
-                        </div>
 
-                        <div class="forgotF">
-                            <p class="color">Confirmation du mot de passe</p>
-                            <input type="password" id="confirmPassword">
-                            <img src="img/open-eye.png" alt="Afficher" class="toggle-password"
-                                onclick="togglePassword('confirmPassword', this)">
-                        </div>
+                <h2>Réinitialiser son mot de passe</h2>
+                <div class="forgot">
+                    <p class="color">Mot de passe actuel</p>
+                    <input type="password" id="password">
+                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('password', this)">
+                </div>
+                <div class="infos2">
+                    <div class="forgotN">
+                        <p class="color">Nouveau mot de passe</p>
+                        <input type="password" id="newPassword">
+                        <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('newPassword', this)">
+                    </div>
+                    <div class="forgotF">
+                        <p class="color">Confirmation du mot de passe</p>
+                        <input type="password" id="confirmPassword">
+                        <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
                     </div>
                 </div>
             </form>
+
             <button class="initial"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
+</html>
