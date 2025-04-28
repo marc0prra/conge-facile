@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // <<< Important pour GMAIL
         $mail->SMTPAuth = true;
-        $mail->Username = 'lecomteantoine04@gmail.com'; // Ton adresse Gmail
-        $mail->Password = 'atfgjyerlmmadxcc'; // Ton mot de passe Gmail OU mot de passe d'application
+        $mail->Username = 'resetmotdepasse00@gmail.com'; // Ton adresse Gmail
+        $mail->Password = 'fonccymfcqtioqbv'; // Ton mot de passe Gmail OU mot de passe d'application
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('lecomteantoine04@gmail.com', 'Support Mot de passe');
+        $mail->setFrom('resetmotdepasse00@gmail.com', 'Support Mot de passe');
         $mail->addAddress($userEmail);
 
         $mail->isHTML(true);
