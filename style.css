@@ -726,6 +726,7 @@ input[type="file"] {
   align-items: center;
   height: 100vh;
   gap: 0.5rem;
+  display: unset;
 }
 
 .notification--info {
@@ -830,6 +831,8 @@ input[type="file"] {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  display: unset;
+  display: none;
 }
 /************************************* BUTTON *******************************/
 .switch {

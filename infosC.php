@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Connexion à la base de données
 $host = "localhost";
 $dbname = "congefacile";
 $username = "root";
@@ -9,18 +8,15 @@ $password = "";
 
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Vérification de connexion
 if ($conn->connect_error) {
     die("Erreur de connexion: " . $conn->connect_error);
 }
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     echo "Aucun utilisateur connecté.";
     exit;
 }
 
-// Récupération des informations de l'utilisateur
 $user_id = $_SESSION['user_id'];
 
 $sql = "

@@ -1,7 +1,6 @@
 <?php 
 session_start();
 
-// Simuler les postes (à remplacer par une base de données)
 $_SESSION['postes'] = $_SESSION['postes'] ?? [
     ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],
     ["id" => 2, "titre" => "Administrateur Réseau", "description" => "Gestion des infrastructures réseau."],
