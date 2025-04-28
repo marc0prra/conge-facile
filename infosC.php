@@ -71,11 +71,11 @@ $conn->close();
                 <div class="infos">
                     <div class="begin">
                         <p>Nom de famille</p>
-                        <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required />
+                        <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" readonly />
                     </div>
                     <div class="end">
                         <p>Prénom</p>
-                        <input type="text" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required />
+                        <input type="text" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" readonly />
                     </div>
                 </div>
                 <div class="email">
@@ -85,21 +85,21 @@ $conn->close();
                         background-size: 20px;
                         background-position: 10px center;
                         background-repeat: no-repeat;
-                    " required />
+                    "  readonly/>
                 </div>
 
                 <div class="service">
                     <div class="services">
                         <div class="direction">
                             <p>Direction/Service</p>
-                            <select name="direction" required>
+                            <select name="direction" readonly>
                                 <option value="1">BU Symfony</option>
                                 <option value="2">Mentalworks</option>
                             </select>
                         </div>
                         <div class="poste">
                             <p>Poste</p>
-                            <select name="poste" required>
+                            <select name="poste" readonly>
                                 <option value="1">Directeur technique</option>
                                 <option value="2">Lead developper</option>
                             </select>
@@ -107,7 +107,7 @@ $conn->close();
                     </div>
                     <div class="manager">
                         <p>Manager</p>
-                        <select name="manager" required>
+                        <select name="manager" readonly>
                             <option value="1">Frédéric Salesses</option>
                             <option value="2">test test</option>
                         </select>
