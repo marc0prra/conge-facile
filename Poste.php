@@ -1,7 +1,7 @@
 <?php  
 session_start();
 
-// Vérifier si la session contient déjà les postes, sinon les initialiser
+
 if (!isset($_SESSION['postes'])) {
     $_SESSION['postes'] = [
         ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],

@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // <<< Important pour GMAIL
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'resetmotdepasse00@gmail.com'; // Ton adresse Gmail
-        $mail->Password = 'fonccymfcqtioqbv'; // Ton mot de passe Gmail OU mot de passe d'application
+        $mail->Username = 'resetmotdepasse00@gmail.com';
+        $mail->Password = 'fonccymfcqtioqbv';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 

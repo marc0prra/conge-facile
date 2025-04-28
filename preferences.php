@@ -3,11 +3,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $alerte_conge = isset($_POST["alerte_conge"]) ? 1 : 0;
     $rappel_conge = isset($_POST["rappel_conge"]) ? 1 : 0;
 
-    // Création des cookies valables 30 jours
+    
     setcookie("alerte_conge", $alerte_conge, time() + 30 * 24 * 60 * 60, "/");
     setcookie("rappel_conge", $rappel_conge, time() + 30 * 24 * 60 * 60, "/");
 
-    // Recharge la page pour appliquer les changements
+    
     header("Location: " . $_SERVER["PHP_SELF"]);
     exit();
 }
