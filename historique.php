@@ -24,7 +24,8 @@ try {
                 request_type.name AS type_demande, 
                 request.created_at AS date_demande, 
                 request.start_at AS date_debut, 
-                request.end_at AS date_fin
+                request.end_at AS date_fin,
+                request.answer AS etat_demande
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
               WHERE request.collaborator_id = :user_id";
@@ -170,6 +171,23 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                 }
                 return $workingDays;
             }
+
+            function getStatus($codes) {
+                // Convertir la chaîne en tableau
+                $numbers = explode(',', $codes);
+            
+                // Vérifier les numéros dans l'ordre de priorité
+                if (in_array('0', $numbers)) {
+                    return 'En cours';
+                } elseif (in_array('1', $numbers)) {
+                    return 'Acceptée';
+                } elseif (in_array('2', $numbers)) {
+                    return 'Refusée';
+                } else {
+                    return 'Statut inconnu';
+                }
+            }
+
             ?>
             <tbody>
                 <div class='tab_Poste'>
@@ -181,7 +199,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars($demande['date_debut']) ?></td>
                                 <td><?= htmlspecialchars($demande['date_fin']) ?></td>
                                 <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
-                                <td><?= htmlspecialchars($demande['type_demande']) ?></td>
+                                <td><?= getStatus($demande['etat_demande']) ?></td>
                                 <td>
                                     <a class="det-button" href="leaveRequest.php?id=<?=$demande['request_type_id'];?>">
                                         <button class="det-button">Détails</button>
@@ -201,4 +219,3 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
     </div>
 </body>
 </html>
-
