@@ -109,18 +109,22 @@ $conn->close();
                         <div class="begin">
                             <p class="date color">Date début - champ obligatoire</p>
                             <input type="date" name="start_date" style="
-                            background-image: url('img/calendar.png');
-                            background-size: 20px;
-                            background-position: 10px center;
-                            background-repeat: no-repeat;">
+                                background-image: url(img/calendar.png);
+                                background-size: 20px;
+                                background-position: 10px center;
+                                background-repeat: no-repeat;
+                                padding-left: 35px;
+                                max-width: 340px;">
                         </div>
                         <div class="end">
                             <p class="date color">Date de fin - champ obligatoire</p>
                             <input type="date" name="end_date" style="
-                            background-image: url('img/calendar.png');
-                            background-size: 20px;
-                            background-position: 10px center;
-                            background-repeat: no-repeat;">
+                                background-image: url(img/calendar.png);
+                                background-size: 20px;
+                                background-position: 10px center;
+                                background-repeat: no-repeat;
+                                padding-left: 35px;
+                                max-width: 340px;">                            
                         </div>
                     </div>
 

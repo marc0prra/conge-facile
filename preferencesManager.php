@@ -1,13 +1,17 @@
 <?php
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $alerte_conge = isset($_POST["alerte_conge"]) ? 1 : 0;
     $rappel_conge = isset($_POST["rappel_conge"]) ? 1 : 0;
 
-   
-    setcookie("alerte_conge", $alerte_conge, time() + 30 * 24 * 60 * 60, "/");
-    setcookie("rappel_conge", $rappel_conge, time() + 30 * 24 * 60 * 60, "/");
+    // Durée de vie des cookies : 30 jours
+    $expiry = time() + (30 * 24 * 60 * 60);
 
-    
+    setcookie("alerte_conge", $alerte_conge, $expiry, "/");
+    setcookie("rappel_conge", $rappel_conge, $expiry, "/");
+
+    // Rediriger pour éviter le renvoi du formulaire si on rafraîchit la page
     header("Location: " . $_SERVER["PHP_SELF"]);
     exit();
 }

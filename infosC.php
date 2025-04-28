@@ -92,14 +92,14 @@ $conn->close();
                     <div class="services">
                         <div class="direction">
                             <p>Direction/Service</p>
-                            <select name="direction" readonly>
+                            <select name="direction" disabled>
                                 <option value="1">BU Symfony</option>
                                 <option value="2">Mentalworks</option>
                             </select>
                         </div>
                         <div class="poste">
                             <p>Poste</p>
-                            <select name="poste" readonly>
+                            <select name="poste" disabled>
                                 <option value="1">Directeur technique</option>
                                 <option value="2">Lead developper</option>
                             </select>
@@ -107,7 +107,7 @@ $conn->close();
                     </div>
                     <div class="manager">
                         <p>Manager</p>
-                        <select name="manager" readonly>
+                        <select name="manager" disabled>
                             <option value="1">Frédéric Salesses</option>
                             <option value="2">test test</option>
                         </select>

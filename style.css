@@ -462,6 +462,10 @@ form {
   gap: 45px;
 }
 
+.dates input {
+  padding-left: 35px;
+}
+
 .begin input {
   width: 124%;
   padding: 12px 16px 12px 20px;
