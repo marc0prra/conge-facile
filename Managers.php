@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Initialisation avec des valeurs par défaut si pas encore définies
 if (!isset($_SESSION['managers'])) {
     $_SESSION['managers'] = [
         ["id" => 1, "nom" => "Dupont", "prenom" => "Jean", "service" => "Informatique"],

@@ -134,7 +134,7 @@ $conn->close();
                 </div>
             </form>
 
-            <button class="initial"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
+            <button class="resetPswd"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
         </div>
     </div>
     <script src="script.js"></script>
