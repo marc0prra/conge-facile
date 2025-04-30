@@ -704,13 +704,15 @@ input[type="file"] {
 }
 
 .initial {
-  width: 282px;
+  width: 227px;
   color: white;
   margin-top: 3%;
   border-radius: 5px;
   margin-bottom: 4%;
   padding: 13px 28px;
-  margin-top: 8%;
+  height: 41px;
+  align-items: center;
+  display: flex;
 }
 
 .white {

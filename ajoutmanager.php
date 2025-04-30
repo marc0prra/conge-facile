@@ -7,59 +7,54 @@ if (!isset($_SESSION['managers'])) {
 
 $managers = &$_SESSION['managers'];
 
-if (isset($_POST['modifier'])) {
+if (isset($_POST['ajouter'])) {
     $nom = trim($_POST['nom']);
+    $prenom = trim($_POST['prenom']);
+    $service = trim($_POST['service']);
 
-    if (!empty($nom)) {
-        $nextId = 1;
-        if (!empty($managers)) {
-            $ids = array_column($managers, 'id');
-            $nextId = max($ids) + 1;
-        }
+    if (!empty($nom) && !empty($prenom) && !empty($service)) {
+        $nextId = !empty($managers) ? max(array_column($managers, 'id')) + 1 : 1;
 
         $managers[] = [
             'id' => $nextId,
-            'titre' => $nom
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'service' => $service
         ];
 
-        header("Location: managers.php");
+        header("Location: Managers.php");
         exit;
     }
 }
-
-if (isset($_POST['supprimer'])) {
-    header("Location: managers.php");
-    exit;
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css?v=2" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <title>Ajouter un manager</title>
+    <title>Ajouter un Manager</title>
 </head>
-
 <body>
 <?php include 'include/top.php'; ?>
 <div class="middle">
     <?php include 'include/left.php'; ?>
     <div class="right">
-        <h1>Ajoutez un manager</h1>
+        <h1>Ajouter un manager</h1>
         <div class="ajout_post">
             <form method="POST" class="form_admin">
-                <label for="nom" class="label_admin">Nom du manager</label>
+                <label for="nom" class="label_admin">Nom de famille</label>
                 <input type="text" id="nom" name="nom" class="input_admin" required>
 
+                <label for="prenom" class="label_admin">Prénom</label>
+                <input type="text" id="prenom" name="prenom" class="input_admin" required>
+
+                <label for="service" class="label_admin">Service</label>
+                <input type="text" id="service" name="service" class="input_admin" required>
+
                 <div class="button_container">
-                    <button type="button" class="btn_red"><a href="managers.php">Annuler</a></button>
-                    <button type="submit" name="modifier" class="btn_blue">Ajouter</button>
+                    <a href="Managers.php" class="btn_red">Annuler</a>
+                    <button type="submit" name="ajouter" class="btn_blue">Ajouter</button>
                 </div>
             </form>
         </div>
