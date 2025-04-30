@@ -59,7 +59,7 @@ $user_prenom = $_SESSION['user_prenom'] ?? 'Utilisateur';
       <div class="dropdown-content">
         <a href="demande.php">Types de demandes</a>
         <a href="direction.php">Directions/Services</a>
-        <a href="#">Managers</a>
+        <a href="Managers.php">Managers</a>
         <a href="poste.php">Postes</a>
       </div>
     </div>
