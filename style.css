@@ -1304,6 +1304,10 @@ thead th a:hover {
   display: flex;
 }
 
+.button_container a {
+  color: white;
+}
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .id {

@@ -63,7 +63,7 @@ if (isset($_POST['supprimer'])) {
                 <input type="number" id="description" name="description" class="input_admin" required>
 
                 <div class="button_container">
-                    <button type="submit" name="supprimer" class="btn_red">Annuler</button>
+                    <button type="button" name="supprimer" class="btn_red"><a href="poste.php">Annuler</a></button>
                     <button type="submit" name="modifier" class="btn_blue">Ajouter</button>
                 </div>
             </form>
