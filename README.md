@@ -38,4 +38,6 @@ Ajouter un poste :
 Voir les différents postes et leurs nombres au sein de l'entreprise :
 ![image](https://github.com/user-attachments/assets/4ac5e034-9ca9-4a50-98f6-548440311029)
 
+Voici notre base de donnée : 
+![image](https://github.com/user-attachments/assets/741e08b2-f825-42db-97c4-5e4068b07451)
 
