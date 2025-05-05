@@ -131,7 +131,7 @@ function getWorkingDays($start, $end, $holidays = []) {
             <div class="managerResponse">
                 <h1>Répondre à la demande</h1>
 
-                <form method="post" action="traitement_reponse.php">
+                <form method="post" action="traitementReponse.php">
                     <div class="justificative RequestDetails">
                         <p class="color">Saisir un commentaire</p>
                         <input class="managerComment" type="text" name="response_comment"
