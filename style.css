@@ -440,6 +440,12 @@ form {
   padding: 3%;
   width: 25%;
   text-align: center;
+  transition: 0.7s;
+}
+
+.block:hover {
+  transform: scale(1.2, 1.2);
+  transition: 0.7s;
 }
 
 .block p {

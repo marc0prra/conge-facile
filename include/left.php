@@ -3,19 +3,24 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Récupération du rôle et du prénom de l'utilisateur depuis la session
 $user_role = $_SESSION['user_role'] ?? '1';
 $user_prenom = $_SESSION['user_prenom'] ?? 'Utilisateur';
 
-try {
-  $queryCount = "SELECT COUNT(*) as total 
-                 FROM request 
-                 WHERE answer = 0"; // uniquement les demandes en cours
+// Vérification de l'existence de la connexion PDO
+if (!isset($pdo)) {
+    require_once 'config.php'; // Assure-toi que ce fichier initialise correctement $pdo
+}
 
-  $stmtCount = $pdo->query($queryCount);
-  $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
-  $nombreDemandes = $resultCount['total'];
+try {
+    // Requête pour compter les demandes non traitées (answer = 0)
+    $queryCount = "SELECT COUNT(*) as total FROM request WHERE answer = 0";
+    $stmtCount = $pdo->query($queryCount);
+    $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
+    $nombreDemandes = $resultCount['total'];
 } catch (PDOException $e) {
-  $nombreDemandes = 'E';
+    // En cas d'erreur, on affiche 'E' pour éviter une interruption du site
+    $nombreDemandes = 'E';
 }
 ?>
 
@@ -49,7 +54,7 @@ try {
         <img src="img/téléchargement.png" alt="skin">
       </div>
       <div class="infoSkin">
-      <strong class="nameSkin"><?= htmlspecialchars($_SESSION['user_prenom'] ?? 'Utilisateur') ?></strong>
+        <strong class="nameSkin"><?= htmlspecialchars($user_prenom) ?></strong>
         <p class="typeSkin">Collaborateur</p>
       </div>
     </div>
@@ -79,10 +84,10 @@ try {
     <a href="deconnexion.php">Déconnexion</a>
     <div class="skin">
       <div class="headSkin">
-        <img src="img/téléchargement (1).png" alt="">
+        <img src="img/téléchargement (1).png" alt="skin">
       </div>
       <div class="infoSkin">
-      <strong class="nameSkin"><?= htmlspecialchars($_SESSION['user_prenom'] ?? 'Utilisateur') ?></strong>
+        <strong class="nameSkin"><?= htmlspecialchars($user_prenom) ?></strong>
         <p class="typeSkin">Manager</p>
       </div>
     </div>
