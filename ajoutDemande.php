@@ -51,21 +51,23 @@ if (isset($_POST['annuler'])) {
 <?php include 'include/top.php'; ?>
 <div class="middle">
     <?php include 'include/left.php'; ?>
-    <div class="right">
-        <h1>Ajoutez une demande</h1>
-        <div class="ajout_post">
-            <form method="POST" class="form_admin">
-                <label for="titre" class="label_admin">Titre de la demande</label>
-                <input type="text" id="titre" name="titre" class="input_admin" required>
-
-                <label for="description" class="label_admin">Description</label>
-                <input type="text" id="description" name="description" class="input_admin" required>
-
-                <div class="button_container">
-                    <button type="submit" name="annuler" class="btn_red">Annuler</button>
-                    <button type="submit" name="ajouter" class="btn_blue">Ajouter</button>
-                </div>
-            </form>
+    <div class="ajout_demande_right">
+        <div class="right">
+            <h1>Ajoutez une demande</h1>
+            <div class="ajout_post">
+                <form method="POST" class="form_admin">
+                    <label for="titre" class="label_admin">Titre de la demande</label>
+                    <input type="text" id="titre" name="titre" class="input_admin" required>
+                    
+                    <label for="description" class="label_admin">Description</label>
+                    <input type="text" id="description" name="description" class="input_admin" required>
+                    
+                    <div class="button_container">
+                        <button type="submit" name="annuler" class="btn_red">Annuler</button>
+                        <button type="submit" name="ajouter" class="btn_blue">Ajouter</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
