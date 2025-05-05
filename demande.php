@@ -56,7 +56,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                 <div class="container_admin">
                     <div class='top_admin'>
                         <h1>Liste des Demandes</h1>
-                        <button class="initial"><a href="demande_ajout.php">Ajouter une demande</a></button>
+                        <button class="initial"><a href="ajoutDemande.php">Ajouter une demande</a></button>
                     </div>
                     <form method="GET">
                         <table class="table2">

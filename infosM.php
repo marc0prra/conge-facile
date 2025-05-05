@@ -144,10 +144,9 @@ $conn->close();
                     </div>
                 </div>
 
-                <button class="initial" type="submit">Mettre à jour mes informations</button>
             </form>
 
-            <button class="initial"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
+            <button class="resetPswd"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
         </div>
     </div>
 

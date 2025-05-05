@@ -1,30 +1,29 @@
 <?php  
 session_start();
 
-
-if (!isset($_SESSION['postes'])) {
-    $_SESSION['postes'] = [
-        ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],
-        ["id" => 2, "titre" => "Administrateur Réseau", "description" => "Gestion des infrastructures réseau."],
-        ["id" => 3, "titre" => "Analyste Sécurité", "description" => "Protection des systèmes informatiques."],
-        ["id" => 4, "titre" => "Chef de Projet IT", "description" => "Gestion de projets technologiques."],
+if (!isset($_SESSION['directions'])) {
+    $_SESSION['directions'] = [
+        ["id" => 1, "titre" => "Direction Informatique", "description"],
+        ["id" => 2, "titre" => "Direction RH", "description"],
+        ["id" => 3, "titre" => "Direction Financière", "description"],
+        ["id" => 4, "titre" => "Direction Communication", "description"],
     ];
 }
 
-$postes = &$_SESSION['postes'];
+$directions = &$_SESSION['directions'];
 
 $searchTitre = $_GET['searchTitre'] ?? '';
 $searchDescription = $_GET['searchDescription'] ?? '';
 $sortBy = $_GET['sortBy'] ?? 'titre';
 $order = $_GET['order'] ?? 'asc';
 
-$filteredPostes = array_filter($postes, function ($poste) use ($searchTitre, $searchDescription) {
+$filteredDirections = array_filter($directions, function ($direction) use ($searchTitre, $searchDescription) {
     return 
-        (empty($searchTitre) || stripos($poste['titre'], $searchTitre) !== false) &&
-        (empty($searchDescription) || stripos($poste['description'], $searchDescription) !== false);
+        (empty($searchTitre) || stripos($direction['titre'], $searchTitre) !== false) &&
+        (empty($searchDescription) || stripos($direction['description'], $searchDescription) !== false);
 });
 
-usort($filteredPostes, function ($a, $b) use ($sortBy, $order) {
+usort($filteredDirections, function ($a, $b) use ($sortBy, $order) {
     if ($order === 'asc') {
         return $a[$sortBy] <=> $b[$sortBy];
     } else {
@@ -39,7 +38,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Postes</title>
+    <title>Gestion des Directions</title>
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -53,8 +52,8 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
         <div class="right">
             <div class="container_admin">
                 <div class='top_admin'>
-                    <h1>Liste des Postes</h1>
-                    <button class="initial"><a href="ajoutPoste.php">Ajouter un poste</a></button>
+                    <h1>Directions/Services</h1>
+                    <button class="initial"><a href="ajoutDirection.php">Ajouter une direction</a></button>
                 </div>
                 <form method="GET">
                     <table class="table2">
@@ -62,19 +61,11 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                             <tr class='grey_admin'>
                                 <th>
                                     <a href="?sortBy=titre&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>&searchDescription=<?= htmlspecialchars($searchDescription) ?>">
-                                        Titre du Poste
+                                        Nom de la Direction
                                         <span class="sort-arrow"><?= $sortBy === 'titre' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                                     </a>
                                     <input class='search_admin' type="text" name="searchTitre"
                                         value="<?= htmlspecialchars($searchTitre) ?>" placeholder="Rechercher..." />
-                                </th>
-                                <th class='search_right_admin'>
-                                    <a href="?sortBy=description&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>&searchDescription=<?= htmlspecialchars($searchDescription) ?>">
-                                        Nb postes liés
-                                        <span class="sort-arrow"><?= $sortBy === 'description' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                                    </a>
-                                    <input class='searchNb_admin' type="number" name="searchDescription"
-                                        value="<?= htmlspecialchars($searchDescription) ?>" placeholder="Rechercher..." />
                                 </th>
                                 <th>
                                     <button type="submit" class="search-btn">Rechercher</button>
@@ -82,21 +73,20 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (count($filteredPostes) > 0) : ?>
-                                <?php foreach ($filteredPostes as $poste) : ?>
+                            <?php if (count($filteredDirections) > 0) : ?>
+                                <?php foreach ($filteredDirections as $direction) : ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($poste['titre']) ?></td>
-                                        <td><?= htmlspecialchars($poste['description']) ?></td>
+                                        <td><?= htmlspecialchars($direction['titre']) ?></td>
                                         <td>
                                             <button class="det_button">
-                                                <a href="poste_ajout.php?id=<?= urlencode($poste['id']) ?>">Détails</a>
+                                                <a href="direction_ajout.php?id=<?= urlencode($direction['id']) ?>">Détails</a>
                                             </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td colspan="3" class="empty-row"> Aucun poste trouvé</td>
+                                    <td colspan="3" class="empty-row">Aucune direction trouvée</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

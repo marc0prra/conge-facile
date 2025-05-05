@@ -124,7 +124,7 @@ form {
   flex-direction: column;
   flex: 2;
   max-width: 800px;
-  margin-left: 3%;
+  margin-left: 25%;
   margin-top: 1%;
 }
 
@@ -210,7 +210,8 @@ form {
 .left {
   width: 21%;
   height: 1000px;
-  box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  position: fixed;
 }
 
 .left a {
@@ -453,6 +454,58 @@ form {
   padding: 13px 28px;
   margin-top: 5%;
   border: #004c6c 2px solid;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f8ff;
+  color: #333;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+  width: 300px;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+  color: #004b6b;
+}
+
+.popup button {
+  background-color: #003b5c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9998;
+}
+
+.resetPswd {
+  width: 274px;
+  color: white;
+  margin-top: 3%;
+  border-radius: 5px;
+  margin-bottom: 4%;
+  padding: 13px 28px;
+  height: 41px;
+  align-items: center;
+  display: flex;
 }
 /************************************ NOUVELLE DEMANDE ***************************/
 
@@ -704,13 +757,15 @@ input[type="file"] {
 }
 
 .initial {
-  width: 282px;
+  width: 227px;
   color: white;
   margin-top: 3%;
   border-radius: 5px;
   margin-bottom: 4%;
   padding: 13px 28px;
-  margin-top: 8%;
+  height: 41px;
+  align-items: center;
+  display: flex;
 }
 
 .white {
@@ -983,7 +1038,7 @@ input.mangerComment {
 
 .search_admin {
   width: 95%;
-  padding: 3%;
+  padding: 10px 14px;
 }
 .searchNb_admin {
   padding: 3%;
@@ -1239,8 +1294,7 @@ thead th a:hover {
 .skin {
   display: flex;
   padding: 22px;
-  margin-top: 123%;
-  margin: 71% auto 0% auto;
+  margin: 22% auto 0% auto;
   gap: 15px;
 }
 
@@ -1302,6 +1356,10 @@ thead th a:hover {
   gap: 25px;
   margin-top: 3%;
   display: flex;
+}
+
+.button_container a {
+  color: white;
 }
 
 /************************************* RESPONSIVE *******************************/
