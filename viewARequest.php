@@ -131,20 +131,20 @@ function getWorkingDays($start, $end, $holidays = []) {
             <div class="managerResponse">
                 <h1>Répondre à la demande</h1>
 
-                <form method="post" action="traitementReponse.php">
-                    <div class="justificative RequestDetails">
-                        <p class="color">Saisir un commentaire</p>
-                        <input class="managerComment" type="text" name="response_comment"
-                               placeholder="Votre commentaire ici">
+                <form method="post" action="treatmentResponse.php">
+                  <div class="justificative RequestDetails">
+                    <p class="color">Saisir un commentaire</p>
+                    <input class="managerComment" type="text" name="response_comment" placeholder="Votre commentaire ici">
 
-                        <div class="end">
-                            <button class="reject" type="submit" name="action" value="refuser">Refuser la demande </button>
-                            <button class="accept" type="submit" name="action" value="accepter">Valider la demande</button>
-                        </div>
+                    <div class="end">
+                      <button class="reject" type="submit" name="action" value="refuser">Refuser la demande</button>
+                      <button class="accept" type="submit" name="action" value="accepter">Valider la demande</button>
                     </div>
+                  </div>
 
-                    <input type="hidden" name="request_id" value="<?= htmlspecialchars($demande['id']) ?>">
+                  <input type="hidden" name="request_id" value="<?= htmlspecialchars($demande['id']) ?>">
                 </form>
+
             </div>
         </div>
     </div>
