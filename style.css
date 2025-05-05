@@ -225,6 +225,14 @@ form {
   padding-right: 28%;
 }
 
+p.numberRequest {
+  color: #004c6c;
+  margin: auto;
+  padding: 1% 6%;
+  border-radius: 6px;
+  background-color: #004C6C14;
+}
+
 .left a:hover {
   color: #004c6c;
   transition: 0.3s;
