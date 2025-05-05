@@ -1424,6 +1424,9 @@ thead th a:hover {
     width: 100%;
     overflow: scroll;
   }
+  .container{
+    overflow: scroll;
+  }
 }
 
 @media screen and (max-width: 768px) {
