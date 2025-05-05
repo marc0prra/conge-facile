@@ -5,7 +5,20 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $user_role = $_SESSION['user_role'] ?? '1';
 $user_prenom = $_SESSION['user_prenom'] ?? 'Utilisateur';
+
+try {
+  $queryCount = "SELECT COUNT(*) as total 
+                 FROM request 
+                 WHERE answer = 0"; // uniquement les demandes en cours
+
+  $stmtCount = $pdo->query($queryCount);
+  $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
+  $nombreDemandes = $resultCount['total'];
+} catch (PDOException $e) {
+  $nombreDemandes = 'E';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -47,7 +60,7 @@ $user_prenom = $_SESSION['user_prenom'] ?? 'Utilisateur';
   <div class="left">
     <div class="collab"></div>
     <a href="accueil.php">Accueil</a>
-    <a href="demandInExpectation.php">Demandes en attente</a>
+    <a href="demandInExpectation.php">Demandes en attente <?= htmlspecialchars($nombreDemandes) ?> </a>
     <a href="historique.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
     <a href="#">Statistiques</a>
