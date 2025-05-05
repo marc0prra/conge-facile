@@ -1,6 +1,9 @@
-Ce projet a pour but de créer un site pour une entreprise qui se nomme mentalWorks.
+Ce fichier Figma regroupe la conception de l’interface utilisateur pour CongéFacile. Nous prenons comme exmple d'entreprise MentalWorks. Le but est de faire une application de gestion des congés dédiée à un projet scolaire, qui peut etre utilisé en entreprise. L’objectif est de proposer une interface claire, moderne et intuitive permettant aux utilisateurs de gérer leurs demandes de congés, de suivre leur solde et d’interagir avec les responsables RH oumanagers.
 
+L’interface est adaptée à des besoins pédagogiques. Ce fichier semble être structuré pour présenter un parcours utilisateur complet, de la connexion jusqu’à la gestion et la consultation des congés.
 Le site a 2 cotés, un coté collaborateur/employer et un coté manager.
+
+**Coté Collaborateur :**
 
 **En tant que collaborateur,** nous pouvons effectuer des nouvelles demandes de congés :
 ![image](https://github.com/user-attachments/assets/89113b1f-9f2b-430c-b134-3d4c5cf33812)
@@ -13,6 +16,8 @@ Voir les détails de nos demandes de congés :
 
 Voir leurs infos personelles :                                         
 ![image](https://github.com/user-attachments/assets/c485d532-c2a1-4e31-a393-aa5479aa7be5)
+
+**Coté Manager :**
 
 **En tant que manager,** je peux voir les demandes en attentes de le nombre de demandes en attente :
 ![image](https://github.com/user-attachments/assets/da072f2f-38c8-4c12-87f5-8db5eb03f973)
