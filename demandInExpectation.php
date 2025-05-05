@@ -171,7 +171,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                 <td><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?></td>
                                 <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
                                 <td>
-                                    <a class="det-button" href="leaveRequest.php?id=<?= $demande['id']; ?>">
+                                    <a class="det-button" href="viewARequest.php?id=<?= $demande['id']; ?>">
                                         <button class="det-button">Détails</button>
                                     </a>
                                 </td>
