@@ -28,6 +28,9 @@ Voir les détails de nos demandes de congés :
 Page dédiée aux informations personnelles du collaborateur : nom, email, poste, etc. Possibilité de modifier certaines données ou changer le mot de passe. :                                         
 ![image](https://github.com/user-attachments/assets/c485d532-c2a1-4e31-a393-aa5479aa7be5)
 
+Permet de personnalisez ses préférences et de les enregistrer : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/9d1345b6-d25e-44d5-bc2a-d5421f43d740)
+
 **Coté Manager :**
 
 **En tant que manager,** je peux voir les demandes en attentes de le nombre de demandes en attente. Il y a une liste des congés soumis par les employés en attente de validation. Affichage sous forme de tableau avec filtre par date, type de congé ou employé. Actions rapides disponibles : "Valider", "Refuser", et si il n'y a pas dde réponse c'est "En cours" :
@@ -42,19 +45,36 @@ Voir l'historique des demandes déjà traitée :
 Page dédiée aux informations personnelles du manager : nom, email, poste, etc. Possibilité de modifier certaines données ou changer le mot de passe :                                         :                                                    
 ![image](https://github.com/user-attachments/assets/12b1333c-e19b-4e5b-8d76-831bba928bd4)
 
-Ajoutez une type de demande :                                         
+Permet de personnalisez ses préférences et de les enregistrer : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/2a0b4088-c9c2-4765-9808-123aaf728f96)
+
+
+Ajoutez une type de demande de congé, voir les détails des demandes de congés(permet aussi de les supprimer ou de modifier le nombre de type de demande de congé et le nom du type de la demande de congé) :                                         
 ![image](https://github.com/user-attachments/assets/1751a1e8-3474-434d-adc9-f21128b43e7e)
 
 Voir les différents types et leurs nombres au sein de l'entreprise :       
 ![image](https://github.com/user-attachments/assets/21abf445-ba5c-4f9f-babe-f7cd31c0a53e)
 
-Ajouter un poste :                                       
+Ajouter un poste  voir les détails des postes (permet aussi de les supprimer ou de modifier le nombre de poste et le nom du type du poste) :                                       
 ![image](https://github.com/user-attachments/assets/9d4f2b88-4280-4b48-9efd-c815a7fc20ca)
 
 Voir les différents postes et leurs nombres au sein de l'entreprise :
 ![image](https://github.com/user-attachments/assets/4ac5e034-9ca9-4a50-98f6-548440311029)
 
-Voici notre base de donnée : 
+Renseigne les directions et services au sein de l'entreprise : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/b2e21b9a-65bf-4eec-863d-f19aa78aebe5)
+
+Permet de supprimer une case ou de modifier une case : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/437cc6c2-1dae-4d4e-bd44-7c4ba68a66ba)
+
+Renseigne des informations sur les managers (leurs noms, norms de familles, et leurs directions/services) : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/6e2e30b7-9cd3-42a9-9b5c-69eb5f430e3b)
+
+Avoir la possibilité de modifier les informations des managers et de les mettres a jours : **(page non obligatoire)**
+![image](https://github.com/user-attachments/assets/ac83e2e4-4e5a-4ffc-984c-3b011357f7a7)
+
+
+Voici le schéma relationnel de notre base de donnée : 
 
 ![image](https://github.com/user-attachments/assets/741e08b2-f825-42db-97c4-5e4068b07451)
 
