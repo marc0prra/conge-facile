@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 28 avr. 2025 à 09:03
+-- Généré le : lun. 05 mai 2025 à 16:57
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -82,16 +82,19 @@ INSERT INTO `person` (`id`, `last_name`, `first_name`, `manager_id`, `department
 
 CREATE TABLE `position` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `nb_postes_dispo` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `position`
 --
 
-INSERT INTO `position` (`id`, `name`) VALUES
-(1, 'Développeur'),
-(2, 'Manager RH');
+INSERT INTO `position` (`id`, `name`, `nb_postes_dispo`) VALUES
+(1, 'Développeur', 0),
+(2, 'Manager RH', 0),
+(6, 'Test Poste', 10),
+(7, 'Test', 25);
 
 -- --------------------------------------------------------
 
@@ -245,7 +248,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT pour la table `position`
 --
 ALTER TABLE `position`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `request`

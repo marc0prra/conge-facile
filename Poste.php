@@ -1,39 +1,23 @@
-<?php  
-session_start();
-
-
-if (!isset($_SESSION['postes'])) {
-    $_SESSION['postes'] = [
-        ["id" => 1, "titre" => "Développeur Web", "description" => "Création de sites et applications web."],
-        ["id" => 2, "titre" => "Administrateur Réseau", "description" => "Gestion des infrastructures réseau."],
-        ["id" => 3, "titre" => "Analyste Sécurité", "description" => "Protection des systèmes informatiques."],
-        ["id" => 4, "titre" => "Chef de Projet IT", "description" => "Gestion de projets technologiques."],
-    ];
-}
-
-$postes = &$_SESSION['postes'];
+<?php
+require 'config.php';
 
 $searchTitre = $_GET['searchTitre'] ?? '';
 $searchDescription = $_GET['searchDescription'] ?? '';
-$sortBy = $_GET['sortBy'] ?? 'titre';
+$sortBy = $_GET['sortBy'] ?? 'id';
 $order = $_GET['order'] ?? 'asc';
-
-$filteredPostes = array_filter($postes, function ($poste) use ($searchTitre, $searchDescription) {
-    return 
-        (empty($searchTitre) || stripos($poste['titre'], $searchTitre) !== false) &&
-        (empty($searchDescription) || stripos($poste['description'], $searchDescription) !== false);
-});
-
-usort($filteredPostes, function ($a, $b) use ($sortBy, $order) {
-    if ($order === 'asc') {
-        return $a[$sortBy] <=> $b[$sortBy];
-    } else {
-        return $b[$sortBy] <=> $a[$sortBy];
-    }
-});
-
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
+
+// Construction de la requête
+$sql = "SELECT * FROM position";
+$params = [];
+
+
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$filteredPostes = $stmt->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -85,11 +69,11 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                             <?php if (count($filteredPostes) > 0) : ?>
                                 <?php foreach ($filteredPostes as $poste) : ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($poste['titre']) ?></td>
-                                        <td><?= htmlspecialchars($poste['description']) ?></td>
+                                        <td><?= htmlspecialchars($poste['name']) ?></td>
+                                        <td><?= htmlspecialchars($poste['nb_postes_dispo']) ?></td>
                                         <td>
                                             <button class="det_button">
-                                                <a href="poste_ajout.php?id=<?= urlencode($poste['id']) ?>">Détails</a>
+                                                <a href="poste_details.php?id=<?= urlencode($poste['id']) ?>">Détails</a>
                                             </button>
                                         </td>
                                     </tr>
