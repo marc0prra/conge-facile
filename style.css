@@ -1374,10 +1374,10 @@ thead th a:hover {
     width: 226px;
   }
   .details {
-    width: 100%;
+    width: 161%;
   }
   .middle {
-    width: 100%;
+    width: 5%;
   }
   .leftMobile {
     display: block;
@@ -1397,6 +1397,17 @@ thead th a:hover {
   .begin input {
     padding: 1.5%;
     width: 100%;
+  }
+  .right {
+    max-width: 950px;
+    margin-left: 5%;
+  }
+  .right h2 {
+    margin: 12% 0%;
+  }
+  .details p {
+    width: 100%;
+    height: 120px;
   }
 }
 

@@ -13,20 +13,15 @@ function togglePassword(inputId, icon) {
 
 /******************************* APPLIQUE LA CLASS ACTIVE **********************************/
 document.addEventListener("DOMContentLoaded", function () {
-    // Récupérer l'URL actuelle sans le domaine
     let currentPage = window.location.pathname.split("/").pop();
 
     // Sélectionner tous les liens du menu
     let links = document.querySelectorAll(".left a");
 
-    // Parcourir chaque lien
     links.forEach(link => {
-        // Comparer le href du lien avec la page actuelle
         if (link.getAttribute("href") === currentPage) {
-            // Supprimer la classe active de tous les liens
             links.forEach(l => l.classList.remove("active"));
             
-            // Ajouter la classe active au lien correspondant
             link.classList.add("active");
         }
     });
@@ -37,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".dropbtn").forEach(button => {
         button.addEventListener("click", function (event) {
             event.preventDefault();
-            const dropdownContent = this.nextElementSibling; // Sélectionne le menu déroulant
+            const dropdownContent = this.nextElementSibling;
 
             if (dropdownContent.style.display === "flex") {
                 dropdownContent.style.display = "none";
@@ -47,8 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-/******************************* AFFICHER LE TEXTE EN BLEU(LIENS) **********************************/
 
 
 /******************************* BURGER MENU **********************************/
