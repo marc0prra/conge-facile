@@ -103,7 +103,7 @@ function getWorkingDays($start, $end, $holidays = []) {
         <p class="subTiltleDemand">Demande du <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
 
         <div class="sectionRequestDetails">
-            <p>
+            <p class="TypeRequest">
                 Période <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
                 au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
             </p>
