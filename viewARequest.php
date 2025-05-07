@@ -121,11 +121,11 @@ function getWorkingDays($start, $end, $holidays = []) {
             </div>
 
             <?php if (!empty($demande['receipt_file'])) : ?>
-                <a href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>" class="moreDetails" download>
+                <a class="moreDetails" href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>" class="moreDetails" download>
                     Télécharger le justificatif
                 </a>
             <?php else : ?>
-                <p>Aucun justificatif disponible.</p>
+                <a class="moreDetails">Aucun justificatif disponible.</a>
             <?php endif; ?>
 
             <div class="managerResponse">
