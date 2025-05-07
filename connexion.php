@@ -105,9 +105,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>Connectez-vous</h2>
             <form action="connexion.php" method="POST">
                 <p>Adresse email</p>
-                <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
+                <input type="email" name="mail" placeholder="****@mentalworks.fr" class="mailInput" required class="id" style="
+                        background-image: url('img/email.png');
+                        background-size: 20px;
+                        background-position: 10px center;
+                        background-repeat: no-repeat;
+                    "/>
                 <p>Mot de passe</p>
-                <input type="password" name="mdp" required class="id" id="password" />
+                <input type="password" name="mdp" required  id="password" />
                 <img src="img/open-eye.png" alt="Afficher" class="toggle" onclick="togglePassword('password', this)" />
                 <div style="color:red; margin-top: 10px;">
                     <?php if (!empty($error_message)) { echo $error_message; } ?>

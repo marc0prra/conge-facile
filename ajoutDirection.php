@@ -1,31 +1,24 @@
 <?php 
-session_start();
+require 'config.php'; // Connexion BDD
 
-if (!isset($_SESSION['directions'])) {
-    $_SESSION['directions'] = [];
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['ajouter'])) {
+        $titre = trim($_POST['titre'] ?? '');
 
-$directions = &$_SESSION['directions'];
+        if (!empty($titre)) {
+            $stmt = $pdo->prepare("INSERT INTO services (name) VALUES (:name)");
+            $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
+            $stmt->execute();
 
-if (isset($_POST['ajouter'])) {
-    $titre = trim($_POST['titre'] ?? '');
+            header("Location: direction.php");
+            exit;
+        }
+    }
 
-    if (!empty($titre)) {
-        $nextId = empty($directions) ? 1 : max(array_column($directions, 'id')) + 1;
-
-        $directions[] = [
-            'id' => $nextId,
-            'titre' => $titre
-        ];
-
+    if (isset($_POST['annuler'])) {
         header("Location: direction.php");
         exit;
     }
-}
-
-if (isset($_POST['annuler'])) {
-    header("Location: direction.php");
-    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -62,4 +55,3 @@ if (isset($_POST['annuler'])) {
 </div>
 </body>
 </html>
-    
