@@ -77,7 +77,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 <div class="middle">
     <?php include 'include/left.php'; ?>
     <div class="right historique">
-        <h1> Historique de mes demandes </h1>
+        <h1> Historique des demandes </h1>
         <div class="container">    
             <table class="table1">
             <thead>
