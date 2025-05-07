@@ -228,7 +228,7 @@ p.numberRequest {
   margin: auto;
   padding: 1% 6%;
   border-radius: 6px;
-  background-color: #004C6C14;
+  background-color: #004c6c14;
 }
 
 .left a:hover {
@@ -1175,6 +1175,35 @@ td:last-child {
   color: #000000;
 }
 
+/********************** Validation ou refus de la demande  ***************************/
+
+h1.titleDemand {
+  margin-bottom: 0%;
+}
+
+.subTiltleDemand {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24.57px;
+  color: #004C6CC7;
+}
+
+button.reject {
+  background-color: #E10E0E;
+  border: #E10E0E 2px solid;
+  border-radius: 6px;
+}
+
+button.accept {
+  background-color: #1A8245;
+  border: 2px solid #1A8245;
+  border-radius: 6px;
+}
+
+input.managerComment {
+  padding: 2% 2% 10%;
+}
+
 /************************************* POSTE ************************************/
 
 .container_Poste {
@@ -1382,9 +1411,6 @@ thead th a:hover {
   .details {
     width: 161%;
   }
-  .middle {
-    
-  }
   .leftMobile {
     display: block;
   }
@@ -1415,16 +1441,16 @@ thead th a:hover {
     width: 100%;
     height: 120px;
   }
-  .ajout_demande_right{
+  .ajout_demande_right {
     display: contents;
     display: flex;
     justify-content: center;
   }
-  .container_admin{
+  .container_admin {
     width: 100%;
     overflow: scroll;
   }
-  .container{
+  .container {
     overflow: scroll;
   }
   .services{
@@ -1501,10 +1527,6 @@ thead th a:hover {
     justify-content: center;
     width: 96%;
     gap: 21px;
-  }
-  .top_admin a {
-    font-size: ;
-
   }
 }
 @media screen and (max-width: 352px) {
