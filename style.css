@@ -1175,6 +1175,20 @@ td:last-child {
   color: #000000;
 }
 
+/********************** Validation ou refus de la demande  ***************************/
+
+button.reject {
+  background-color: #E10E0E;
+  border: #E10E0E 2px solid;
+  border-radius: 6px;
+}
+
+button.accept {
+  background-color: #1A8245;
+  border: 2px solid #1A8245;
+  border-radius: 6px;
+}
+
 /************************************* POSTE ************************************/
 
 .container_Poste {
