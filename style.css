@@ -679,7 +679,7 @@ input[type="file"] {
 
 .infos2 {
   display: flex;
-  gap: 128px;
+  gap: 70px;
 }
 
 .forgot {
@@ -1410,7 +1410,7 @@ thead th a:hover {
     width: 226px;
   }
   .details {
-    width: 100%;
+    width: 97%;
   }
   .leftMobile {
     display: block;
@@ -1500,6 +1500,9 @@ thead th a:hover {
   .button2 {
     align-items: center;
   }
+  .right h2 {
+    margin: 15% 0% 0%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -1556,9 +1559,13 @@ thead th a:hover {
     align-content: center;
     align-items: center;
   }
+  .right h2 {
+    margin-top: 20%;
+  }
 }
 @media screen and (max-width: 352px) {
   .top_admin a {
     font-size: 11px;
   }
+}
 }
