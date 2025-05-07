@@ -139,7 +139,7 @@ form {
 }
 
 .details {
-  width: 114%;
+  width: 100%;
 }
 
 .details p {
@@ -778,6 +778,7 @@ input[type="file"] {
   height: 41px;
   align-items: center;
   display: flex;
+  justify-content: center;
 }
 
 .white {
@@ -1409,7 +1410,7 @@ thead th a:hover {
     width: 226px;
   }
   .details {
-    width: 161%;
+    width: 100%;
   }
   .leftMobile {
     display: block;
@@ -1435,7 +1436,7 @@ thead th a:hover {
     margin-left: 5%;
   }
   .right h2 {
-    margin: 12% 0%;
+    margin: 3% 0%;
   }
   .details p {
     width: 100%;
@@ -1467,6 +1468,9 @@ thead th a:hover {
   }
   .forgotF{
     margin-left: 0%;
+  }
+  .initial{
+    justify-content: center;
   }
 
 @media screen and (max-width: 768px) {
