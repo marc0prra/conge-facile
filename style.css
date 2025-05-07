@@ -1186,7 +1186,8 @@ a.moreDetails {
   border: 2px solid #004C6C14;
   border-radius: 7px;
   margin-top: 3%;
-  position: absolute;
+  position: relative;
+  width: fit-content;
   display: flex;
   color: #475467;
   padding: 10px 20px;
