@@ -1,45 +1,39 @@
-<?php 
-session_start();
+<?php
+require 'config.php'; // Connexion à la base
 
-$_SESSION['directions'] = $_SESSION['directions'] ?? [
-    ["id" => 1, "titre" => "Direction Informatique", "description" ],
-    ["id" => 2, "titre" => "Direction RH", "description" ],
-    ["id" => 3, "titre" => "Direction Financière", "description"],
-];
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-$directions = &$_SESSION['directions'];
-$idSelectionne = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-$directionSelectionnee = null;
-$indexSelectionne = null;
+$stmt = $pdo->prepare("SELECT * FROM services WHERE id = :id");
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$direction = $stmt->fetch(PDO::FETCH_ASSOC);
 
-foreach ($directions as $index => $dir) {
-    if ($dir['id'] === $idSelectionne) {
-        $directionSelectionnee = $dir;
-        $indexSelectionne = $index;
-        break;
-    }
-}
-
-if (!$directionSelectionnee) {
+if (!$direction) {
     die("Erreur : Direction introuvable.");
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST["supprimer"])) {
-        array_splice($directions, $indexSelectionne, 1);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['supprimer'])) {
+        $stmt = $pdo->prepare("DELETE FROM services WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
         header("Location: direction.php");
-        exit();
+        exit;
     }
 
-    if (isset($_POST["modifier"])) {
-        $directions[$indexSelectionne]['titre'] = htmlspecialchars($_POST['titre']);
-        $directions[$indexSelectionne]['description'] = htmlspecialchars($_POST['description']);
-        header("Location: direction.php");
-        exit();
+    if (isset($_POST['modifier'])) {
+        $titre = trim($_POST['titre']);
+        if (!empty($titre)) {
+            $stmt = $pdo->prepare("UPDATE services SET name = :name WHERE id = :id");
+            $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            header("Location: direction.php");
+            exit;
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -62,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <form method="POST" class="form_admin">
                 <label for="titre" class="label_admin">Nom de la direction</label>
                 <input type="text" id="titre" name="titre" class="input_admin"
-                       value="<?= htmlspecialchars($directionSelectionnee['titre']) ?>" required>
+                       value="<?= htmlspecialchars($direction['name']) ?>" required>
 
                 <div class="button_container">
                     <button type="submit" name="supprimer" class="btn_red">Supprimer</button>
