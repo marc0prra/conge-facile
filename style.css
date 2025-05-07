@@ -679,7 +679,6 @@ input[type="file"] {
 
 .infos2 {
   display: flex;
-  width: 123%;
   gap: 128px;
 }
 
@@ -720,16 +719,6 @@ input[type="file"] {
 
 .right input {
   width: 350px;
-}
-
-.toggle-password {
-  position: absolute;
-  right: -75px;
-  top: 78%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
 }
 
 .service select {
@@ -1460,7 +1449,14 @@ thead th a:hover {
   .poste{
     margin-left: 0%;
   }
-}
+  .infos2 {
+    display: flex;
+    gap: 0px; 
+    flex-direction: column;
+  }
+  .forgotF{
+    margin-left: 0%;
+  }
 
 @media screen and (max-width: 768px) {
   .left {
@@ -1527,6 +1523,23 @@ thead th a:hover {
     justify-content: center;
     width: 96%;
     gap: 21px;
+  }
+  .email{
+    width: 85%;
+  }
+  .forgot{
+    width: 80.5%;
+  }
+  .forgotN{
+    width: 80%;
+  }
+  .forgotF{
+   width: 80%;
+  }
+  .right button{
+    width: fit-content;
+    align-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 352px) {
