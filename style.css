@@ -125,6 +125,7 @@ form {
   flex: 2;
   margin-left: 25%;
   margin-top: 1%;
+  width: 45%;
 }
 
 .middle {
@@ -132,6 +133,10 @@ form {
   justify-content: flex-start;
   width: 100%;
   margin-top: 1%;
+}
+
+.mailInput {
+  padding: 12px 0px 12px 37px;
 }
 
 .middle p {

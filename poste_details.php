@@ -75,10 +75,6 @@ if (isset($_GET['id'])) {
                     <input type="text" id="nom" name="nom" class="input_admin"
                         value="<?= htmlspecialchars($posteSelectionne['name']) ?>" required>
 
-                    <label for="description" class="label_admin">Nombre de poste</label>
-                    <input type="number" id="description" name="description" class="input_admin"
-                        value="<?= htmlspecialchars($posteSelectionne['nb_postes_dispo']) ?>" required>
-
                     <div class="button_container">
                         <button type="submit" name="supprimer" class="btn_red"
                             onclick="return confirm('Voulez-vous vraiment supprimer ce poste ?')">Supprimer</button>

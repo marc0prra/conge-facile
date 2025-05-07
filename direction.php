@@ -1,44 +1,31 @@
 <?php  
-session_start();
-
-if (!isset($_SESSION['directions'])) {
-    $_SESSION['directions'] = [
-        ["id" => 1, "titre" => "Direction Informatique", "description"],
-        ["id" => 2, "titre" => "Direction RH", "description"],
-        ["id" => 3, "titre" => "Direction Financière", "description"],
-        ["id" => 4, "titre" => "Direction Communication", "description"],
-    ];
-}
-
-$directions = &$_SESSION['directions'];
+require 'config.php'; // connexion à la base
 
 $searchTitre = $_GET['searchTitre'] ?? '';
-$searchDescription = $_GET['searchDescription'] ?? '';
-$sortBy = $_GET['sortBy'] ?? 'titre';
+$sortBy = $_GET['sortBy'] ?? 'name';
 $order = $_GET['order'] ?? 'asc';
 
-$filteredDirections = array_filter($directions, function ($direction) use ($searchTitre, $searchDescription) {
-    return 
-        (empty($searchTitre) || stripos($direction['titre'], $searchTitre) !== false) &&
-        (empty($searchDescription) || stripos($direction['description'], $searchDescription) !== false);
-});
+// Sécurité : uniquement autoriser certains champs pour le tri
+$allowedSortFields = ['name'];
+$sortBy = in_array($sortBy, $allowedSortFields) ? $sortBy : 'name';
+$order = strtolower($order) === 'desc' ? 'DESC' : 'ASC';
 
-usort($filteredDirections, function ($a, $b) use ($sortBy, $order) {
-    if ($order === 'asc') {
-        return $a[$sortBy] <=> $b[$sortBy];
-    } else {
-        return $b[$sortBy] <=> $a[$sortBy];
-    }
-});
+$sql = "SELECT * FROM services WHERE name LIKE :search ORDER BY $sortBy $order";
+$stmt = $pdo->prepare($sql);
+$searchParam = "%$searchTitre%";
+$stmt->bindParam(':search', $searchParam, PDO::PARAM_STR);
+$stmt->execute();
+$services = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$nextOrder = ($order === 'asc') ? 'desc' : 'asc';
+$nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Directions</title>
+    <title>Gestion des Services</title>
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -52,17 +39,17 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
         <div class="right">
             <div class="container_admin">
                 <div class='top_admin'>
-                    <h1>Directions/Services</h1>
-                    <button class="initial"><a href="ajoutDirection.php">Ajouter une direction</a></button>
+                    <h1>Liste des Services</h1>
+                    <button class="initial"><a href="ajoutDirection.php">Ajouter un service</a></button>
                 </div>
                 <form method="GET">
                     <table class="table2">
                         <thead>
                             <tr class='grey_admin'>
                                 <th>
-                                    <a href="?sortBy=titre&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>&searchDescription=<?= htmlspecialchars($searchDescription) ?>">
-                                        Nom de la Direction
-                                        <span class="sort-arrow"><?= $sortBy === 'titre' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                                    <a href="?sortBy=name&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>">
+                                        Nom du service
+                                        <span class="sort-arrow"><?= $sortBy === 'name' ? ($order === 'ASC' ? '▲' : '▼') : '▼' ?></span>
                                     </a>
                                     <input class='search_admin' type="text" name="searchTitre"
                                         value="<?= htmlspecialchars($searchTitre) ?>" placeholder="Rechercher..." />
@@ -73,20 +60,20 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (count($filteredDirections) > 0) : ?>
-                                <?php foreach ($filteredDirections as $direction) : ?>
+                            <?php if (count($services) > 0) : ?>
+                                <?php foreach ($services as $service) : ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($direction['titre']) ?></td>
+                                        <td><?= htmlspecialchars($service['name']) ?></td>
                                         <td>
                                             <button class="det_button">
-                                                <a href="direction_ajout.php?id=<?= urlencode($direction['id']) ?>">Détails</a>
+                                                <a href="direction_ajout.php?id=<?= urlencode($service['id']) ?>">Détails</a>
                                             </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
                                 <tr>
-                                    <td colspan="3" class="empty-row">Aucune direction trouvée</td>
+                                    <td colspan="2" class="empty-row">Aucun service trouvé</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
