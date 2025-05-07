@@ -1181,6 +1181,13 @@ h1.tiltleDemand{
   margin-bottom: 0%;
 }
 
+.subTiltleDemand {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24.57px;
+  color: #004C6CC7;
+}
+
 button.reject {
   background-color: #E10E0E;
   border: #E10E0E 2px solid;
