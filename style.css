@@ -1177,6 +1177,10 @@ td:last-child {
 
 /********************** Validation ou refus de la demande  ***************************/
 
+h1.tiltleDemand{
+  margin-bottom: 0%;
+}
+
 button.reject {
   background-color: #E10E0E;
   border: #E10E0E 2px solid;
