@@ -65,8 +65,8 @@ try {
   <div class="left">
     <div class="collab"></div>
     <a href="accueil.php">Accueil</a>
-    <a href="demandInExpectation.php">Demandes en attente <?= htmlspecialchars($nombreDemandes) ?> </a>
-    <a href="historique.php">Historique des demandes</a>
+    <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
+    <a href="historyRequest.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
     <a href="#">Statistiques</a>
     <div class="rod"></div>

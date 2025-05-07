@@ -31,7 +31,7 @@ try {
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
               JOIN person ON request.collaborator_id = person.id  -- Joindre la table person pour récupérer le nom et prénom
-              WHERE request.answer =0 ";  // Filtrer pour les demandes en cours
+              WHERE request.answer =2 OR request.answer =1 ";  // Filtrer pour les demandes en cours
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -91,13 +91,6 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                     </th>
                     <th class='searchHistorique'>
                         <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
-                            Demandée le 
-                            <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
-                        </a>
-                            <input class='searchListe' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>"  />
-                    </th>
-                    <th class='searchHistorique'>
-                        <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
                             Collaborateur
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
@@ -123,6 +116,13 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                             <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
                         </a>
                             <input class='searchListe' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>" />
+                    </th>
+                    <th class='searchHistorique'>
+                        <a href="?sortBy=type&order=<?= $nextOrder ?>&searchType=<?= htmlspecialchars($searchType) ?>&searchNb=<?= htmlspecialchars($searchNb) ?>">
+                            Statut
+                            <span class="sort-arrow"><?= $sortBy === 'type' ? ($order === 'asc' ? '▲' : '▼') : '▼' ?></span>
+                        </a>
+                            <input class='searchListe' type="text" name="searchType" value="<?= htmlspecialchars($searchType) ?>"  />
                     </th>
                     <th></th>
                 </tr>
@@ -159,17 +159,35 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                         }
                 }
                 return $workingDays;
-            }?>
+            }
+
+            function getStatus($codes) {
+                // Convertir la chaîne en tableau
+                $numbers = explode(',', $codes);
+            
+                // Vérifier les numéros dans l'ordre de priorité
+                if (in_array('0', $numbers)) {
+                    return 'En cours';
+                } elseif (in_array('1', $numbers)) {
+                    return 'Acceptée';
+                } elseif (in_array('2', $numbers)) {
+                    return 'Refusée';
+                } else {
+                    return 'Statut inconnu';
+                }
+            }
+            
+            ?>
                 <tbody>
                     <?php if (count($demandes) > 0) : ?>
                         <?php foreach ($demandes as $demande) : ?>
                             <tr>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
-                                <td><?= htmlspecialchars((new DateTime($demande['date_demande']))->format('d/m/Y H\hi')) ?></td>
                                 <td><?= htmlspecialchars($demande['prenom']) ?> <?= htmlspecialchars($demande['nom']) ?></td>
                                 <td><?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\hi')) ?></td>
                                 <td><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\hi')) ?></td>
                                 <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
+                                <td><?= getStatus($demande['etat_demande']) ?></td>
                                 <td>
                                     <a class="det-button" href="viewARequest.php?id=<?= $demande['id']; ?>">
                                         <button class="det-button">Détails</button>
@@ -179,7 +197,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                         <?php endforeach; ?>
                     <?php else : ?>
                         <tr>
-                            <td colspan="8" class="empty-row">Aucune demande en cours</td>
+                            <td colspan="8" class="empty-row">Aucune demande</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

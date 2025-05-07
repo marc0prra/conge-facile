@@ -99,16 +99,16 @@ function getWorkingDays($start, $end, $holidays = []) {
     <?php include 'include/left.php'; ?>
 
     <div class="right">
-        <h1>Demande de <?= htmlspecialchars($demande['prenom']) ?> <?= htmlspecialchars($demande['nom']) ?></h1>
-        <p>Demande créée le <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
+        <h1 class="titleDemand">Demande de <?= htmlspecialchars($demande['prenom']) ?> <?= htmlspecialchars($demande['nom']) ?></h1>
+        <p class="subTiltleDemand">Demande du <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
 
         <div class="sectionRequestDetails">
-            <p>
-                Du <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
+            <p class="TypeRequest">
+                Période <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
                 au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
             </p>
 
-            <p class="TypeRequest">Type de congé : <?= htmlspecialchars($demande['type_demande']) ?></p>
+            <p class="TypeRequest">Type de demande : <?= htmlspecialchars($demande['type_demande']) ?></p>
 
             <p class="TypeRequest">
                 Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays) ?>
@@ -121,11 +121,11 @@ function getWorkingDays($start, $end, $holidays = []) {
             </div>
 
             <?php if (!empty($demande['receipt_file'])) : ?>
-                <a href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>" class="moreDetails" download>
+                <a class="moreDetails" href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>" class="moreDetails" download>
                     Télécharger le justificatif
                 </a>
             <?php else : ?>
-                <p>Aucun justificatif disponible.</p>
+                <a class="moreDetails">Aucun justificatif disponible.</a>
             <?php endif; ?>
 
             <div class="managerResponse">
