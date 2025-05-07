@@ -64,77 +64,77 @@ $conn->close();
 <body>
     <?php include 'include/top.php'; ?>
     <div class="middle">
-        <?php include 'include/left.php'; ?>
-        <div class="right">
-            <h1>Mes informations</h1>
-            <form action="infosC.php" method="POST">
-                <div class="infos">
-                    <div class="begin">
-                        <p>Nom de famille</p>
-                        <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" readonly />
-                    </div>
-                    <div class="end">
-                        <p>Prénom</p>
-                        <input type="text" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" readonly />
-                    </div>
-                </div>
-                <div class="email">
-                    <p>Adresse email</p>
-                    <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" style="
-                        background-image: url('img/email.png');
-                        background-size: 20px;
-                        background-position: 10px center;
-                        background-repeat: no-repeat;
-                    "  readonly/>
-                </div>
+        <div class='infos_middle'>
+            <?php include 'include/left.php'; ?>
+            <div class="right">
+                <h1>Mes informations</h1>
+                <form action="infosC.php" method="POST">
+                        <div class="infos">
+                            <div class="begin">
+                                <p>Nom de famille</p>
+                                <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" readonly />
+                            </div>
+                            <div class="end">
+                                <p>Prénom</p>
+                                <input type="text" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" readonly />
+                            </div>
+                        </div>
+                        <div class="email">
+                            <p>Adresse email</p>
+                            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" style="
+                            background-image: url('img/email.png');
+                            background-size: 20px;
+                            background-position: 10px center;
+                            background-repeat: no-repeat;
+                            "  readonly/>
+                        </div>
 
-                <div class="service">
-                    <div class="services">
-                        <div class="direction">
-                            <p>Direction/Service</p>
-                            <select name="direction" disabled>
-                                <option value="1">BU Symfony</option>
-                                <option value="2">Mentalworks</option>
+                        <div class="service">
+                        <div class="services">
+                            <div class="direction">
+                                <p>Direction/Service</p>
+                                <select name="direction" disabled>
+                                    <option value="1">BU Symfony</option>
+                                    <option value="2">Mentalworks</option>
+                                </select>
+                            </div>
+                            <div class="poste">
+                                <p>Poste</p>
+                                <select name="poste" disabled>
+                                    <option value="1">Directeur technique</option>
+                                    <option value="2">Lead developper</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="manager">
+                            <p>Manager</p>
+                            <select name="manager" disabled>
+                                <option value="1">Frédéric Salesses</option>
+                                <option value="2">test test</option>
                             </select>
                         </div>
-                        <div class="poste">
-                            <p>Poste</p>
-                            <select name="poste" disabled>
-                                <option value="1">Directeur technique</option>
-                                <option value="2">Lead developper</option>
-                            </select>
+                            <h2>Réinitialiser son mot de passe</h2>
+                            <div class="forgot">
+                                <p class="color">Mot de passe actuel</p>
+                                <input type="password" id="password">
+                                <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('password', this)">
+                            </div>
+                            <div class="infos2">
+                                <div class="forgotN">
+                                    <p class="color">Nouveau mot de passe</p>
+                                    <input type="password" id="newPassword">
+                                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('newPassword', this)">
+                                </div>
+                                <div class="forgotF">
+                                    <p class="color">Confirmation du mot de passe</p>
+                                    <input type="password" id="confirmPassword">
+                                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="manager">
-                        <p>Manager</p>
-                        <select name="manager" disabled>
-                            <option value="1">Frédéric Salesses</option>
-                            <option value="2">test test</option>
-                        </select>
-                    </div>
-                </div>
-
-                <h2>Réinitialiser son mot de passe</h2>
-                <div class="forgot">
-                    <p class="color">Mot de passe actuel</p>
-                    <input type="password" id="password">
-                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('password', this)">
-                </div>
-                <div class="infos2">
-                    <div class="forgotN">
-                        <p class="color">Nouveau mot de passe</p>
-                        <input type="password" id="newPassword">
-                        <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('newPassword', this)">
-                    </div>
-                    <div class="forgotF">
-                        <p class="color">Confirmation du mot de passe</p>
-                        <input type="password" id="confirmPassword">
-                        <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
-                    </div>
-                </div>
-            </form>
-
-            <button class="resetPswd"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
+                </form>
+                <button class="resetPswd"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
