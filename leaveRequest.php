@@ -59,10 +59,10 @@ if (!$demande) {
         <div class="middle">
             <?php include 'include/left.php'; ?>
             <div class="right">
-                <h1> Ma demande de congé </h1>
+                <h1 class="titleDemand"> Ma demande de congé </h1>
 
                 <?php if ($demande): ?>
-                <p> Demande du <?=htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
+                <p class="subTiltleDemand"> Demande du <?=htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
                 <?php 
             $holidays = [
                 "2025-01-01",
