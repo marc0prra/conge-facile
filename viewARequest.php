@@ -104,11 +104,11 @@ function getWorkingDays($start, $end, $holidays = []) {
 
         <div class="sectionRequestDetails">
             <p>
-                Du <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
+                Période <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
                 au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
             </p>
 
-            <p class="TypeRequest">Type de congé : <?= htmlspecialchars($demande['type_demande']) ?></p>
+            <p class="TypeRequest">Type de demande : <?= htmlspecialchars($demande['type_demande']) ?></p>
 
             <p class="TypeRequest">
                 Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays) ?>
