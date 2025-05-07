@@ -78,7 +78,7 @@ try {
         <a href="demande.php">Types de demandes</a>
         <a href="direction.php">Directions/Services</a>
         <a href="Managers.php">Managers</a>
-        <a href="poste.php">Postes</a>
+        <a href="Poste.php">Postes</a>
       </div>
     </div>
     <a href="deconnexion.php">Déconnexion</a>
