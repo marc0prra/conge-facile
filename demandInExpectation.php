@@ -165,10 +165,10 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                         <?php foreach ($demandes as $demande) : ?>
                             <tr>
                                 <td><?= htmlspecialchars($demande['type_demande']) ?></td>
-                                <td><?= htmlspecialchars((new DateTime($demande['date_demande']))->format('d/m/Y H\h00')) ?></td>
+                                <td><?= htmlspecialchars((new DateTime($demande['date_demande']))->format('d/m/Y H\hi')) ?></td>
                                 <td><?= htmlspecialchars($demande['prenom']) ?> <?= htmlspecialchars($demande['nom']) ?></td>
-                                <td><?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?></td>
-                                <td><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?></td>
+                                <td><?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\hi')) ?></td>
+                                <td><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\hi')) ?></td>
                                 <td><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
                                 <td>
                                     <a class="det-button" href="viewARequest.php?id=<?= $demande['id']; ?>">
