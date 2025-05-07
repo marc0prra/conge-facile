@@ -721,6 +721,17 @@ input[type="file"] {
   width: 350px;
 }
 
+.toggle-password {
+  position: absolute;
+  right: -75px;
+  top: 78%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: none;
+}
+
 .service select {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
@@ -993,7 +1004,6 @@ input[type="file"] {
 
 p.TypeRequest {
   margin: 0;
-  color: #000000;
 }
 
 input.mangerComment {
@@ -1169,23 +1179,6 @@ td:last-child {
 
 h1.titleDemand {
   margin-bottom: 0%;
-}
-
-.end{
-  margin-bottom: 2%;
-}
-
-a.moreDetails {
-  border: 2px solid #004C6C14;
-  border-radius: 7px;
-  margin-top: 3%;
-  position: relative;
-  width: fit-content;
-  display: flex;
-  color: #475467;
-  padding: 10px 20px;
-  gap: 4px;
-  background-color: #004C6C14;
 }
 
 .subTiltleDemand {
