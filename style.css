@@ -1453,6 +1453,13 @@ thead th a:hover {
   .container {
     overflow: scroll;
   }
+  .services{
+    flex-direction: column;
+    margin-left: 0%;
+  }
+  .poste{
+    margin-left: 0%;
+  }
 }
 
 @media screen and (max-width: 768px) {
