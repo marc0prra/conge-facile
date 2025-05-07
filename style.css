@@ -1182,6 +1182,18 @@ h1.titleDemand {
   margin-bottom: 0%;
 }
 
+a.moreDetails {
+  border: 2px solid #004C6C14;
+  border-radius: 7px;
+  margin-top: 3%;
+  position: absolute;
+  display: flex;
+  color: #475467;
+  padding: 10px 20px;
+  gap: 4px;
+  background-color: #004C6C14;
+}
+
 .subTiltleDemand {
   font-size: 18px;
   font-weight: 600;
