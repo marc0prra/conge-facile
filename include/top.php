@@ -17,7 +17,6 @@
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="img/icone.ico" />
 
     <title>Accueil</title>
   </head>
@@ -27,12 +26,13 @@
   <div class="borderTop"></div>
   <div class="top">
     <img src="img/mentalworks.png" alt="" />
- <input type="checkbox" id="checkbox">
-    <label for="checkbox" class="toggle">
-        <div class="bars" id="bar1"></div>
-        <div class="bars" id="bar2"></div>
-        <div class="bars" id="bar3"></div>
-    </label>
+
+<label for="burger" class="burger">
+  <input id="burger" type="checkbox">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
     
   </div>
 </body>

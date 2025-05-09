@@ -55,6 +55,61 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Détails de la Demande</title>
     <link rel="stylesheet" href="style.css?v=2">
 </head>
+<!-- Modal de confirmation -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <p>Êtes-vous sûr de vouloir supprimer cette demande ?</p>
+        <div class="modal-buttons">
+            <form method="POST">
+                <input type="hidden" name="supprimer" value="1">
+                <button type="submit" class="btn_red">Oui, supprimer</button>
+            </form>
+            <button onclick="closeModal()" class="btn_blue">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+</style>
+
+<script>
+function openModal() {
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+}
+</script>
+
 <body>
     <?php include 'include/top.php'; ?>
     <div class="middle">
@@ -68,8 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         value="<?= htmlspecialchars($demande['name']) ?>" required>
 
                     <div class="button_container">
-                        <button type="submit" name="supprimer" class="btn_red"
-                            onclick="return confirm('Voulez-vous vraiment supprimer cette demande ?')">Supprimer</button>
+                    <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
+
                         <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
                     </div>
                 </form>
