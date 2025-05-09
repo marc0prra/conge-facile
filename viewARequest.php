@@ -129,7 +129,7 @@ function getWorkingDays($start, $end, $holidays = []) {
             <?php endif; ?>
 
             <div class="managerResponse">
-                <h1>Répondre à la demande</h1>
+                <h1 class="titleDemand rep">Répondre à la demande</h1>
 
                 <form method="post" action="treatmentResponse.php">
                   <div class="justificative RequestDetails">
