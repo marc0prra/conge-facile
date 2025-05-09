@@ -3,26 +3,41 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Récupération du rôle et du prénom de l'utilisateur depuis la session
-$user_role = $_SESSION['user_role'] ?? '1';
-$user_prenom = $_SESSION['user_prenom'] ?? 'Utilisateur';
+require_once 'config.php'; // doit définir $pdo
 
-// Vérification de l'existence de la connexion PDO
-if (!isset($pdo)) {
-    require_once 'config.php'; // Assure-toi que ce fichier initialise correctement $pdo
+// Récupère l'ID utilisateur connecté
+$user_id = $_SESSION['user_id'] ?? null;
+$user_role = $_SESSION['user_role'] ?? '1';
+$user_prenom = 'Utilisateur';
+$user_nom = '';
+
+if ($user_id) {
+    try {
+        $stmt = $pdo->prepare("SELECT prenom, nom FROM utilisateurs WHERE id = ?");
+        $stmt->execute([$user_id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $user_prenom = $user['prenom'];
+            $user_nom = $user['nom'];
+        }
+    } catch (PDOException $e) {
+        // En cas d’erreur : log éventuel ou valeur par défaut
+        $user_prenom = 'Erreur';
+    }
 }
 
+// Comptage des demandes non traitées (pour les managers)
 try {
-    // Requête pour compter les demandes non traitées (answer = 0)
     $queryCount = "SELECT COUNT(*) as total FROM request WHERE answer = 0";
     $stmtCount = $pdo->query($queryCount);
     $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
     $nombreDemandes = $resultCount['total'];
 } catch (PDOException $e) {
-    // En cas d'erreur, on affiche 'E' pour éviter une interruption du site
     $nombreDemandes = 'E';
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -68,7 +83,7 @@ try {
     <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
     <a href="historyRequest.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
-    <a href="#">Statistiques</a>
+    <a href="statistique.php">Statistiques</a>
     <div class="rod"></div>
     <a href="infosM.php">Mes informations</a>
     <a href="preferencesManager.php">Mes préférences</a>
@@ -87,7 +102,7 @@ try {
         <img src="img/téléchargement (1).png" alt="skin">
       </div>
       <div class="infoSkin">
-        <strong class="nameSkin"><?= htmlspecialchars($user_prenom) ?></strong>
+        <strong class="nameSkin"><?= htmlspecialchars($user_prenom . ' ' . $user_nom) ?></strong>
         <p class="typeSkin">Manager</p>
       </div>
     </div>
