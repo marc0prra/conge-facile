@@ -32,16 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".dropbtn").forEach(button => {
         button.addEventListener("click", function (event) {
             event.preventDefault();
-            const dropdownContent = this.nextElementSibling;
 
-            if (dropdownContent.style.display === "flex") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "flex";
-            }
+            // On récupère le conteneur parent de type .dropdown
+            const parentDropdown = this.closest(".dropdown");
+
+            // On bascule la classe 'active' pour afficher/masquer .dropdown-contentBurger
+            parentDropdown.classList.toggle("active");
         });
     });
 });
+
 
 
 /******************************* BURGER MENU **********************************/

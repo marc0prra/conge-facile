@@ -251,6 +251,37 @@ form {
   border-radius: 16px;
 }
 
+/* Contenu du menu déroulant (burger) - caché par défaut */
+.dropdown-contentBurger {
+  display: none;
+  flex-direction: column;
+  background: white;
+  width: 100%;
+}
+
+.dropdown-contentBurger a {
+  padding: 10px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin: 4% auto;
+  color: #637381;
+  transition: 0.3s;
+}
+
+.dropdown-contentBurger a:hover {
+  color: #004c6c;
+  transition: 0.3s;
+}
+
+/* Affichage du menu lorsqu'il est actif */
+.dropdown.active .dropdown-contentBurger {
+  display: flex;
+}
+
+.dropdown.active .dropbtn i {
+  transform: rotate(180deg);
+}
+
 /************************* MENU GAUCHE *************************/
 .border {
   border-bottom: #dfe4ea solid 1px;

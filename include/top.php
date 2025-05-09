@@ -99,10 +99,15 @@ if ($user_role === '2') {
     <div class="rodMenu"></div>
     <a href="infosM.php">Mes infos</a>
     <a href="preferencesManager.php">Préférences</a>
-    <a href="demande.php">Types de demandes</a>
-    <a href="direction.php">Directions</a>
-    <a href="Managers.php">Managers</a>
-    <a href="Poste.php">Postes</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
+      <div class="dropdown-contentBurger">
+        <a href="demande.php">Types de demandes</a>
+        <a href="direction.php">Directions/Services</a>
+        <a href="Managers.php">Managers</a>
+        <a href="Poste.php">Postes</a>
+      </div>
+    </div>
     <a href="deconnexion.php">Déconnexion</a>
   <?php endif; ?>
 </div>
