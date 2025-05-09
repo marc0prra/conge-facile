@@ -39,7 +39,7 @@ if (isset($_POST['annuler'])) {
     <?php include 'include/left.php'; ?>
     <div class="ajout_demande_right">
         <div class="right">
-            <h1>Ajoutez une demande</h1>
+            <h1>Ajouter une demande</h1>
             <div class="ajout_post">
                 <form method="POST" class="form_admin">
                     <label for="titre" class="label_admin">Nom de la demande</label>

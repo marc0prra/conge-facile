@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="middle">
     <?php include 'include/left.php'; ?>
     <div class="right">
-        <h1>Ajoutez une direction</h1>
+        <h1>Ajouter une direction</h1>
         <div class="ajout_post">
             <form method="POST" class="form_admin">
                 <label for="titre" class="label_admin">Nom de la direction</label>
