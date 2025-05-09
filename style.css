@@ -1451,7 +1451,7 @@ thead th a:hover {
     width: 100%;
   }
   .right {
-    max-width: 950px;
+    width: 73%;
     margin-left: 5%;
   }
   .right h2 {
@@ -1521,6 +1521,13 @@ thead th a:hover {
   }
   .right h2 {
     margin: 15% 0% 0%;
+  }
+  .end input,
+  .begin input {
+    padding: 12px;
+  }
+  .services select {
+    width: 95%;
   }
 }
 
