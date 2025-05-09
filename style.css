@@ -175,69 +175,82 @@ form {
   border: #004c6c 2px solid;
 }
 
+/* Menu burger */
 .burger {
-  position: relative;
-  width: 29px;
-  height: 22px;
-  background: transparent;
+  display: block;
+  width: 35px;
+  height: 25px;
+  position: fixed;
+  top: 25px;
+  right: 20px;
+  z-index: 1001;
   cursor: pointer;
-  display: block;
-  /* justify-content: right; */
-  /* display: flex; */
-  left: 610px;
-  top: -33px;
 }
-
-.burger input {
-  display: none;
-}
-
 .burger span {
-  display: block;
-  position: absolute;
   height: 4px;
-  width: 100%;
   background: white;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
+  margin: 6px 0;
+  border-radius: 2px;
+  display: block;
+  transition: 0.3s ease;
 }
 
-.burger span:nth-of-type(1) {
-  top: 0px;
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(3) {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-50%);
-}
-
-.burger input:checked ~ span:nth-of-type(1) {
+/* Overlay sombre */
+.menu-overlay {
+  position: fixed;
   top: 0;
-  left: 5px;
-  transform: rotate(405deg);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1000;
 }
 
-.burger input:checked ~ span:nth-of-type(2) {
-  width: 0%;
-  opacity: 0;
+/* Menu mobile */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 250px;
+  height: 100%;
+  background: #003b5c;
+  color: white;
+  padding: 20px;
+  z-index: 1001;
+  transition: left 0.3s ease;
+}
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  color: white;
+  text-decoration: none;
+}
+.mobile-menu a:hover {
+  text-decoration: underline;
+}
+.close-btn {
+  font-size: 24px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
-.burger input:checked ~ span:nth-of-type(3) {
-  top: 28px;
-  left: 5px;
-  transform: rotate(-405deg);
+/* Responsive : cacher menu desktop sur mobile */
+@media screen and (min-width: 768px) {
+  .burger,
+  .mobile-menu,
+  .menu-overlay {
+    display: none;
+  }
 }
+
+.rodMenu {
+  border: #ffffff94 2px solid;
+  width: 78%;
+  margin: 7% auto 1% auto;
+  border-radius: 16px;
+}
+
 /************************* MENU GAUCHE *************************/
 .border {
   border-bottom: #dfe4ea solid 1px;

@@ -47,19 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
 /******************************* BURGER MENU **********************************/
 
 document.getElementById("openMenu").addEventListener("click", function () {
-    document.getElementById("menu").style.left = "0"; 
+    document.getElementById("menu").style.left = "0";
     document.getElementById("menuOverlay").style.display = "block";
   });
   
   document.getElementById("closeMenu").addEventListener("click", function () {
-    document.getElementById("menu").style.left = "-500px"; 
+    document.getElementById("menu").style.left = "-300px";
     document.getElementById("menuOverlay").style.display = "none";
   });
   
   document.getElementById("menuOverlay").addEventListener("click", function () {
-    document.getElementById("menu").style.left = "-500px"; 
+    document.getElementById("menu").style.left = "-300px";
     this.style.display = "none";
-});
+  });
+  
 
 
 

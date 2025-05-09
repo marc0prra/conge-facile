@@ -1,3 +1,44 @@
+<?php 
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once __DIR__ . '/../config.php'; // Adapter le chemin si nécessaire
+
+$user_role = $_SESSION['user_role'] ?? null;
+$user_id = $_SESSION['user_id'] ?? null;
+
+$user_prenom = 'Utilisateur';
+$user_nom = '';
+$nombreDemandes = 0;
+
+if ($user_id) {
+    try {
+        $stmt = $pdo->prepare("SELECT prenom, nom FROM utilisateurs WHERE id = ?");
+        $stmt->execute([$user_id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user) {
+            $user_prenom = $user['prenom'];
+            $user_nom = $user['nom'];
+        }
+    } catch (PDOException $e) {
+        // En cas d’erreur
+    }
+}
+
+if ($user_role === '2') {
+    try {
+        $stmt = $pdo->query("SELECT COUNT(*) as total FROM request WHERE answer = 0");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $nombreDemandes = $result['total'] ?? 0;
+    } catch (PDOException $e) {
+        $nombreDemandes = '!';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -27,12 +68,46 @@
   <div class="top">
     <img src="img/mentalworks.png" alt="" />
 
-<label for="burger" class="burger">
-  <input id="burger" type="checkbox">
+<!-- Bouton burger -->
+<div id="openMenu" class="burger">
   <span></span>
   <span></span>
   <span></span>
-</label>
+</div>
+
+<!-- Overlay -->
+<div id="menuOverlay" class="menu-overlay"></div>
+
+<!-- Menu mobile -->
+<div id="menu" class="mobile-menu">
+  <div id="closeMenu" class="close-btn">×</div>
+
+  <?php if ($user_role == '1'): ?>
+    <a href="accueil.php">Accueil</a>
+    <a href="nouvelle.php">Nouvelle demande</a>
+    <a href="historique.php">Historique</a>
+    <div class="rod"></div>
+    <a href="infosC.php">Mes infos</a>
+    <a href="preferences.php">Préférences</a>
+    <a href="deconnexion.php">Déconnexion</a>
+  <?php elseif ($user_role == '2'): ?>
+    <a href="accueil.php">Accueil</a>
+    <a href="demandInExpectation.php">Demandes (<?= htmlspecialchars($nombreDemandes) ?>)</a>
+    <a href="historyRequest.php">Historique</a>
+    <a href="#">Mon équipe</a>
+    <a href="statistique.php">Statistiques</a>
+    <div class="rodMenu"></div>
+    <a href="infosM.php">Mes infos</a>
+    <a href="preferencesManager.php">Préférences</a>
+    <a href="demande.php">Types de demandes</a>
+    <a href="direction.php">Directions</a>
+    <a href="Managers.php">Managers</a>
+    <a href="Poste.php">Postes</a>
+    <a href="deconnexion.php">Déconnexion</a>
+  <?php endif; ?>
+</div>
+
+
     
   </div>
 </body>
