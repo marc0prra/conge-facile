@@ -1205,18 +1205,18 @@ h1.titleDemand {
   font-size: 18px;
   font-weight: 600;
   line-height: 24.57px;
-  color: #004C6CC7;
+  color: #004c6cc7;
 }
 
 button.reject {
-  background-color: #E10E0E;
-  border: #E10E0E 2px solid;
+  background-color: #e10e0e;
+  border: #e10e0e 2px solid;
   border-radius: 6px;
 }
 
 button.accept {
-  background-color: #1A8245;
-  border: 2px solid #1A8245;
+  background-color: #1a8245;
+  border: 2px solid #1a8245;
   border-radius: 6px;
 }
 
@@ -1473,25 +1473,25 @@ thead th a:hover {
   .container {
     overflow: scroll;
   }
-  .services{
+  .services {
     flex-direction: column;
     margin-left: 0%;
   }
-  .poste{
+  .poste {
     margin-left: 0%;
   }
   .infos2 {
     display: flex;
-    gap: 0px; 
+    gap: 0px;
     flex-direction: column;
   }
-  .forgotF{
+  .forgotF {
     margin-left: 0%;
   }
-  .initial{
+  .initial {
     justify-content: center;
   }
-
+}
 @media screen and (max-width: 768px) {
   .left {
     display: none;
@@ -1561,19 +1561,19 @@ thead th a:hover {
     width: 96%;
     gap: 21px;
   }
-  .email{
+  .email {
     width: 85%;
   }
-  .forgot{
+  .forgot {
     width: 80.5%;
   }
-  .forgotN{
+  .forgotN {
     width: 80%;
   }
-  .forgotF{
-   width: 80%;
+  .forgotF {
+    width: 80%;
   }
-  .right button{
+  .right button {
     width: fit-content;
     align-content: center;
     align-items: center;
