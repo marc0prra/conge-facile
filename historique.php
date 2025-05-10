@@ -143,9 +143,9 @@ function getStatus($codes) {
                         <?php foreach ($demandes as $demande) : ?>
                             <tr class="card">
                                 <td class="Type1"><?= htmlspecialchars($demande['type_demande']) ?></td>
-                                <td class="DemandeDate"><?= htmlspecialchars((new DateTime($demande['date_demande']))->format('d/m/Y H\h00')) ?></td>
-                                <td class="DebutDate"><?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?></td>
-                                <td class="FinDate"><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?></td>
+                                <td class="DemandeDate"><?= htmlspecialchars((new DateTime($demande['date_demande']))->format('d/m/Y H\hi')) ?></td>
+                                <td class="DebutDate"><?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\hi')) ?></td>
+                                <td class="FinDate"><?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\hi')) ?></td>
                                 <td class="NbJours"><?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></td>
                                 <td class="Statut"><?= getStatus($demande['etat_demande']) ?></td>
                                 <td>
