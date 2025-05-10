@@ -117,7 +117,7 @@ $conn->close();
                             <div class="forgot">
                                 <p class="color">Mot de passe actuel</p>
                                 <input type="password" id="password">
-                                <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('password', this)">
+                                <img src="img/open-eye.png" alt="Afficher" class="toggle-passwordBug" onclick="togglePassword('password', this)">
                             </div>
                             <div class="infos2">
                                 <div class="forgotN">

@@ -89,9 +89,10 @@ if (isset($_GET['id'])) {
                         value="<?= htmlspecialchars($posteSelectionne['name']) ?>" required>
 
                     <div class="button_container">
-                      <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
+                        <button class="goBack"><a href="Poste.php">< Retour</a></button>
+                        <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
                         <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
-                        <button class="goBack"><a href="Poste.php">Retour</a></button>
+
                     </div>
                 </form>
             </div>

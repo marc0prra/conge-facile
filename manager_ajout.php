@@ -73,9 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" name="service" class="input_admin" value="<?= htmlspecialchars($manager['service']) ?>" required>
 
                 <div class="button_container">
+                    <button class="goBack"><a href="Managers.php">< Retour</a></button>
                     <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
                     <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
-                    <button class="goBack"><a href="Managers.php">Retour</a></button>
+
                 </div>
             </form>
         </div>
