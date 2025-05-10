@@ -173,6 +173,14 @@ form {
   padding: 13px 28px;
   margin-top: 3%;
   border: #004c6c 2px solid;
+  background-color: #004c6c;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.portal:hover {
+  transform: scale(0.95);
 }
 
 /* Menu burger */
@@ -301,14 +309,8 @@ form {
 */
 
 .active {
-  background-color: #5c73a012;
-  border-right: #004c6c solid 4px;
   color: #004c6c;
-  padding: 3.8%;
   text-align: left;
-  width: 30%;
-  padding-left: 9%;
-  padding-right: 28%;
 }
 
 .activeAdmin {
@@ -495,6 +497,42 @@ p.numberRequest {
   display: none;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+.goBack {
+  background-color: #d6e0ed;
+  border-radius: 8px;
+  border: #e2e8f0;
+  padding: 13px 28px;
+}
+
 /******************************** ACCUEIL ************************************/
 .diff {
   margin-top: 6%;
@@ -592,6 +630,14 @@ p.numberRequest {
   padding: 13px 28px;
   margin-top: 5%;
   border: #004c6c 2px solid;
+  background-color: #004c6c;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.renit:hover {
+  transform: scale(0.95);
 }
 
 .popup {
@@ -644,7 +690,25 @@ p.numberRequest {
   height: 41px;
   align-items: center;
   display: flex;
+  justify-content: center; /* pour centrer le texte */
+  background-color: #004c6c;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: none; /* optionnel */
 }
+
+.resetPswd:hover {
+  transform: scale(0.95);
+}
+
+.resetPswd button {
+  transition: transform 0.2s ease;
+}
+
+.resetPswd button:hover {
+  transform: scale(0.95);
+}
+
 /************************************ NOUVELLE DEMANDE ***************************/
 
 .dates,
@@ -732,6 +796,14 @@ p.numberRequest {
   border: #004c6c 2px solid;
   padding: 13px 28px;
   margin-top: 4%;
+  background: #004c6c;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.end button:hover {
+  transform: scale(0.95);
 }
 
 .files {
@@ -1103,6 +1175,14 @@ input[type="file"] {
   border-radius: 5px;
   margin-bottom: 4%;
   padding: 1%;
+  background-color: #004c6c; /* ou autre couleur de fond souhaitée */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: none; /* optionnel, pour un look plus moderne */
+}
+
+.save:hover {
+  transform: scale(0.95);
 }
 
 /************************************* HISTORIQUE *******************************/
@@ -1470,7 +1550,7 @@ thead th a:hover {
 .skin {
   display: flex;
   padding: 22px;
-  margin: 22% auto 0% auto;
+  margin: 82% auto 0% auto;
   gap: 15px;
 }
 

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="ajout_post">
             <form method="POST" class="form_admin">
                 <label for="titre" class="label_admin">Nom de la direction</label>
-                <input type="text" id="titre" name="titre" class="input_admin" required>
+                <input type="text" id="titre" name="titre" class="input_admin" >
 
                 <div class="button_container">
                     <button type="submit" name="annuler" class="btn_red">Annuler</button>

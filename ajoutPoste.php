@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h1 class="title_admin">Ajouter un poste</h1>
                     <form method="POST" class="form_admin" action="">
                         <label for="titre" class="label_admin">Nom du poste</label>
-                        <input type="text" id="titre" name="titre" class="input_admin" required>
+                        <input type="text" id="titre" name="titre" class="input_admin" >
 
                         <div class="button_container"><button type="button" name="supprimer" class="btn_red"><a
                                     href="poste.php">Annuler</a></button>

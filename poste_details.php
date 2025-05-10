@@ -63,6 +63,19 @@ if (isset($_GET['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
+<!-- Modal de confirmation -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <p>Êtes-vous sûr de vouloir supprimer ce poste ?</p>
+        <div class="modal-buttons">
+            <form method="POST">
+                <input type="hidden" name="supprimer" value="1">
+                <button type="submit" class="btn_red">Oui, supprimer</button>
+            </form>
+            <button onclick="closeModal()" class="btn_blue">Annuler</button>
+        </div>
+    </div>
+</div>
 <body>
     <?php include 'include/top.php'; ?>
     <div class="middle">
@@ -76,9 +89,9 @@ if (isset($_GET['id'])) {
                         value="<?= htmlspecialchars($posteSelectionne['name']) ?>" required>
 
                     <div class="button_container">
-                        <button type="submit" name="supprimer" class="btn_red"
-                            onclick="return confirm('Voulez-vous vraiment supprimer ce poste ?')">Supprimer</button>
+                      <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
                         <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
+                        <button class="goBack"><a href="Poste.php">Retour</a></button>
                     </div>
                 </form>
             </div>

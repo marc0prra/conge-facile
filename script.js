@@ -76,3 +76,12 @@ document.getElementById('cancelDelete').addEventListener('click', function () {
 document.getElementById('confirmDelete').addEventListener('click', function () {
     document.getElementById('submitDelete').click();
 });
+
+
+function openModal() {
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+}

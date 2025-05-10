@@ -46,6 +46,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
+<!-- Modal de confirmation -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <p>Êtes-vous sûr de vouloir supprimer cette direction/service ?</p>
+        <div class="modal-buttons">
+            <form method="POST">
+                <input type="hidden" name="supprimer" value="1">
+                <button type="submit" class="btn_red">Oui, supprimer</button>
+            </form>
+            <button onclick="closeModal()" class="btn_blue">Annuler</button>
+        </div>
+    </div>
+</div>
 <body>
 <?php include 'include/top.php'; ?>
 <div class="middle">
@@ -59,8 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        value="<?= htmlspecialchars($direction['name']) ?>" required>
 
                 <div class="button_container">
-                    <button type="submit" name="supprimer" class="btn_red">Supprimer</button>
+                    <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
                     <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
+                    <button class="goBack"><a href="direction.php">Retour</a></button>
                 </div>
             </form>
         </div>

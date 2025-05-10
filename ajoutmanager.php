@@ -44,13 +44,13 @@ if (isset($_POST['ajouter'])) {
         <div class="ajout_post">
             <form method="POST" class="form_admin">
                 <label for="nom" class="label_admin">Nom de famille</label>
-                <input type="text" id="nom" name="nom" class="input_admin" required>
+                <input type="text" id="nom" name="nom" class="input_admin" >
 
                 <label for="prenom" class="label_admin">Prénom</label>
-                <input type="text" id="prenom" name="prenom" class="input_admin" required>
+                <input type="text" id="prenom" name="prenom" class="input_admin" >
 
                 <label for="service" class="label_admin">Service</label>
-                <input type="text" id="service" name="service" class="input_admin" required>
+                <input type="text" id="service" name="service" class="input_admin" >
 
                 <div class="button_container">
                     <a href="Managers.php" class="btn_red">Annuler</a>

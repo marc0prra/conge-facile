@@ -69,46 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </div>
 
-<style>
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1.5rem;
-}
-</style>
-
-<script>
-function openModal() {
-    document.getElementById('confirmModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('confirmModal').style.display = 'none';
-}
-</script>
 
 <body>
     <?php include 'include/top.php'; ?>
@@ -126,6 +86,7 @@ function closeModal() {
                     <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
 
                         <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
+                        <button class="goBack"><a href="demande.php">Retour</a></button>
                     </div>
                 </form>
             </div>
