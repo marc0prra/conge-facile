@@ -1568,6 +1568,13 @@ thead th a:hover {
   .right {
     max-width: 950px;
     margin-left: 5%;
+    width: 92%;
+  }
+  .justificative input {
+    min-width: 86%;
+  }
+  .error {
+    width: 100%;
   }
   .right h2 {
     margin: 3% 0%;
@@ -1608,6 +1615,9 @@ thead th a:hover {
   .initial {
     justify-content: center;
   }
+  .right.historique {
+    width: 92%;
+  }
 }
 @media screen and (max-width: 768px) {
   .left {
@@ -1637,7 +1647,7 @@ thead th a:hover {
     align-items: center;
   }
   .right h2 {
-    margin: 15% 0% 0%;
+    margin: 126px 0% 0%;
   }
 }
 
@@ -1695,13 +1705,12 @@ thead th a:hover {
     align-content: center;
     align-items: center;
   }
-  .right h2 {
-    margin-top: 20%;
-  }
   #checkbox {
     display: none;
   }
-
+  .middle {
+    width: 99%;
+  }
   .toggle {
     position: relative;
     width: 40px;
@@ -1756,6 +1765,9 @@ thead th a:hover {
   #checkbox:checked + .toggle {
     transition-duration: 0.5s;
     transform: rotate(180deg);
+  }
+  .parMargin {
+    margin-top: 12%;
   }
 }
 

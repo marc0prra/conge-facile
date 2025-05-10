@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
     </div>
 
     <form action="mdp.php" method="POST">
-      <p>Adresse email</p>
+      <p class="parMargin">Adresse email</p>
       <input type="email" name="mail" placeholder="****@mentalworks.fr" required class="id" />
       <button type="submit" class="renit">Demander à réinitialiser votre mot de passe</button>
     </form>
