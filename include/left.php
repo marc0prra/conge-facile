@@ -69,7 +69,7 @@ try {
         <img src="img/téléchargement.png" alt="skin">
       </div>
       <div class="infoSkin">
-        <strong class="nameSkin"><?= htmlspecialchars($user_prenom) ?></strong>
+        <strong class="nameSkin"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?></strong>
         <p class="typeSkin">Collaborateur</p>
       </div>
     </div>
@@ -102,7 +102,7 @@ try {
         <img src="img/téléchargement (1).png" alt="skin">
       </div>
       <div class="infoSkin">
-        <strong class="nameSkin"><?= htmlspecialchars($user_prenom . ' ' . $user_nom) ?></strong>
+        <strong class="nameSkin"><?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?></strong>
         <p class="typeSkin">Manager</p>
       </div>
     </div>
