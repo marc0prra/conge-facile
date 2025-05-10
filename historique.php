@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$order = $_GET['order'] ?? 'asc';
 include 'config.php';
 
 $demandes = [];
@@ -32,18 +31,6 @@ try {
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $searchType = $_GET['searchType'] ?? '';
-    $searchDate = $_GET['searchDate'] ?? '';
-    $sortBy = $_GET['sortBy'] ?? 'date_demande';
-    $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
-    $searchNb = $_GET['searchNb'] ?? '';
-
-    if (!empty($demandes) && isset($demandes[0][$sortBy])) {
-        usort($demandes, function ($a, $b) use ($sortBy, $order) {
-            return ($order === 'asc') ? $a[$sortBy] <=> $b[$sortBy] : $b[$sortBy] <=> $a[$sortBy];
-        });
-    }
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
