@@ -120,7 +120,7 @@ $conn->close();
                     </div>
                 </div>
 
-                <div class="">
+                <div class="inputPswd">
                     <h2>Réinitialiser son mot de passe</h2>
 
                     <div class="forgot">

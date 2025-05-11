@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </p>
             </div>
 
-            <h2>Connectez-vous</h2>
+            <h2 class="connexion">Connectez-vous</h2>
             <form action="connexion.php" method="POST">
                 <p>Adresse email</p>
                 <input type="email" name="mail" placeholder="****@mentalworks.fr" class="mailInput" required class="id" style="
