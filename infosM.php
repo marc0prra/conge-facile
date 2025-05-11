@@ -124,9 +124,11 @@ $conn->close();
                     <h2>Réinitialiser son mot de passe</h2>
 
                     <div class="forgot">
-                        <p class="color">Mot de passe actuel</p>
-                        <input type="password" id="password" name="current_password">
-                        <img src="img/open-eye.png" alt="Afficher" class="toggle-passwordBug" onclick="togglePassword('password', this)">
+                        <div class="forgotM">
+                            <p class="color">Mot de passe actuel</p>
+                            <input type="password" id="password" name="current_password">
+                            <img src="img/open-eye.png" alt="Afficher" class="toggle-passwordBug" onclick="togglePassword('password', this)">
+                        </div>
                     </div>
 
                     <div class="infos2">

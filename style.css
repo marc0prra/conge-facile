@@ -883,8 +883,12 @@ input[type="file"] {
 }
 
 .forgot {
+  width: 100%;
+}
+
+.forgotM{
   position: relative;
-  width: 37%;
+  width: 392px;
 }
 
 .forgot input {
@@ -941,7 +945,7 @@ input[type="file"] {
 
 .toggle-passwordBug {
   position: absolute;
-  right: -69px;
+  right: 13px;
   top: 75%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -1709,6 +1713,15 @@ thead th a:hover {
   }
   .right.historique {
     width: 92%;
+  }
+  .steps-container{
+    width: 80%;
+  }
+  .block{
+    width: 100%;
+  }
+  .blocks{
+    width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
