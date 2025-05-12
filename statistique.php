@@ -1,12 +1,11 @@
-<?php
+<?php  
 session_start();
-
-include 'config.php';
-
 if (!isset($_SESSION['user_id'])) {
-  header("Location: connexion.php");
-  exit();
+    header("Location: connexion.php");
+    exit();
 }
+
+require_once 'config.php'; // Connexion DB
 
 // Message de succès
 if (isset($_SESSION['success_message'])) {
@@ -17,131 +16,127 @@ if (isset($_SESSION['success_message'])) {
                     ' . $_SESSION['success_message'] . '
                 </div>
                 <div class="notification__progress"></div>
-            </div>
-          </div>';
+          </div></div>';
     unset($_SESSION['success_message']); 
 }
 
-// Données pour le graphique des types de demandes
+// Récupération des données pour les types de demandes (nombre et pourcentage)
 $labels = [];
 $values = [];
+$pct = [];
 
-$typeQuery = "SELECT type, COUNT(*) as total FROM demande GROUP BY type";
-$typeResult = mysqli_query($conn, $typeQuery);
+$sql = "
+    SELECT rt.name AS type, COUNT(r.id) AS total,
+           ROUND(100.0 * COUNT(r.id) / t.total, 2) AS pourcentage
+    FROM request_type rt
+    LEFT JOIN request r ON r.request_type_id = rt.id
+    CROSS JOIN (SELECT COUNT(*) AS total FROM request) t
+    GROUP BY rt.name, t.total
+";
 
-if ($typeResult) {
-    while ($row = mysqli_fetch_assoc($typeResult)) {
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $labels[] = $row['type'];
         $values[] = (int)$row['total'];
-    }
-}
-
-// Données pour le graphique d'acceptation
-$etatLabels = [];
-$etatValues = [];
-
-$etatQuery = "SELECT etat, COUNT(*) as total FROM demande GROUP BY etat";
-$etatResult = mysqli_query($conn, $etatQuery);
-
-if ($etatResult) {
-    while ($row = mysqli_fetch_assoc($etatResult)) {
-        $etatLabels[] = $row['etat'];
-        $etatValues[] = (int)$row['total'];
+        $pct[] = (float)$row['pourcentage'];
     }
 }
 ?>
-
 
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistiques des demandes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css?v=2">
     
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <title>Mentalworks</title>
-    </head>
-<body>
-<?php
-include 'include/top.php';
-include 'include/left.php';
-?>
-<h2>Statistiques</h2>
-<div style="max-width: 600px; margin-bottom: 2rem;">
-    <h3>Types de demandes</h3>
-    <canvas id="typeDemandesChart"></canvas>
-</div>
-<div style="max-width: 600px;">
-    <h3>État des demandes</h3>
-    <canvas id="acceptationChart"></canvas>
-</div>
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;900&family=Inter:wght@100;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const typeLabels = <?= json_encode($labels) ?>;
-const typeValues = <?= json_encode($values) ?>;
-const etatLabels = <?= json_encode($etatLabels) ?>;
-const etatValues = <?= json_encode($etatValues) ?>;
+</head>
+<body>
+<?php include 'include/top.php'; ?>
+<div class="middle">
+    <?php include 'include/left.php'; ?>
+    <div class="right">
+        <div class="container_admin">
+            <h2>Statistiques des demandes</h2>
+            <div style="max-width: 600px; margin-bottom: 2rem;">
+                <h3>Nombre de demandes par type</h3>
+                <canvas id="typeChart"></canvas>
+            </div>
+            <div style="max-width: 600px;">
+                <h3>Répartition en pourcentage</h3>
+                <canvas id="percentageChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
-const defaultColors = [
-  'rgba(54, 162, 235, 0.8)',
-  'rgba(255, 205, 86, 0.8)',
-  'rgba(75, 192, 192, 0.8)',
+<script>
+const labels = <?= json_encode($labels) ?>;
+const values = <?= json_encode($values) ?>;
+const percentages = <?= json_encode($pct) ?>;
+
+const colors = [
   'rgba(255, 99, 132, 0.8)',
+  'rgba(54, 162, 235, 0.8)',
+  'rgba(255, 206, 86, 0.8)',
+  'rgba(75, 192, 192, 0.8)',
   'rgba(153, 102, 255, 0.8)',
   'rgba(255, 159, 64, 0.8)',
-  'rgba(201, 203, 207, 0.8)'
+  'rgba(199, 199, 199, 0.8)'
 ];
 
-// Graphique types de demandes
-new Chart(document.getElementById('typeDemandesChart'), {
-  type: 'doughnut',
-  data: {
-    labels: typeLabels,
-    datasets: [{
-      data: typeValues,
-      backgroundColor: defaultColors.slice(0, typeLabels.length)
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: 'bottom' }
+// Bar Chart - Nombre de demandes
+new Chart(document.getElementById('typeChart'), {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Nombre de demandes',
+            data: values,
+            backgroundColor: colors.slice(0, labels.length)
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            title: { display: true, text: 'Nombre de demandes par type' }
+        }
     }
-  }
 });
 
-// Graphique état des demandes
-new Chart(document.getElementById('acceptationChart'), {
-  type: 'pie',
-  data: {
-    labels: etatLabels,
-    datasets: [{
-      data: etatValues,
-      backgroundColor: defaultColors.slice(0, etatLabels.length)
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: 'bottom' }
+// Pie Chart - Pourcentage
+new Chart(document.getElementById('percentageChart'), {
+    type: 'doughnut',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '% des demandes',
+            data: percentages,
+            backgroundColor: colors.slice(0, labels.length)
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { position: 'bottom' },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return `${context.label}: ${context.parsed}%`;
+                    }
+                }
+            }
+        }
     }
-  }
 });
 </script>
-
-
-    <script src="script.js"></script>
 </body>
 </html>
