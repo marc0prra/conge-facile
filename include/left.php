@@ -84,20 +84,20 @@ try {
   <div class="left">
     <div class="collab"></div>
     <a href="homePage.php">Accueil</a>
-    <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
-    <a href="historyRequest.php">Historique des demandes</a>
+    <a href="../manager/demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
+    <a href="../manager/historyRequest.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
-    <a href="statistique.php">Statistiques</a>
+    <a href="../manager/statistique.php">Statistiques</a>
     <div class="rod"></div>
-    <a href="infosManagers.php">Mes informations</a>
-    <a href="preferencesManager.php">Mes préférences</a>
+    <a href="../manager/infosManagers.php">Mes informations</a>
+    <a href="manager/preferencesManager.php">Mes préférences</a>
     <div class="dropdown">
       <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
       <div class="dropdown-content">
-        <a href="demande.php">Types de demandes</a>
-        <a href="direction.php">Directions/Services</a>
-        <a href="Managers.php">Managers</a>
-        <a href="Poste.php">Postes</a>
+        <a href="../manager/demande.php">Types de demandes</a>
+        <a href="../manager/direction.php">Directions/Services</a>
+        <a href="../manager/Managers.php">Managers</a>
+        <a href="../manager/Poste.php">Postes</a>
       </div>
     </div>
     <a href="deconnexion.php">Déconnexion</a>
