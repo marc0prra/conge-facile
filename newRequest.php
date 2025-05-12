@@ -96,7 +96,7 @@ $conn->close();
                 <h1 class="new">Effectuer une nouvelle demande</h1>
                 <p class="color">Type de demande - champ obligatoire</p>
 
-                <form action="nouvelle.php" method="POST" enctype="multipart/form-data">
+                <form action="newRequest.php" method="POST" enctype="multipart/form-data">
                     <select name="request_type_id">
                         <option value="1">Congé payé</option>
                         <option value="2">Congé sans solde</option>
