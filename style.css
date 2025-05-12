@@ -1673,3 +1673,270 @@ thead th a:hover {
 .button_container a {
   color: white;
 }
+
+/************************************* RESPONSIVE *******************************/
+@media screen and (max-width: 1340px) {
+  .id {
+    width: 226px;
+  }
+  .details {
+    width: 97%;
+  }
+  .leftMobile {
+    display: block;
+  }
+  .left {
+    display: none;
+  }
+  #openMenu {
+    display: block;
+  }
+  .dates,
+  .infos {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .end input,
+  .begin input {
+    padding: 12px 16px 12px 20px;
+    width: 100%;
+  }
+  .right {
+    max-width: 950px;
+    margin-left: 5%;
+    width: 92%;
+  }
+  .justificative input {
+    min-width: 86%;
+  }
+  .error {
+    width: 100%;
+  }
+  .right h2 {
+    margin: 3% 0%;
+  }
+  .details p {
+    width: 100%;
+    height: 120px;
+  }
+  .ajout_demande_right {
+    display: contents;
+    display: flex;
+    justify-content: center;
+  }
+  .container_admin {
+    width: 100%;
+    overflow: scroll;
+  }
+  .container {
+    overflow: scroll;
+  }
+  .services {
+    flex-direction: column;
+    margin-left: 0%;
+  }
+  .poste {
+    margin-left: 0%;
+  }
+  .infos2 {
+    display: flex;
+    gap: 0px;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: baseline;
+  }
+  .forgotF {
+    margin-left: 0%;
+  }
+  .initial {
+    justify-content: center;
+  }
+  .right.historique {
+    width: 92%;
+  }
+  .steps-container {
+    width: 80%;
+  }
+  .block {
+    width: 100%;
+  }
+  .blocks {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .left {
+    display: none;
+  }
+  .middle {
+    justify-content: center;
+  }
+  .borderTop {
+    width: 95%;
+    height: 7px;
+  }
+  .steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96%;
+    margin: 0;
+  }
+  .pref p {
+    font-size: 16px;
+  }
+  .button {
+    align-items: center;
+  }
+  .button2 {
+    align-items: center;
+  }
+  .right h2 {
+    margin: 3% 0% 0%;
+  }
+  .details {
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .active {
+    width: 49px;
+  }
+  .left a {
+    font-size: 17px;
+  }
+  .right input,
+  .custom-file-upload {
+    width: 84%;
+  }
+  .right select {
+    width: 96%;
+  }
+  .forgotM {
+    width: 276px;
+  }
+  .inputPswd input {
+    width: 100%;
+  }
+  .right h1 {
+    font-size: 26px;
+  }
+  .right h2 {
+    font-size: 22px;
+  }
+  .right button {
+    width: 210px;
+  }
+  .ps {
+    width: 90%;
+  }
+  .borderTop {
+    width: 92%;
+    height: 6px;
+  }
+  .block {
+    padding: 2%;
+  }
+  .blocks {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    gap: 21px;
+  }
+  .email {
+    width: 94%;
+  }
+  .forgot {
+    width: 80.5%;
+  }
+  .forgotN {
+    width: 80%;
+  }
+  .forgotF {
+    width: 80%;
+  }
+  .right button {
+    width: fit-content;
+    align-content: center;
+    align-items: center;
+  }
+  #checkbox {
+    display: none;
+  }
+  .middle {
+    width: 99%;
+  }
+
+  .bars {
+    width: 100%;
+    height: 4px;
+    background-color: rgb(176, 92, 255);
+    border-radius: 4px;
+  }
+
+  #bar2 {
+    transition-duration: 0.8s;
+  }
+
+  #bar1,
+  #bar3 {
+    width: 70%;
+  }
+
+  #checkbox:checked + .toggle .bars {
+    position: absolute;
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: 0.5s;
+  }
+
+  #checkbox:checked + .toggle {
+    transition-duration: 0.5s;
+    transform: rotate(180deg);
+  }
+  .parMargin {
+    margin-top: 12%;
+  }
+  .toggle-password {
+    right: -45px;
+    top: 75%;
+  }
+  .toggle-passwordBug {
+    right: -40px;
+    top: 75%;
+  }
+  .connexion {
+    margin: 47% 0% 0%;
+  }
+  .right h2 {
+    margin: 0;
+  }
+  .details {
+    margin-bottom: 50%;
+  }
+}
+
+@media screen and (max-width: 352px) {
+  .top_admin a {
+    font-size: 11px;
+  }
+  .details {
+    margin-bottom: 54%;
+  }
+}
