@@ -66,7 +66,7 @@ if ($user_role === '2') {
 <body>
   <div class="borderTop"></div>
   <div class="top">
-    <img src="img/mentalworks.png" alt="" />
+    <img src="img/mentalworks.png" alt="Logo MentalWoks" />
 
 <!-- Bouton burger -->
 <div id="openMenu" class="burger">
