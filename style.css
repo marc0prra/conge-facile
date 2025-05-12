@@ -1674,6 +1674,17 @@ thead th a:hover {
   color: white;
 }
 
+/************************************* Page Stats *******************************/
+.right_stats{
+  display: flex;
+  flex-direction: column;
+}
+
+.right_stats h2{
+  color: #004C6CC7;
+  font-size: 18px;
+  margin: 0%;
+}
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .id {
@@ -1938,5 +1949,6 @@ thead th a:hover {
   }
   .details {
     margin-bottom: 54%;
+    
   }
 }
