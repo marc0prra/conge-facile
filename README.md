@@ -3,6 +3,15 @@ Ce fichier Readme regroupe la conception de l’interface utilisateur pour Cong�
 L’interface est adaptée à des besoins pédagogiques. Ce fichier semble être structuré pour présenter un parcours utilisateur complet, de la connexion jusqu’à la gestion et la consultation des congés.
 Le site a 2 cotés, un coté collaborateur/employer et un coté manager.
 
+Pour mieux comprendre cela voici une arborescence :
+
+![image](https://github.com/user-attachments/assets/5ef71b40-9275-4353-b44f-3858c0141b29)
+
+Il faut aussi savoir qu'un service appartient à un collaborateur et un manager doit gérer un service.
+
+![image](https://github.com/user-attachments/assets/4d4205b6-228e-46ed-b470-eeacf04ef69c)
+
+
 Tout d'abord il y a une page commune qui nous permet d'etre connecté au site :
 
 Écran de connexion simple avec email/mot de passe. Avec la possibilité d'accéder a la page "mot de passe oublié".
@@ -76,5 +85,6 @@ Avoir la possibilité de modifier les informations des managers et de les mettre
 
 Voici le schéma relationnel de notre base de donnée : 
 
-![image](https://github.com/user-attachments/assets/741e08b2-f825-42db-97c4-5e4068b07451)
+![image](https://github.com/user-attachments/assets/a680f507-7598-4e24-a934-4e8cebcc9dc2)
+
 
