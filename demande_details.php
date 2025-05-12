@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         value="<?= htmlspecialchars($demande['name']) ?>" required>
 
                     <div class="button_container">
-                        <button class="goBack"><a href="demande.php">< Retour</a></button>
+                        <button class="goBack"><a href="requestList.php">< Retour</a></button>
                         <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
 
                         <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
