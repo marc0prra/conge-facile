@@ -3,6 +3,8 @@ Ce fichier Readme regroupe la conception de l’interface utilisateur pour Cong�
 L’interface est adaptée à des besoins pédagogiques. Ce fichier semble être structuré pour présenter un parcours utilisateur complet, de la connexion jusqu’à la gestion et la consultation des congés.
 Le site a 2 cotés, un coté collaborateur/employer et un coté manager.
 
+Ce projet a été réalisé avec : HTML, CSS, JS, et PHP.
+
 Pour mieux comprendre cela voici une arborescence :
 
 ![image](https://github.com/user-attachments/assets/5ef71b40-9275-4353-b44f-3858c0141b29)
