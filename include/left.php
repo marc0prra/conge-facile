@@ -62,11 +62,11 @@ try {
   <!-- MENU COLLABORATEUR -->
   <div class="left">
     <a href="homePage.php">Accueil</a>
-    <a href="collaborateur/newRequest.php">Nouvelle demande</a>
-    <a href="collaborateur/employeeHistory.php">Historique des demandes</a>
+    <a href="newRequest.php">Nouvelle demande</a>
+    <a href="employeeHistory.php">Historique des demandes</a>
     <div class="rod"></div>
-    <a href="collaborateur/employeeInformation.php">Mes informations</a>
-    <a href="collaborateur/userPreferences.php">Mes préférences</a>
+    <a href="employeeInformation.php">Mes informations</a>
+    <a href="userPreferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
     <div class="skin">
       <div class="headSkin">
@@ -84,20 +84,20 @@ try {
   <div class="left">
     <div class="collab"></div>
     <a href="homePage.php">Accueil</a>
-    <a href="../manager/demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
-    <a href="../manager/historyRequest.php">Historique des demandes</a>
+    <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
+    <a href="historyRequest.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
-    <a href="../manager/statistique.php">Statistiques</a>
+    <a href="statistique.php">Statistiques</a>
     <div class="rod"></div>
-    <a href="../manager/infosManagers.php">Mes informations</a>
-    <a href="manager/preferencesManager.php">Mes préférences</a>
+    <a href="infosManagers.php">Mes informations</a>
+    <a href="preferencesManager.php">Mes préférences</a>
     <div class="dropdown">
       <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
       <div class="dropdown-content">
-        <a href="../manager/demande.php">Types de demandes</a>
-        <a href="../manager/direction.php">Directions/Services</a>
-        <a href="../manager/Managers.php">Managers</a>
-        <a href="../manager/Poste.php">Postes</a>
+        <a href="requestList.php">Types de demandes</a>
+        <a href="direction.php">Directions/Services</a>
+        <a href="Managers.php">Managers</a>
+        <a href="Poste.php">Postes</a>
       </div>
     </div>
     <a href="deconnexion.php">Déconnexion</a>
