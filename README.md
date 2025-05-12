@@ -7,6 +7,10 @@ Pour mieux comprendre cela voici une arborescence :
 
 ![image](https://github.com/user-attachments/assets/5ef71b40-9275-4353-b44f-3858c0141b29)
 
+Voici le schéma relationnel de notre base de donnée : 
+
+![image](https://github.com/user-attachments/assets/a680f507-7598-4e24-a934-4e8cebcc9dc2)
+
 Il faut aussi savoir qu'un service appartient à un collaborateur et un manager doit gérer un service.
 
 ![image](https://github.com/user-attachments/assets/4d4205b6-228e-46ed-b470-eeacf04ef69c)
@@ -43,6 +47,7 @@ Permet de personnalisez ses préférences et de les enregistrer : **(page non ob
 **Coté Manager :**
 
 **En tant que manager,** je peux voir les demandes en attentes de le nombre de demandes en attente. Il y a une liste des congés soumis par les employés en attente de validation. Affichage sous forme de tableau avec filtre par date, type de congé ou employé. Actions rapides disponibles : "Valider", "Refuser", et si il n'y a pas dde réponse c'est "En cours" :
+
 ![image](https://github.com/user-attachments/assets/da072f2f-38c8-4c12-87f5-8db5eb03f973)
 
 Page dédiée à une demande spécifique. Affiche les dates demandées, le type de congé, le commentaire éventuel de l’employé, et le solde disponible. Options pour valider ou refuser avec commentaire.:                                   
@@ -56,6 +61,10 @@ Page dédiée aux informations personnelles du manager : nom, email, poste, etc.
 
 Permet de personnalisez ses préférences et de les enregistrer : **(page non obligatoire)**
 ![image](https://github.com/user-attachments/assets/2a0b4088-c9c2-4765-9808-123aaf728f96)
+
+Vu des statistiques des congés au sein de l'ntreprise : **(page non obligatoire)**
+
+![image](https://github.com/user-attachments/assets/45c90a00-cbf6-41b0-8be2-29ca7a0765e6)
 
 
 Ajoutez une type de demande de congé, voir les détails des demandes de congés(permet aussi de les supprimer ou de modifier le nombre de type de demande de congé et le nom du type de la demande de congé) :                                         
@@ -83,8 +92,6 @@ Avoir la possibilité de modifier les informations des managers et de les mettre
 ![image](https://github.com/user-attachments/assets/ac83e2e4-4e5a-4ffc-984c-3b011357f7a7)
 
 
-Voici le schéma relationnel de notre base de donnée : 
 
-![image](https://github.com/user-attachments/assets/a680f507-7598-4e24-a934-4e8cebcc9dc2)
 
 
