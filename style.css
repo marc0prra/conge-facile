@@ -1283,6 +1283,17 @@ input.mangerComment {
   margin-bottom: 3%;
 }
 
+.justificative.RequestDetails {
+  margin-bottom: 3%;
+}
+
+a.moreDetails {
+  padding: 10px 20px;
+  border-radius: 7px;
+  background-color: #004C6C14;
+  color: #475467;
+}
+
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
