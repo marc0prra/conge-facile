@@ -64,14 +64,14 @@ if ($result) {
     <?php include 'include/left.php'; ?>
     <div class="right">
         <div class="container_admin">
-            <h2>Statistiques des demandes</h2>
+            <h2>Statistiques </h2>
             <div style="max-width: 600px; margin-bottom: 2rem;">
-                <h3>Nombre de demandes par type</h3>
+                <h3>Types de demandes sur l'année</h3>
+                <canvas id="percentageChart"></csanvas>
+              </div>
+              <div style="max-width: 600px;">
+                <h3>Pourcentage d'acceptation des demandes sur l'année</h3>
                 <canvas id="typeChart"></canvas>
-            </div>
-            <div style="max-width: 600px;">
-                <h3>Répartition en pourcentage</h3>
-                <canvas id="percentageChart"></canvas>
             </div>
         </div>
     </div>

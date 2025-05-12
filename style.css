@@ -1685,6 +1685,11 @@ thead th a:hover {
   font-size: 18px;
   margin: 0%;
 }
+.container_admin h3{
+  color: #004C6CC7;
+  font-size: 20px;
+}
+
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
   .id {
