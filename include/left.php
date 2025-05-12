@@ -3,9 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once 'config.php'; // doit définir $pdo
+require_once 'config.php'; // $pdo est défini ici
 
-// Récupère l'ID utilisateur connecté
 $user_id = $_SESSION['user_id'] ?? null;
 $user_role = $_SESSION['user_role'] ?? '1';
 $user_prenom = 'Utilisateur';
@@ -13,21 +12,25 @@ $user_nom = '';
 
 if ($user_id) {
     try {
-        $stmt = $pdo->prepare("SELECT prenom, nom FROM utilisateurs WHERE id = ?");
+        $stmt = $pdo->prepare("
+            SELECT person.last_name, person.first_name
+            FROM user
+            INNER JOIN person ON user.person_id = person.id
+            WHERE user.id = ?
+        ");
         $stmt->execute([$user_id]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user) {
-            $user_prenom = $user['prenom'];
-            $user_nom = $user['nom'];
+            $user_prenom = $user['first_name'];
+            $user_nom = $user['last_name'];
         }
     } catch (PDOException $e) {
-        // En cas d’erreur : log éventuel ou valeur par défaut
         $user_prenom = 'Erreur';
     }
 }
 
-// Comptage des demandes non traitées (pour les managers)
+// Comptage des demandes pour les managers
 try {
     $queryCount = "SELECT COUNT(*) as total FROM request WHERE answer = 0";
     $stmtCount = $pdo->query($queryCount);
@@ -37,6 +40,7 @@ try {
     $nombreDemandes = 'E';
 }
 ?>
+
 
 
 <!DOCTYPE html>

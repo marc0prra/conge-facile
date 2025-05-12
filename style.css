@@ -263,7 +263,6 @@ form {
 .dropdown-contentBurger {
   display: none;
   flex-direction: column;
-  background: white;
   width: 100%;
 }
 
@@ -272,7 +271,7 @@ form {
   text-decoration: none;
   transition: background 0.3s;
   margin: 4% auto;
-  color: #637381;
+  color: white;
   transition: 0.3s;
 }
 
@@ -378,6 +377,11 @@ p.numberRequest {
   flex-direction: column;
 }
 
+.dropdownBurger {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Bouton Administration */
 .dropbtn {
   display: flex;
@@ -388,6 +392,20 @@ p.numberRequest {
   cursor: pointer;
   background-color: #5c73a012;
   border-right: #004c6c solid 4px;
+  color: #004c6c;
+  padding: 3.8%;
+  text-align: left;
+  padding-left: 9%;
+  padding-right: 28%;
+}
+
+.dropbtnBurger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
   color: #004c6c;
   padding: 3.8%;
   text-align: left;
@@ -409,12 +427,26 @@ p.numberRequest {
   width: 100%;
 }
 
+.dropdown-contentBurger {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
 .dropdown-content a {
   padding: 10px;
   text-decoration: none;
   transition: background 0.3s;
   margin: 4% auto;
   color: #637381;
+  transition: 0.3s;
+}
+
+.dropdown-contentBurger a {
+  padding: 10px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin: 4% auto;
   transition: 0.3s;
 }
 
@@ -428,7 +460,15 @@ p.numberRequest {
   display: flex;
 }
 
+.dropdownBurger.active .dropdown-contentBurger {
+  display: flex;
+}
+
 .dropdown.active .dropbtn i {
+  transform: rotate(180deg);
+}
+
+.dropdownBurger.active .dropbtn i {
   transform: rotate(180deg);
 }
 

@@ -99,7 +99,7 @@ if ($user_role === '2') {
     <div class="rodMenu"></div>
     <a href="infosM.php">Mes infos</a>
     <a href="preferencesManager.php">Préférences</a>
-    <div class="dropdown">
+    <div class="dropdownBurger">
       <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
       <div class="dropdown-contentBurger">
         <a href="demande.php">Types de demandes</a>

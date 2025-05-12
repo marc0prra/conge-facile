@@ -42,6 +42,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".dropbtnBurger").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // On récupère le conteneur parent de type .dropdownBurger
+            const parentDropdown = this.closest(".dropdownBurger");
+
+            // On bascule la classe 'active' pour afficher/masquer .dropdown-contentBurger
+            parentDropdown.classList.toggle("active");
+        });
+    });
+});
+
 
 
 /******************************* BURGER MENU **********************************/
