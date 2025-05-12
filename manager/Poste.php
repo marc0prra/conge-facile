@@ -38,7 +38,7 @@ $filteredPostes = $stmt->fetchAll();
             <div class="container_admin">
                 <div class='top_admin'>
                     <h1>Liste des Postes</h1>
-                    <button class="initial"><a href="ajoutPoste.php">Ajouter un poste</a></button>
+                    <button class="initial"><a href="addPoste.php">Ajouter un poste</a></button>
                 </div>
                 <form method="GET">
                     <table class="table2">

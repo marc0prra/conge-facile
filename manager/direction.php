@@ -40,7 +40,7 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
             <div class="container_admin">
                 <div class='top_admin'>
                     <h1>Liste des Services</h1>
-                    <button class="initial"><a href="ajoutDirection.php">Ajouter un service</a></button>
+                    <button class="initial"><a href="addDirection.php">Ajouter un service</a></button>
                 </div>
                 <form method="GET">
                     <table class="table2">
@@ -66,7 +66,7 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
                                         <td><?= htmlspecialchars($service['name']) ?></td>
                                         <td>
                                             <button class="det_button">
-                                                <a href="direction_ajout.php?id=<?= urlencode($service['id']) ?>">Détails</a>
+                                                <a href="direction_details.php?id=<?= urlencode($service['id']) ?>">Détails</a>
                                             </button>
                                         </td>
                                     </tr>

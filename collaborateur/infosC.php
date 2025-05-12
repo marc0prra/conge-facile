@@ -43,9 +43,7 @@ if ($result->num_rows > 0) {
     exit;
 }
 
-echo '<pre>';
-print_r($user);
-echo '</pre>';
+
 
 $stmt->close();
 $conn->close();

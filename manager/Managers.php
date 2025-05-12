@@ -62,7 +62,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
         <div class="container_admin">
             <div class='top_admin'>
                 <h1>Managers</h1>
-                <button class="initial"><a href="ajoutManager.php">Ajouter un manager</a></button>
+                <button class="initial"><a href="addManager.php">Ajouter un manager</a></button>
             </div>
             <form method="GET">
                 <table class="table2">
@@ -100,7 +100,7 @@ $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
                                     <td><?= htmlspecialchars($m['prenom'] ?? '') ?></td>
                                     <td><?= htmlspecialchars($m['service'] ?? '') ?></td>
                                     <td>
-                                        <a href="manager_ajout.php?id=<?= urlencode($m['id']) ?>" class="det_button">Détails</a>
+                                        <a href="manager_details.php?id=<?= urlencode($m['id']) ?>" class="det_button">Détails</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -46,7 +46,7 @@ $demandes = $stmt->fetchAll();
         <div class="container_admin">
             <div class="top_admin">
                 <h1>Liste des Demandes</h1>
-                <button class="initial"><a href="ajoutDemande.php">Ajouter une demande</a></button>
+                <button class="initial"><a href="addDemande.php">Ajouter une demande</a></button>
             </div>
             <form method="GET">
                 <table class="table2">
@@ -79,7 +79,7 @@ $demandes = $stmt->fetchAll();
                                     <td><?= htmlspecialchars($demande['nb_demandes']) ?></td>
                                     <td>
                                         <button class="det_button">
-                                            <a href="demande_ajout.php?id=<?= urlencode($demande['id']) ?>">Détails</a>
+                                            <a href="demande_details.php?id=<?= urlencode($demande['id']) ?>">Détails</a>
                                         </button>
                                     </td>
                                 </tr>

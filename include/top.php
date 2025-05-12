@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../config.php'; // Adapter le chemin si nécessaire
+require_once __DIR__ . '/../config.php'; 
 
 $user_role = $_SESSION['user_role'] ?? null;
 $user_id = $_SESSION['user_id'] ?? null;
@@ -83,7 +83,7 @@ if ($user_role === '2') {
   <div id="closeMenu" class="close-btn">×</div>
 
   <?php if ($user_role == '1'): ?>
-    <a href="accueil.php">Accueil</a>
+    <a href="homePage.php">Accueil</a>
     <a href="nouvelle.php">Nouvelle demande</a>
     <a href="historique.php">Historique</a>
     <div class="rod"></div>
@@ -91,13 +91,13 @@ if ($user_role === '2') {
     <a href="preferences.php">Préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
   <?php elseif ($user_role == '2'): ?>
-    <a href="accueil.php">Accueil</a>
+    <a href="homePage.php">Accueil</a>
     <a href="demandInExpectation.php">Demandes (<?= htmlspecialchars($nombreDemandes) ?>)</a>
     <a href="historyRequest.php">Historique</a>
     <a href="#">Mon équipe</a>
     <a href="statistique.php">Statistiques</a>
     <div class="rodMenu"></div>
-    <a href="infosM.php">Mes infos</a>
+    <a href="infosManagers.php">Mes infos</a>
     <a href="preferencesManager.php">Préférences</a>
     <div class="dropdownBurger">
       <a href="#" class="dropbtnBurger">Administration <i class="bx bx-chevron-down"></i></a>

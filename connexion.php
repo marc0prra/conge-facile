@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      elseif ($user_role == 2) {
                         $_SESSION['success_message'] = "Connecté en tant que Manageur !";
                      }
-                    header("Location: accueil.php");
+                    header("Location: homePage.php");
                     exit();
                 }
                 

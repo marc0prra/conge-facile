@@ -61,7 +61,7 @@ try {
 <?php if ($user_role == '1'): ?>
   <!-- MENU COLLABORATEUR -->
   <div class="left">
-    <a href="accueil.php">Accueil</a>
+    <a href="homePage.php">Accueil</a>
     <a href="nouvelle.php">Nouvelle demande</a>
     <a href="historique.php">Historique des demandes</a>
     <div class="rod"></div>
@@ -83,13 +83,13 @@ try {
   <!-- MENU MANAGER -->
   <div class="left">
     <div class="collab"></div>
-    <a href="accueil.php">Accueil</a>
+    <a href="homePage.php">Accueil</a>
     <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
     <a href="historyRequest.php">Historique des demandes</a>
     <a href="#">Mon équipe</a>
     <a href="statistique.php">Statistiques</a>
     <div class="rod"></div>
-    <a href="infosM.php">Mes informations</a>
+    <a href="infosManagers.php">Mes informations</a>
     <a href="preferencesManager.php">Mes préférences</a>
     <div class="dropdown">
       <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
