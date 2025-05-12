@@ -188,8 +188,8 @@ form {
   display: block;
   width: 35px;
   height: 25px;
-  position: fixed;
-  top: 25px;
+  position: absolute;
+  top: 41px;
   right: 20px;
   z-index: 1001;
   cursor: pointer;
@@ -244,7 +244,7 @@ form {
 }
 
 /* Responsive : cacher menu desktop sur mobile */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1348px) {
   .burger,
   .mobile-menu,
   .menu-overlay {
