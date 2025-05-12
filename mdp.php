@@ -1,42 +1,53 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+$pdo = new PDO('mysql:host=localhost;dbname=congefacile;charset=utf8', 'root', '');
 
 require 'vendor/autoload.php';
 
-$success = false; // par défaut
+$success = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
     $userEmail = $_POST['mail'];
 
-    $mail = new PHPMailer(true);
+    // Vérifie si l'adresse e-mail existe dans la base
+    $stmt = $pdo->prepare("SELECT * FROM user WHERE email = :email");
+    $stmt->execute(['email' => $userEmail]);
+    $user = $stmt->fetch();
 
-    try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'resetmotdepasse00@gmail.com';
-        $mail->Password = 'fonccymfcqtioqbv';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+    if ($user) {
+        $mail = new PHPMailer(true);
 
-        $mail->setFrom('resetmotdepasse00@gmail.com', 'Support Mot de passe');
-        $mail->addAddress($userEmail);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'resetmotdepasse00@gmail.com';
+            $mail->Password = 'fonccymfcqtioqbv';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-        $mail->isHTML(true);
-        $mail->Subject = 'Réinitialisation de votre mot de passe';
-        $mail->Body = "
-            <h1>Réinitialisation de mot de passe</h1>
-            <p>Veuillez cliquer sur ce lien pour réinitialiser votre mot de passe.</p>
-        ";
+            $mail->setFrom('resetmotdepasse00@gmail.com', 'Support Mot de passe');
+            $mail->addAddress($userEmail);
 
-        $mail->send();
-        $success = true;
-    } catch (Exception $e) {
-        echo "❌ Erreur lors de l'envoi : {$mail->ErrorInfo}";
+            $mail->isHTML(true);
+            $mail->Subject = 'Réinitialisation de votre mot de passe';
+            $mail->Body = "
+                <h1>Réinitialisation de mot de passe</h1>
+                <p>Veuillez cliquer sur ce lien pour réinitialiser votre mot de passe.</p>
+            ";
+
+            $mail->send();
+            $success = true;
+        } catch (Exception $e) {
+            echo "❌ Erreur lors de l'envoi : {$mail->ErrorInfo}";
+        }
+    } else {
+        echo "❌ Cette adresse e-mail n'est pas enregistrée dans notre base.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

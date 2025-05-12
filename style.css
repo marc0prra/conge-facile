@@ -113,6 +113,7 @@ form {
   margin: 0 auto;
   padding: 1%;
   border-radius: 16px;
+  position: relative;
 }
 
 .top img {
@@ -189,7 +190,7 @@ form {
   width: 35px;
   height: 25px;
   position: absolute;
-  top: 41px;
+  top: 21px;
   right: 20px;
   z-index: 1001;
   cursor: pointer;
