@@ -100,7 +100,7 @@ if ($user_role === '2') {
     <a href="infosM.php">Mes infos</a>
     <a href="preferencesManager.php">Préférences</a>
     <div class="dropdownBurger">
-      <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
+      <a href="#" class="dropbtnBurger">Administration <i class="bx bx-chevron-down"></i></a>
       <div class="dropdown-contentBurger">
         <a href="demande.php">Types de demandes</a>
         <a href="direction.php">Directions/Services</a>
