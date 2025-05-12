@@ -27,7 +27,8 @@ try {
                 request.answer AS etat_demande
               FROM request
               JOIN request_type ON request.request_type_id = request_type.id
-              WHERE request.collaborator_id = :user_id";
+              WHERE request.collaborator_id = :user_id
+              ORDER BY request.created_at DESC ";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
