@@ -108,7 +108,7 @@ $conn->close();
                     <div class="dates">
                         <div class="begin">
                             <p class="date color">Date début - champ obligatoire</p>
-                            <input type="date" name="start_date" style="
+                            <input type="datetime-local" name="start_date" style="
                                 background-image: url(img/calendar.png);
                                 background-size: 20px;
                                 background-position: 10px center;
@@ -118,7 +118,7 @@ $conn->close();
                         </div>
                         <div class="end">
                             <p class="date color">Date de fin - champ obligatoire</p>
-                            <input type="date" name="end_date" style="
+                            <input type="datetime-local" name="end_date" style="
                                 background-image: url(img/calendar.png);
                                 background-size: 20px;
                                 background-position: 10px center;
