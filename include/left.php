@@ -62,11 +62,11 @@ try {
   <!-- MENU COLLABORATEUR -->
   <div class="left">
     <a href="homePage.php">Accueil</a>
-    <a href="nouvelle.php">Nouvelle demande</a>
-    <a href="historique.php">Historique des demandes</a>
+    <a href="collaborateur/newRequest.php">Nouvelle demande</a>
+    <a href="collaborateur/employeeHistory.php">Historique des demandes</a>
     <div class="rod"></div>
-    <a href="infosC.php">Mes informations</a>
-    <a href="preferences.php">Mes préférences</a>
+    <a href="collaborateur/employeeInformation.php">Mes informations</a>
+    <a href="collaborateur/userPreferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
     <div class="skin">
       <div class="headSkin">
@@ -94,7 +94,7 @@ try {
     <div class="dropdown">
       <a href="#" class="dropbtn">Administration <i class="bx bx-chevron-down"></i></a>
       <div class="dropdown-content">
-        <a href="demande.php">Types de demandes</a>
+        <a href="manager/requestList.php">Types de demandes</a>
         <a href="direction.php">Directions/Services</a>
         <a href="Managers.php">Managers</a>
         <a href="Poste.php">Postes</a>
