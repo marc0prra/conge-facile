@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
         $stmt->bindParam(':id', $id_poste, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
-            header("Location: poste.php");
+            header("Location: Poste.php");
             exit();
         } else {
             echo "Erreur lors de la suppression.";

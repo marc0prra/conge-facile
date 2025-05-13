@@ -16,13 +16,13 @@ if (isset($_POST['ajouter'])) {
             ':name' => $name
         ]);
 
-        header("Location: demande.php");
+        header("Location: requestList.php");
         exit;
     }
 }
 
 if (isset($_POST['annuler'])) {
-    header("Location: demande.php");
+    header("Location: requestList.php");
     exit;
 }
 ?>

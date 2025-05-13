@@ -1,23 +1,21 @@
 <?php
-session_start();
+session_start(); // ← assure-toi que la session est démarrée
+require 'config.php';
 
-if (!isset($_SESSION['managers'])) {
-    $_SESSION['managers'] = [
-        ["id" => 1, "nom" => "Dupont", "prenom" => "Jean", "service" => "Informatique"],
-        ["id" => 2, "nom" => "Martin", "prenom" => "Sophie", "service" => "RH"],
-        ["id" => 3, "nom" => "Durand", "prenom" => "Paul", "service" => "Finances"]
-    ];
+// Initialiser le tableau si non défini
+if (!isset($_SESSION['managers']) || !is_array($_SESSION['managers'])) {
+    $_SESSION['managers'] = [];
 }
 
-// Sécuriser les clés (au cas où des managers incomplets auraient été ajoutés)
-foreach ($_SESSION['managers'] as &$m) {
+$managers = &$_SESSION['managers'];
+
+// Sécuriser les clés
+foreach ($managers as &$m) {
     $m['nom'] = $m['nom'] ?? '';
     $m['prenom'] = $m['prenom'] ?? '';
     $m['service'] = $m['service'] ?? '';
 }
-unset($m); // Bonnes pratiques pour éviter des erreurs avec la variable de référence
-
-$managers = &$_SESSION['managers'];
+unset($m);
 
 // Filtres et tri
 $searchNom = $_GET['searchNom'] ?? '';
@@ -42,6 +40,7 @@ usort($filteredManagers, function ($a, $b) use ($sortBy, $order) {
 
 $nextOrder = ($order === 'asc') ? 'desc' : 'asc';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
