@@ -1,17 +1,37 @@
 <?php 
 require 'config.php'; // Connexion BDD
 
+$erreur = "";
+$success = "";
+$titre = "";
+
+// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['ajouter'])) {
         $titre = trim($_POST['titre'] ?? '');
 
-        if (!empty($titre)) {
-            $stmt = $pdo->prepare("INSERT INTO department (name) VALUES (:name)");
-            $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
-            $stmt->execute();
+        if (empty($titre)) {
+            $erreur = "Veuillez entrer un nom de direction.";
+        } else {
+            // Vérification si déjà existante
+            $check = $pdo->prepare("SELECT COUNT(*) FROM department WHERE name = :name");
+            $check->execute([':name' => $titre]);
+            $exists = $check->fetchColumn();
 
-            header("Location: direction.php");
-            exit;
+            if ($exists > 0) {
+                $erreur = "Cette direction existe déjà.";
+            } else {
+                $stmt = $pdo->prepare("INSERT INTO department (name) VALUES (:name)");
+                $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    $success = "Direction ajoutée avec succès.";
+                    $titre = "";
+                } else {
+                    $erreur = "Erreur lors de l'ajout de la direction.";
+                }
+            }
         }
     }
 
@@ -21,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,6 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <title>Ajouter une direction</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .success {
+            color: green;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,10 +74,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'include/left.php'; ?>
     <div class="right">
         <h1>Ajouter une direction</h1>
+
+        <?php if (!empty($success)) : ?>
+            <div class="success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
         <div class="ajout_post">
             <form method="POST" class="form_admin">
                 <label for="titre" class="label_admin">Nom de la direction</label>
-                <input type="text" id="titre" name="titre" class="input_admin" >
+                <input type="text" id="titre" name="titre" class="input_admin" value="<?= htmlspecialchars($titre) ?>">
+                <?php if (!empty($erreur)) : ?>
+                    <div class="error"><?= htmlspecialchars($erreur) ?></div>
+                <?php endif; ?>
 
                 <div class="button_container">
                     <button type="submit" name="annuler" class="btn_red">Annuler</button>
