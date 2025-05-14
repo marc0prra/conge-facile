@@ -41,6 +41,9 @@ try {
 }
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -118,72 +121,8 @@ try {
         </div>
     </div>
 </div>
-<script>
-    const filters = {
-        type: document.querySelector("#search-type"),
-        collab: document.querySelector("#search-collab"),
-        debut: document.querySelector("#search-debut"),
-        fin: document.querySelector("#search-fin"),
-        jours: document.querySelector("#search-jours"),
-        statut: document.querySelector("#search-statut")
-    };
 
-    Object.values(filters).forEach(input => {
-        input.addEventListener("keyup", filterRows);
-    });
+<script src="script.js"></script>
 
-    function filterRows() {
-        const rows = document.querySelectorAll(".card");
-
-        rows.forEach(row => {
-            const match = (
-                row.querySelector(".type_demande").textContent.toLowerCase().includes(filters.type.value.toLowerCase()) &&
-                row.querySelector(".collab").textContent.toLowerCase().includes(filters.collab.value.toLowerCase()) &&
-                row.querySelector(".date_debut").textContent.toLowerCase().includes(filters.debut.value.toLowerCase()) &&
-                row.querySelector(".date_fin").textContent.toLowerCase().includes(filters.fin.value.toLowerCase()) &&
-                row.querySelector(".jours").textContent.toLowerCase().includes(filters.jours.value.toLowerCase()) &&
-                row.querySelector(".Statut").textContent.toLowerCase().includes(filters.jours.value.toLowerCase())
-            );
-
-            row.style.display = match ? "table-row" : "none";
-        });
-    }
-
-    document.querySelectorAll('.sortable').forEach(header => {
-        let asc = true;
-        header.addEventListener('click', () => {
-            const table = header.closest('table');
-            const tbody = table.querySelector('tbody');
-            const rows = Array.from(tbody.querySelectorAll('tr.card'));
-            const columnIndex = parseInt(header.dataset.column);
-            const type = header.dataset.type;
-            const arrow = header.querySelector('.arrow');
-
-            document.querySelectorAll('.sortable .arrow').forEach(el => el.textContent = '▲');
-
-            rows.sort((a, b) => {
-                const aText = a.children[columnIndex].textContent.trim();
-                const bText = b.children[columnIndex].textContent.trim();
-
-                if (type === "number") {
-                    return asc ? aText - bText : bText - aText;
-                } else if (type === "date") {
-                    const parseDate = str => {
-                        const parts = str.split(/[\/\s:h]/);
-                        return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T${parts[3] || "00"}:${parts[4] || "00"}`);
-                    };
-                    return asc ? parseDate(aText) - parseDate(bText) : parseDate(bText) - parseDate(aText);
-                } else {
-                    return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
-                }
-            });
-
-            asc = !asc;
-            arrow.textContent = asc ? '▲' : '▼';
-            rows.forEach(row => tbody.appendChild(row));
-            filterRows();
-        });
-    });
-</script>
 </body>
 </html>

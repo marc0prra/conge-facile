@@ -1291,7 +1291,7 @@ input.mangerComment {
 a.moreDetails {
   padding: 10px 20px;
   border-radius: 7px;
-  background-color: #004C6C14;
+  background-color: #004c6c14;
   color: #475467;
 }
 
@@ -1614,6 +1614,20 @@ thead th a:hover {
   font-style: italic;
 }
 
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  font-size: 0.9em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /******************************** SKIN  ************************************/
 .skin {
   display: flex;
@@ -1687,18 +1701,18 @@ thead th a:hover {
 }
 
 /************************************* Page Stats *******************************/
-.right_stats{
+.right_stats {
   display: flex;
   flex-direction: column;
 }
 
-.right_stats h2{
-  color: #004C6CC7;
+.right_stats h2 {
+  color: #004c6cc7;
   font-size: 18px;
   margin: 0%;
 }
-.container_admin h3{
-  color: #004C6CC7;
+.container_admin h3 {
+  color: #004c6cc7;
   font-size: 20px;
 }
 
@@ -1966,6 +1980,5 @@ thead th a:hover {
   }
   .details {
     margin-bottom: 54%;
-    
   }
 }
