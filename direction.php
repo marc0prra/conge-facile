@@ -10,7 +10,7 @@ $allowedSortFields = ['name'];
 $sortBy = in_array($sortBy, $allowedSortFields) ? $sortBy : 'name';
 $order = strtolower($order) === 'desc' ? 'DESC' : 'ASC';
 
-$sql = "SELECT * FROM services WHERE name LIKE :search ORDER BY $sortBy $order";
+$sql = "SELECT * FROM department WHERE name LIKE :search ORDER BY $sortBy $order";
 $stmt = $pdo->prepare($sql);
 $searchParam = "%$searchTitre%";
 $stmt->bindParam(':search', $searchParam, PDO::PARAM_STR);

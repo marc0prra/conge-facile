@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $titre = trim($_POST['titre'] ?? '');
 
         if (!empty($titre)) {
-            $stmt = $pdo->prepare("INSERT INTO services (name) VALUES (:name)");
+            $stmt = $pdo->prepare("INSERT INTO department (name) VALUES (:name)");
             $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
             $stmt->execute();
 

@@ -3,7 +3,7 @@ require 'config.php'; // Connexion à la base
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-$stmt = $pdo->prepare("SELECT * FROM services WHERE id = :id");
+$stmt = $pdo->prepare("SELECT * FROM department WHERE id = :id");
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $direction = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -14,7 +14,7 @@ if (!$direction) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['supprimer'])) {
-        $stmt = $pdo->prepare("DELETE FROM services WHERE id = :id");
+        $stmt = $pdo->prepare("DELETE FROM department WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         header("Location: direction.php");
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['modifier'])) {
         $titre = trim($_POST['titre']);
         if (!empty($titre)) {
-            $stmt = $pdo->prepare("UPDATE services SET name = :name WHERE id = :id");
+            $stmt = $pdo->prepare("UPDATE department SET name = :name WHERE id = :id");
             $stmt->bindParam(':name', $titre, PDO::PARAM_STR);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
