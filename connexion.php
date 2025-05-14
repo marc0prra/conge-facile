@@ -38,51 +38,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['user_role'] = $user_role;
                     if ($user_role == 1) {
                         $_SESSION['success_message'] = "Connecté en tant que Collaborateur !";
-                     }
-                     elseif ($user_role == 2) {
+                    } elseif ($user_role == 2) {
                         $_SESSION['success_message'] = "Connecté en tant que Manageur !";
-                     }
+                    }
                     header("Location: homePage.php");
                     exit();
-                }
-                
                 } else {
-                    $error_message = "Adresse email ou mot de passe incorrect.";
+                    $error_message = "L'adresse email ou le mot de passe est incorrect.";
                 }
             } else {
-                $error_message = "Adresse email ou mot de passe incorrect.";
+                $error_message = "L'adresse email ou le mot de passe est incorrect.";
             }
             $stmt->close();
         } else {
             $error_message = "Erreur lors de la préparation de la requête.";
         }
     }
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="stylesheet" href="style.css?v=2" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
 
-        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-        <link rel="icon" type="image/x-icon" href="img/icone.ico" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="img/icone.ico" />
 
-        <title>Accueil</title>
-    </head>
-
-</html>
+    <title>Accueil</title>
+</head>
 
 <body>
     <?php include 'include/top.php'; ?>
@@ -120,7 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="portal">Connexion au portail</button>
             </form>
 
-
             <p class="ps">
                 Vous avez oublié votre mot de passe ?
                 <a href="mdp.php">Cliquez ici</a> pour le réinitialiser.
@@ -129,3 +122,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <script src="script.js"></script>
 </body>
+</html>
