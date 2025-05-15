@@ -36,6 +36,11 @@ try {
     $stmtCount = $pdo->query($queryCount);
     $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
     $nombreDemandes = $resultCount['total'];
+
+    if ($nombreDemandes > 9) {
+        $nombreDemandes = '9+';
+    }
+
 } catch (PDOException $e) {
     $nombreDemandes = 'E';
 }
