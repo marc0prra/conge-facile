@@ -122,6 +122,8 @@ if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role
         </div>
     </div>
 </div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
