@@ -89,9 +89,9 @@ try {
   <div class="left">
     <div class="collab"></div>
     <a href="homePage.php">Accueil</a>
-    <a href="demandInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
+    <a href="requestInExpectation.php">Demandes en attente <p class="numberRequest"><?= htmlspecialchars($nombreDemandes) ?> </p> </a>
     <a href="historyRequest.php">Historique des demandes</a>
-    <a href="#">Mon équipe</a>
+    <a href="myTeam.php">Mon équipe</a>
     <a href="statistique.php">Statistiques</a>
     <div class="rod"></div>
     <a href="infosManagers.php">Mes informations</a>

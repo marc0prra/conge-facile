@@ -94,7 +94,7 @@ if ($user_role === '2') {
     <a href="deconnexion.php">Déconnexion</a>
   <?php elseif ($user_role == '2'): ?>
     <a href="homePage.php">Accueil</a>
-    <a href="demandInExpectation.php">Demandes (<?= htmlspecialchars($nombreDemandes) ?>)</a>
+    <a href="requestInExpectation.php">Demandes (<?= htmlspecialchars($nombreDemandes) ?>)</a>
     <a href="historyRequest.php">Historique</a>
     <a href="#">Mon équipe</a>
     <a href="statistique.php">Statistiques</a>

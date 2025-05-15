@@ -43,6 +43,7 @@ if ($result->num_rows > 0) {
     exit;
 }
 
+var_dump($user);
 $stmt->close();
 $conn->close();
 ?>
@@ -81,12 +82,11 @@ $conn->close();
 
                 <div class="email">
                     <p>Adresse email</p>
-                    <input type="text" name="email" value="<?= htmlspecialchars($user['email']) ?>" style="
+                    <input type="email" name="email" style="
                         background-image: url('img/email.png');
                         background-size: 20px;
                         background-position: 10px center;
-                        background-repeat: no-repeat;
-                    " readonly />
+                        background-repeat: no-repeat;" value="<?= htmlspecialchars($user['email']) ?>" readonly />
                 </div>
 
                 <div class="service">

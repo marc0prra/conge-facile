@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':id' => $requestId
     ]);
 
-    header("Location: demandInExpectation.php"); // Redirection après traitement
+    header("Location: requestInExpectation.php"); // Redirection après traitement
     exit();
 } else {
     echo "Méthode non autorisée.";

@@ -2,17 +2,15 @@
 session_start();
 include 'config.php';
 
-// Vérification de l'authentification
 if (!isset($_SESSION['user_id'])) {
     header("Location: connexion.php");
     exit();
 }
 
-// Connexion à la base de données
+
 $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Récupération de l'ID de la demande
 $request_id = $_GET['id'] ?? null;
 
 if (!$request_id) {
@@ -20,7 +18,6 @@ if (!$request_id) {
     exit();
 }
 
-// Requête de récupération des informations de la demande
 $query = "
     SELECT 
         request.id,
@@ -49,14 +46,12 @@ if (!$demande) {
     exit();
 }
 
-// Jours fériés
 $holidays = [
     "2025-01-01", "2025-04-21", "2025-05-01", "2025-05-08",
     "2025-05-29", "2025-06-09", "2025-07-14", "2025-08-15",
     "2025-11-01", "2025-11-11", "2025-12-25"
 ];
 
-// Fonction de calcul des jours ouvrés
 function getWorkingDays($start, $end, $holidays = []) {
     $begin = new DateTime($start);
     $end = new DateTime($end);
@@ -67,7 +62,7 @@ function getWorkingDays($start, $end, $holidays = []) {
 
     $workingDays = 0;
     foreach ($dateRange as $date) {
-        $day = $date->format('N'); // 6 = samedi, 7 = dimanche
+        $day = $date->format('N'); 
         $formatted = $date->format('Y-m-d');
         if ($day < 6 && !in_array($formatted, $holidays)) {
             $workingDays++;
