@@ -1303,6 +1303,34 @@ a.moreDetails {
   color: #475467;
 }
 
+p.TypeRequest.statut {
+    margin: 5% 0%;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.badge-valide {
+  background-color: #d4f5dd;
+  color: #2e7d32;
+}
+
+.badge-refuse {
+  background-color: #ffd6d6;
+  color: #c62828;
+}
+
+.badge-encours {
+  background-color: #ffe7c2;
+  color: #ef6c00;
+}
+
 /******************************** Administration - Type de demande ************************************/
 
 .container_admin {
