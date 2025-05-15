@@ -64,16 +64,18 @@ if ($user_role === '2') {
 </html>
 
 <body>
+  <div class="allTop">
   <div class="borderTop"></div>
   <div class="top">
     <img src="img/mentalworks.png" alt="Logo MentalWoks" />
 
 <!-- Bouton burger -->
-<div id="openMenu" class="burger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  <div id="openMenu" class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  </div>
 
 <!-- Overlay -->
 <div id="menuOverlay" class="menu-overlay"></div>

@@ -73,6 +73,11 @@ input {
   max-width: 350px;
 }
 
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  margin-left: -90px;
+  padding-left: 50px;
+}
+
 input::placeholder {
   font-size: 16px;
   font-weight: 400;
@@ -113,11 +118,18 @@ form {
   margin: 0 auto;
   padding: 1%;
   border-radius: 16px;
-  position: relative;
 }
 
 .top img {
   width: 180px;
+}
+
+.allTop {
+  position: fixed; /* Fixe en haut */
+  top: 0; /* Collé en haut */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Au-dessus du reste */
 }
 
 .right {
@@ -125,7 +137,7 @@ form {
   flex-direction: column;
   flex: 2;
   margin-left: 25%;
-  margin-top: 1%;
+  margin-top: 6.3%;
   width: 45%;
 }
 
@@ -957,10 +969,6 @@ input[type="file"] {
   width: 280px;
 }
 
-.forgotF {
-  margin-left: 2%;
-}
-
 .forgotF input,
 .forgotN input {
   width: 79%;
@@ -1293,6 +1301,34 @@ a.moreDetails {
   border-radius: 7px;
   background-color: #004c6c14;
   color: #475467;
+}
+
+p.TypeRequest.statut {
+    margin: 5% 0%;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.badge-valide {
+  background-color: #d4f5dd;
+  color: #2e7d32;
+}
+
+.badge-refuse {
+  background-color: #ffd6d6;
+  color: #c62828;
+}
+
+.badge-encours {
+  background-color: #ffe7c2;
+  color: #ef6c00;
 }
 
 /******************************** Administration - Type de demande ************************************/
@@ -1636,6 +1672,13 @@ thead th a:hover {
   gap: 15px;
 }
 
+.skinCollab {
+  display: flex;
+  padding: 22px;
+  margin: 89% auto 0% auto;
+  gap: 15px;
+}
+
 .headSkin img {
   border-radius: 40px;
   width: 67px;
@@ -1646,6 +1689,14 @@ thead th a:hover {
 }
 
 .skin p {
+  color: #637381;
+}
+
+.skinCollab strong {
+  color: #111928;
+}
+
+.skinCollab p {
   color: #637381;
 }
 
@@ -1714,6 +1765,69 @@ thead th a:hover {
 .container_admin h3 {
   color: #004c6cc7;
   font-size: 20px;
+}
+
+/************************************* Pop up *******************************/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 76, 108, 0.5);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal .btn_blue,
+.modal .btn_red {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal .btn_blue {
+  background-color: #004c6c;
+}
+
+.modal .btn_red {
+  background-color: #d9534f;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /************************************* RESPONSIVE *******************************/

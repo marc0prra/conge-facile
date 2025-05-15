@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $pdo->prepare("DELETE FROM request_type WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         if ($stmt->execute()) {
-            header("Location: demande.php");
+            header("Location: requestList.php");
             exit();
         } else {
             echo "Erreur lors de la suppression.";
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':titre', $titre);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         if ($stmt->execute()) {
-            header("Location: demande.php");
+            header("Location: requestList.php");
             exit();
         } else {
             echo "Erreur lors de la mise à jour.";

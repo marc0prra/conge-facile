@@ -36,6 +36,11 @@ try {
     $stmtCount = $pdo->query($queryCount);
     $resultCount = $stmtCount->fetch(PDO::FETCH_ASSOC);
     $nombreDemandes = $resultCount['total'];
+
+    if ($nombreDemandes > 9) {
+        $nombreDemandes = '9+';
+    }
+
 } catch (PDOException $e) {
     $nombreDemandes = 'E';
 }
@@ -68,7 +73,7 @@ try {
     <a href="employeeInformation.php">Mes informations</a>
     <a href="userPreferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
-    <div class="skin">
+    <div class="skinCollab">
       <div class="headSkin">
         <img src="img/téléchargement.png" alt="skin">
       </div>

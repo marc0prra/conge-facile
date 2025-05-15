@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
-    exit();
-}
-
 include 'include/tabDonne.php';
 
 include 'config.php';
@@ -18,17 +13,20 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT 
-                request.id,
-                request.request_type_id,
-                request_type.name AS type_demande, 
-                request.created_at AS date_demande, 
-                request.start_at AS date_debut, 
-                request.end_at AS date_fin,
-                request.answer AS etat_demande
-              FROM request
-              JOIN request_type ON request.request_type_id = request_type.id
-              WHERE request.collaborator_id = :user_id
-              ORDER BY request.created_at DESC ";
+            request.id,
+            request.request_type_id,
+            request_type.name AS type_demande, 
+            request.created_at AS date_demande, 
+            request.start_at AS date_debut, 
+            request.end_at AS date_fin,
+            request.answer AS etat_demande,
+            `user`.role AS role_utilisateur
+          FROM request
+          JOIN request_type ON request.request_type_id = request_type.id
+          JOIN `user` ON request.collaborator_id = `user`.id
+          WHERE request.collaborator_id = :user_id
+          ORDER BY request.created_at DESC";
+
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -37,6 +35,11 @@ try {
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
+}
+
+if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role'] == 'employee')) {
+    header("Location: connexion.php");
+    exit();
 }
 
 ?>
@@ -50,7 +53,7 @@ try {
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <title>Historique</title>
+    <title>Historique de mes demandes</title>
 </head>
 
 <body>

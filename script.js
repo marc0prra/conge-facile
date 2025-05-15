@@ -56,7 +56,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/******************************* Pop up mdp **********************************/
 
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("customModal");
+    const resetButton = document.querySelector(".reset-button");
+    const confirmBtn = document.getElementById("confirmBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const form = document.getElementById("resetForm");
+  
+    resetButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
+  
+    confirmBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+      form.submit();
+    });
+  
+    cancelBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+  });
+
+const modal = document.getElementById("customModal");
+const confirmBtn = document.getElementById("confirmBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+
+function openModal() {
+    modal.style.display = "flex";
+}
+
+cancelBtn.onclick = function () {
+    modal.style.display = "none";
+}
+
+confirmBtn.onclick = function () {
+    document.getElementById("resetForm").submit();
+}
+
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+  
 
 /******************************* BURGER MENU **********************************/
 

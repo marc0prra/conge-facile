@@ -7,9 +7,8 @@ $username = "root";
 $password = "";
 
 $conn = new mysqli($host, $username, $password, $dbname);
-
 if ($conn->connect_error) {
-    die("Erreur de connexion: " . $conn->connect_error);
+    die("Erreur de connexion : " . $conn->connect_error);
 }
 
 if (!isset($_SESSION['user_id'])) {
@@ -19,129 +18,127 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Récupération des infos utilisateur
 $sql = "
     SELECT person.last_name, person.first_name, user.email
     FROM user
     INNER JOIN person ON user.person_id = person.id
     WHERE user.id = ?
 ";
-
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    die("Erreur lors de la préparation de la requête: " . $conn->error);
-}
-
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$stmt->close();
 
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-} else {
-    echo "Utilisateur non trouvé.";
-    exit;
+// Traitement de la réinitialisation du mot de passe
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['reset_password'])) {
+    $newPassword = $_POST['newPassword'] ?? '';
+    $confirmPassword = $_POST['confirmPassword'] ?? '';
+
+    if (empty($newPassword) || empty($confirmPassword)) {
+        $message = "Les champs ne doivent pas être vides.";
+    } elseif ($newPassword !== $confirmPassword) {
+        $message = "Les mots de passe ne correspondent pas.";
+    } else {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $update = $conn->prepare("UPDATE user SET password = ? WHERE id = ?");
+        $update->bind_param("si", $hashedPassword, $user_id);
+        if ($update->execute()) {
+            $message = "Mot de passe réinitialisé avec succès.";
+        } else {
+            $message = "Erreur lors de la mise à jour.";
+        }
+        $update->close();
+    }
 }
 
-var_dump($user);
-
-$stmt->close();
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="style.css?v=2" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <title>Mes informations</title>
-</head>
-
+  </head>
+</html>
 <body>
-    <?php include 'include/top.php'; ?>
-    <div class="middle">
-        <div class='infos_middle'>
-            <?php include 'include/left.php'; ?>
-            <div class="right">
-                <h1>Mes informations</h1>
-                <form action="infosC.php" method="POST">
-                        <div class="infos">
-                            <div class="begin">
-                                <p>Nom de famille</p>
-                                <input type="text" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" readonly />
-                            </div>
-                            <div class="end">
-                                <p>Prénom</p>
-                                <input type="text" name="first_name" value="<?= htmlspecialchars($user['first_name']); ?>" readonly />
-                            </div>
-                        </div>
-                        <div class="email">
-                            <p>Adresse email</p>
-                            <input value="<?= htmlspecialchars($user['email']); ?>" type="email" name="email"  style="
-                            background-image: url('img/email.png');
-                            background-size: 20px;
-                            background-position: 10px center;
-                            background-repeat: no-repeat;
-                            "  readonly/>
-                        </div>
+<?php include 'include/top.php'; ?>
+<div class="middle">
+    <div class="infos_middle">
+        <?php include 'include/left.php'; ?>
+        <div class="right">
+            <h1>Mes informations</h1>
 
-                        <div class="service">
-                        <div class="services">
-                            <div class="direction">
-                                <p>Direction/Service</p>
-                                <select name="direction" disabled>
-                                    <option value="1">BU Symfony</option>
-                                    <option value="2">Mentalworks</option>
-                                </select>
-                            </div>
-                            <div class="poste">
-                                <p>Poste</p>
-                                <select name="poste" disabled>
-                                    <option value="1">Directeur technique</option>
-                                    <option value="2">Lead developper</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="manager">
-                            <p>Manager</p>
-                            <select name="manager" disabled>
-                                <option value="1">Frédéric Salesses</option>
-                                <option value="2">test test</option>
-                            </select>
-                        </div>
-                            <h2>Réinitialiser son mot de passe</h2>
-                            <div class="forgot">
-                                <div class="forgotM">
-                                    <p class="color">Mot de passe actuel</p>
-                                    <input type="password" id="password">
-                                    <img src="img/open-eye.png" alt="Afficher" class="toggle-passwordBug" onclick="togglePassword('password', this)">
-                                </div>
-                            </div>
-                            <div class="infos2">
-                                <div class="forgotN">
-                                    <p class="color">Nouveau mot de passe</p>
-                                    <input type="password" id="newPassword">
-                                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('newPassword', this)">
-                                </div>
-                                <div class="forgotF">
-                                    <p class="color">Confirmation du mot de passe</p>
-                                    <input type="password" id="confirmPassword">
-                                    <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
-                                </div>
-                            </div>
-                        </div>
-                </form>
-                <button class="resetPswd"><a href="mdp.php" class="white">Réinitialiser le mot de passe</a></button>
-            </div>
+            <?php if (!empty($message)): ?>
+                <div class="message"><?= htmlspecialchars($message) ?></div>
+            <?php endif; ?>
+
+            <form method="POST" id="resetForm">
+                <div class="infos">
+                    <div class="begin">
+                        <p>Nom</p>
+                        <input type="text" value="<?= htmlspecialchars($user['last_name']) ?>" readonly>
+                    </div>
+                    <div class="end">
+                        <p>Prénom</p>
+                        <input type="text" value="<?= htmlspecialchars($user['first_name']) ?>" readonly>
+                    </div>
+                </div>
+
+                <div class="email">
+                    <p>Email</p>
+                    <input type="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
+                </div>
+
+                <h2>Réinitialiser le mot de passe</h2>
+                <div class="forgot">
+                    <div class="forgotN">
+                        <p>Nouveau mot de passe</p>
+                        <input type="password" name="newPassword" required>
+                    </div>
+                    <div class="forgotF">
+                        <p>Confirmer le mot de passe</p>
+                        <input type="password" name="confirmPassword" required>
+                    </div>
+                </div>
+
+                <div class="button_container">
+                    <button type="button" class="reset-button btn_blue" onclick="openModal()">Réinitialiser le mot de passe</button>
+                    <input type="hidden" name="reset_password" value="1">
+                </div>
+            </form>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
+</div>
 
+<!-- Modal HTML -->
+<div id="customModal" class="modal">
+    <div class="modal-content">
+        <h2>Confirmation</h2>
+        <p>Êtes-vous sûr de vouloir réinitialiser votre mot de passe ?</p>
+        <div class="modal-buttons">
+            <button id="confirmBtn" class="btn_blue">Oui</button>
+            <button id="cancelBtn" class="btn_red">Non</button>
+        </div>
+    </div>
+</div>
+</body>
 </html>
