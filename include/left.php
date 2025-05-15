@@ -68,7 +68,7 @@ try {
     <a href="employeeInformation.php">Mes informations</a>
     <a href="userPreferences.php">Mes préférences</a>
     <a href="deconnexion.php">Déconnexion</a>
-    <div class="skin">
+    <div class="skinCollab">
       <div class="headSkin">
         <img src="img/téléchargement.png" alt="skin">
       </div>
