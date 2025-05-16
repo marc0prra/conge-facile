@@ -116,8 +116,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <label class="toggle-label">
             <input type="checkbox" name="alerte_conge" class="switch" <?= $collab['enabled'] ? 'checked' : '' ?>>
-                <span class="slider"></span>
-                Profil actif
+                <span class="slider">
+                    Profil actif
+                </span>
             </label>
 
             <div class="email">
