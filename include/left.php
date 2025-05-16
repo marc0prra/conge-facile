@@ -30,7 +30,7 @@ if ($user_id) {
     }
 }
 
-// Comptage des demandes pour les managers
+
 try {
     $queryCount = "SELECT COUNT(*) as total FROM request WHERE answer = 0";
     $stmtCount = $pdo->query($queryCount);

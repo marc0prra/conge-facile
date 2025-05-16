@@ -112,7 +112,7 @@ $conn->close();
 
                     <div class="manager">
                         <p>Manager</p>
-                        <select name="manager_display" disabled required>
+                        <select name="manager_display" value="" disabled required>
                             <option value="1" selected>Frédéric Salesses</option>
                             <option value="2">test test</option>
                         </select>

@@ -2,7 +2,7 @@
 session_start();
 require 'config.php';
 
-// Récupération des services
+
 $sqlDepartments = "SELECT id, name FROM department ORDER BY name ASC";
 $departments = [];
 $result = $conn->query($sqlDepartments);
@@ -12,13 +12,13 @@ if ($result) {
     }
 }
 
-// Traitement du formulaire
+
 if (isset($_POST['ajouter'])) {
     $nom = trim($_POST['nom']);
     $prenom = trim($_POST['prenom']);
     $department_id = $_POST['department_id'];
     
-    $manager_id_defaut = 1; // ← à adapter selon ta base de données
+    $manager_id_defaut = 1; 
 
     if (!empty($nom) && !empty($prenom) && !empty($department_id)) {
         $stmt = $conn->prepare("INSERT INTO person (first_name, last_name, department_id, manager_id) VALUES (?, ?, ?, ?)");
@@ -60,19 +60,30 @@ if (isset($_POST['ajouter'])) {
         <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
         <div class="ajout_post">
             <form method="POST" class="form_admin">
-                <label for="nom" class="label_admin">Nom de famille</label>
+            <label for="nom" class="label_admin">Adresse Email - champ obligatoiree</label>
+            <input type="text" id="nom" name="nom" class="input_admin" required>
+
+                <label for="nom" class="label_admin">Nom de famille - champ obligatoiree</label>
                 <input type="text" id="nom" name="nom" class="input_admin" required>
 
-                <label for="prenom" class="label_admin">Prénom</label>
+                <label for="prenom" class="label_admin">Prénom- champ obligatoire</label>
                 <input type="text" id="prenom" name="prenom" class="input_admin" required>
 
-                <label for="department_id" class="label_admin">Service</label>
+                <label for="department_id" class="label_admin">Direction/Service - champ obligatoire</label>
                 <select id="department_id" name="department_id" class="input_admin" required>
-                    <option value="">-- Sélectionner un service --</option>
+                    <option value="">Sélectionner un service</option>
                     <?php foreach ($departments as $d): ?>
                         <option value="<?= $d['id'] ?>"><?= htmlspecialchars($d['name']) ?></option>
                     <?php endforeach; ?>
                 </select>
+
+                <div class="forgot">
+                        <div class="forgotM">
+                            <p for="nom" class="label_admin">Saisir un mot de passe - champ obligatoire</p>
+                            <input type="password" id="password" name="current_password">
+                            <img src="img/open-eye.png" alt="Afficher" class="toggle-passwordBug" onclick="togglePassword('password', this)">
+                        </div>
+                    </div>
 
                 <div class="button_container">
                     <a href="Managers.php" class="btn_red">Annuler</a>
