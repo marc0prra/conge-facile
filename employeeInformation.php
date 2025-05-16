@@ -105,7 +105,7 @@ $conn->close();
 
                 <div class="email">
                     <p>Email</p>
-                    <input type="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
+                    <input type="email" value="<?= htmlspecialchars($user['mail']) ?>" readonly>
                 </div>
 
                 <h2>Réinitialiser le mot de passe</h2>

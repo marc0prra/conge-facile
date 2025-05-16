@@ -182,3 +182,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/************************************ Test *******************************/
+function loadPage(url) {
+  const content = document.getElementById('content');
+  fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      content.classList.remove('fade-in'); // reset
+      content.innerHTML = html;
+      void content.offsetWidth; // forcer le reflow
+      content.classList.add('fade-in');
+    });
+}
