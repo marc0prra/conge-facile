@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
-    exit();
-}
-
 include 'include/tabDonne.php';
 
 include 'config.php';
@@ -38,6 +33,11 @@ try {
 
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
+}
+
+if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role'] == 'manager')) {
+    header("Location: connexion.php");
+    exit();
 }
 
 ?>
