@@ -989,7 +989,7 @@ input[type="file"] {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  display: block; /* tu peux la cacher dynamiquement en JS si besoin */
+  display: block; 
 }
 
 .toggle-passwordBug {
@@ -1000,7 +1000,7 @@ input[type="file"] {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  display: block; /* tu peux la cacher dynamiquement en JS si besoin */
+  display: block; 
 }
 
 .service select {
@@ -1467,7 +1467,6 @@ td:last-child {
   background-color: #003b5c;
 }
 
-/* Ligne vide */
 .empty-row {
   text-align: center;
   color: #a0aec0;
@@ -1830,6 +1829,12 @@ thead th a:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+/************************************* Page addTeam  *******************************/
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /************************************* RESPONSIVE *******************************/
