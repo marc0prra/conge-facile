@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (type === "number") return parseFloat(value) || 0;
         if (type === "date") {
             const [day, month, yearHour] = value.split('/');
+            if (!yearHour) return new Date("Invalid");
             const [year, time] = yearHour.split(' ');
             return new Date(`${year}-${month}-${day} ${time}`);
         }
@@ -154,7 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     headers.forEach((header, i) => {
-        header.addEventListener("click", () => {
+        header.addEventListener("click", (e) => {
+            // Ne rien faire si le clic vient de l'input ou de ses enfants
+            if (e.target.closest("input")) return;
+
             const type = header.getAttribute("data-type");
             sortTable(i, type);
         });
@@ -166,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     filters.forEach((input, index) => {
         input.addEventListener("input", () => {
             const searchTerms = Array.from(filters).map(input => input.value.toLowerCase().trim());
+
             tbody.querySelectorAll("tr.card").forEach(row => {
                 const cells = row.querySelectorAll("td");
                 const matches = searchTerms.every((term, i) => {
@@ -176,3 +181,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
