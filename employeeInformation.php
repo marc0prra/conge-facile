@@ -58,11 +58,12 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="icon" href="img/MW_logo.png" type="image/png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -77,68 +78,68 @@ $conn->close();
     />
 
     <title>Mes informations</title>
-  </head>
-</html>
-<body>
-<?php include 'include/top.php'; ?>
-<div class="middle">
-    <div class="infos_middle">
-        <?php include 'include/left.php'; ?>
-        <div class="right">
-            <h1>Mes informations</h1>
+</head>
+    <body>
+        <?php include 'include/top.php'; ?>
+        <div class="middle">
+            <div class="infos_middle">
+                <?php include 'include/left.php'; ?>
+                <div class="right">
+                    <h1>Mes informations</h1>
 
-            <?php if (!empty($message)): ?>
-                <div class="message"><?= htmlspecialchars($message) ?></div>
-            <?php endif; ?>
+                    <?php if (!empty($message)): ?>
+                        <div class="message"><?= htmlspecialchars($message) ?></div>
+                    <?php endif; ?>
 
-            <form method="POST" id="resetForm">
-                <div class="infos">
-                    <div class="begin">
-                        <p>Nom</p>
-                        <input type="text" value="<?= htmlspecialchars($user['last_name']) ?>" readonly>
-                    </div>
-                    <div class="end">
-                        <p>Prénom</p>
-                        <input type="text" value="<?= htmlspecialchars($user['first_name']) ?>" readonly>
-                    </div>
+                    <form method="POST" id="resetForm">
+                        <div class="infos">
+                            <div class="begin">
+                                <p>Nom</p>
+                                <input type="text" value="<?= htmlspecialchars($user['last_name']) ?>" readonly>
+                            </div>
+                            <div class="end">
+                                <p>Prénom</p>
+                                <input type="text" value="<?= htmlspecialchars($user['first_name']) ?>" readonly>
+                            </div>
+                        </div>
+
+                        <div class="email">
+                            <p>Email</p>
+                            <input type="email" value="<?= htmlspecialchars($user['email']) ?>" readonly>
+                        </div>
+
+                        <h2>Réinitialiser le mot de passe</h2>
+                        
+                        <div class="forgot">
+                            <div class="forgotN">
+                                <p>Nouveau mot de passe</p>
+                                <input type="password" name="newPassword" required>
+                            </div>
+                            <div class="forgotF">
+                                <p>Confirmer le mot de passe</p>
+                                <input type="password" name="confirmPassword" required>
+                            </div>
+                        </div>
+
+                        <div class="button_container">
+                            <button type="button" class="reset-button btn_blue" onclick="openModal()">Réinitialiser le mot de passe</button>
+                            <input type="hidden" name="reset_password" value="1">
+                        </div>
+                    </form>
                 </div>
-
-                <div class="email">
-                    <p>Email</p>
-                    <input type="email" value="<?= htmlspecialchars($user['mail']) ?>" readonly>
-                </div>
-
-                <h2>Réinitialiser le mot de passe</h2>
-                <div class="forgot">
-                    <div class="forgotN">
-                        <p>Nouveau mot de passe</p>
-                        <input type="password" name="newPassword" required>
-                    </div>
-                    <div class="forgotF">
-                        <p>Confirmer le mot de passe</p>
-                        <input type="password" name="confirmPassword" required>
-                    </div>
-                </div>
-
-                <div class="button_container">
-                    <button type="button" class="reset-button btn_blue" onclick="openModal()">Réinitialiser le mot de passe</button>
-                    <input type="hidden" name="reset_password" value="1">
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- Modal HTML -->
-<div id="customModal" class="modal">
-    <div class="modal-content">
-        <h2>Confirmation</h2>
-        <p>Êtes-vous sûr de vouloir réinitialiser votre mot de passe ?</p>
-        <div class="modal-buttons">
-            <button id="confirmBtn" class="btn_blue">Oui</button>
-            <button id="cancelBtn" class="btn_red">Non</button>
+        <!-- Modal HTML -->
+        <div id="customModal" class="modal">
+            <div class="modal-content">
+                <h2>Confirmation</h2>
+                <p>Êtes-vous sûr de vouloir réinitialiser votre mot de passe ?</p>
+                <div class="modal-buttons">
+                    <button id="confirmBtn" class="btn_blue">Oui</button>
+                    <button id="cancelBtn" class="btn_red">Non</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 </body>
 </html>

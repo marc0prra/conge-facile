@@ -45,14 +45,20 @@ if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="img/MW_logo.png" type="image/png"> 
+
     <link rel="stylesheet" href="style.css?v=2">
+    
     <title>Historique</title>
     <style>
         .searchListe { width: 100%; margin-top: 5px; }
         .sortable { cursor: pointer; }
         .arrow { margin-left: 5px; font-size: 0.8em; }
-    </style>
+        </style>
 </head>
+
+
 <body>
 <?php include 'include/top.php'; ?>
 <div class="middle">
