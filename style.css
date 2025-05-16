@@ -340,7 +340,7 @@ form {
   overflow-y: auto; /* rend le contenu scrollable si nécessaire */
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
   position: fixed;
-  
+
 }
 
 .left a {
@@ -768,7 +768,7 @@ p.numberRequest {
 .dates,
 .infos {
   display: flex;
-  gap: 45px;
+  gap: 10.5%;
 }
 
 .dates input {
@@ -931,7 +931,7 @@ input[type="file"] {
 
 .infos2 {
   display: flex;
-  gap: 26px;
+  gap: 14%;
   align-content: center;
   align-items: center;
 }
@@ -995,7 +995,7 @@ input[type="file"] {
 
 .toggle-passwordBug {
   position: absolute;
-  right: 13px;
+  right: 75px;
   top: 75%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -1971,7 +1971,7 @@ thead th a:hover {
     width: 96%;
   }
   .forgotM {
-    width: 276px;
+    width: 100%;
   }
   .inputPswd input {
     width: 100%;
@@ -2071,11 +2071,11 @@ thead th a:hover {
     margin-top: 12%;
   }
   .toggle-password {
-    right: -45px;
-    top: 75%;
+    right: 47px;
+    top: 80%;
   }
   .toggle-passwordBug {
-    right: -40px;
+    right: 50px;
     top: 75%;
   }
   .connexion {
