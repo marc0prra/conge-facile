@@ -125,7 +125,6 @@ form {
 }
 
 .allTop {
-  position: fixed; /* Fixe en haut */
   top: 0; /* Collé en haut */
   left: 0;
   right: 0;
@@ -341,6 +340,7 @@ form {
   overflow-y: auto; /* rend le contenu scrollable si nécessaire */
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
   position: fixed;
+  
 }
 
 .left a {

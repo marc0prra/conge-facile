@@ -100,77 +100,85 @@ function closeModal() {
 }
 
 /*********************************Filtrage page Mes demandes *************************************/
-const filters = {
-    type: document.querySelector("#search-type"),
-    demande: document.querySelector("#search-demande"),
-    debut: document.querySelector("#search-debut"),
-    fin: document.querySelector("#search-fin"),
-    jours: document.querySelector("#search-jours"),
-    statut: document.querySelector("#search-statut")
-};
+document.addEventListener("DOMContentLoaded", function () {
+    const table = document.querySelector(".table1");
+    const headers = table.querySelectorAll(".sortable");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr.card"));
 
-Object.values(filters).forEach(input => {
-    input.addEventListener("keyup", filterRows);
-});
+    let currentSort = {
+        column: null,
+        direction: 1
+    };
 
-function filterRows() {
-    const rows = document.querySelectorAll(".card");
+    function parseValue(value, type) {
+        if (type === "number") return parseFloat(value) || 0;
+        if (type === "date") {
+            const [day, month, yearHour] = value.split('/');
+            if (!yearHour) return new Date("Invalid");
+            const [year, time] = yearHour.split(' ');
+            return new Date(`${year}-${month}-${day} ${time}`);
+        }
+        return value.toLowerCase();
+    }
 
-    rows.forEach(row => {
-        const type = row.querySelector(".Type1").textContent.toLowerCase();
-        const demande = row.querySelector(".DemandeDate").textContent.toLowerCase();
-        const debut = row.querySelector(".DebutDate").textContent.toLowerCase();
-        const fin = row.querySelector(".FinDate").textContent.toLowerCase();
-        const jours = row.querySelector(".NbJours").textContent.toLowerCase();
-        const statut = row.querySelector(".Statut").textContent.toLowerCase();
-
-        const matches = (
-            type.includes(filters.type.value.toLowerCase()) &&
-            demande.includes(filters.demande.value.toLowerCase()) &&
-            debut.includes(filters.debut.value.toLowerCase()) &&
-            fin.includes(filters.fin.value.toLowerCase()) &&
-            jours.includes(filters.jours.value.toLowerCase()) &&
-            statut.includes(filters.statut.value.toLowerCase())
-        );
-
-        row.style.display = matches ? "table-row" : "none";
-    });
-}
-document.querySelectorAll('.sortable').forEach(header => {
-    let asc = true;
-    header.addEventListener('click', () => {
-        const table = header.closest('table');
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr.card'));
-        const columnIndex = parseInt(header.dataset.column);
-        const type = header.dataset.type;
-        const arrow = header.querySelector('.arrow');
-
-        // Restaurer les flèches
-        document.querySelectorAll('.sortable .arrow').forEach(el => el.textContent = '▲');
+    function sortTable(columnIndex, type) {
+        const direction = (currentSort.column === columnIndex) ? -currentSort.direction : 1;
+        currentSort = { column: columnIndex, direction };
 
         rows.sort((a, b) => {
             const aText = a.children[columnIndex].textContent.trim();
             const bText = b.children[columnIndex].textContent.trim();
-
-            if (type === "number") {
-                return asc ? aText - bText : bText - aText;
-            } else if (type === "date") {
-                const parseDate = str => {
-                    const parts = str.split(/[\/\s:h]/);
-                    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T${parts[3] || "00"}:${parts[4] || "00"}`);
-                };
-                return asc ? parseDate(aText) - parseDate(bText) : parseDate(bText) - parseDate(aText);
-            } else {
-                return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
-            }
+            const aVal = parseValue(aText, type);
+            const bVal = parseValue(bText, type);
+            if (aVal < bVal) return -1 * direction;
+            if (aVal > bVal) return 1 * direction;
+            return 0;
         });
 
-        // Inverse l’ordre
-        asc = !asc;
-        arrow.textContent = asc ? '▲' : '▼';
-
-        // Réinsère les lignes triées
+        tbody.innerHTML = "";
         rows.forEach(row => tbody.appendChild(row));
+        updateArrows(columnIndex, direction);
+    }
+
+    function updateArrows(index, direction) {
+        headers.forEach((header, i) => {
+            const arrow = header.querySelector(".arrow");
+            if (arrow) {
+                if (i === index) {
+                    arrow.textContent = direction === 1 ? "▲" : "▼";
+                } else {
+                    arrow.textContent = "▲";
+                }
+            }
+        });
+    }
+
+    headers.forEach((header, i) => {
+        header.addEventListener("click", (e) => {
+            // Ne rien faire si le clic vient de l'input ou de ses enfants
+            if (e.target.closest("input")) return;
+
+            const type = header.getAttribute("data-type");
+            sortTable(i, type);
+        });
+    });
+
+    // FILTRAGE
+    const filters = table.querySelectorAll(".searchListe");
+
+    filters.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            const searchTerms = Array.from(filters).map(input => input.value.toLowerCase().trim());
+
+            tbody.querySelectorAll("tr.card").forEach(row => {
+                const cells = row.querySelectorAll("td");
+                const matches = searchTerms.every((term, i) => {
+                    return cells[i].textContent.toLowerCase().includes(term);
+                });
+                row.style.display = matches ? "" : "none";
+            });
+        });
     });
 });
+
