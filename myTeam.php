@@ -27,7 +27,7 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css?v=2" />
-    <title>Liste du personnel</title>
+    <title>Mon équipe</title>
 </head>
 <body>
 <?php include 'include/top.php'; ?>
@@ -36,7 +36,8 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
     <div class="right">
         <div class="container_admin">
             <div class='top_admin'>
-                <h1>Toutes les personnes</h1>
+                <h1>Mon équipe</h1>
+                <button class="initial"><a href="addTeam.php">Ajouter un membre</a></button>
             </div>
 
             <table class="table2">
