@@ -53,19 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <title>Ajouter une direction</title>
-    <style>
-        .error {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-        .success {
-            color: green;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 
 <body>

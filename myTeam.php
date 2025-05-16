@@ -39,7 +39,7 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
         <div class="container_admin">
             <div class='top_admin'>
                 <h1>Mon équipe</h1>
-                <button class="initial"><a href="addTeam.php">Ajouter un membre</a></button>
+                <button class="initial"><a href="addTeam.php">Ajouter un collaborateur</a></button>
             </div>
 
             <table class="table2">
