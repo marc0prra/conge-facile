@@ -121,7 +121,7 @@ $conn->close();
                 </div>
 
                 <div class="inputPswd">
-                    <h2>Réinitialiser son mot de passe</h2>
+                    <h2>Nouveau mot de passe</h2>
 
                     <div class="forgot">
                         <div class="forgotM">
@@ -133,16 +133,11 @@ $conn->close();
 
                     <div class="infos2">
                         <div class="forgotN">
-                            <p class="color">Nouveau mot de passe</p>
+                            <p class="color">Confirmation mot de passe</p>
                             <input type="password" id="newPassword" name="new_password">
                             <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('newPassword', this)">
                         </div>
 
-                        <div class="forgotF">
-                            <p class="color">Confirmation du mot de passe</p>
-                            <input type="password" id="confirmPassword" name="confirm_password">
-                            <img src="img/open-eye.png" alt="Afficher" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
-                        </div>
                     </div>
                 </div>
 
