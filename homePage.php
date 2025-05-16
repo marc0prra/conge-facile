@@ -29,11 +29,9 @@ if (isset($_SESSION['success_message'])) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
+        <link rel="stylesheet" href="style.css?v=2" />
         <link rel="icon" href="img/MW_logo.png" type="image/png">
 
-
-        <link rel="stylesheet" href="style.css?v=2" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
@@ -95,7 +93,8 @@ if (isset($_SESSION['success_message'])) {
             </div>
             <p class="diff">
                 En cas de difficulté avec l'application, veuillez envoyer un email à
-                <a href="#.php" class="blue">contact@mentalworks.fr</a>.
+                    <a href="mailto:contact@mentalworks.fr" class="blue">contact@mentalworks.fr</a>
+                
             </p>
         </div>
     </div>
