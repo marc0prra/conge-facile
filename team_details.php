@@ -1,141 +1,190 @@
 <?php
+session_start();
 require 'config.php';
 
 if (!isset($_GET['id'])) {
-    die("Aucune personne sélectionnée.");
+    die("Aucun collaborateur sélectionné.");
 }
 
 $id = (int) $_GET['id'];
 
-// Récupérer les infos de la personne
-$stmt = $conn->prepare("
-    SELECT person.*, 
-           COALESCE(user.email, 'email introuvable') AS email,
-           position.name AS position_name,
-           department.name AS department_name
-    FROM person
-    LEFT JOIN user ON user.person_id = person.id
-    LEFT JOIN position ON person.position_id = position.id
-    LEFT JOIN department ON person.department_id = department.id
-    WHERE person.id = ?
-");
+// Récupérer les infos du collaborateur
+$stmt = $conn->prepare("SELECT person.*, COALESCE(user.email, '') AS email, user.enabled, user.id AS user_id FROM person LEFT JOIN user ON user.person_id = person.id WHERE person.id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-$person = $result->fetch_assoc();
+$collab = $result->fetch_assoc();
 $stmt->close();
 
-if (!$person) {
+if (!$collab) {
     die("Collaborateur introuvable.");
 }
 
-// Récupérer les services et postes pour les listes déroulantes
-$services = $conn->query("SELECT id, name FROM department")->fetch_all(MYSQLI_ASSOC);
-$postes = $conn->query("SELECT id, name FROM position")->fetch_all(MYSQLI_ASSOC);
+// Dropdown data
+$departments = $conn->query("SELECT id, name FROM department")->fetch_all(MYSQLI_ASSOC);
+$positions = $conn->query("SELECT id, name FROM position")->fetch_all(MYSQLI_ASSOC);
+$managers = $conn->query("SELECT id, CONCAT(first_name, ' ', last_name) AS full_name FROM person")->fetch_all(MYSQLI_ASSOC);
 
-// Suppression
+// Traitement du formulaire
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST["supprimer"])) {
-        $stmt = $conn->prepare("DELETE FROM person WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
+    if (isset($_POST["update"])) {
+        $email = $_POST['email'];
+        $last_name = $_POST['last_name'];
+        $first_name = $_POST['first_name'];
+        $department_id = $_POST['department_id'];
+        $position_id = $_POST['position_id'];
+        $manager_id = $_POST['manager_id'] ?: null;
+        $enabled = isset($_POST['enabled']) ? 1 : 0;
+
+        $stmt = $conn->prepare("UPDATE person SET last_name=?, first_name=?, department_id=?, position_id=?, manager_id=? WHERE id=?");
+        $stmt->bind_param("ssiiii", $last_name, $first_name, $department_id, $position_id, $manager_id, $id);
+        $stmt->execute();
+        $stmt->close();
+
+        if (!empty($collab['user_id'])) {
+            $stmt = $conn->prepare("UPDATE user SET email=?, enabled=? WHERE person_id=?");
+            $stmt->bind_param("sii", $email, $enabled, $id);
+            $stmt->execute();
+            $stmt->close();
+
+            $newPassword = $_POST['newPassword'] ?? '';
+            $confirmPassword = $_POST['confirmPassword'] ?? '';
+
+            if (!empty($newPassword) || !empty($confirmPassword)) {
+                if ($newPassword === $confirmPassword) {
+                    $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
+                    $stmt = $conn->prepare("UPDATE user SET password=? WHERE person_id=?");
+                    $stmt->bind_param("si", $hashed, $id);
+                    $stmt->execute();
+                    $stmt->close();
+                    $message = "Mot de passe réinitialisé avec succès.";
+                } else {
+                    $message = "Les mots de passe ne correspondent pas.";
+                }
+            }
+        }
+
+        if (empty($message)) {
             header("Location: myTeam.php");
             exit();
-        } else {
-            echo "Erreur lors de la suppression.";
         }
     }
 
-    // Modification
-    if (isset($_POST["modifier"])) {
-        $poste = $_POST['position_id'];
-        $service = $_POST['department_id'];
-
-        $stmt = $conn->prepare("UPDATE person SET position_id = ?, department_id = ? WHERE id = ?");
-        $stmt->bind_param("iii", $poste, $service, $id);
-        if ($stmt->execute()) {
-            header("Location: myTeam.php");
-            exit();
-        } else {
-            echo "Erreur lors de la mise à jour.";
-        }
+    if (isset($_POST['delete'])) {
+        $conn->query("DELETE FROM person WHERE id = $id");
+        header("Location: myTeam.php");
+        exit();
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="style.css?v=2" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <title>Détails d'une équipe</title>
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- Modal de confirmation -->
-<div id="confirmModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <p>Êtes-vous sûr de vouloir supprimer ce collaborateur ?</p>
-        <div class="modal-buttons">
-            <form method="POST">
-                <input type="hidden" name="supprimer" value="1">
-                <button type="submit" class="btn_red">Oui, supprimer</button>
-            </form>
-            <button onclick="closeModal()" class="btn_blue">Annuler</button>
-        </div>
-    </div>
-</div>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
+    <title>Détails collaborateur</title>
+  </head>
 <body>
 <?php include 'include/top.php'; ?>
 <div class="middle">
     <?php include 'include/left.php'; ?>
     <div class="right">
-        <div class="container_admin">
-            <h1 class="title_admin">Modifier : <?= htmlspecialchars($person['first_name'] . " " . $person['last_name']) ?></h1>
-            <form method="POST" class="form_admin">
-                <p><strong>Email :</strong> <?= htmlspecialchars($person['email']) ?></p>
+        <form method="POST" class="form_admin">
+            <h1 class="title_admin">
+                <?= htmlspecialchars($collab['first_name'] . " " . $collab['last_name']) ?>
+            </h1>
 
-                <label for="position_id" class="label_admin">Poste</label>
-                <select name="position_id" id="position_id" class="input_admin" required>
-                    <?php foreach ($postes as $poste) : ?>
-                        <option value="<?= $poste['id'] ?>" <?= ($poste['id'] == $person['position_id']) ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($poste['name']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+            <?php if (!empty($message)): ?>
+                <div class="message"><?= htmlspecialchars($message) ?></div>
+            <?php endif; ?>
 
-                <label for="department_id" class="label_admin">Service</label>
-                <select name="department_id" id="department_id" class="input_admin" required>
-                    <?php foreach ($services as $service) : ?>
-                        <option value="<?= $service['id'] ?>" <?= ($service['id'] == $person['department_id']) ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($service['name']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+            <label class="toggle-label">
+            <input type="checkbox" name="alerte_conge" class="switch" <?= $collab['enabled'] ? 'checked' : '' ?>>
+                <span class="slider"></span>
+                Profil actif
+            </label>
 
-                <div class="button_container">
-                    <button class="goBack"><a href="myTeam.php">< Retour</a></button>
-                    <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
-                    <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
+            <div class="email">
+                <p>Adresse email - champ obligatoire</p>
+                <input type="email" name="email" readonly value="<?= htmlspecialchars($collab['email']) ?>" style="
+                        background-image: url('img/email.png');
+                        background-size: 20px;
+                        background-position: 10px center;
+                        background-repeat: no-repeat;" required />
+            </div>
+
+            <div class="infos">
+                <div class="begin">
+                    <p>Nom de famille - champ obligatoire</p>
+                    <input type="text" name="last_name" readonly value="<?= htmlspecialchars($collab['last_name']) ?>" required />
                 </div>
-            </form>
-        </div>
+                <div class="end">
+                    <p>Prénom - champ obligatoire</p>
+                    <input type="text" name="first_name" readonly value="<?= htmlspecialchars($collab['first_name']) ?>" required />
+                </div>
+            </div>
+
+            <div class="services">
+                <div class="direction">
+                    <p>Direction/Service - champ obligatoire</p>
+                    <select name="department_id" disabled>
+                        <?php foreach ($departments as $d): ?>
+                            <option value="<?= $d['id'] ?>" <?= $collab['department_id'] == $d['id'] ? 'selected' : '' ?>><?= htmlspecialchars($d['name']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="poste">
+                    <p>Poste - champ obligatoire</p>
+                    <select name="position_id" disabled>
+                        <?php foreach ($positions as $p): ?>
+                            <option value="<?= $p['id'] ?>" <?= $collab['position_id'] == $p['id'] ? 'selected' : '' ?>><?= htmlspecialchars($p['name']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="manager">
+                <p>Manager - champ obligatoire</p>
+                <select name="manager_id" disabled>
+                    <?php foreach ($managers as $m): ?>
+                        <option value="<?= $m['id'] ?>" <?= $collab['manager_id'] == $m['id'] ? 'selected' : '' ?>><?= htmlspecialchars($m['full_name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="infos2">
+                <div class="forgotN">
+                    <p>Nouveau mot de passe</p>
+                    <input type="password" name="newPassword" />
+                </div>
+                <div class="forgotF">
+                    <p>Confirmation du mot de passe</p>
+                    <input type="password" name="confirmPassword" />
+                </div>
+            </div>
+
+            <div class="button_container">
+                <button type="submit" name="delete" class="btn_red">Supprimer le compte</button>
+                <button type="submit" name="update" class="btn_blue">Mettre à jour</button>
+            </div>
+        </form>
     </div>
 </div>
-
-<script>
-    function openModal() {
-        document.getElementById("confirmModal").style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById("confirmModal").style.display = "none";
-    }
-</script>
 </body>
 </html>

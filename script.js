@@ -56,52 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/******************************* Pop up mdp **********************************/
-
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("customModal");
-    const resetButton = document.querySelector(".reset-button");
-    const confirmBtn = document.getElementById("confirmBtn");
-    const cancelBtn = document.getElementById("cancelBtn");
-    const form = document.getElementById("resetForm");
-  
-    resetButton.addEventListener("click", function (e) {
-      e.preventDefault();
-      modal.style.display = "flex";
-    });
-  
-    confirmBtn.addEventListener("click", function () {
-      modal.style.display = "none";
-      form.submit();
-    });
-  
-    cancelBtn.addEventListener("click", function () {
-      modal.style.display = "none";
-    });
-  });
-
-const modal = document.getElementById("customModal");
-const confirmBtn = document.getElementById("confirmBtn");
-const cancelBtn = document.getElementById("cancelBtn");
-
-function openModal() {
-    modal.style.display = "flex";
-}
-
-cancelBtn.onclick = function () {
-    modal.style.display = "none";
-}
-
-confirmBtn.onclick = function () {
-    document.getElementById("resetForm").submit();
-}
-
-window.onclick = function (event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-}
-  
 
 /******************************* BURGER MENU **********************************/
 
@@ -147,76 +101,76 @@ function closeModal() {
 
 /*********************************Filtrage page Mes demandes *************************************/
 const filters = {
-        type: document.querySelector("#search-type"),
-        demande: document.querySelector("#search-demande"),
-        debut: document.querySelector("#search-debut"),
-        fin: document.querySelector("#search-fin"),
-        jours: document.querySelector("#search-jours"),
-        statut: document.querySelector("#search-statut")
-    };
+    type: document.querySelector("#search-type"),
+    demande: document.querySelector("#search-demande"),
+    debut: document.querySelector("#search-debut"),
+    fin: document.querySelector("#search-fin"),
+    jours: document.querySelector("#search-jours"),
+    statut: document.querySelector("#search-statut")
+};
 
-    Object.values(filters).forEach(input => {
-        input.addEventListener("keyup", filterRows);
+Object.values(filters).forEach(input => {
+    input.addEventListener("keyup", filterRows);
+});
+
+function filterRows() {
+    const rows = document.querySelectorAll(".card");
+
+    rows.forEach(row => {
+        const type = row.querySelector(".Type1").textContent.toLowerCase();
+        const demande = row.querySelector(".DemandeDate").textContent.toLowerCase();
+        const debut = row.querySelector(".DebutDate").textContent.toLowerCase();
+        const fin = row.querySelector(".FinDate").textContent.toLowerCase();
+        const jours = row.querySelector(".NbJours").textContent.toLowerCase();
+        const statut = row.querySelector(".Statut").textContent.toLowerCase();
+
+        const matches = (
+            type.includes(filters.type.value.toLowerCase()) &&
+            demande.includes(filters.demande.value.toLowerCase()) &&
+            debut.includes(filters.debut.value.toLowerCase()) &&
+            fin.includes(filters.fin.value.toLowerCase()) &&
+            jours.includes(filters.jours.value.toLowerCase()) &&
+            statut.includes(filters.statut.value.toLowerCase())
+        );
+
+        row.style.display = matches ? "table-row" : "none";
     });
+}
+document.querySelectorAll('.sortable').forEach(header => {
+    let asc = true;
+    header.addEventListener('click', () => {
+        const table = header.closest('table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr.card'));
+        const columnIndex = parseInt(header.dataset.column);
+        const type = header.dataset.type;
+        const arrow = header.querySelector('.arrow');
 
-    function filterRows() {
-        const rows = document.querySelectorAll(".card");
+        // Restaurer les flèches
+        document.querySelectorAll('.sortable .arrow').forEach(el => el.textContent = '▲');
 
-        rows.forEach(row => {
-            const type = row.querySelector(".Type1").textContent.toLowerCase();
-            const demande = row.querySelector(".DemandeDate").textContent.toLowerCase();
-            const debut = row.querySelector(".DebutDate").textContent.toLowerCase();
-            const fin = row.querySelector(".FinDate").textContent.toLowerCase();
-            const jours = row.querySelector(".NbJours").textContent.toLowerCase();
-            const statut = row.querySelector(".Statut").textContent.toLowerCase();
+        rows.sort((a, b) => {
+            const aText = a.children[columnIndex].textContent.trim();
+            const bText = b.children[columnIndex].textContent.trim();
 
-            const matches = (
-                type.includes(filters.type.value.toLowerCase()) &&
-                demande.includes(filters.demande.value.toLowerCase()) &&
-                debut.includes(filters.debut.value.toLowerCase()) &&
-                fin.includes(filters.fin.value.toLowerCase()) &&
-                jours.includes(filters.jours.value.toLowerCase()) &&
-                statut.includes(filters.statut.value.toLowerCase())
-            );
-
-            row.style.display = matches ? "table-row" : "none";
+            if (type === "number") {
+                return asc ? aText - bText : bText - aText;
+            } else if (type === "date") {
+                const parseDate = str => {
+                    const parts = str.split(/[\/\s:h]/);
+                    return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T${parts[3] || "00"}:${parts[4] || "00"}`);
+                };
+                return asc ? parseDate(aText) - parseDate(bText) : parseDate(bText) - parseDate(aText);
+            } else {
+                return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+            }
         });
-    }
-    document.querySelectorAll('.sortable').forEach(header => {
-        let asc = true;
-        header.addEventListener('click', () => {
-            const table = header.closest('table');
-            const tbody = table.querySelector('tbody');
-            const rows = Array.from(tbody.querySelectorAll('tr.card'));
-            const columnIndex = parseInt(header.dataset.column);
-            const type = header.dataset.type;
-            const arrow = header.querySelector('.arrow');
 
-            // Restaurer les flèches
-            document.querySelectorAll('.sortable .arrow').forEach(el => el.textContent = '▲');
+        // Inverse l’ordre
+        asc = !asc;
+        arrow.textContent = asc ? '▲' : '▼';
 
-            rows.sort((a, b) => {
-                const aText = a.children[columnIndex].textContent.trim();
-                const bText = b.children[columnIndex].textContent.trim();
-
-                if (type === "number") {
-                    return asc ? aText - bText : bText - aText;
-                } else if (type === "date") {
-                    const parseDate = str => {
-                        const parts = str.split(/[\/\s:h]/);
-                        return new Date(`${parts[2]}-${parts[1]}-${parts[0]}T${parts[3] || "00"}:${parts[4] || "00"}`);
-                    };
-                    return asc ? parseDate(aText) - parseDate(bText) : parseDate(bText) - parseDate(aText);
-                } else {
-                    return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
-                }
-            });
-
-            // Inverse l’ordre
-            asc = !asc;
-            arrow.textContent = asc ? '▲' : '▼';
-
-            // Réinsère les lignes triées
-            rows.forEach(row => tbody.appendChild(row));
-        });
+        // Réinsère les lignes triées
+        rows.forEach(row => tbody.appendChild(row));
     });
+});
