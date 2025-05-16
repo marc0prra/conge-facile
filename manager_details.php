@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
 
                 <div class="button_container">
-                    <button class="goBack"><a href="Managers.php">&lt; Retour</a></button>
+                    <button class="goBack"><a href="myTeam.php">&lt; Retour</a></button>
                     <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
                     <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
                 </div>
