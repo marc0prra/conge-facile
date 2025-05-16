@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-// Requête SQL
 $sql = "
     SELECT 
         person.id,
@@ -10,12 +9,21 @@ $sql = "
         person.last_name,
         COALESCE(user.email, 'email introuvable') AS email,
         position.name AS role,
-        department.name AS service
+        department.name AS service,
+        (
+            SELECT COUNT(*) 
+            FROM request 
+            WHERE request.collaborator_id = person.id 
+              AND request.answer = 1
+        ) AS conges_pris
     FROM person
     LEFT JOIN user ON user.person_id = person.id
     LEFT JOIN department ON person.department_id = department.id
     LEFT JOIN position ON person.position_id = position.id
+    WHERE user.role = 'employee'
 ";
+
+
 
 $result = $conn->query($sql);
 $personnes = $result->fetch_all(MYSQLI_ASSOC);
@@ -41,33 +49,36 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
             </div>
 
             <table class="table2">
-                <thead>
-                    <tr class='grey_admin'>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Poste</th>
-                        <th>Service</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($personnes)) : ?>
-                        <?php foreach ($personnes as $p) : ?>
-                            <tr>
-                                <td><?= htmlspecialchars($p['last_name']) ?></td>
-                                <td><?= htmlspecialchars($p['first_name']) ?></td>
-                                <td><?= htmlspecialchars($p['email']) ?></td>
-                                <td><?= htmlspecialchars($p['role'] ?? 'Non défini') ?></td>
-                                <td><?= htmlspecialchars($p['service'] ?? 'Non défini') ?></td>
-                                <td><a href="team_details.php?id=<?= $p['id'] ?>" class="det_button">Détails</a></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <tr><td colspan="6" class="empty-row">Aucune personne trouvée</td></tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+            <thead>
+                <tr class='grey_admin'>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Poste</th>
+                    <th>Service</th>
+                    <th>Congés pris</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($personnes)) : ?>
+                    <?php foreach ($personnes as $p) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($p['last_name']) ?></td>
+                            <td><?= htmlspecialchars($p['first_name']) ?></td>
+                            <td><?= htmlspecialchars($p['email']) ?></td>
+                            <td><?= htmlspecialchars($p['role'] ?? 'Non défini') ?></td>
+                            <td><?= htmlspecialchars($p['service'] ?? 'Non défini') ?></td>
+                            <td><?= htmlspecialchars($p['conges_pris'] ?? 0) ?></td>
+                            <td><a href="team_details.php?id=<?= $p['id'] ?>" class="det_button">Détails</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr><td colspan="7" class="empty-row">Aucune personne trouvée</td></tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
         </div>
     </div>
 </div>
