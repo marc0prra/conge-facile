@@ -27,6 +27,8 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="icon" href="img/MW_logo.png" type="image/png"> 
+
     <title>Mon équipe</title>
 </head>
 <body>
