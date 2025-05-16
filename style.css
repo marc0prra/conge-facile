@@ -15,7 +15,6 @@ body {
   }
 }
 
-
 a {
   font-size: 16px;
   font-weight: 500;
@@ -941,7 +940,7 @@ input[type="file"] {
 
 .infos2 {
   display: flex;
-  gap: 14%;
+  gap: 10%;
   align-content: center;
   align-items: center;
 }
@@ -1000,7 +999,7 @@ input[type="file"] {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  display: block; 
+  display: block;
 }
 
 .toggle-passwordBug {
@@ -1011,7 +1010,7 @@ input[type="file"] {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  display: block; 
+  display: block;
 }
 
 .service select {
@@ -1843,11 +1842,10 @@ thead th a:hover {
 }
 /************************************* Page addTeam  *******************************/
 .toggle-label {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-
 
 /************************************* RESPONSIVE *******************************/
 @media screen and (max-width: 1340px) {
