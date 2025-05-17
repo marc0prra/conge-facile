@@ -24,11 +24,13 @@ if ($user_id) {
         ");
         $stmt->execute(['id' => $user_id]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $person_id = $user['person_id'] ?? null;
 
         if ($user) {
             $user_prenom = !empty($user['first_name']) ? htmlspecialchars($user['first_name']) : "";
             $user_nom = !empty($user['last_name']) ? htmlspecialchars($user['last_name']) : "";
             $user_email = !empty($user['email']) ? htmlspecialchars($user['email']) : "";
+            $person_id = $user['person_id'] ?? null;
         }
     } catch (PDOException $e) {
         $user_prenom = 'Erreur';
