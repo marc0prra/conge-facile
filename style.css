@@ -853,7 +853,7 @@ p.numberRequest {
   min-width: 790px;
 }
 
-.error {
+.errorRequest {
   color: #212b36;
   width: 145%;
 }
@@ -1690,7 +1690,7 @@ thead th a:hover {
 .skinCollab {
   display: flex;
   padding: 22px;
-  margin: 89% auto 0% auto;
+  margin: 78% auto 0% auto;
   gap: 15px;
 }
 
