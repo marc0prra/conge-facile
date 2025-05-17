@@ -41,6 +41,8 @@ if (isset($_SESSION['success_message'])) {
 
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
+        <link rel="icon" href="img/MW_logo.png" type="image/png"> 
+
         <title>Accueil</title>
     </head>
 

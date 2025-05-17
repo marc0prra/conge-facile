@@ -65,6 +65,8 @@ if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role
     <link rel="icon" href="img/MW_logo.png" type="image/png"> 
 
     <link rel="stylesheet" href="style.css?v=2">
+
+    <link rel="icon" href="img/MW_logo.png" type="image/png"> 
     
     <title>Historique</title>
     <style>

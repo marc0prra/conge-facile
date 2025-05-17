@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once 'config.php'; // Contient la connexion PDO : $pdo
+require_once 'config.php'; 
 
 $user_id = $_SESSION['user_id'] ?? null;
 $user_role = $_SESSION['user_role'] ?? '1';
@@ -32,7 +32,7 @@ if ($user_id) {
     }
 }
 
-// Calcule le nombre de demandes en attente
+
 try {
     if ($user_role === '1') {
         // Collaborateur : ses propres demandes
@@ -40,7 +40,6 @@ try {
         $params = [$person_id];
 
     } elseif ($user_role === '2') {
-        // Manager : demandes des subordonnés (collaborator.person.manager_id = manager.person.id)
         $sql = "
             SELECT COUNT(*)
             FROM request r
@@ -50,7 +49,6 @@ try {
         $params = [$person_id];
 
     } else {
-        // Autre rôle : toutes les demandes
         $sql = "SELECT COUNT(*) FROM request WHERE answer = 0";
         $params = [];
     }

@@ -318,7 +318,7 @@ form {
 .border {
   border-bottom: #dfe4ea solid 1px;
 }
-
+/*
 .active {
   background-color: #5c73a012;
   border-right: #004c6c solid 4px;
@@ -329,7 +329,8 @@ form {
   padding-left: 6%;
   padding-right: 13%;
 }
-*/ .active {
+*/
+.active {
   color: #004c6c;
   text-align: left;
   background-color: #5c73a012;
