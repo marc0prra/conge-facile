@@ -319,7 +319,6 @@ form {
   border-bottom: #dfe4ea solid 1px;
 }
 
-/**/
 .active {
   background-color: #5c73a012;
   border-right: #004c6c solid 4px;
@@ -342,15 +341,15 @@ form {
 }
 
 .activeAdmin {
-  background-color: #004c6c; /* Fond bleu */
-  color: white; /* Texte blanc */
+  background-color: #004c6c; 
+  color: white; 
   font-weight: bold;
 }
 
 .left {
   width: 21%;
   height: 100vh; /* prend toute la hauteur de l'écran */
-  overflow-y: auto; /* rend le contenu scrollable si nécessaire */
+  overflow-y: auto; 
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
   position: fixed;
 }
@@ -531,7 +530,7 @@ p.numberRequest {
   left: -500px; /* Caché hors de l'écran */
   width: 250px;
   height: 100%;
-  background-color: #004b6b; /* Bleu du site */
+  background-color: #004b6b; 
   box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
   transition: left 0.3s ease-in-out;
   z-index: 10;
@@ -557,7 +556,6 @@ p.numberRequest {
   background: none;
   color: #004b6b;
   border: none;
-  /* padding: 10px 20px; */
   font-size: 31px;
   cursor: pointer;
   display: none;
@@ -756,11 +754,11 @@ p.numberRequest {
   height: 41px;
   align-items: center;
   display: flex;
-  justify-content: center; /* pour centrer le texte */
+  justify-content: center; 
   background-color: #004c6c;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: none; /* optionnel */
+  border: none; 
 }
 
 .resetPswd:hover {
@@ -831,7 +829,7 @@ p.numberRequest {
   background-color: #f3f4f6;
   border: 1px solid #f3f4f6;
   padding: 12px 16px 12px 20px;
-  /* padding-right: 6%; */
+
   text-align: left;
   outline: none;
 }
@@ -1255,10 +1253,10 @@ input[type="file"] {
   border-radius: 5px;
   margin-bottom: 4%;
   padding: 1%;
-  background-color: #004c6c; /* ou autre couleur de fond souhaitée */
+  background-color: #004c6c; 
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: none; /* optionnel, pour un look plus moderne */
+  border: none; 
 }
 
 .save:hover {
@@ -1657,7 +1655,6 @@ thead th a:hover {
   background-color: #003b5c;
 }
 
-/* Ligne vide */
 .empty-row {
   text-align: center;
   color: #a0aec0;
