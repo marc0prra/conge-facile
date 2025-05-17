@@ -159,10 +159,8 @@ $conn->close();
                 </form>
             </div>
         </div>
-
-
         <script>
-        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function() {
             const startDateInput = document.querySelector('input[name="start_date"]');
             const endDateInput = document.querySelector('input[name="end_date"]');
             const daysInput = document.querySelector('input[name="date"]');
@@ -215,7 +213,5 @@ $conn->close();
             endDateInput.addEventListener("change", calculateDays);
         });
         </script>
-
     </body>
-
 </html>
