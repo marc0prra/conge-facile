@@ -139,10 +139,10 @@ form {
 }
 
 .allTop {
-  top: 0; 
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .right {
@@ -329,9 +329,7 @@ form {
   padding-left: 6%;
   padding-right: 13%;
 }
-*/
-
-.active {
+*/ .active {
   color: #004c6c;
   text-align: left;
   background-color: #5c73a012;
@@ -341,15 +339,15 @@ form {
 }
 
 .activeAdmin {
-  background-color: #004c6c; 
-  color: white; 
+  background-color: #004c6c;
+  color: white;
   font-weight: bold;
 }
 
 .left {
   width: 21%;
   height: 100vh; /* prend toute la hauteur de l'écran */
-  overflow-y: auto; 
+  overflow-y: auto;
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
   position: fixed;
 }
@@ -529,7 +527,7 @@ p.numberRequest {
   left: -500px; /* Caché hors de l'écran */
   width: 250px;
   height: 100%;
-  background-color: #004b6b; 
+  background-color: #004b6b;
   box-shadow: 16px 20px 20px rgba(0, 0, 0, 0.05);
   transition: left 0.3s ease-in-out;
   z-index: 10;
@@ -753,11 +751,11 @@ p.numberRequest {
   height: 41px;
   align-items: center;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   background-color: #004c6c;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: none; 
+  border: none;
 }
 
 .resetPswd:hover {
@@ -1252,10 +1250,10 @@ input[type="file"] {
   border-radius: 5px;
   margin-bottom: 4%;
   padding: 1%;
-  background-color: #004c6c; 
+  background-color: #004c6c;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border: none; 
+  border: none;
 }
 
 .save:hover {
@@ -1604,6 +1602,10 @@ table {
 
 .table2 {
   width: 937px;
+}
+
+.table3 {
+  width: 1337px;
 }
 
 th,

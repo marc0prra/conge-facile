@@ -50,18 +50,37 @@ $personnes = $result->fetch_all(MYSQLI_ASSOC);
                 <button class="initial"><a href="addTeam.php">Ajouter un collaborateur</a></button>
             </div>
 
-            <table class="table2">
+            <table class="table3">
             <thead>
-                <tr class='grey_admin'>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Poste</th>
-                    <th>Service</th>
-                    <th>Congés pris</th>
+                <tr class='grey_Poste'>
+                    <th class='searchHistorique sortable' data-column="0" data-type="text">
+                        Nom <span class="arrow">▲</span><br>
+                        <input id="search-type" class='searchListe' type="text" />
+                    </th>
+                    <th class='searchHistorique sortable' data-column="1" data-type="date">
+                        Prénom <span class="arrow">▲</span><br>
+                        <input id="search-demande" class='searchListe' type="text" />
+                    </th>
+                    <th class='searchHistorique sortable' data-column="2" data-type="text">
+                        Email <span class="arrow">▲</span><br>
+                        <input id="search-statut" class='searchListe' type="text" />
+                    </th>
+                    <th class='searchHistorique sortable' data-column="3" data-type="date">
+                        Poste <span class="arrow">▲</span><br>
+                        <input id="search-debut" class='searchListe' type="text" />
+                    </th>
+                    <th class='searchHistorique sortable' data-column="4" data-type="date">
+                        Direction/Service <span class="arrow">▲</span><br>
+                        <input id="search-fin" class='searchListe' type="text" />
+                    </th>
+                    <th class='searchHistorique sortable' data-column="5" data-type="number">
+                        Nombre de jours <span class="arrow">▲</span><br>
+                        <input id="search-jours" class='searchListe' type="text" />
+                    </th>
                     <th></th>
                 </tr>
             </thead>
+
             <tbody>
                 <?php if (!empty($personnes)) : ?>
                     <?php foreach ($personnes as $p) : ?>
