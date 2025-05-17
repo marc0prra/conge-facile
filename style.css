@@ -139,10 +139,10 @@ form {
 }
 
 .allTop {
-  top: 0; /* Collé en haut */
+  top: 0; 
   left: 0;
   right: 0;
-  z-index: 1000; /* Au-dessus du reste */
+  z-index: 1000; 
 }
 
 .right {
@@ -179,7 +179,6 @@ form {
   color: #000000;
   width: 947px;
   height: 74px;
-  /* line-height: 26.5px; */
   text-align: justify;
 }
 
@@ -320,7 +319,7 @@ form {
   border-bottom: #dfe4ea solid 1px;
 }
 
-/*
+/**/
 .active {
   background-color: #5c73a012;
   border-right: #004c6c solid 4px;
@@ -1047,8 +1046,8 @@ input[type="file"] {
 
 .toggle {
   position: absolute;
-  right: 52%;
-  top: 106%;
+  right: 56%;
+  top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
   width: 20px;
