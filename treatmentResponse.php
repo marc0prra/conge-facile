@@ -1,11 +1,6 @@
 <?php
-session_start();
-include 'config.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
-    exit();
-}
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $requestId = $_POST['request_id'] ?? null;

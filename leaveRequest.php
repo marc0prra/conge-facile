@@ -1,17 +1,7 @@
 <?php
-session_start();
-
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 include 'include/tabDonne.php';
-
-include 'config.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
-    exit();
-}
-
-$pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 $request_id = $_GET['id'] ?? null;
@@ -50,39 +40,43 @@ if (!$demande) {
 <!DOCTYPE html>
 <html lang="fr">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="Style.css" />
-        <title> Demande de congé </title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Style.css" />
+    <title> Demande de congé </title>
+</head>
 
-    <body>
-        <?php include 'include/top.php'; ?>
-        <div class="middle">
-            <?php include 'include/left.php'; ?>
-            <div class="right">
-                <h1 class="titleDemand"> Ma demande de congé </h1>
+<body>
+    <?php include 'include/top.php'; ?>
+    <div class="middle">
+        <?php include 'include/left.php'; ?>
+        <div class="right">
+            <h1 class="titleDemand"> Ma demande de congé </h1>
 
-                <?php if ($demande): ?>
-                <p class="subTiltleDemand"> Demande du <?=htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
+            <?php if ($demande): ?>
+                <p class="subTiltleDemand"> Demande du
+                    <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
                 <div class="sectionRequestDetails">
                     <p class="TypeRequest"> Type de congé : <?= htmlspecialchars($demande['type_demande']) ?> </p>
-                    <p class="TypeRequest"> Période : <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?> au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?> </p>
-                    <p class="TypeRequest"> Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></p>
+                    <p class="TypeRequest"> Période :
+                        <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?> au
+                        <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?> </p>
+                    <p class="TypeRequest"> Nombre de jours :
+                        <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></p>
                     <p class="TypeRequest statut">
                         Statut de la demande :
                         <?php
-                            $etat = $demande['etat_demande'];
-                            $classe = '';
+                        $etat = $demande['etat_demande'];
+                        $classe = '';
 
-                            if ($etat === 1 ) {
-                                $classe = 'badge-valide';
-                            } elseif ($etat === 2) {
-                                $classe = 'badge-refuse';
-                            } else {
-                                $classe = 'badge-encours';
-                            }
+                        if ($etat === 1) {
+                            $classe = 'badge-valide';
+                        } elseif ($etat === 2) {
+                            $classe = 'badge-refuse';
+                        } else {
+                            $classe = 'badge-encours';
+                        }
                         ?>
                         <span class="badge <?= $classe ?>"><?= getStatus($etat) ?></span>
                     </p>
@@ -93,11 +87,11 @@ if (!$demande) {
                     </div>
                     <a href="employeeHistory.php" class="moreDetails">Retourner à la liste de mes demandes</a>
                 </div>
-                <?php else: ?>
+            <?php else: ?>
                 <p>Aucune demande trouvée.</p>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>

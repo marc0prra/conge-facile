@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 include 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -47,12 +48,21 @@ if (!$demande) {
 }
 
 $holidays = [
-    "2025-01-01", "2025-04-21", "2025-05-01", "2025-05-08",
-    "2025-05-29", "2025-06-09", "2025-07-14", "2025-08-15",
-    "2025-11-01", "2025-11-11", "2025-12-25"
+    "2025-01-01",
+    "2025-04-21",
+    "2025-05-01",
+    "2025-05-08",
+    "2025-05-29",
+    "2025-06-09",
+    "2025-07-14",
+    "2025-08-15",
+    "2025-11-01",
+    "2025-11-11",
+    "2025-12-25"
 ];
 
-function getWorkingDays($start, $end, $holidays = []) {
+function getWorkingDays($start, $end, $holidays = [])
+{
     $begin = new DateTime($start);
     $end = new DateTime($end);
     $end->modify('+1 day');
@@ -62,7 +72,7 @@ function getWorkingDays($start, $end, $holidays = []) {
 
     $workingDays = 0;
     foreach ($dateRange as $date) {
-        $day = $date->format('N'); 
+        $day = $date->format('N');
         $formatted = $date->format('Y-m-d');
         if ($day < 6 && !in_array($formatted, $holidays)) {
             $workingDays++;
@@ -74,6 +84,7 @@ function getWorkingDays($start, $end, $holidays = []) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Consulter une demande</title>
@@ -88,61 +99,68 @@ function getWorkingDays($start, $end, $holidays = []) {
 </head>
 
 <body>
-<?php include 'include/top.php'; ?>
+    <?php include 'include/top.php'; ?>
 
-<div class="middle">
-    <?php include 'include/left.php'; ?>
+    <div class="middle">
+        <?php include 'include/left.php'; ?>
 
-    <div class="right">
-        <h1 class="titleDemand">Demande de <?= htmlspecialchars($demande['prenom']) ?> <?= htmlspecialchars($demande['nom']) ?></h1>
-        <p class="subTiltleDemand">Demande du <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
+        <div class="right">
+            <h1 class="titleDemand">Demande de <?= htmlspecialchars($demande['prenom']) ?>
+                <?= htmlspecialchars($demande['nom']) ?></h1>
+            <p class="subTiltleDemand">Demande du
+                <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
 
-        <div class="sectionRequestDetails">
-            <p class="TypeRequest">
-                Période <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
-                au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
-            </p>
+            <div class="sectionRequestDetails">
+                <p class="TypeRequest">
+                    Période <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?>
+                    au <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
+                </p>
 
-            <p class="TypeRequest">Type de demande : <?= htmlspecialchars($demande['type_demande']) ?></p>
+                <p class="TypeRequest">Type de demande : <?= htmlspecialchars($demande['type_demande']) ?></p>
 
-            <p class="TypeRequest">
-                Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays) ?>
-            </p>
+                <p class="TypeRequest">
+                    Nombre de jours : <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays) ?>
+                </p>
 
-            <div class="justificative RequestDetails">
-                <p class="color">Commentaire supplémentaire</p>
-                <input class="managerComment" type="text" name="comment" readonly
-                       value="<?= htmlspecialchars($demande['commentaire'] ?? 'Aucun commentaire') ?>">
-            </div>
+                <div class="justificative RequestDetails">
+                    <p class="color">Commentaire supplémentaire</p>
+                    <input class="managerComment" type="text" name="comment" readonly
+                        value="<?= htmlspecialchars($demande['commentaire'] ?? 'Aucun commentaire') ?>">
+                </div>
 
-            <?php if (!empty($demande['receipt_file'])) : ?>
-                <a class="moreDetails" href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>" class="moreDetails" download>
-                    Télécharger le justificatif
-                </a>
-            <?php else : ?>
-                <a class="moreDetails">Aucun justificatif disponible.</a>
-            <?php endif; ?>
+                <?php if (!empty($demande['receipt_file'])): ?>
+                    <a class="moreDetails" href="uploads/<?= htmlspecialchars($demande['receipt_file']) ?>"
+                        class="moreDetails" download>
+                        Télécharger le justificatif
+                    </a>
+                <?php else: ?>
+                    <a class="moreDetails">Aucun justificatif disponible.</a>
+                <?php endif; ?>
 
-            <div class="managerResponse">
-                <h1 class="titleDemand rep">Répondre à la demande</h1>
+                <div class="managerResponse">
+                    <h1 class="titleDemand rep">Répondre à la demande</h1>
 
-                <form method="post" action="treatmentResponse.php">
-                  <div class="justificative RequestDetails">
-                    <p class="color">Saisir un commentaire</p>
-                    <input class="managerComment" type="text" name="response_comment" placeholder="Votre commentaire ici">
+                    <form method="post" action="treatmentResponse.php">
+                        <div class="justificative RequestDetails">
+                            <p class="color">Saisir un commentaire</p>
+                            <input class="managerComment" type="text" name="response_comment"
+                                placeholder="Votre commentaire ici">
 
-                    <div class="end">
-                      <button class="reject" type="submit" name="action" value="refuser">Refuser la demande</button>
-                      <button class="accept" type="submit" name="action" value="accepter">Valider la demande</button>
-                    </div>
-                  </div>
+                            <div class="end">
+                                <button class="reject" type="submit" name="action" value="refuser">Refuser la
+                                    demande</button>
+                                <button class="accept" type="submit" name="action" value="accepter">Valider la
+                                    demande</button>
+                            </div>
+                        </div>
 
-                  <input type="hidden" name="request_id" value="<?= htmlspecialchars($demande['id']) ?>">
-                </form>
+                        <input type="hidden" name="request_id" value="<?= htmlspecialchars($demande['id']) ?>">
+                    </form>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>

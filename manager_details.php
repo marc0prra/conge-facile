@@ -1,8 +1,8 @@
 <?php
-session_start();
-require 'config.php';
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 
-$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Récupérer le manager depuis la base de données
 $sql = "SELECT * FROM person WHERE id = ?";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['modifier'])) {
         $nom = trim($_POST['nom']);
         $prenom = trim($_POST['prenom']);
-        $department_id = (int)$_POST['department_id'];
+        $department_id = (int) $_POST['department_id'];
 
         $updateStmt = $conn->prepare("UPDATE person SET last_name = ?, first_name = ?, department_id = ? WHERE id = ?");
         $updateStmt->bind_param("ssii", $nom, $prenom, $department_id, $id);
@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Modifier un Manager</title>
@@ -67,51 +68,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-<!-- Modal de confirmation -->
-<div id="confirmModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <p>Êtes-vous sûr de vouloir supprimer ce manager ?</p>
-        <div class="modal-buttons">
-            <form method="POST">
-                <input type="hidden" name="supprimer" value="1">
-                <button type="submit" class="btn_red">Oui, supprimer</button>
-            </form>
-            <button onclick="closeModal()" class="btn_blue">Annuler</button>
+    <!-- Modal de confirmation -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p>Êtes-vous sûr de vouloir supprimer ce manager ?</p>
+            <div class="modal-buttons">
+                <form method="POST">
+                    <input type="hidden" name="supprimer" value="1">
+                    <button type="submit" class="btn_red">Oui, supprimer</button>
+                </form>
+                <button onclick="closeModal()" class="btn_blue">Annuler</button>
+            </div>
         </div>
     </div>
-</div>
 
-<?php include 'include/top.php'; ?>
-<div class="middle">
-    <?php include 'include/left.php'; ?>
-    <div class="right">
-        <div class="container_admin">
-            <h1 class="title_admin">Modifier le manager</h1>
-            <form method="POST" class="form_admin">
-                <label class="label_admin">Nom de famille</label>
-                <input type="text" name="nom" class="input_admin" value="<?= htmlspecialchars($manager['last_name']) ?>" required>
+    <?php include 'include/top.php'; ?>
+    <div class="middle">
+        <?php include 'include/left.php'; ?>
+        <div class="right">
+            <div class="container_admin">
+                <h1 class="title_admin">Modifier le manager</h1>
+                <form method="POST" class="form_admin">
+                    <label class="label_admin">Nom de famille</label>
+                    <input type="text" name="nom" class="input_admin"
+                        value="<?= htmlspecialchars($manager['last_name']) ?>" required>
 
-                <label class="label_admin">Prénom</label>
-                <input type="text" name="prenom" class="input_admin" value="<?= htmlspecialchars($manager['first_name']) ?>" required>
+                    <label class="label_admin">Prénom</label>
+                    <input type="text" name="prenom" class="input_admin"
+                        value="<?= htmlspecialchars($manager['first_name']) ?>" required>
 
-                <label class="label_admin">Service</label>
-                <select name="department_id" class="input_admin" required>
-                    <option value="">-- Sélectionner un service --</option>
-                    <?php foreach ($departments as $d): ?>
-                        <option value="<?= $d['id'] ?>" <?= $d['id'] == $manager['department_id'] ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($d['name']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
+                    <label class="label_admin">Service</label>
+                    <select name="department_id" class="input_admin" required>
+                        <option value="">-- Sélectionner un service --</option>
+                        <?php foreach ($departments as $d): ?>
+                            <option value="<?= $d['id'] ?>" <?= $d['id'] == $manager['department_id'] ? 'selected' : '' ?>>
+                                <?= htmlspecialchars($d['name']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
 
-                <div class="button_container">
-                    <button class="goBack"><a href="myTeam.php">&lt; Retour</a></button>
-                    <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
-                    <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
-                </div>
-            </form>
+                    <div class="button_container">
+                        <button class="goBack"><a href="myTeam.php">&lt; Retour</a></button>
+                        <button type="button" class="btn_red" onclick="openModal()">Supprimer</button>
+                        <button type="submit" name="modifier" class="btn_blue">Mettre à jour</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>

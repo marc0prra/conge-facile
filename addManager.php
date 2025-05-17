@@ -1,6 +1,6 @@
 <?php
-session_start();
-require 'config.php';
+require 'include/config_bdd.php';
+require 'include/user.php';
 
 $erreur = "";
 $success = "";
@@ -12,14 +12,14 @@ $managers = $conn->query("SELECT id, CONCAT(first_name, ' ', last_name) AS full_
 
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $last_name     = trim($_POST['last_name']);
-    $first_name    = trim($_POST['first_name']);
-    $email         = trim($_POST['email']);
-    $password      = $_POST['password'];
+    $last_name = trim($_POST['last_name']);
+    $first_name = trim($_POST['first_name']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
     $department_id = $_POST['department_id'] ?: null;
-    $position_id   = $_POST['position_id'] ?: null;
-    $manager_id    = $_POST['manager_id'] ?: null;
-    $role          = $_POST['role'] ?? 'employee';
+    $position_id = $_POST['position_id'] ?: null;
+    $manager_id = $_POST['manager_id'] ?: null;
+    $role = $_POST['role'] ?? 'employee';
 
     if (empty($last_name) || empty($first_name) || empty($email) || empty($password)) {
         $erreur = "Tous les champs obligatoires doivent être remplis.";
@@ -59,70 +59,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <title>Ajouter un utilisateur</title>
     <link rel="stylesheet" href="style.css?v=2" />
 </head>
+
 <body>
-<?php include 'include/top.php'; ?>
-<div class="middle">
-    <?php include 'include/left.php'; ?>
-    <div class="right">
-        <h1>Ajouter un utilisateur</h1>
+    <?php include 'include/top.php'; ?>
+    <div class="middle">
+        <?php include 'include/left.php'; ?>
+        <div class="right">
+            <h1>Ajouter un utilisateur</h1>
 
-        <?php if (!empty($success)) : ?>
-            <div class="success"><?= htmlspecialchars($success) ?></div>
-        <?php elseif (!empty($erreur)) : ?>
-            <div class="error"><?= htmlspecialchars($erreur) ?></div>
-        <?php endif; ?>
+            <?php if (!empty($success)): ?>
+                <div class="success"><?= htmlspecialchars($success) ?></div>
+            <?php elseif (!empty($erreur)): ?>
+                <div class="error"><?= htmlspecialchars($erreur) ?></div>
+            <?php endif; ?>
 
-        <form method="POST" class="form_admin ajout_post">
-            <label>Nom - champ obligatoire</label>
-            <input type="text" name="last_name" class="input_admin" required />
+            <form method="POST" class="form_admin ajout_post">
+                <label>Nom - champ obligatoire</label>
+                <input type="text" name="last_name" class="input_admin" required />
 
-            <label>Prénom - champ obligatoire</label>
-            <input type="text" name="first_name" class="input_admin" required />
+                <label>Prénom - champ obligatoire</label>
+                <input type="text" name="first_name" class="input_admin" required />
 
-            <label>Email - champ obligatoire</label>
-            <input type="email" name="email" class="input_admin" required />
+                <label>Email - champ obligatoire</label>
+                <input type="email" name="email" class="input_admin" required />
 
-            <div class="forgotN">
-            <p>Mot de passe - champ obligatoire</p>
-            <input type="password" name="password" class="input_admin" required />
+                <div class="forgotN">
+                    <p>Mot de passe - champ obligatoire</p>
+                    <input type="password" name="password" class="input_admin" required />
 
-            <p>Mot de passe - champ obligatoire</p>
-            <input type="password" name="password" class="input_admin" required />
-            </div>
+                    <p>Mot de passe - champ obligatoire</p>
+                    <input type="password" name="password" class="input_admin" required />
+                </div>
 
-            <label>Direction / Service - champ obligatoire</label>
-            <select name="department_id" class="input_admin">
-                <option value="">Aucun</option>
-                <?php foreach ($departments as $d): ?>
-                    <option value="<?= $d['id'] ?>"><?= htmlspecialchars($d['name']) ?></option>
-                <?php endforeach; ?>
-            </select>
+                <label>Direction / Service - champ obligatoire</label>
+                <select name="department_id" class="input_admin">
+                    <option value="">Aucun</option>
+                    <?php foreach ($departments as $d): ?>
+                        <option value="<?= $d['id'] ?>"><?= htmlspecialchars($d['name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
 
-            <label>Poste</label>
-            <select name="position_id" class="input_admin">
-                <option value="">Aucun</option>
-                <?php foreach ($positions as $p): ?>
-                    <option value="<?= $p['id'] ?>"><?= htmlspecialchars($p['name']) ?></option>
-                <?php endforeach; ?>
-            </select>
+                <label>Poste</label>
+                <select name="position_id" class="input_admin">
+                    <option value="">Aucun</option>
+                    <?php foreach ($positions as $p): ?>
+                        <option value="<?= $p['id'] ?>"><?= htmlspecialchars($p['name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
 
-            <label>Rôle</label>
-            <select name="role" class="input_admin">
-                <option value="employee">Collaborateur</option>
-                <option value="manager">Manager</option>
-            </select>
+                <label>Rôle</label>
+                <select name="role" class="input_admin">
+                    <option value="employee">Collaborateur</option>
+                    <option value="manager">Manager</option>
+                </select>
 
-            <div class="button_container">
-                <a href="myTeam.php" class="btn_red">Annuler</a>
-                <button type="submit" name="ajouter" class="btn_blue">Ajouter</button>
-            </div>
-        </form>
+                <div class="button_container">
+                    <a href="myTeam.php" class="btn_red">Annuler</a>
+                    <button type="submit" name="ajouter" class="btn_blue">Ajouter</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
+
 </html>

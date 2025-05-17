@@ -1,5 +1,6 @@
-<?php  
-require 'config.php'; // connexion à la base
+<?php
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 
 $searchTitre = $_GET['searchTitre'] ?? '';
 $sortBy = $_GET['sortBy'] ?? 'name';
@@ -22,6 +23,7 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +32,9 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
     <link rel="icon" href="img/MW_logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
@@ -49,9 +53,11 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
                         <thead>
                             <tr class='grey_admin'>
                                 <th>
-                                    <a href="?sortBy=name&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>">
+                                    <a
+                                        href="?sortBy=name&order=<?= $nextOrder ?>&searchTitre=<?= htmlspecialchars($searchTitre) ?>">
                                         Nom du service
-                                        <span class="sort-arrow"><?= $sortBy === 'name' ? ($order === 'ASC' ? '▲' : '▼') : '▼' ?></span>
+                                        <span
+                                            class="sort-arrow"><?= $sortBy === 'name' ? ($order === 'ASC' ? '▲' : '▼') : '▼' ?></span>
                                     </a>
                                     <input class='search_admin' type="text" name="searchTitre"
                                         value="<?= htmlspecialchars($searchTitre) ?>" placeholder="Rechercher..." />
@@ -62,8 +68,8 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (count($services) > 0) : ?>
-                                <?php foreach ($services as $service) : ?>
+                            <?php if (count($services) > 0): ?>
+                                <?php foreach ($services as $service): ?>
                                     <tr>
                                         <td><?= htmlspecialchars($service['name']) ?></td>
                                         <td>
@@ -73,7 +79,7 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else : ?>
+                            <?php else: ?>
                                 <tr>
                                     <td colspan="2" class="empty-row">Aucun service trouvé</td>
                                 </tr>
@@ -85,4 +91,5 @@ $nextOrder = ($order === 'ASC') ? 'desc' : 'asc';
         </div>
     </div>
 </body>
+
 </html>

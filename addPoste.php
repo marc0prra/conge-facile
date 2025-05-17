@@ -1,5 +1,6 @@
 <?php
-require 'config.php'; 
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 
 $erreur = "";
 $success = "";
@@ -45,6 +46,7 @@ $liste_postes = $pdo->query("SELECT * FROM position ORDER BY name ASC")->fetchAl
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +65,7 @@ $liste_postes = $pdo->query("SELECT * FROM position ORDER BY name ASC")->fetchAl
             margin-top: 5px;
             margin-bottom: 10px;
         }
+
         .success {
             color: green;
             font-size: 0.9em;
@@ -72,42 +75,34 @@ $liste_postes = $pdo->query("SELECT * FROM position ORDER BY name ASC")->fetchAl
 </head>
 
 <body>
-<?php include 'include/top.php'; ?>
-<div class="middle">
-    <?php include 'include/left.php'; ?>
-    <div class="right">
-        <div class="container_admin">
-            <h1 class="title_admin">Ajouter un poste</h1>
+    <?php include 'include/top.php'; ?>
+    <div class="middle">
+        <?php include 'include/left.php'; ?>
+        <div class="right">
+            <div class="container_admin">
+                <h1 class="title_admin">Ajouter un poste</h1>
 
-            <?php if (!empty($success)) : ?>
-                <div class="success"><?= htmlspecialchars($success) ?></div>
-            <?php endif; ?>
-
-            <form method="POST" class="form_admin">
-                <label for="titre" class="label_admin">Nom du poste</label>
-                <input type="text" id="titre" name="titre" class="input_admin" value="<?= htmlspecialchars($name) ?>">
-                <?php if (!empty($erreur)) : ?>
-                    <div class="error"><?= htmlspecialchars($erreur) ?></div>
+                <?php if (!empty($success)): ?>
+                    <div class="success"><?= htmlspecialchars($success) ?></div>
                 <?php endif; ?>
 
-                <div class="button_container">
-                    <button type="button" class="btn_red"><a href="poste.php">Annuler</a></button>
-                    <button type="submit" class="btn_blue">Ajouter</button>
-                </div>
-            </form>
+                <form method="POST" class="form_admin">
+                    <label for="titre" class="label_admin">Nom du poste</label>
+                    <input type="text" id="titre" name="titre" class="input_admin"
+                        value="<?= htmlspecialchars($name) ?>">
+                    <?php if (!empty($erreur)): ?>
+                        <div class="error"><?= htmlspecialchars($erreur) ?></div>
+                    <?php endif; ?>
 
-            <h2>Postes existants</h2>
-            <?php if (empty($liste_postes)) : ?>
-                <p>Aucun poste enregistré.</p>
-            <?php else : ?>
-                <ul>
-                    <?php foreach ($liste_postes as $poste) : ?>
-                        <li><?= htmlspecialchars($poste['name']) ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+                    <div class="button_container">
+                        <button type="button" class="btn_red"><a href="poste.php">Annuler</a></button>
+                        <button type="submit" class="btn_blue">Ajouter</button>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>

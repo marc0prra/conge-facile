@@ -2,9 +2,12 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: connexion.php");
-  exit();
+    header("Location: connexion.php");
+    exit();
 }
+
+require_once("include/config_bdd.php");
+require_once("include/user.php");
 
 
 if (isset($_SESSION['success_message'])) {
@@ -17,7 +20,7 @@ if (isset($_SESSION['success_message'])) {
                 <div class="notification__progress"></div>
             </div>
           </div>';
-    unset($_SESSION['success_message']); 
+    unset($_SESSION['success_message']);
 }
 ?>
 
@@ -25,26 +28,26 @@ if (isset($_SESSION['success_message'])) {
 <!DOCTYPE html>
 <html lang="fr">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="style.css?v=2" />
-        <link rel="icon" href="img/MW_logo.png" type="image/png">
+    <link rel="stylesheet" href="style.css?v=2" />
+    <link rel="icon" href="img/MW_logo.png" type="image/png">
 
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
 
-        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
-        <link rel="icon" href="img/MW_logo.png" type="image/png"> 
+    <link rel="icon" href="img/MW_logo.png" type="image/png">
 
-        <title>Accueil</title>
-    </head>
+    <title>Accueil</title>
+</head>
 
 </html>
 
@@ -95,8 +98,8 @@ if (isset($_SESSION['success_message'])) {
             </div>
             <p class="diff">
                 En cas de difficulté avec l'application, veuillez envoyer un email à
-                    <a href="mailto:contact@mentalworks.fr" class="blue">contact@mentalworks.fr</a>
-                
+                <a href="mailto:contact@mentalworks.fr" class="blue">contact@mentalworks.fr</a>
+
             </p>
         </div>
     </div>
