@@ -12,22 +12,23 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT 
-                request.id,
-                request.request_type_id,
-                request_type.name AS type_demande, 
-                request.created_at AS date_demande, 
-                request.start_at AS date_debut, 
-                request.end_at AS date_fin,
-                request.answer AS etat_demande,
-                person.first_name AS prenom,
-                person.last_name AS nom
-              FROM request
-              JOIN request_type ON request.request_type_id = request_type.id
-              JOIN person ON request.collaborator_id = person.id  -- Joindre la table person pour récupérer le nom et prénom
-              WHERE request.answer =0 ";  // Filtrer pour les demandes en cours
+            request.id,
+            request.request_type_id,
+            request_type.name AS type_demande, 
+            request.created_at AS date_demande, 
+            request.start_at AS date_debut, 
+            request.end_at AS date_fin,
+            request.answer AS etat_demande,
+            person.first_name AS prenom,
+            person.last_name AS nom
+          FROM request
+          JOIN request_type ON request.request_type_id = request_type.id
+          JOIN person ON request.collaborator_id = person.id
+          WHERE request.answer = 0
+            AND person.manager_id = :manager_id";
 
     $stmt = $pdo->prepare($query);
-    $stmt->execute();
+    $stmt->execute([':manager_id' => $managerPersonId]);
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {

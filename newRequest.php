@@ -153,7 +153,7 @@ $conn->close();
 
                     <div class="end">
                         <button type="submit">Soumettre ma demande*</button>
-                        <p class="error">*En cas d'erreur de saisie ou de changements, vous pourrez modifier votre
+                        <p class="errorRequest">*En cas d'erreur de saisie ou de changements, vous pourrez modifier votre
                             demande tant qu'elle n'a pas été validée par le manager.</p>
                     </div>
                 </form>
