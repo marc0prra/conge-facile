@@ -450,7 +450,6 @@ p.numberRequest {
 .dropdown-content {
   display: none;
   flex-direction: column;
-  background: white;
   width: 100%;
 }
 
