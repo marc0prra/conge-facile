@@ -11,28 +11,43 @@ try {
     $pdo = new PDO('mysql:host=localhost;dbname=congefacile', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query = "SELECT 
-            request.id,
-            request.request_type_id,
-            request_type.name AS type_demande, 
-            request.created_at AS date_demande, 
-            request.start_at AS date_debut, 
-            request.end_at AS date_fin,
-            request.answer AS etat_demande,
-            person.first_name AS prenom,
-            person.last_name AS nom
-          FROM request
-          JOIN request_type ON request.request_type_id = request_type.id
-          JOIN person ON request.collaborator_id = person.id
-          WHERE request.answer = 0
-            AND person.manager_id = :manager_id";
+    $stmt = $pdo->prepare(
+        "SELECT person_id
+           FROM user
+          WHERE id = :user_id"
+    );
+    $stmt->execute([':user_id' => $_SESSION['user_id']]);
+    $managerPersonId = $stmt->fetchColumn();
 
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([':manager_id' => $managerPersonId]);
-    $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (!$managerPersonId) {
+        $demandes = [];
+    } else {
+
+        $sql = "
+            SELECT  r.id,
+                    r.request_type_id,
+                    rt.name      AS type_demande,
+                    r.created_at AS date_demande,
+                    r.start_at   AS date_debut,
+                    r.end_at     AS date_fin,
+                    r.answer     AS etat_demande,
+                    p.first_name AS prenom,
+                    p.last_name  AS nom
+            FROM request r
+            JOIN request_type rt ON r.request_type_id = rt.id
+            JOIN person p        ON r.collaborator_id = p.id
+            WHERE r.answer = 0
+              AND p.manager_id = :manager_id
+            ORDER BY r.created_at DESC
+        ";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':manager_id' => $managerPersonId]);
+        $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 } catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
+    die("Erreur : " . $e->getMessage());
 }
 
 if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role'] == 'manager')) {
