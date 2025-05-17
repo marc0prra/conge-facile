@@ -56,7 +56,6 @@ if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <title>Historique</title>
 </head>
-
 <body>
 <?php include 'include/top.php'; ?>
 

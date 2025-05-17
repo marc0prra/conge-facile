@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/************************************ Test *******************************/
+/********************************* Animation / Effect Fade In *******************************/
 function loadPage(url) {
   const content = document.getElementById('content');
   fetch(url)
@@ -194,3 +194,125 @@ function loadPage(url) {
       content.classList.add('fade-in');
     });
 }
+
+
+/********************************* Manager details *******************************/
+function openModal() {
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+/********************************* MDP *******************************/
+        function closePopup() {
+      document.querySelector('.popup').style.display = 'none';
+      document.querySelector('.overlay').style.display = 'none';
+    }
+/********************************* Nouvelle demande *******************************/
+document.addEventListener("DOMContentLoaded", function() {
+            const startDateInput = document.querySelector('input[name="start_date"]');
+            const endDateInput = document.querySelector('input[name="end_date"]');
+            const daysInput = document.querySelector('input[name="date"]');
+
+            // Liste des jours fériés en France (ajoute/modifie selon besoin)
+            const holidays = [
+                "2025-01-01", // Nouvel An
+                "2025-04-21", // Lundi de Pâques
+                "2025-05-01", // Fête du Travail
+                "2025-05-08", // Victoire 1945
+                "2025-05-29", // Ascension
+                "2025-06-09", // Lundi de Pentecôte
+                "2025-07-14", // Fête Nationale
+                "2025-08-15", // Assomption
+                "2025-11-01", // Toussaint
+                "2025-11-11", // Armistice 1918
+                "2025-12-25" // Noël
+            ];
+
+            function calculateDays() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (isNaN(startDate) || isNaN(endDate) || startDate > endDate) {
+                    daysInput.value = 0;
+                    return;
+                }
+
+                let count = 0;
+                let currentDate = new Date(startDate);
+
+                while (currentDate <= endDate) {
+                    const dayOfWeek = currentDate.getDay(); // 0 = Dimanche, 6 = Samedi
+                    const formattedDate = currentDate.toISOString().split('T')[0]; // Format YYYY-MM-DD
+
+                    // Vérifier si le jour n'est pas un week-end et pas un jour férié
+                    if (dayOfWeek !== 0 && dayOfWeek !== 6 && !holidays.includes(formattedDate)) {
+                        count++;
+                    }
+
+                    // Passer au jour suivant
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+
+                daysInput.value = count;
+            }
+
+            // Écouter les changements sur les inputs de dates
+            startDateInput.addEventListener("change", calculateDays);
+            endDateInput.addEventListener("change", calculateDays);
+        });
+/********************************* Poste *******************************/
+document.addEventListener('DOMContentLoaded', () => {
+    const titleInput = document.getElementById('search-title');
+    const countInput = document.getElementById('search-count');
+    const rows       = [...document.querySelectorAll('tbody tr')];
+    const headers    = document.querySelectorAll('th[data-sort]');
+
+    const filterRows = () => {
+        const tVal = titleInput.value.trim().toLowerCase();
+        const cVal = countInput.value.trim();
+        rows.forEach(r => {
+            const tText = r.querySelector('[data-col="title"]').textContent.toLowerCase();
+            const cText = r.querySelector('[data-col="count"]').textContent.trim();
+            const okT = tText.includes(tVal);
+            const okC = cVal === '' || cText === cVal;
+            r.style.display = (okT && okC) ? '' : 'none';
+        });
+    };
+    titleInput.addEventListener('input', filterRows);
+    countInput.addEventListener('input', filterRows);
+
+    const sortTable = (key, order) => {
+        const factor = order === 'asc' ? 1 : -1;
+        rows.sort((a, b) => {
+            const aVal = a.querySelector(`[data-col="${key}"]`).textContent.trim();
+            const bVal = b.querySelector(`[data-col="${key}"]`).textContent.trim();
+            if (key === 'count') {
+                return (Number(aVal) - Number(bVal)) * factor;
+            }
+            return aVal.localeCompare(bVal) * factor;
+        });
+        const tbody = document.querySelector('tbody');
+        rows.forEach(r => tbody.appendChild(r));
+    };
+
+    headers.forEach(h => {
+        h.addEventListener('click', () => {
+            const key = h.dataset.sort;
+            const currentOrder = h.dataset.order;
+            const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
+
+            headers.forEach(el => {
+                el.textContent = el.textContent.replace('▲','').replace('▼','').trim() + ' ▲';
+                el.dataset.order = 'asc';
+            });
+
+            h.dataset.order = newOrder;
+            h.textContent = h.textContent.replace('▲','').replace('▼','').trim() + (newOrder === 'asc' ? ' ▲' : ' ▼');
+
+            sortTable(key, newOrder);
+            filterRows();
+        });
+    });
+});

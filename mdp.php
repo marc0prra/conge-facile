@@ -108,13 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['mail'])) {
     <button onclick="closePopup()">Fermer</button>
   </div>
 
-  <script>
-    function closePopup() {
-      document.querySelector('.popup').style.display = 'none';
-      document.querySelector('.overlay').style.display = 'none';
-    }
-  </script>
-<?php endif; ?>
 
+<?php endif; ?>
+<script src="script.js"></script>
 </body>
 </html>
