@@ -1,3 +1,9 @@
+<?php 
+
+include 'user.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
