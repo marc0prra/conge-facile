@@ -280,7 +280,7 @@ function loadPage(url) {
 
 /********************************* Manager details *******************************/
 function openModal() {
-            document.getElementById('confirmModal').style.display = 'block';
+            document.getElementById('confirmModal').style.display = 'flex';
         }
         function closeModal() {
             document.getElementById('confirmModal').style.display = 'none';

@@ -8,7 +8,6 @@ if (!isset($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
-// Récupérer les informations de la demande depuis la BDD
 $stmt = $pdo->prepare("SELECT * FROM request_type WHERE id = :id");
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
@@ -18,7 +17,6 @@ if (!$demande) {
     die("Erreur : Type de demande introuvable.");
 }
 
-// Suppression
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["supprimer"])) {
         $stmt = $pdo->prepare("DELETE FROM request_type WHERE id = :id");
@@ -31,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    // Modification
     if (isset($_POST["modifier"])) {
         $titre = $_POST['nom'];
 

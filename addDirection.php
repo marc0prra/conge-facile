@@ -6,7 +6,6 @@ $erreur = "";
 $success = "";
 $titre = "";
 
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['ajouter'])) {
         $titre = trim($_POST['titre'] ?? '');
@@ -14,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($titre)) {
             $erreur = "Veuillez entrer un nom de direction.";
         } else {
-            // Vérification si déjà existante
             $check = $pdo->prepare("SELECT COUNT(*) FROM department WHERE name = :name");
             $check->execute([':name' => $titre]);
             $exists = $check->fetchColumn();

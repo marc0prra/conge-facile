@@ -6,7 +6,6 @@ $erreur = "";
 $success = "";
 $name = "";
 
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['titre']);
 
@@ -38,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Récupération des postes existants
 $liste_postes = $pdo->query("SELECT * FROM position ORDER BY name ASC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 

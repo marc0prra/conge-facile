@@ -30,7 +30,6 @@ if (isset($_POST['annuler'])) {
     exit;
 }
 
-// Récupère toutes les demandes existantes
 $requete = $pdo->query("SELECT * FROM request_type ORDER BY name ASC");
 $liste_demandes = $requete->fetchAll(PDO::FETCH_ASSOC);
 ?>
