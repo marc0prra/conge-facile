@@ -9,7 +9,15 @@ Pour mieux comprendre cela voici une arborescence :
 
 ![image](https://github.com/user-attachments/assets/5ef71b40-9275-4353-b44f-3858c0141b29)
 
-Voici le schéma relationnel de notre base de donnée : 
+Voici notre MEA : 
+
+[MEA conge-facile.pdf](https://github.com/user-attachments/files/20278517/MEA.conge-facile.pdf)
+
+
+Voici notre dictionnaire de données :
+
+[DICTIONNAIRE DE DONNÉES (2).pdf](https://github.com/user-attachments/files/20278524/DICTIONNAIRE.DE.DONNEES.2.pdf)
+
 
 ![image](https://github.com/user-attachments/assets/a680f507-7598-4e24-a934-4e8cebcc9dc2)
 
