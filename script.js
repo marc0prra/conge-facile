@@ -75,30 +75,6 @@ document.getElementById("openMenu").addEventListener("click", function () {
   });
   
 
-
-
-/**************************************** POP UP ***************************************/  
-document.getElementById('triggerDelete').addEventListener('click', function () {
-    document.getElementById('deleteModal').classList.remove('hidden');
-});
-
-document.getElementById('cancelDelete').addEventListener('click', function () {
-    document.getElementById('deleteModal').classList.add('hidden');
-});
-
-document.getElementById('confirmDelete').addEventListener('click', function () {
-    document.getElementById('submitDelete').click();
-});
-
-
-function openModal() {
-    document.getElementById('confirmModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('confirmModal').style.display = 'none';
-}
-
 /*********************************Filtrage page Mes demandes *************************************/
 document.addEventListener("DOMContentLoaded", function () {
     const table = document.querySelector(".table1");
@@ -398,3 +374,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+/**************************************** POP UP ***************************************/  
+document.getElementById('triggerDelete').addEventListener('click', function () {
+    document.getElementById('deleteModal').classList.remove('hidden');
+});
+
+document.getElementById('cancelDelete').addEventListener('click', function () {
+    document.getElementById('deleteModal').classList.add('hidden');
+});
+
+document.getElementById('confirmDelete').addEventListener('click', function () {
+    document.getElementById('submitDelete').click();
+});
+
+
+function openModal() {
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+}
+

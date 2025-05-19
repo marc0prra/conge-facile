@@ -89,7 +89,7 @@ $conn->close();
             <p class="color">Type de demande - champ obligatoire</p>
 
             <form action="newRequest.php" method="POST" enctype="multipart/form-data">
-                <select name="request_type_id">
+                <select name="request_type_id" required>
                     <option value="1">Congé payé</option>
                     <option value="2">Congé sans solde</option>
                     <option value="3">Congé Maladie</option>
@@ -100,7 +100,7 @@ $conn->close();
                 <div class="dates">
                     <div class="begin">
                         <p class="date color">Date début - champ obligatoire</p>
-                        <input type="datetime-local" name="start_date" style="
+                        <input required type="datetime-local" name="start_date" style="
                                 background-image: url(img/calendar.png);
                                 background-size: 20px;
                                 background-position: 10px center;
@@ -110,7 +110,7 @@ $conn->close();
                     </div>
                     <div class="end">
                         <p class="date color">Date de fin - champ obligatoire</p>
-                        <input type="datetime-local" name="end_date" style="
+                        <input required type="datetime-local" name="end_date" style="
                                 background-image: url(img/calendar.png);
                                 background-size: 20px;
                                 background-position: 10px center;

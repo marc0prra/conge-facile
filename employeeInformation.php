@@ -74,7 +74,12 @@ $conn->close();
 
                     <div class="email">
                         <p>Email</p>
-                        <input type="email" value="<?= $user_email ?>" readonly>
+                        <input type="email" value="<?= $user_email ?>" readonly style="
+                        background-image: url('img/email.png');
+                        background-size: 20px;
+                        background-position: 10px center;
+                        background-repeat: no-repeat;
+                    ">
                     </div>
 
                     <h2>Réinitialiser le mot de passe</h2>
