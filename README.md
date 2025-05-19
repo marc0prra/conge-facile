@@ -9,6 +9,9 @@ Pour que le projet fonctionne correctement :
 - Il faut utiliser notre fichier .sql qui contient nos requetes qui créer la base de donnée "congefacile".
 - Changer les iddentifiants dans notre code pour vous connecter a votre base de donnée.
 
+Mot de paasse utilisateur 1: jean.dupont@email.com     mdp : test
+Mot de paasse utilisateur 2: sophie.martin@email.com   mdp : sophie
+
 Pour mieux comprendre cela voici une arborescence :
 
 ![image](https://github.com/user-attachments/assets/5ef71b40-9275-4353-b44f-3858c0141b29)
