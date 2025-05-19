@@ -1,9 +1,13 @@
-Ce fichier Readme regroupe la conception de l’interface utilisateur pour CongéFacile. Nous prenons comme exmple d'entreprise MentalWorks. Le but est de faire une application de gestion des congés dédiée à un projet scolaire, qui peut etre utilisé en entreprise. L’objectif est de proposer une interface claire, moderne et intuitive permettant aux utilisateurs de gérer leurs demandes de congés, de suivre leur solde et d’interagir avec les responsables RH oumanagers.
+Ce fichier Readme regroupe la conception de l’interface utilisateur pour CongéFacile. Nous prenons comme exmple d'entreprise MentalWorks. Le but est de faire une application de gestion des congés dédiée à un projet scolaire, qui peut etre utilisé en entreprise. L’objectif est de proposer une interface claire, moderne et intuitive permettant aux utilisateurs de gérer leurs demandes de congés, de suivre leur solde et d’interagir avec les responsables RH ou managers.
 
 L’interface est adaptée à des besoins pédagogiques. Ce fichier semble être structuré pour présenter un parcours utilisateur complet, de la connexion jusqu’à la gestion et la consultation des congés.
 Le site a 2 cotés, un coté collaborateur/employer et un coté manager.
 
-Ce projet a été réalisé avec : HTML, CSS, JS, et PHP.
+Ce projet a été réalisé avec : HTML5, CSS, JS, et PHP8.2.12.
+
+Pour que le projet fonctionne correctement : 
+- Il faut utiliser notre fichier .sql qui contient nos requetes qui créer la base de donnée "congefacile".
+- Changer les iddentifiants dans notre code pour vous connecter a votre base de donnée.
 
 Pour mieux comprendre cela voici une arborescence :
 
@@ -17,9 +21,6 @@ Voici notre MEA :
 Voici notre dictionnaire de données :
 
 [DICTIONNAIRE DE DONNÉES (2).pdf](https://github.com/user-attachments/files/20278524/DICTIONNAIRE.DE.DONNEES.2.pdf)
-
-
-![image](https://github.com/user-attachments/assets/a680f507-7598-4e24-a934-4e8cebcc9dc2)
 
 Il faut aussi savoir qu'un service appartient à un collaborateur et un manager doit gérer un service.
 
