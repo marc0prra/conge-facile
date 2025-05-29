@@ -56,14 +56,17 @@ if (!$demande) {
 
             <?php if ($demande): ?>
                 <p class="subTiltleDemand"> Demande du
-                    <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?></p>
+                    <?= htmlspecialchars(date('d/m/Y', strtotime($demande['date_demande']))) ?>
+                </p>
                 <div class="sectionRequestDetails">
                     <p class="TypeRequest"> Type de congé : <?= htmlspecialchars($demande['type_demande']) ?> </p>
                     <p class="TypeRequest"> Période :
                         <?= htmlspecialchars((new DateTime($demande['date_debut']))->format('d/m/Y H\h00')) ?> au
-                        <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?> </p>
+                        <?= htmlspecialchars((new DateTime($demande['date_fin']))->format('d/m/Y H\h00')) ?>
+                    </p>
                     <p class="TypeRequest"> Nombre de jours :
-                        <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?></p>
+                        <?= getWorkingDays($demande['date_debut'], $demande['date_fin'], $holidays); ?>
+                    </p>
                     <p class="TypeRequest statut">
                         Statut de la demande :
                         <?php

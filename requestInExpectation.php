@@ -69,21 +69,6 @@ if (!isset($_SESSION['user_id']) || (isset($_SESSION['role']) && $_SESSION['role
     <link rel="icon" href="img/MW_logo.png" type="image/png">
 
     <title>Historique</title>
-    <style>
-        .searchListe {
-            width: 100%;
-            margin-top: 5px;
-        }
-
-        .sortable {
-            cursor: pointer;
-        }
-
-        .arrow {
-            margin-left: 5px;
-            font-size: 0.8em;
-        }
-    </style>
 </head>
 
 

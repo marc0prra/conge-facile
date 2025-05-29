@@ -1764,6 +1764,20 @@ thead th a:hover {
   color: white;
 }
 
+.searchListe {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
 /************************************* Page Stats *******************************/
 .right_stats {
   display: flex;
